@@ -1,0 +1,480 @@
+{
+  "_meta": {
+    "schemaVersion": "1.1.0",
+    "scope": "Собственный каталог исследований для российских клинических сценариев",
+    "reviewedAt": "2026-10-04",
+    "language": "ru",
+    "idPolicy": "Поле id содержит собственный стабильный идентификатор проекта.",
+    "mappingRelations": {
+      "equivalent": "Смысл локального понятия и внешней позиции совпадает в рамках данных сценария.",
+      "broader": "Внешняя позиция шире локального понятия.",
+      "component": "Внешняя позиция описывает один из компонентов локальной панели или составного исследования.",
+      "partial": "Совпадает только часть анатомической области, протокола или содержания.",
+      "related": "Позиция клинически связана с понятием, но не является его точным кодом."
+    },
+    "nmu": {
+      "system": "ru.nmu.804n",
+      "title": "Номенклатура медицинских услуг",
+      "authority": "Министерство здравоохранения Российской Федерации",
+      "document": "Приказ Минздрава России от 13.10.2017 № 804н",
+      "edition": "ред. от 24.09.2020, с изм. от 26.10.2022",
+      "officialPublication": "https://publication.pravo.gov.ru/Document/View/0001201711080036"
+    },
+    "fsli": {
+      "system": "ru.fsli",
+      "oid": "1.2.643.5.1.13.13.11.1080",
+      "mappingStatus": "not-assigned",
+      "reason": "Точные коды ФСЛИ не присвоены без выгрузки актуальной версии справочника из ФР НСИ. Значения из устаревших зеркал намеренно не использованы.",
+      "officialRegistryInfo": "https://minzdrav.gov.ru/ministry/web-site/informatsionnye-sistemy-minzdrava-rossii/katalog-podsistem-egisz/federalnyy-reestr-normativno-spravochnoy-informatsii-v-sfere-zdravoohraneniya"
+    }
+  },
+  "studies": [
+    {
+      "id": "study.functional.ecg.resting-12-lead",
+      "preferredNameRu": "Электрокардиография в 12 отведениях в покое с интерпретацией",
+      "kind": "functional",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A05.10.006",
+          "display": "Регистрация электрокардиограммы",
+          "relation": "component"
+        },
+        {
+          "system": "ru.nmu.804n",
+          "code": "A05.10.004",
+          "display": "Расшифровка, описание и интерпретация электрокардиографических данных",
+          "relation": "component"
+        }
+      ],
+      "mappingStatus": "composite",
+      "notesRu": "Понятие объединяет регистрацию ЭКГ и интерпретацию; в НМУ это две услуги.",
+      "usedInScenarioIds": [
+        "case.emergency.0001",
+        "case.emergency.0003",
+        "case.emergency.0004",
+        "case.emergency.0005"
+      ]
+    },
+    {
+      "id": "study.lab.troponin-i.blood.quantitative",
+      "preferredNameRu": "Количественное исследование уровня сердечного тропонина I в крови",
+      "kind": "laboratory",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A09.05.193",
+          "display": "Исследование уровня тропонинов I, T в крови",
+          "relation": "broader"
+        }
+      ],
+      "fsliCode": null,
+      "mappingStatus": "approximate",
+      "notesRu": "Результат сценария явно относится к тропонину I, тогда как позиция НМУ объединяет тропонины I и T. Метод и высокочувствительность теста в исходных данных не указаны.",
+      "usedInScenarioIds": [
+        "case.emergency.0001"
+      ]
+    },
+    {
+      "id": "study.imaging.xray.chest",
+      "preferredNameRu": "Обзорная рентгенография органов грудной клетки",
+      "kind": "imaging",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A06.09.007",
+          "display": "Рентгенография легких",
+          "relation": "equivalent"
+        }
+      ],
+      "mappingStatus": "mapped",
+      "notesRu": "Вариант A06.09.007.002 не выбран, поскольку цифровой способ регистрации в сценариях не задан.",
+      "usedInScenarioIds": [
+        "case.emergency.0001",
+        "case.emergency.0003",
+        "case.emergency.0004"
+      ]
+    },
+    {
+      "id": "study.lab.cbc-with-differential",
+      "preferredNameRu": "Общий (клинический) анализ крови развернутый",
+      "kind": "laboratory",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "B03.016.003",
+          "display": "Общий (клинический) анализ крови развернутый",
+          "relation": "equivalent"
+        }
+      ],
+      "fsliCode": null,
+      "mappingStatus": "mapped",
+      "notesRu": "Источник иногда приводит лейкоцитарную формулу, поэтому выбран развернутый анализ. Отдельные показатели должны кодироваться как наблюдения, а не одной строкой результата.",
+      "usedInScenarioIds": [
+        "case.emergency.0001",
+        "case.emergency.0002",
+        "case.emergency.0003",
+        "case.emergency.0004",
+        "case.emergency.0005",
+        "case.emergency.0006"
+      ]
+    },
+    {
+      "id": "study.lab.d-dimer.blood.quantitative",
+      "preferredNameRu": "Определение концентрации D-димера в крови",
+      "kind": "laboratory",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A09.05.051.001",
+          "display": "Определение концентрации Д-димера в крови",
+          "relation": "equivalent"
+        }
+      ],
+      "fsliCode": null,
+      "mappingStatus": "mapped",
+      "notesRu": "В пользовательском русском тексте предпочтительно написание «D-димер»; официальное наименование НМУ сохранено без изменения в display.",
+      "usedInScenarioIds": [
+        "case.emergency.0001"
+      ]
+    },
+    {
+      "id": "study.imaging.ct.abdomen-pelvis.protocol-unspecified",
+      "preferredNameRu": "КТ органов брюшной полости и малого таза, протокол не указан",
+      "kind": "imaging",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A06.30.005",
+          "display": "Компьютерная томография органов брюшной полости",
+          "relation": "partial"
+        },
+        {
+          "system": "ru.nmu.804n",
+          "code": "A06.20.002",
+          "display": "Компьютерная томография органов малого таза у женщин",
+          "relation": "partial"
+        }
+      ],
+      "mappingStatus": "ambiguous",
+      "notesRu": "Единственного эквивалентного кода НМУ для исходного объединенного понятия нет. Для аппендицита российская КР описывает низкодозовую КТ органов брюшной полости с внутривенным болюсным контрастированием после неинформативного УЗИ; протокол и контрастирование следует хранить отдельно.",
+      "usedInScenarioIds": [
+        "case.emergency.0002"
+      ]
+    },
+    {
+      "id": "study.lab.urinalysis.general",
+      "preferredNameRu": "Общий (клинический) анализ мочи",
+      "kind": "laboratory",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "B03.016.006",
+          "display": "Общий (клинический) анализ мочи",
+          "relation": "equivalent"
+        }
+      ],
+      "fsliCode": null,
+      "mappingStatus": "mapped-with-source-defect",
+      "notesRu": "В case.emergency.0002 в эту строку ошибочно включен результат теста на ХГЧ. Его следует вынести в отдельное исследование A09.28.029 «Исследование мочи на хорионический гонадотропин».",
+      "usedInScenarioIds": [
+        "case.emergency.0002",
+        "case.emergency.0006"
+      ]
+    },
+    {
+      "id": "order-set.lab.basic-metabolic-panel-us",
+      "preferredNameRu": "Набор отдельных биохимических исследований (исходная панель BMP)",
+      "kind": "order-set",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "B03.016.004",
+          "display": "Анализ крови биохимический общетерапевтический",
+          "relation": "related"
+        },
+        {
+          "system": "ru.nmu.804n",
+          "code": "A09.05.017",
+          "display": "Исследование уровня мочевины в крови",
+          "relation": "component"
+        },
+        {
+          "system": "ru.nmu.804n",
+          "code": "A09.05.020",
+          "display": "Исследование уровня креатинина в крови",
+          "relation": "component"
+        },
+        {
+          "system": "ru.nmu.804n",
+          "code": "A09.05.023",
+          "display": "Исследование уровня глюкозы в крови",
+          "relation": "component"
+        },
+        {
+          "system": "ru.nmu.804n",
+          "code": "A09.05.030",
+          "display": "Исследование уровня натрия в крови",
+          "relation": "component"
+        },
+        {
+          "system": "ru.nmu.804n",
+          "code": "A09.05.031",
+          "display": "Исследование уровня калия в крови",
+          "relation": "component"
+        },
+        {
+          "system": "ru.nmu.804n",
+          "code": "A09.05.032",
+          "display": "Исследование уровня общего кальция в крови",
+          "relation": "component"
+        },
+        {
+          "system": "ru.nmu.804n",
+          "code": "A09.05.034",
+          "display": "Исследование уровня хлоридов в крови",
+          "relation": "component"
+        },
+        {
+          "system": "ru.nmu.804n",
+          "code": "A09.05.284",
+          "display": "Исследование уровня углекислого газа в крови",
+          "relation": "component"
+        }
+      ],
+      "fsliCode": null,
+      "mappingStatus": "requires-decomposition",
+      "notesRu": "BMP — американский набор, а не отдельная позиция НМУ. Его состав зависит от лаборатории. В российской модели следует хранить назначенные компоненты и их результаты по отдельности; B03.016.004 не считается точным эквивалентом.",
+      "usedInScenarioIds": [
+        "case.emergency.0002",
+        "case.emergency.0005",
+        "case.emergency.0006"
+      ]
+    },
+    {
+      "id": "study.imaging.ultrasound.abdomen.complete",
+      "preferredNameRu": "УЗИ органов брюшной полости (комплексное)",
+      "kind": "imaging",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A04.16.001",
+          "display": "Ультразвуковое исследование органов брюшной полости (комплексное)",
+          "relation": "equivalent"
+        }
+      ],
+      "mappingStatus": "mapped",
+      "notesRu": "В case.emergency.0002 результат фактически описывает прицельную визуализацию червеобразного отростка; цель исследования следует хранить отдельным полем.",
+      "usedInScenarioIds": [
+        "case.emergency.0002"
+      ]
+    },
+    {
+      "id": "study.functional.peak-expiratory-flow",
+      "preferredNameRu": "Пикфлоуметрия",
+      "kind": "functional",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A12.09.001.001",
+          "display": "Исследование неспровоцированных дыхательных объемов и потоков с использованием пикфлоуметра",
+          "relation": "equivalent"
+        }
+      ],
+      "mappingStatus": "mapped",
+      "notesRu": "Структурированный результат должен содержать ПСВ, единицу измерения и процент от должного либо личного лучшего значения.",
+      "usedInScenarioIds": [
+        "case.emergency.0003"
+      ]
+    },
+    {
+      "id": "study.lab.blood-gases-and-acid-base.arterial",
+      "preferredNameRu": "Исследование кислотно-основного состояния и газов артериальной крови",
+      "kind": "laboratory",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "B03.016.011",
+          "display": "Исследование кислотно-основного состояния и газов крови",
+          "relation": "broader"
+        }
+      ],
+      "fsliCode": null,
+      "mappingStatus": "mapped",
+      "notesRu": "НМУ не фиксирует артериальный биоматериал в названии комплексной услуги; тип пробы обязателен в структурированном результате.",
+      "usedInScenarioIds": [
+        "case.emergency.0003"
+      ]
+    },
+    {
+      "id": "study.imaging.ct.brain.noncontrast",
+      "preferredNameRu": "КТ головного мозга без внутривенного контрастирования",
+      "kind": "imaging",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A06.23.004",
+          "display": "Компьютерная томография головного мозга",
+          "relation": "broader"
+        }
+      ],
+      "mappingStatus": "mapped",
+      "notesRu": "Протокол без контрастирования задан локальным идентификатором и контекстом сценария; базовая позиция НМУ не указывает его в названии.",
+      "usedInScenarioIds": [
+        "case.emergency.0005"
+      ]
+    },
+    {
+      "id": "study.lab.glucose.blood",
+      "preferredNameRu": "Исследование уровня глюкозы в крови",
+      "kind": "laboratory",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A09.05.023",
+          "display": "Исследование уровня глюкозы в крови",
+          "relation": "equivalent"
+        }
+      ],
+      "fsliCode": null,
+      "mappingStatus": "mapped",
+      "notesRu": "Исходная bedside-категория не задает биоматериал и метод. Для интеграции необходимо отдельно указать венозную/капиллярную кровь и лабораторный либо экспресс-метод.",
+      "usedInScenarioIds": [
+        "case.emergency.0005"
+      ]
+    },
+    {
+      "id": "study.lab.hcg.urine.qualitative",
+      "preferredNameRu": "Качественное исследование мочи на хорионический гонадотропин",
+      "kind": "laboratory",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A09.28.029",
+          "display": "Исследование мочи на хорионический гонадотропин",
+          "relation": "equivalent"
+        }
+      ],
+      "fsliCode": null,
+      "reasonRu": "В case.emergency.0002 результат ХГЧ ошибочно включен в общий анализ мочи; при нормализации это отдельное исследование."
+    },
+    {
+      "id": "study.functional.ecg.right-precordial-leads",
+      "preferredNameRu": "ЭКГ с регистрацией правых грудных отведений",
+      "kind": "functional",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A05.10.006",
+          "display": "Регистрация электрокардиограммы",
+          "relation": "broader"
+        }
+      ],
+      "mappingStatus": "added-by-guideline-review",
+      "notesRu": "Добавлено для оценки вовлечения правого желудочка при нижнем ИМпST; конкретные дополнительные отведения следует фиксировать в протоколе.",
+      "usedInScenarioIds": [
+        "case.emergency.0001"
+      ]
+    },
+    {
+      "id": "study.lab.crp.serum.quantitative",
+      "preferredNameRu": "Исследование уровня C-реактивного белка в сыворотке крови",
+      "kind": "laboratory",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A09.05.009",
+          "display": "Исследование уровня C-реактивного белка в сыворотке крови",
+          "relation": "equivalent"
+        }
+      ],
+      "fsliCode": null,
+      "mappingStatus": "added-by-guideline-review",
+      "notesRu": "Добавлено к лабораторной оценке вероятности и тяжести острого аппендицита.",
+      "usedInScenarioIds": [
+        "case.emergency.0002"
+      ]
+    },
+    {
+      "id": "study.lab.tryptase.blood",
+      "preferredNameRu": "Определение активности триптазы в крови",
+      "kind": "laboratory",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A09.05.243",
+          "display": "Определение активности триптазы в крови",
+          "relation": "equivalent"
+        }
+      ],
+      "fsliCode": null,
+      "mappingStatus": "added-by-guideline-review",
+      "notesRu": "Исследование может поддержать ретроспективное подтверждение анафилаксии, но забор крови не должен задерживать введение эпинефрина.",
+      "usedInScenarioIds": [
+        "case.emergency.0004"
+      ]
+    },
+    {
+      "id": "study.imaging.ct-angiography.brain-and-neck",
+      "preferredNameRu": "КТ-ангиография сосудов головного мозга и брахиоцефальных артерий",
+      "kind": "imaging",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A06.12.056",
+          "display": "Компьютерно-томографическая ангиография сосудов головного мозга",
+          "relation": "component"
+        },
+        {
+          "system": "ru.nmu.804n",
+          "code": "A06.12.058",
+          "display": "Компьютерно-томографическая ангиография брахиоцефальных артерий",
+          "relation": "component"
+        }
+      ],
+      "mappingStatus": "composite-added-by-guideline-review",
+      "notesRu": "Добавлено для поиска окклюзии крупной артерии и оценки возможности эндоваскулярного лечения; не должно необоснованно задерживать внутривенную реперфузию.",
+      "usedInScenarioIds": [
+        "case.emergency.0005"
+      ]
+    },
+    {
+      "id": "study.lab.coagulation.screen",
+      "preferredNameRu": "Коагулограмма (ориентировочное исследование системы гемостаза)",
+      "kind": "laboratory",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "B03.005.006",
+          "display": "Коагулограмма (ориентировочное исследование системы гемостаза)",
+          "relation": "equivalent"
+        }
+      ],
+      "fsliCode": null,
+      "mappingStatus": "added-by-guideline-review",
+      "notesRu": "Добавлено как условное исследование перед тромболизисом при приёме антикоагулянтов или подозрении на нарушение гемостаза; ожидание результата не должно задерживать лечение без таких оснований.",
+      "usedInScenarioIds": [
+        "case.emergency.0005"
+      ]
+    },
+    {
+      "id": "study.microbiology.urine-culture.aerobic",
+      "preferredNameRu": "Посев мочи на аэробные и факультативно-анаэробные условно-патогенные микроорганизмы",
+      "kind": "laboratory",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A26.28.003",
+          "display": "Микробиологическое (культуральное) исследование мочи на аэробные и факультативно-анаэробные условно-патогенные микроорганизмы",
+          "relation": "equivalent"
+        }
+      ],
+      "fsliCode": null,
+      "mappingStatus": "added-by-guideline-review",
+      "notesRu": "Добавлено как условное исследование при беременности, рецидиве, атипичном течении, подозрении на пиелонефрит или неэффективности эмпирической терапии.",
+      "usedInScenarioIds": [
+        "case.emergency.0006"
+      ]
+    }
+  ]
+}

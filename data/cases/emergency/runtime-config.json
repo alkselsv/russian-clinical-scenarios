@@ -1,0 +1,525 @@
+{
+  "_meta": {
+    "schemaVersion": "1.0.0",
+    "purpose": "Машинные факты, условия и исправления результатов для сборки самодостаточного runtime-файла",
+    "conditionDsl": {
+      "always": "Безусловное правило: {\"always\": true}",
+      "comparison": "Сравнение: {\"fact\": \"path\", \"op\": \"eq|ne|lt|lte|gt|gte|in|exists\", \"value\": any}",
+      "all": "Все вложенные условия истинны: {\"all\": [...]}",
+      "any": "Хотя бы одно условие истинно: {\"any\": [...]}",
+      "not": "Отрицание: {\"not\": {...}}"
+    }
+  },
+  "cases": [
+    {
+      "id": "case.emergency.0001",
+      "facts": {
+        "onsetMinutes": 40,
+        "spo2": 95,
+        "systolicBp": 152,
+        "ischemicPain": true,
+        "pciDelayMinutes": 90,
+        "reperfusionStrategy": "primary-pci",
+        "plannedInvasiveTreatment": true,
+        "rightVentricularInfarction": false,
+        "pde5Use": false,
+        "suspectThoracicComplication": false
+      },
+      "factNotesRu": [
+        "Для воспроизводимого прототипа предполагается доступность первичного ЧКВ через 90 минут.",
+        "Результат правых грудных отведений исключает диагностические признаки инфаркта правого желудочка."
+      ],
+      "actionConditions": {
+        "action.procedure.pci.primary": {
+          "fact": "pciDelayMinutes",
+          "op": "lte",
+          "value": 120
+        },
+        "action.medication.p2y12.loading": {
+          "fact": "reperfusionStrategy",
+          "op": "in",
+          "value": [
+            "primary-pci",
+            "fibrinolysis"
+          ]
+        },
+        "action.medication.anticoagulation.parenteral.strategy-specific": {
+          "fact": "reperfusionStrategy",
+          "op": "in",
+          "value": [
+            "primary-pci",
+            "fibrinolysis"
+          ]
+        },
+        "action.medication.nitroglycerin.short-acting": {
+          "all": [
+            {
+              "fact": "ischemicPain",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "fact": "systolicBp",
+              "op": "gte",
+              "value": 90
+            },
+            {
+              "fact": "rightVentricularInfarction",
+              "op": "eq",
+              "value": false
+            },
+            {
+              "fact": "pde5Use",
+              "op": "eq",
+              "value": false
+            }
+          ]
+        }
+      },
+      "studyConditions": {
+        "study.imaging.xray.chest": {
+          "fact": "suspectThoracicComplication",
+          "op": "eq",
+          "value": true
+        },
+        "study.lab.cbc-with-differential": {
+          "fact": "plannedInvasiveTreatment",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "choiceGroups": []
+    },
+    {
+      "id": "case.emergency.0002",
+      "facts": {
+        "confirmedAppendicitis": true,
+        "pregnant": false,
+        "ultrasoundDiagnostic": true,
+        "urinaryDifferentialNeeded": true,
+        "persistentVomiting": true,
+        "dehydrated": false,
+        "perioperativeLabsNeeded": true,
+        "painScore": 7,
+        "nauseaOrVomiting": true
+      },
+      "factNotesRu": [
+        "ХГЧ вынесен из общего анализа мочи и задан отдельным отрицательным результатом.",
+        "УЗИ считается диагностическим; КТ после него в этой ветке не требуется."
+      ],
+      "actionConditions": {
+        "action.support.crystalloid.iv": {
+          "any": [
+            {
+              "fact": "dehydrated",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "fact": "persistentVomiting",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        "action.medication.analgesia.unspecified": {
+          "fact": "painScore",
+          "op": "gte",
+          "value": 4
+        },
+        "action.medication.ondansetron": {
+          "fact": "nauseaOrVomiting",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "studyConditions": {
+        "study.lab.urinalysis.general": {
+          "fact": "urinaryDifferentialNeeded",
+          "op": "eq",
+          "value": true
+        },
+        "study.imaging.ct.abdomen-pelvis.protocol-unspecified": {
+          "fact": "ultrasoundDiagnostic",
+          "op": "eq",
+          "value": false
+        },
+        "order-set.lab.basic-metabolic-panel-us": {
+          "any": [
+            {
+              "fact": "dehydrated",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "fact": "persistentVomiting",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "fact": "perioperativeLabsNeeded",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        }
+      },
+      "choiceGroups": []
+    },
+    {
+      "id": "case.emergency.0003",
+      "facts": {
+        "spo2": 91,
+        "peakFlowPercent": 38,
+        "paco2": 38,
+        "lifeThreateningAsthma": true,
+        "canTakeOralMedication": true,
+        "canPerformPeakFlow": true,
+        "suspectPneumothorax": false,
+        "suspectPneumonia": false,
+        "markedTachycardia": true,
+        "significantChestPain": false
+      },
+      "factNotesRu": [
+        "SpO₂ 91% и нормокапния заданы как признаки жизнеугрожающего обострения.",
+        "Пероральный системный ГКС допустим, поскольку пациент может принимать препарат внутрь."
+      ],
+      "actionConditions": {},
+      "studyConditions": {
+        "study.functional.peak-expiratory-flow": {
+          "fact": "canPerformPeakFlow",
+          "op": "eq",
+          "value": true
+        },
+        "study.imaging.xray.chest": {
+          "any": [
+            {
+              "fact": "suspectPneumothorax",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "fact": "suspectPneumonia",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        "study.functional.ecg.resting-12-lead": {
+          "any": [
+            {
+              "fact": "markedTachycardia",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "fact": "significantChestPain",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        }
+      },
+      "choiceGroups": []
+    },
+    {
+      "id": "case.emergency.0004",
+      "facts": {
+        "anaphylacticShock": true,
+        "hypotension": true,
+        "spo2": 93,
+        "initialResuscitationStarted": false,
+        "stabilized": false,
+        "suspectPulmonaryComplication": false
+      },
+      "factNotesRu": [
+        "Начальное состояние соответствует анафилактическому шоку; исследования и препараты второй линии не должны предшествовать эпинефрину.",
+        "Факты initialResuscitationStarted и stabilized изменяются приложением по ходу сценария."
+      ],
+      "actionConditions": {
+        "action.medication.antihistamine.h1": {
+          "fact": "stabilized",
+          "op": "eq",
+          "value": true
+        },
+        "action.medication.glucocorticoid.systemic": {
+          "fact": "stabilized",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "studyConditions": {
+        "study.functional.ecg.resting-12-lead": {
+          "fact": "initialResuscitationStarted",
+          "op": "eq",
+          "value": true
+        },
+        "study.imaging.xray.chest": {
+          "all": [
+            {
+              "fact": "stabilized",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "fact": "suspectPulmonaryComplication",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        "study.lab.tryptase.blood": {
+          "fact": "initialResuscitationStarted",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "choiceGroups": []
+    },
+    {
+      "id": "case.emergency.0005",
+      "facts": {
+        "onsetMinutes": 45,
+        "disablingDeficit": true,
+        "hemorrhageOnCt": false,
+        "systolicBp": 178,
+        "diastolicBp": 102,
+        "thrombolysisContraindication": false,
+        "largeVesselOcclusionSuspected": true,
+        "anticoagulantUse": false,
+        "suspectCoagulopathy": false,
+        "contrastStudyPlanned": true,
+        "renalImpairmentSuspected": false,
+        "spo2": 97
+      },
+      "factNotesRu": [
+        "Для runtime принято начало симптомов 45 минут назад; противоречивая реплика «часа в два» не используется как временная точка.",
+        "Пациент считается потенциальным кандидатом на реперфузию, окончательное решение принимается после проверки полного перечня противопоказаний."
+      ],
+      "actionConditions": {
+        "action.medication.thrombolytic.intravenous": {
+          "all": [
+            {
+              "fact": "onsetMinutes",
+              "op": "lte",
+              "value": 270
+            },
+            {
+              "fact": "disablingDeficit",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "fact": "hemorrhageOnCt",
+              "op": "eq",
+              "value": false
+            },
+            {
+              "fact": "systolicBp",
+              "op": "lte",
+              "value": 185
+            },
+            {
+              "fact": "diastolicBp",
+              "op": "lte",
+              "value": 110
+            },
+            {
+              "fact": "thrombolysisContraindication",
+              "op": "eq",
+              "value": false
+            }
+          ]
+        },
+        "action.medication.antihypertensive.pre-thrombolysis": {
+          "any": [
+            {
+              "fact": "systolicBp",
+              "op": "gt",
+              "value": 185
+            },
+            {
+              "fact": "diastolicBp",
+              "op": "gt",
+              "value": 110
+            }
+          ]
+        }
+      },
+      "studyConditions": {
+        "study.lab.coagulation.screen": {
+          "any": [
+            {
+              "fact": "anticoagulantUse",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "fact": "suspectCoagulopathy",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        "order-set.lab.basic-metabolic-panel-us": {
+          "any": [
+            {
+              "fact": "contrastStudyPlanned",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "fact": "renalImpairmentSuspected",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        }
+      },
+      "choiceGroups": []
+    },
+    {
+      "id": "case.emergency.0006",
+      "facts": {
+        "pregnancyExcluded": true,
+        "pyelonephritisSigns": false,
+        "complicatingFactors": false,
+        "vaginalDischarge": false,
+        "diagnosticUncertainty": false,
+        "recurrent": false,
+        "atypicalCourse": false,
+        "treatmentFailure": false,
+        "renalImpairment": false,
+        "severePain": false,
+        "stableForOutpatientCare": true
+      },
+      "factNotesRu": [
+        "Для готовой runtime-ветки беременность и осложняющие факторы явно исключены.",
+        "Фосфомицин и фуразидина калиевая соль являются альтернативами: нужно выбрать один режим, а не назначать оба."
+      ],
+      "actionConditions": {
+        "action.medication.fosfomycin.oral": {
+          "all": [
+            {
+              "fact": "pregnancyExcluded",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "fact": "pyelonephritisSigns",
+              "op": "eq",
+              "value": false
+            },
+            {
+              "fact": "complicatingFactors",
+              "op": "eq",
+              "value": false
+            }
+          ]
+        },
+        "action.medication.furazidine-potassium-magnesium.oral": {
+          "all": [
+            {
+              "fact": "pregnancyExcluded",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "fact": "pyelonephritisSigns",
+              "op": "eq",
+              "value": false
+            },
+            {
+              "fact": "complicatingFactors",
+              "op": "eq",
+              "value": false
+            },
+            {
+              "fact": "renalImpairment",
+              "op": "eq",
+              "value": false
+            }
+          ]
+        },
+        "action.medication.nsaid.cystitis-pain": {
+          "fact": "severePain",
+          "op": "eq",
+          "value": true
+        },
+        "action.disposition.outpatient-discharge": {
+          "all": [
+            {
+              "fact": "stableForOutpatientCare",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "fact": "pyelonephritisSigns",
+              "op": "eq",
+              "value": false
+            },
+            {
+              "fact": "complicatingFactors",
+              "op": "eq",
+              "value": false
+            }
+          ]
+        }
+      },
+      "studyConditions": {
+        "study.lab.urinalysis.general": {
+          "fact": "diagnosticUncertainty",
+          "op": "eq",
+          "value": true
+        },
+        "study.microbiology.urine-culture.aerobic": {
+          "any": [
+            {
+              "fact": "pregnancyExcluded",
+              "op": "eq",
+              "value": false
+            },
+            {
+              "fact": "recurrent",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "fact": "atypicalCourse",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "fact": "pyelonephritisSigns",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "fact": "treatmentFailure",
+              "op": "eq",
+              "value": true
+            }
+          ]
+        },
+        "study.lab.hcg.urine.qualitative": {
+          "fact": "pregnancyExcluded",
+          "op": "eq",
+          "value": false
+        }
+      },
+      "choiceGroups": [
+        {
+          "id": "choice.cystitis.first-line-antibiotic",
+          "kind": "actions",
+          "memberIds": [
+            "action.medication.fosfomycin.oral",
+            "action.medication.furazidine-potassium-magnesium.oral"
+          ],
+          "minSelections": 1,
+          "maxSelections": 1,
+          "labelRu": "Выбрать один режим первой линии"
+        }
+      ]
+    }
+  ]
+}

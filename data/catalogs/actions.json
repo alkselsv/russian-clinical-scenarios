@@ -1,0 +1,210 @@
+{
+  "_meta": {
+    "schemaVersion": "1.0.0",
+    "scope": "Собственный каталог клинических действий",
+    "reviewedAt": "2026-10-05",
+    "language": "ru",
+    "idPolicy": "Поле id содержит собственный стабильный идентификатор проекта.",
+    "clinicalSafety": "unsafe-until-revised",
+    "evaluationClasses": {
+      "required": "Действие необходимо в данном сценарии.",
+      "conditional": "Действие засчитывается только при выполнении явно заданных условий.",
+      "optional": "Действие допустимо, но не влияет на прохождение ключевого алгоритма.",
+      "not-routine": "Рутинное выполнение не требуется и не должно приносить баллы.",
+      "unsafe-or-delaying": "Действие потенциально вредит или задерживает приоритетную помощь.",
+      "unscorable-as-specified": "Исходный код слишком расплывчат: без препарата, дозы, пути, времени или цели действие нельзя считать правильным."
+    }
+  },
+  "actions": [
+    {
+      "id": "action.medication.aspirin.loading",
+      "preferredNameRu": "Нагрузочная доза ацетилсалициловой кислоты",
+      "kind": "medication"
+    },
+    {
+      "id": "action.medication.p2y12.loading",
+      "preferredNameRu": "Нагрузочная доза ингибитора P2Y12",
+      "kind": "medication"
+    },
+    {
+      "id": "action.decision.reperfusion.strategy",
+      "preferredNameRu": "Выбор и немедленная реализация реперфузионной стратегии",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.procedure.pci.primary",
+      "preferredNameRu": "Первичное чрескожное коронарное вмешательство",
+      "kind": "procedure"
+    },
+    {
+      "id": "action.medication.nitroglycerin.short-acting",
+      "preferredNameRu": "Короткодействующий нитрат для купирования боли",
+      "kind": "medication"
+    },
+    {
+      "id": "action.medication.anticoagulation.parenteral.strategy-specific",
+      "preferredNameRu": "Парентеральная антикоагуляция с учётом реперфузионной стратегии",
+      "kind": "medication"
+    },
+    {
+      "id": "action.support.oxygen.titrated",
+      "preferredNameRu": "Титрованная оксигенотерапия",
+      "kind": "support"
+    },
+    {
+      "id": "action.disposition.high-acuity.unspecified",
+      "preferredNameRu": "Неспецифическая госпитализация в отделение высокой интенсивности",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.disposition.reperfusion-capable-center",
+      "preferredNameRu": "Маршрутизация в центр с возможностью экстренной реперфузии",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.support.crystalloid.iv",
+      "preferredNameRu": "Внутривенная инфузия кристаллоидного раствора",
+      "kind": "support"
+    },
+    {
+      "id": "action.medication.antibacterial.broad-spectrum.unspecified",
+      "preferredNameRu": "Неспецифицированный антибиотик широкого спектра",
+      "kind": "medication"
+    },
+    {
+      "id": "action.medication.analgesia.unspecified",
+      "preferredNameRu": "Неспецифицированное обезболивание",
+      "kind": "medication"
+    },
+    {
+      "id": "action.medication.ondansetron",
+      "preferredNameRu": "Противорвотная терапия ондансетроном",
+      "kind": "medication"
+    },
+    {
+      "id": "action.consult.surgeon.urgent",
+      "preferredNameRu": "Неотложная консультация хирурга",
+      "kind": "consultation"
+    },
+    {
+      "id": "action.procedure.appendectomy",
+      "preferredNameRu": "Аппендэктомия",
+      "kind": "procedure"
+    },
+    {
+      "id": "action.medication.antibacterial.appendectomy-prophylaxis",
+      "preferredNameRu": "Периоперационная антибиотикопрофилактика при аппендэктомии",
+      "kind": "medication"
+    },
+    {
+      "id": "action.medication.salbutamol.inhaled-repeated",
+      "preferredNameRu": "Повторные ингаляции сальбутамола",
+      "kind": "medication"
+    },
+    {
+      "id": "action.medication.ipratropium.inhaled",
+      "preferredNameRu": "Ингаляционное введение ипратропия бромида",
+      "kind": "medication"
+    },
+    {
+      "id": "action.medication.glucocorticoid.systemic",
+      "preferredNameRu": "Системный глюкокортикостероид",
+      "kind": "medication"
+    },
+    {
+      "id": "action.monitoring.observation.unspecified",
+      "preferredNameRu": "Неспецифицированное наблюдение",
+      "kind": "monitoring"
+    },
+    {
+      "id": "action.monitoring.asthma.dynamic-reassessment",
+      "preferredNameRu": "Динамическая переоценка жизнеугрожающего обострения астмы",
+      "kind": "monitoring"
+    },
+    {
+      "id": "action.disposition.respiratory-intensive-care",
+      "preferredNameRu": "Неотложная госпитализация с интенсивным респираторным наблюдением",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.medication.epinephrine.im",
+      "preferredNameRu": "Внутримышечное введение эпинефрина (адреналина)",
+      "kind": "medication"
+    },
+    {
+      "id": "action.support.anaphylaxis.positioning",
+      "preferredNameRu": "Безопасное положение пациента при анафилактическом шоке",
+      "kind": "support"
+    },
+    {
+      "id": "action.support.anaphylaxis.airway-monitoring",
+      "preferredNameRu": "Обеспечение проходимости дыхательных путей и непрерывный мониторинг",
+      "kind": "support"
+    },
+    {
+      "id": "action.medication.antihistamine.h1",
+      "preferredNameRu": "Блокатор H1-гистаминовых рецепторов после стабилизации",
+      "kind": "medication"
+    },
+    {
+      "id": "action.monitoring.anaphylaxis.icu-24h",
+      "preferredNameRu": "Госпитализация и интенсивное наблюдение после анафилактического шока",
+      "kind": "monitoring"
+    },
+    {
+      "id": "action.pathway.stroke.activation",
+      "preferredNameRu": "Активация маршрута пациента с острым инсультом",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.medication.thrombolytic.intravenous",
+      "preferredNameRu": "Внутривенная тромболитическая терапия",
+      "kind": "medication"
+    },
+    {
+      "id": "action.procedure.thrombectomy.evaluation",
+      "preferredNameRu": "Оценка показаний к механической тромбэктомии",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.medication.antihypertensive.pre-thrombolysis",
+      "preferredNameRu": "Контролируемое снижение АД перед тромболизисом",
+      "kind": "medication"
+    },
+    {
+      "id": "action.disposition.stroke-unit",
+      "preferredNameRu": "Госпитализация в специализированное отделение для больных с ОНМК",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.assessment.cystitis.complicating-factors",
+      "preferredNameRu": "Исключение беременности, пиелонефрита и осложняющих факторов",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.medication.fosfomycin.oral",
+      "preferredNameRu": "Пероральный фосфомицин при неосложнённом цистите",
+      "kind": "medication"
+    },
+    {
+      "id": "action.medication.furazidine-potassium-magnesium.oral",
+      "preferredNameRu": "Фуразидина калиевая соль с карбонатом магния внутрь",
+      "kind": "medication"
+    },
+    {
+      "id": "action.medication.nsaid.cystitis-pain",
+      "preferredNameRu": "Нестероидный противовоспалительный препарат при выраженной боли",
+      "kind": "medication"
+    },
+    {
+      "id": "action.disposition.outpatient-discharge",
+      "preferredNameRu": "Амбулаторное ведение и выписка",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.safety-netting.cystitis",
+      "preferredNameRu": "Инструктаж о признаках осложнения и повторном обращении",
+      "kind": "communication"
+    }
+  ]
+}

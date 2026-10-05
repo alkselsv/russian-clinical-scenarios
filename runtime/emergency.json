@@ -1,0 +1,2577 @@
+{
+  "_meta": {
+    "schemaVersion": "1.0.0",
+    "collection": "emergency",
+    "generator": "scripts/generate-runtime.mjs",
+    "caseCount": 6,
+    "language": "ru",
+    "clinicalSafety": "unsafe-until-clinician-approved",
+    "scoringMode": "rules-with-structured-conditions-and-parameter-review",
+    "conditionDsl": {
+      "always": "Безусловное правило: {\"always\": true}",
+      "comparison": "Сравнение: {\"fact\": \"path\", \"op\": \"eq|ne|lt|lte|gt|gte|in|exists\", \"value\": any}",
+      "all": "Все вложенные условия истинны: {\"all\": [...]}",
+      "any": "Хотя бы одно условие истинно: {\"any\": [...]}",
+      "not": "Отрицание: {\"not\": {...}}"
+    },
+    "inputSha256": {
+      "actions": "2e08ab4a39d7914d7096bdeb509503a77ac53eaa40fe55f698c83b2f2d346d57",
+      "studies": "cb97ab80d4c9871313acfe3ec9f36368791c0c3c72fe3546dcf414e2ce7cbcd2",
+      "references": "d9a8c336105e7a1355b1f132e41e86697443ae0e3f7209f84073a1365b72ac57",
+      "content": "7fe22b0f3d00fb07fb7ef1c2b4d5916ab242a6d26cda1fc5a43c5b6abbdb2ec0",
+      "rules": "53945be13b292543ad8d0fa2b59a98c64477f9f207e91a20d6c719087a80ff14",
+      "config": "0df21d26e89edd4070769e565ab7ee79081983921594266d8e790899561fea57"
+    }
+  },
+  "cases": [
+    {
+      "id": "case.emergency.0001",
+      "title": "Острый инфаркт миокарда с подъемом сегмента ST",
+      "patient": {
+        "name": "Андрей Козлов",
+        "age": 62,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "critical",
+        "arrival": "Доставлен бригадой скорой помощи. Покрыт холодным потом, держится за грудь.",
+        "chiefComplaint": "Сдавливающая боль в груди в течение 40 минут, иррадиирующая в левую руку. Такое ощущение, что я могу умереть.",
+        "vitals": {
+          "hr": 104,
+          "bp": "152/94",
+          "spo2": 95,
+          "temp": 36.9,
+          "rr": 22
+        },
+        "anamnesis": [
+          {
+            "id": "case.emergency.0001.anamnesis.01",
+            "question": "Когда начались симптомы?",
+            "answer": "40 минут назад — внезапно, когда я смотрел телевизор.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0001.anamnesis.02",
+            "question": "Куда отдаёт боль?",
+            "answer": "В левую руку и нижнюю челюсть.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0001.anamnesis.03",
+            "question": "Опишите характер боли.",
+            "answer": "Сильная сдавливающая боль, как будто на грудь сел слон.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0001.anamnesis.04",
+            "question": "Есть ли потливость или тошнота?",
+            "answer": "Я весь мокрый от пота, и меня тошнит.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0001.anamnesis.05",
+            "question": "Какие хронические заболевания у вас есть?",
+            "answer": "Артериальная гипертензия и высокий холестерин. У отца был инфаркт в 58 лет.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0001.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет, я всю неделю был дома.",
+            "relevant": false
+          },
+          {
+            "id": "case.emergency.0001.anamnesis.07",
+            "question": "Что вы сегодня ели?",
+            "answer": "Сегодня утром только кофе и тост.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {
+        "onsetMinutes": 40,
+        "spo2": 95,
+        "systolicBp": 152,
+        "ischemicPain": true,
+        "pciDelayMinutes": 90,
+        "reperfusionStrategy": "primary-pci",
+        "plannedInvasiveTreatment": true,
+        "rightVentricularInfarction": false,
+        "pde5Use": false,
+        "suspectThoracicComplication": false
+      },
+      "factNotes": [
+        "Для воспроизводимого прототипа предполагается доступность первичного ЧКВ через 90 минут.",
+        "Результат правых грудных отведений исключает диагностические признаки инфаркта правого желудочка."
+      ],
+      "diagnosis": {
+        "id": "condition.acute-myocardial-infarction.st-elevation",
+        "label": "Острый инфаркт миокарда с подъемом сегмента ST",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "I21.1",
+            "display": "Острый трансмуральный инфаркт нижней стенки миокарда",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.medication.aspirin.loading",
+            "label": "Нагрузочная доза ацетилсалициловой кислоты",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "150–300 мг внутрь, таблетку разжевать; дать немедленно, если нагрузочная доза ещё не принята.",
+            "indication": "Подтверждённый по ЭКГ ИМпST при отсутствии абсолютного противопоказания.",
+            "checks": [
+              "Уточнить приём ацетилсалициловой кислоты до контакта с врачом."
+            ],
+            "contraindications": [
+              "Активное клинически значимое кровотечение",
+              "Подтверждённая тяжёлая гиперчувствительность"
+            ],
+            "success": "В карте зафиксированы препарат, доза, путь, время и отсутствие немедленной реакции/кровотечения."
+          },
+          {
+            "id": "action.decision.reperfusion.strategy",
+            "label": "Выбор и немедленная реализация реперфузионной стратегии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Решение принимается немедленно и содержит выбранный метод, целевое время и маршрут пациента.",
+            "indication": "Симптомы продолжаются 40 минут и есть диагностический подъём ST.",
+            "checks": [
+              "Оценить время от начала симптомов",
+              "Определить достижимость первичного ЧКВ в рекомендуемый срок",
+              "Если своевременное ЧКВ недоступно — оценить показания и противопоказания к фармакоинвазивной стратегии"
+            ],
+            "contraindications": [],
+            "success": "Реперфузионная стратегия выбрана и запущена без ожидания тропонина, D-димера или рентгенографии."
+          },
+          {
+            "id": "action.disposition.reperfusion-capable-center",
+            "label": "Маршрутизация в центр с возможностью экстренной реперфузии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Организовать прямую госпитализацию/перевод в профильный центр.",
+            "indication": "ИМпST требует профильного центра с возможностью немедленной реперфузии и мониторирования.",
+            "checks": [
+              "Маршрут согласован с выбранной реперфузионной стратегией."
+            ],
+            "contraindications": [],
+            "success": "Названы принимающее подразделение, транспорт и контрольные временные точки."
+          }
+        ],
+        "conditional": [
+          {
+            "id": "action.procedure.pci.primary",
+            "label": "Первичное чрескожное коронарное вмешательство",
+            "decision": "conditional",
+            "when": {
+              "fact": "pciDelayMinutes",
+              "op": "lte",
+              "value": 120
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Активировать рентгеноперационную и транспортировку, а не ограничиваться записью «cath lab».",
+            "indication": "Предпочтительная стратегия, если первичное ЧКВ может быть выполнено в рекомендуемый срок.",
+            "checks": [
+              "Целевой интервал до ЧКВ не более 120 минут",
+              "Есть доступ к центру и команде ЧКВ"
+            ],
+            "contraindications": [],
+            "success": "Зафиксированы время активации, маршрут и фактическое достижение реперфузии."
+          },
+          {
+            "id": "action.medication.p2y12.loading",
+            "label": "Нагрузочная доза ингибитора P2Y12",
+            "decision": "conditional",
+            "when": {
+              "fact": "reperfusionStrategy",
+              "op": "in",
+              "value": [
+                "primary-pci",
+                "fibrinolysis"
+              ]
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "При первичном ЧКВ назвать конкретный препарат и нагрузочную дозу: например, тикагрелор 180 мг внутрь или клопидогрел 600 мг внутрь с учётом противопоказаний. При другой стратегии использовать соответствующий ей режим; абстрактное «дать антиагрегант» не засчитывается.",
+            "indication": "Компонент двойной антитромбоцитарной терапии при ИМпST.",
+            "checks": [
+              "Выбор препарата и дозы согласован с методом реперфузии, возрастом, риском кровотечения и сопутствующей антикоагуляцией."
+            ],
+            "contraindications": [
+              "Активное кровотечение",
+              "Индивидуальные противопоказания к выбранному препарату"
+            ],
+            "success": "Задокументированы препарат, нагрузочная доза и время введения."
+          },
+          {
+            "id": "action.medication.anticoagulation.parenteral.strategy-specific",
+            "label": "Парентеральная антикоагуляция с учётом реперфузионной стратегии",
+            "decision": "conditional",
+            "when": {
+              "fact": "reperfusionStrategy",
+              "op": "in",
+              "value": [
+                "primary-pci",
+                "fibrinolysis"
+              ]
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "При первичном ЧКВ и выборе нефракционированного гепарина: 70–100 ЕД/кг внутривенно болюсно без ингибитора ГП IIb/IIIa либо 50–60 ЕД/кг при его применении, с контролем активированного времени свёртывания. Для другого препарата или стратегии нужен соответствующий конкретный режим; неспецифицированный код не засчитывается.",
+            "indication": "Антикоагуляция как часть выбранной первичной ЧКВ или фармакоинвазивной стратегии.",
+            "checks": [
+              "Выбрать конкретный препарат",
+              "Учесть массу тела, функцию почек и риск кровотечения"
+            ],
+            "contraindications": [
+              "Активное кровотечение",
+              "Иные противопоказания к выбранному антикоагулянту"
+            ],
+            "success": "Назначение содержит конкретный препарат, расчёт дозы и мониторинг кровотечения."
+          },
+          {
+            "id": "action.medication.nitroglycerin.short-acting",
+            "label": "Короткодействующий нитрат для купирования боли",
+            "decision": "conditional",
+            "when": {
+              "all": [
+                {
+                  "fact": "ischemicPain",
+                  "op": "eq",
+                  "value": true
+                },
+                {
+                  "fact": "systolicBp",
+                  "op": "gte",
+                  "value": 90
+                },
+                {
+                  "fact": "rightVentricularInfarction",
+                  "op": "eq",
+                  "value": false
+                },
+                {
+                  "fact": "pde5Use",
+                  "op": "eq",
+                  "value": false
+                }
+              ]
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Короткодействующая форма нитроглицерина 0,4–0,5 мг сублингвально под контролем АД; повторение — только при сохранённой гемодинамике.",
+            "indication": "Сохраняющаяся ишемическая боль при стабильной гемодинамике.",
+            "checks": [
+              "Исключить вовлечение правого желудочка",
+              "Проверить АД",
+              "Уточнить приём ингибиторов ФДЭ-5"
+            ],
+            "contraindications": [
+              "Артериальная гипотензия",
+              "Подозрение на инфаркт правого желудочка",
+              "Недавний приём ингибитора ФДЭ-5"
+            ],
+            "success": "Оценены боль и АД; препарат не задержал реперфузию."
+          }
+        ],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "action.support.oxygen.titrated",
+            "label": "Титрованная оксигенотерапия",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "При текущей сатурации не назначать рутинно; при снижении SpO₂ ниже 90% титровать поток к целевой сатурации.",
+            "indication": "Только гипоксемия, дыхательная недостаточность или иное явно заданное показание.",
+            "checks": [
+              "Исходная SpO₂ в сценарии — 95%."
+            ],
+            "contraindications": [],
+            "success": "Без показания баллы не начисляются; при показании фиксируются устройство, поток и динамика SpO₂."
+          },
+          {
+            "id": "action.disposition.high-acuity.unspecified",
+            "label": "Неспецифическая госпитализация в отделение высокой интенсивности",
+            "decision": "unscorable-as-specified",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Заменить конкретной маршрутизацией в реперфузионный центр.",
+            "indication": "Исходный код неспецифической госпитализации не определяет нужный реперфузионный маршрут.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Сам по себе исходный код не приносит баллов."
+          }
+        ],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.functional.ecg.resting-12-lead",
+            "label": "Электрокардиография в 12 отведениях в покое с интерпретацией",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "Зарегистрировать и интерпретировать как можно раньше, целевое время — не более 10 минут от первого медицинского контакта.",
+            "rationale": "ЭКГ уже диагностична для нижнего ИМпST.",
+            "mustNotDelay": "Не откладывать активацию реперфузионного маршрута.",
+            "result": {
+              "result": "Элевация ST в отведениях II, III, aVF. Реципрокная депрессия в I и aVL.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.functional.ecg.right-precordial-leads",
+            "label": "ЭКГ с регистрацией правых грудных отведений",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "Зарегистрировать немедленно после стандартной ЭКГ.",
+            "rationale": "Нижняя локализация требует оценки вовлечения правого желудочка, в том числе до решения о нитратах.",
+            "mustNotDelay": "Не задерживать реперфузию.",
+            "result": {
+              "result": "Подъёма сегмента ST в правых грудных отведениях, включая V4R, нет.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.lab.troponin-i.blood.quantitative",
+            "label": "Количественное исследование уровня сердечного тропонина I в крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "Взять кровь при первичном обследовании.",
+            "rationale": "Подтверждает повреждение миокарда и даёт исходную точку для динамики.",
+            "mustNotDelay": "При диагностической ЭКГ нельзя ждать результат до начала реперфузионной тактики.",
+            "result": {
+              "result": "Тропонин I: 3,2 нг/мл (референсное значение <0,04). Заметно повышен.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [
+          {
+            "id": "study.imaging.xray.chest",
+            "label": "Обзорная рентгенография органов грудной клетки",
+            "decision": "conditional",
+            "when": {
+              "fact": "suspectThoracicComplication",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "timing": "После первичных действий, если есть конкретное подозрение на альтернативный диагноз или осложнение.",
+            "rationale": "Рутинно не подтверждает ИМпST.",
+            "mustNotDelay": "Не задерживать реперфузию.",
+            "result": {
+              "result": "Острых сердечно-легочных нарушений нет. Размер сердца нормальный.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "conditional",
+            "when": {
+              "fact": "plannedInvasiveTreatment",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": true,
+            "timing": "В составе исходной оценки перед инвазивным лечением и антитромботической терапией.",
+            "rationale": "Нужен для оценки гемоглобина и тромбоцитов, но не устанавливает диагноз ИМпST.",
+            "mustNotDelay": "Не ждать результат для активации реперфузии при отсутствии клинических оснований ожидать критическое отклонение.",
+            "result": {
+              "result": "WBC 8.1, Hgb 14.2, Plt 240. В пределах нормы.",
+              "abnormal": false
+            }
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": [
+          {
+            "id": "study.lab.d-dimer.blood.quantitative",
+            "label": "Определение концентрации D-димера в крови",
+            "decision": "unsafe-or-delaying",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "Не назначать при уже диагностическом ИМпST без отдельного обоснованного дифференциального диагноза.",
+            "rationale": "Нормальный D-димер не меняет реперфузионную тактику в этом случае.",
+            "mustNotDelay": "Назначение и ожидание результата не должны влиять на срочную помощь.",
+            "result": {
+              "result": "D-димер 320 нг/мл (референсное значение <500). Нормально.",
+              "abnormal": false
+            }
+          }
+        ]
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.157.v5",
+          "title": "Острый инфаркт миокарда с подъемом сегмента ST электрокардиограммы",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/157_5"
+        }
+      ],
+      "reviewStatus": "major-revision-required"
+    },
+    {
+      "id": "case.emergency.0002",
+      "title": "Острый аппендицит",
+      "patient": {
+        "name": "Ксения Николаева",
+        "age": 19,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "urgent",
+        "arrival": "Обратилась самостоятельно. Щадит живот, идёт согнувшись.",
+        "chiefComplaint": "Со вчерашнего вечера болит живот. Сначала боль была возле пупка, теперь сместилась вправо вниз.",
+        "vitals": {
+          "hr": 98,
+          "bp": "118/72",
+          "spo2": 99,
+          "temp": 38.2,
+          "rr": 18
+        },
+        "anamnesis": [
+          {
+            "id": "case.emergency.0002.anamnesis.01",
+            "question": "Где именно сейчас болит?",
+            "answer": "Болит справа внизу живота; при надавливании боль резко усиливается.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0002.anamnesis.02",
+            "question": "Переместилась ли боль с момента её появления?",
+            "answer": "Да. Сначала болело около пупка, затем боль переместилась вправо.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0002.anamnesis.03",
+            "question": "Были ли повышение температуры или озноб?",
+            "answer": "Утром было ощущение жара, но температуру не измеряла.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0002.anamnesis.04",
+            "question": "Есть ли тошнота или рвота?",
+            "answer": "Тошнит; сегодня утром один раз вырвало.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0002.anamnesis.05",
+            "question": "Как изменился ваш аппетит?",
+            "answer": "Аппетита нет, от одной мысли о еде становится тошно.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0002.anamnesis.06",
+            "question": "Когда была последняя менструация?",
+            "answer": "Две недели назад, менструация была обычной.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0002.anamnesis.07",
+            "question": "Есть ли кашель?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {
+        "confirmedAppendicitis": true,
+        "pregnant": false,
+        "ultrasoundDiagnostic": true,
+        "urinaryDifferentialNeeded": true,
+        "persistentVomiting": true,
+        "dehydrated": false,
+        "perioperativeLabsNeeded": true,
+        "painScore": 7,
+        "nauseaOrVomiting": true
+      },
+      "factNotes": [
+        "ХГЧ вынесен из общего анализа мочи и задан отдельным отрицательным результатом.",
+        "УЗИ считается диагностическим; КТ после него в этой ветке не требуется."
+      ],
+      "diagnosis": {
+        "id": "condition.acute-appendicitis",
+        "label": "Острый аппендицит",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "K35.9",
+            "display": "Острый аппендицит неуточненный",
+            "relation": "compatible"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.consult.surgeon.urgent",
+            "label": "Неотложная консультация хирурга",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Немедленно передать пациента хирургу с результатами клинической стратификации.",
+            "indication": "Клиническая картина и визуализация соответствуют острому аппендициту.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Зафиксированы время консультации и решение о тактике."
+          },
+          {
+            "id": "action.procedure.appendectomy",
+            "label": "Аппендэктомия",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Сформулировать вид и срочность операции; одной консультации хирурга недостаточно.",
+            "indication": "Подтверждённый острый аппендицит у операбельной пациентки.",
+            "checks": [
+              "Определить осложнённый или неосложнённый характер",
+              "Получить информированное согласие и выполнить предоперационную подготовку"
+            ],
+            "contraindications": [
+              "Противопоказания к операции или выбранная специалистом консервативная тактика в отдельно обоснованной ситуации"
+            ],
+            "success": "Выполнена аппендэктомия либо документировано обоснованное альтернативное решение."
+          },
+          {
+            "id": "action.medication.antibacterial.appendectomy-prophylaxis",
+            "label": "Периоперационная антибиотикопрофилактика при аппендэктомии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Назвать конкретный препарат и дозу; ввести внутривенно так, чтобы профилактика была выполнена в пределах 60 минут до разреза.",
+            "indication": "Профилактика инфекционных осложнений перед аппендэктомией.",
+            "checks": [
+              "Выбрать препарат с учётом аллергии и локального протокола."
+            ],
+            "contraindications": [
+              "Гиперчувствительность к выбранному препарату"
+            ],
+            "success": "Документированы препарат, доза и время относительно разреза."
+          }
+        ],
+        "conditional": [
+          {
+            "id": "action.support.crystalloid.iv",
+            "label": "Внутривенная инфузия кристаллоидного раствора",
+            "decision": "conditional",
+            "when": {
+              "any": [
+                {
+                  "fact": "dehydrated",
+                  "op": "eq",
+                  "value": true
+                },
+                {
+                  "fact": "persistentVomiting",
+                  "op": "eq",
+                  "value": true
+                }
+              ]
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Раствор, объём и скорость указать по клиническому состоянию; автоматический болюс не засчитывается.",
+            "indication": "Рвота, дегидратация, ограничение приёма внутрь или периоперационная потребность.",
+            "checks": [
+              "Оценить гемодинамику и волемический статус."
+            ],
+            "contraindications": [
+              "Риск перегрузки объёмом требует индивидуальной скорости"
+            ],
+            "success": "Оценены АД, ЧСС, диурез и признаки перегрузки."
+          },
+          {
+            "id": "action.medication.analgesia.unspecified",
+            "label": "Неспецифицированное обезболивание",
+            "decision": "conditional",
+            "when": {
+              "fact": "painScore",
+              "op": "gte",
+              "value": 4
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Нужно назвать препарат, дозу и путь; обезболивание не должно откладываться только из опасения «смазать картину».",
+            "indication": "Клинически значимая боль после первичной оценки.",
+            "checks": [
+              "Выбрать конкретный ненаркотический или опиоидный препарат по интенсивности боли и противопоказаниям."
+            ],
+            "contraindications": [
+              "Противопоказания к выбранному препарату"
+            ],
+            "success": "Повторно оценена интенсивность боли и побочные эффекты."
+          },
+          {
+            "id": "action.medication.ondansetron",
+            "label": "Противорвотная терапия ондансетроном",
+            "decision": "conditional",
+            "when": {
+              "fact": "nauseaOrVomiting",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Назвать конкретную дозу и путь по локальному протоколу; применять как симптоматическую терапию.",
+            "indication": "Сохраняющиеся тошнота и рвота.",
+            "checks": [
+              "Оценить риск удлинения QT и лекарственные взаимодействия."
+            ],
+            "contraindications": [
+              "Известная гиперчувствительность",
+              "Клинически значимое удлинение QT требует альтернативы"
+            ],
+            "success": "Повторно оценены тошнота, рвота и переносимость."
+          }
+        ],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "action.medication.antibacterial.broad-spectrum.unspecified",
+            "label": "Неспецифицированный антибиотик широкого спектра",
+            "decision": "unscorable-as-specified",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Без препарата, дозы, времени и признака осложнённости назначение не засчитывается.",
+            "indication": "Исходный код не различает профилактику и лечение осложнённого аппендицита.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Баллы возможны только за конкретный режим, соответствующий выбранной тактике."
+          }
+        ],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "При первичном обследовании.",
+            "rationale": "Лейкоцитоз и нейтрофильный сдвиг поддерживают воспалительный процесс, но не подтверждают диагноз изолированно.",
+            "mustNotDelay": "Не задерживать осмотр хирурга и визуализацию.",
+            "result": {
+              "result": "лейкоцитов 14,8 со сдвигом влево (нейтрофилы 82%). Повышен.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.crp.serum.quantitative",
+            "label": "Исследование уровня C-реактивного белка в сыворотке крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "Вместе с общим анализом крови.",
+            "rationale": "СРБ входит в лабораторную оценку вероятности и тяжести воспаления.",
+            "mustNotDelay": "Не ждать результат при клинически очевидном осложнении или показаниях к срочной операции.",
+            "result": {
+              "result": "C-реактивный белок: 68 мг/л, повышен.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.hcg.urine.qualitative",
+            "label": "Качественное исследование мочи на хорионический гонадотропин",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "До выбора метода визуализации с ионизирующим излучением и операции, если беременность не исключена достоверно.",
+            "rationale": "Результат ХГЧ должен быть отдельным исследованием, а не частью общего анализа мочи.",
+            "mustNotDelay": "При нестабильности действовать по неотложным показаниям.",
+            "result": {
+              "result": "Хорионический гонадотропин в моче: отрицательно.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.imaging.ultrasound.abdomen.complete",
+            "label": "УЗИ органов брюшной полости (комплексное)",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "Первый метод визуализации у молодой женщины после клинической стратификации риска.",
+            "rationale": "Избегает необоснованной лучевой нагрузки и может визуализировать несжимаемый отросток.",
+            "mustNotDelay": "При высокой вероятности осложнения не затягивать хирургическую тактику.",
+            "result": {
+              "result": "Несжимаемая трубчатая структура в правой подвздошной области. Наводит на мысль об аппендиците.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [
+          {
+            "id": "study.lab.urinalysis.general",
+            "label": "Общий (клинический) анализ мочи",
+            "decision": "conditional",
+            "when": {
+              "fact": "urinaryDifferentialNeeded",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": true,
+            "timing": "На этапе дифференциальной диагностики.",
+            "rationale": "Помогает оценить мочевую патологию, но не исключает аппендицит.",
+            "mustNotDelay": "Не задерживать консультацию хирурга.",
+            "result": {
+              "result": "Лейкоцитарная эстераза: следы; нитриты отрицательные. Других клинически значимых изменений нет.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.imaging.ct.abdomen-pelvis.protocol-unspecified",
+            "label": "КТ органов брюшной полости и малого таза, протокол не указан",
+            "decision": "conditional",
+            "when": {
+              "fact": "ultrasoundDiagnostic",
+              "op": "eq",
+              "value": false
+            },
+            "applicableNow": false,
+            "timing": "После отрицательного или неинформативного УЗИ при промежуточной клинической вероятности.",
+            "rationale": "Нужен низкодозовый протокол с явно указанной областью и внутривенным контрастированием; исходный объединённый код недостаточен.",
+            "mustNotDelay": "Не выполнять автоматически вслед за уже диагностическим УЗИ.",
+            "result": {
+              "result": "Червеобразный отросток расширен до 11 мм; определяется инфильтрация периаппендикулярной жировой клетчатки. Картина острого аппендицита.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "order-set.lab.basic-metabolic-panel-us",
+            "label": "Набор отдельных биохимических исследований (исходная панель BMP)",
+            "decision": "conditional",
+            "when": {
+              "any": [
+                {
+                  "fact": "dehydrated",
+                  "op": "eq",
+                  "value": true
+                },
+                {
+                  "fact": "persistentVomiting",
+                  "op": "eq",
+                  "value": true
+                },
+                {
+                  "fact": "perioperativeLabsNeeded",
+                  "op": "eq",
+                  "value": true
+                }
+              ]
+            },
+            "applicableNow": true,
+            "timing": "Перед операцией, при рвоте, дегидратации или сопутствующей патологии.",
+            "rationale": "Назначать отдельные необходимые показатели, а не американскую панель BMP как неделимый тест.",
+            "mustNotDelay": "Не задерживать хирургическую помощь.",
+            "result": {
+              "result": "Электролиты, АМК, Cr все в пределах нормы.",
+              "abnormal": false
+            }
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.325.v2",
+          "title": "Острый аппендицит у взрослых",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/325_2"
+        }
+      ],
+      "reviewStatus": "major-revision-required"
+    },
+    {
+      "id": "case.emergency.0003",
+      "title": "Жизнеугрожающее обострение бронхиальной астмы",
+      "patient": {
+        "name": "Антон Козлов",
+        "age": 28,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "urgent",
+        "arrival": "Обратился самостоятельно с выраженной одышкой, опирается руками на колени.",
+        "chiefComplaint": "Я не могу дышать. В груди сдавило, и я хриплю. Мой ингалятор не работает.",
+        "vitals": {
+          "hr": 118,
+          "bp": "138/82",
+          "spo2": 91,
+          "temp": 37,
+          "rr": 28
+        },
+        "anamnesis": [
+          {
+            "id": "case.emergency.0003.anamnesis.01",
+            "question": "У вас есть бронхиальная астма?",
+            "answer": "Да, с детства. Пользуюсь ингалятором с альбутеролом.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0003.anamnesis.02",
+            "question": "Что спровоцировало приступ?",
+            "answer": "Я наводил порядок в пыльном подвале.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0003.anamnesis.03",
+            "question": "Сколько доз ингалятора вы использовали?",
+            "answer": "Около 10 доз за последний час, но ингалятор не помогает.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0003.anamnesis.04",
+            "question": "Повышалась ли температура?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0003.anamnesis.05",
+            "question": "Есть ли боль в груди?",
+            "answer": "Только чувство стеснения в груди, без острой боли.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0003.anamnesis.06",
+            "question": "Что вы сегодня ели?",
+            "answer": "На обед ел сэндвич.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {
+        "spo2": 91,
+        "peakFlowPercent": 38,
+        "paco2": 38,
+        "lifeThreateningAsthma": true,
+        "canTakeOralMedication": true,
+        "canPerformPeakFlow": true,
+        "suspectPneumothorax": false,
+        "suspectPneumonia": false,
+        "markedTachycardia": true,
+        "significantChestPain": false
+      },
+      "factNotes": [
+        "SpO₂ 91% и нормокапния заданы как признаки жизнеугрожающего обострения.",
+        "Пероральный системный ГКС допустим, поскольку пациент может принимать препарат внутрь."
+      ],
+      "diagnosis": {
+        "id": "condition.asthma.acute-exacerbation.life-threatening",
+        "label": "Жизнеугрожающее обострение бронхиальной астмы",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "J45.9",
+            "display": "Астма неуточненная",
+            "relation": "broader"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.medication.salbutamol.inhaled-repeated",
+            "label": "Повторные ингаляции сальбутамола",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Сальбутамол 2,5–5 мг через небулайзер с кислородом или эквивалентная повторная ингаляционная схема; повторять в первый час по протоколу и клиническому ответу.",
+            "indication": "Жизнеугрожающее обострение с выраженной бронхиальной обструкцией.",
+            "checks": [
+              "Оценивать технику и ответ после каждой серии ингаляций."
+            ],
+            "contraindications": [
+              "Абсолютного противопоказания в этом сценарии нет; тахикардия требует мониторирования, а не отказа от лечения."
+            ],
+            "success": "Уменьшение одышки и работы дыхания, рост ПСВ/ОФВ₁ и SpO₂; контролировать ЧСС и побочные эффекты."
+          },
+          {
+            "id": "action.medication.ipratropium.inhaled",
+            "label": "Ингаляционное введение ипратропия бромида",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Ипратропия бромид 0,5 мг через небулайзер, повторять в составе начальной комбинированной терапии по протоколу.",
+            "indication": "Тяжёлое или жизнеугрожающее обострение в комбинации с короткодействующим β2-агонистом.",
+            "checks": [],
+            "contraindications": [
+              "Гиперчувствительность к препарату"
+            ],
+            "success": "Оценивается суммарный ответ на комбинированную бронходилатацию."
+          },
+          {
+            "id": "action.medication.glucocorticoid.systemic",
+            "label": "Системный глюкокортикостероид",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Преднизолон 40–50 мг внутрь как можно раньше; при невозможности приёма внутрь — эквивалентная парентеральная доза по протоколу. Исходная жёсткая привязка к внутривенному пути не делает его обязательным.",
+            "indication": "Тяжёлое/жизнеугрожающее обострение и отсутствие ответа на многократные дозы бронходилататора.",
+            "checks": [
+              "Пероральный путь предпочтителен, если пациент может глотать и нет рвоты."
+            ],
+            "contraindications": [
+              "Абсолютного противопоказания к краткому системному курсу в этом сценарии нет"
+            ],
+            "success": "Препарат введён рано; дальнейший ответ оценивается вместе с клиникой и функцией лёгких."
+          },
+          {
+            "id": "action.support.oxygen.titrated",
+            "label": "Титрованная оксигенотерапия",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Начать немедленно и титровать поток к SpO₂ 93–95%; устройство и поток менять по ответу.",
+            "indication": "SpO₂ 91% при жизнеугрожающем обострении.",
+            "checks": [
+              "Непрерывная пульсоксиметрия."
+            ],
+            "contraindications": [],
+            "success": "Достигнута целевая сатурация без ухудшения вентиляции; контролируются газы крови."
+          },
+          {
+            "id": "action.monitoring.asthma.dynamic-reassessment",
+            "label": "Динамическая переоценка жизнеугрожающего обострения астмы",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Задать частоту наблюдения и критерии немедленной эскалации, а не выбирать абстрактное неспецифицированное наблюдение.",
+            "indication": "Высокий риск быстрого истощения и дыхательной недостаточности.",
+            "checks": [
+              "Непрерывно контролировать сознание, речь, ЧДД, ЧСС, SpO₂ и аускультацию",
+              "Повторять ПСВ, если выполнение безопасно",
+              "Формально оценить ответ в первые часы"
+            ],
+            "contraindications": [],
+            "success": "Есть документированная динамика и решение об эскалации либо деэскалации."
+          },
+          {
+            "id": "action.disposition.respiratory-intensive-care",
+            "label": "Неотложная госпитализация с интенсивным респираторным наблюдением",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Немедленная госпитализация в зону интенсивного наблюдения/ОРИТ по состоянию.",
+            "indication": "SpO₂ ниже 92% и нормокапния соответствуют жизнеугрожающей астме.",
+            "checks": [
+              "Раннее привлечение реаниматолога",
+              "Готовность к эскалации респираторной поддержки"
+            ],
+            "contraindications": [],
+            "success": "Пациент находится там, где доступны непрерывный мониторинг и респираторная поддержка."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": [
+          {
+            "id": "action.monitoring.observation.unspecified",
+            "label": "Неспецифицированное наблюдение",
+            "decision": "unsafe-or-delaying",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Заменить динамической переоценкой и конкретной маршрутизацией.",
+            "indication": "Исходный код не задаёт частоту контроля и критерии эскалации.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Сам по себе исходный код баллов не приносит."
+          }
+        ]
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.lab.blood-gases-and-acid-base.arterial",
+            "label": "Исследование кислотно-основного состояния и газов артериальной крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "Срочно при признаках жизнеугрожающего обострения и затем по клинической динамике.",
+            "rationale": "PaCO₂ 38 мм рт. ст. является нормокапнией, что при тяжёлом обострении относится к угрожающим признакам; PaO₂ 72 подтверждает гипоксемию.",
+            "mustNotDelay": "Забор крови не должен задерживать начальную терапию.",
+            "result": {
+              "result": "pH 7,38, pCO2 38, pO2 72, HCO3 22. Гипоксия легкой степени.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [
+          {
+            "id": "study.functional.peak-expiratory-flow",
+            "label": "Пикфлоуметрия",
+            "decision": "conditional",
+            "when": {
+              "fact": "canPerformPeakFlow",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": true,
+            "timing": "Измерить при первичной оценке и в динамике, только если пациент способен выполнить манёвр без задержки лечения.",
+            "rationale": "ПСВ 38% от личного лучшего подтверждает тяжёлую бронхиальную обструкцию.",
+            "mustNotDelay": "Не откладывать бронходилататоры, кислород и системный ГКС.",
+            "result": {
+              "result": "Пиковая скорость потока 180 л/мин (личный рекорд 480). 38 % от базового уровня.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.imaging.xray.chest",
+            "label": "Обзорная рентгенография органов грудной клетки",
+            "decision": "conditional",
+            "when": {
+              "any": [
+                {
+                  "fact": "suspectPneumothorax",
+                  "op": "eq",
+                  "value": true
+                },
+                {
+                  "fact": "suspectPneumonia",
+                  "op": "eq",
+                  "value": true
+                }
+              ]
+            },
+            "applicableNow": false,
+            "timing": "После начала лечения при подозрении на пневмоторакс, пневмонию, инородное тело или иной альтернативный диагноз.",
+            "rationale": "Рутинная рентгенография не требуется при типичном обострении.",
+            "mustNotDelay": "Не задерживать бронходилататоры и оксигенацию.",
+            "result": {
+              "result": "Гипернадутые легкие. Инфильтрата и пневмоторакса нет.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.functional.ecg.resting-12-lead",
+            "label": "Электрокардиография в 12 отведениях в покое с интерпретацией",
+            "decision": "conditional",
+            "when": {
+              "any": [
+                {
+                  "fact": "markedTachycardia",
+                  "op": "eq",
+                  "value": true
+                },
+                {
+                  "fact": "significantChestPain",
+                  "op": "eq",
+                  "value": true
+                }
+              ]
+            },
+            "applicableNow": true,
+            "timing": "При выраженной тахикардии, боли в груди, аритмии или факторах сердечного риска.",
+            "rationale": "Синусовая тахикардия ожидаема и сама по себе не определяет лечение астмы.",
+            "mustNotDelay": "Не задерживать респираторную помощь.",
+            "result": {
+              "result": "Синусовая тахикардия. Острых изменений нет.",
+              "abnormal": false
+            }
+          }
+        ],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "Назначать только при подозрении на инфекцию, анемию или другое состояние, влияющее на тактику.",
+            "rationale": "Лёгкая эозинофилия не меняет немедленную терапию жизнеугрожающего обострения.",
+            "mustNotDelay": "Не ждать результат до начала лечения.",
+            "result": {
+              "result": "Легкая эозинофилия. В остальном нормально.",
+              "abnormal": false
+            }
+          }
+        ],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.359.v3",
+          "title": "Бронхиальная астма",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/359_3"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.emergency.0004",
+      "title": "Анафилактический шок, вызванный пищевой реакцией",
+      "patient": {
+        "name": "Светлана Иванова",
+        "age": 34,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "critical",
+        "arrival": "Доставлена мужем. Лицо отёкшее, на руках крапивница.",
+        "chiefComplaint": "У меня сжимается горло. Я что-то съела в ресторане и теперь не могу дышать.",
+        "vitals": {
+          "hr": 128,
+          "bp": "88/54",
+          "spo2": 93,
+          "temp": 36.8,
+          "rr": 26
+        },
+        "anamnesis": [
+          {
+            "id": "case.emergency.0004.anamnesis.01",
+            "question": "Что вы ели перед появлением симптомов?",
+            "answer": "Тайское блюдо. Я думаю, там был арахис. У меня аллергия.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0004.anamnesis.02",
+            "question": "Когда появились симптомы?",
+            "answer": "Примерно через 20 минут после еды.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0004.anamnesis.03",
+            "question": "Появилась ли сыпь?",
+            "answer": "У меня крапивница на руках и груди.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0004.anamnesis.04",
+            "question": "Есть ли отёк?",
+            "answer": "У меня опухли губы и язык.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0004.anamnesis.05",
+            "question": "Есть ли у вас с собой автоинъектор адреналина?",
+            "answer": "Я сегодня забыла его дома.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0004.anamnesis.06",
+            "question": "Были ли подобные реакции раньше?",
+            "answer": "Да, на арахис, но такой тяжёлой реакции раньше не было.",
+            "relevant": true
+          }
+        ]
+      },
+      "facts": {
+        "anaphylacticShock": true,
+        "hypotension": true,
+        "spo2": 93,
+        "initialResuscitationStarted": false,
+        "stabilized": false,
+        "suspectPulmonaryComplication": false
+      },
+      "factNotes": [
+        "Начальное состояние соответствует анафилактическому шоку; исследования и препараты второй линии не должны предшествовать эпинефрину.",
+        "Факты initialResuscitationStarted и stabilized изменяются приложением по ходу сценария."
+      ],
+      "diagnosis": {
+        "id": "condition.anaphylactic-shock.food",
+        "label": "Анафилактический шок, вызванный пищевой реакцией",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "T78.0",
+            "display": "Анафилактический шок, вызванный патологической реакцией на пищу",
+            "relation": "equivalent"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.medication.epinephrine.im",
+            "label": "Внутримышечное введение эпинефрина (адреналина)",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "0,01 мг/кг внутримышечно, максимальная разовая доза для взрослого 0,5 мг; ввести немедленно.",
+            "indication": "Острое поражение дыхательных путей и гипотензия после вероятного пищевого аллергена.",
+            "checks": [
+              "Ввести в переднебоковую поверхность средней трети бедра",
+              "При отсутствии ответа повторять не ранее чем через 5 минут"
+            ],
+            "contraindications": [
+              "Абсолютных противопоказаний при анафилактическом шоке нет"
+            ],
+            "success": "Повышение АД, уменьшение отёка/бронхоспазма и улучшение дыхания; при недостаточном ответе повторить дозу и эскалировать помощь."
+          },
+          {
+            "id": "action.support.anaphylaxis.positioning",
+            "label": "Безопасное положение пациента при анафилактическом шоке",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Уложить с приподнятыми нижними конечностями и обеспечить безопасность положения.",
+            "indication": "Шок с АД 88/54 мм рт. ст.",
+            "checks": [
+              "Не позволять пациентке вставать или садиться внезапно",
+              "Положение корректировать при выраженной дыхательной недостаточности, рвоте или беременности"
+            ],
+            "contraindications": [],
+            "success": "Положение не ухудшает дыхание; гемодинамика непрерывно контролируется."
+          },
+          {
+            "id": "action.support.anaphylaxis.airway-monitoring",
+            "label": "Обеспечение проходимости дыхательных путей и непрерывный мониторинг",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Оценить проходимость дыхательных путей и подготовить оборудование одновременно с введением эпинефрина.",
+            "indication": "Отёк губ и языка, ощущение сжатия горла, одышка и шок.",
+            "checks": [
+              "Непрерывные SpO₂, ЭКГ и неинвазивное АД",
+              "Ранний вызов специалиста по дыхательным путям",
+              "Готовность к трудной интубации"
+            ],
+            "contraindications": [],
+            "success": "Дыхательные пути остаются проходимыми либо выполнена своевременная эскалация."
+          },
+          {
+            "id": "action.support.oxygen.titrated",
+            "label": "Титрованная оксигенотерапия",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Подать кислород высокой концентрации немедленно и титровать по сатурации и клиническому ответу.",
+            "indication": "Дыхательная недостаточность и SpO₂ 93% на фоне анафилактического шока.",
+            "checks": [
+              "Непрерывная пульсоксиметрия."
+            ],
+            "contraindications": [],
+            "success": "Улучшается оксигенация; при недостаточном ответе эскалируется респираторная поддержка."
+          },
+          {
+            "id": "action.support.crystalloid.iv",
+            "label": "Внутривенная инфузия кристаллоидного раствора",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Внутривенно 10–30 мл/кг подогретого изотонического электролитного раствора с повторной оценкой; конкретный объём и дальнейшие болюсы определять по гемодинамическому ответу и риску перегрузки.",
+            "indication": "Артериальная гипотензия при анафилактическом шоке после немедленного эпинефрина.",
+            "checks": [
+              "Обеспечить крупный венозный доступ",
+              "Повторно оценивать АД, перфузию и признаки перегрузки"
+            ],
+            "contraindications": [],
+            "success": "Рост АД и улучшение периферической перфузии без признаков перегрузки."
+          },
+          {
+            "id": "action.monitoring.anaphylaxis.icu-24h",
+            "label": "Госпитализация и интенсивное наблюдение после анафилактического шока",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Экстренная госпитализация и интенсивное наблюдение не менее 24 часов по КР.",
+            "indication": "Перенесённый анафилактический шок с гипотензией и поражением дыхательных путей.",
+            "checks": [
+              "Сохранять готовность к лечению повторной реакции."
+            ],
+            "contraindications": [],
+            "success": "Нет повторной реакции; перед выпиской сформирован план профилактики и обеспечен эпинефрин для самопомощи."
+          }
+        ],
+        "conditional": [
+          {
+            "id": "action.medication.antihistamine.h1",
+            "label": "Блокатор H1-гистаминовых рецепторов после стабилизации",
+            "decision": "conditional",
+            "when": {
+              "fact": "stabilized",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Выбрать конкретный H1-блокатор, дозу и путь по инструкции; назначать только как дополнительную терапию.",
+            "indication": "Сохраняющиеся кожные симптомы после стабилизации жизненно важных функций.",
+            "checks": [
+              "Эпинефрин уже введён",
+              "Гемодинамика и дыхательные пути стабилизируются"
+            ],
+            "contraindications": [
+              "Нельзя использовать вместо эпинефрина или до него"
+            ],
+            "success": "Уменьшаются кожные симптомы; отсутствие эффекта не задерживает повторный эпинефрин."
+          },
+          {
+            "id": "action.medication.glucocorticoid.systemic",
+            "label": "Системный глюкокортикостероид",
+            "decision": "conditional",
+            "when": {
+              "fact": "stabilized",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Выбрать конкретный системный ГКС, дозу и путь по протоколу после первичной стабилизации.",
+            "indication": "Дополнительная терапия после стабилизации, а не средство первой линии.",
+            "checks": [
+              "Эпинефрин, дыхательные пути, кислород и инфузия уже обеспечены."
+            ],
+            "contraindications": [
+              "Нельзя использовать как замену эпинефрину"
+            ],
+            "success": "Назначение не задержало ни один компонент первой линии."
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": [
+          {
+            "id": "action.monitoring.observation.unspecified",
+            "label": "Неспецифицированное наблюдение",
+            "decision": "unsafe-or-delaying",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Заменить конкретной госпитализацией и протоколом мониторинга.",
+            "indication": "Исходный код не задаёт место, длительность и интенсивность наблюдения.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Сам по себе исходный код баллов не приносит."
+          }
+        ]
+      },
+      "studies": {
+        "required": [],
+        "conditional": [
+          {
+            "id": "study.functional.ecg.resting-12-lead",
+            "label": "Электрокардиография в 12 отведениях в покое с интерпретацией",
+            "decision": "conditional",
+            "when": {
+              "fact": "initialResuscitationStarted",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "timing": "После немедленного введения эпинефрина и начала стабилизации либо параллельно, если это не отвлекает команду.",
+            "rationale": "ЭКГ полезна для мониторирования тахикардии и ишемии, но не подтверждает анафилаксию.",
+            "mustNotDelay": "Не задерживать эпинефрин ни на минуту.",
+            "result": {
+              "result": "Синусовая тахикардия 128. Никаких изменений ST.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.imaging.xray.chest",
+            "label": "Обзорная рентгенография органов грудной клетки",
+            "decision": "conditional",
+            "when": {
+              "all": [
+                {
+                  "fact": "stabilized",
+                  "op": "eq",
+                  "value": true
+                },
+                {
+                  "fact": "suspectPulmonaryComplication",
+                  "op": "eq",
+                  "value": true
+                }
+              ]
+            },
+            "applicableNow": false,
+            "timing": "После стабилизации при подозрении на отёк лёгких, аспирацию, пневмоторакс или другой альтернативный диагноз.",
+            "rationale": "Рутинная рентгенография не нужна для постановки диагноза анафилаксии.",
+            "mustNotDelay": "Не задерживать эпинефрин, обеспечение дыхательных путей и инфузию.",
+            "result": {
+              "result": "Лёгочные поля без очаговых и инфильтративных изменений.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.lab.tryptase.blood",
+            "label": "Определение активности триптазы в крови",
+            "decision": "conditional",
+            "when": {
+              "fact": "initialResuscitationStarted",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "timing": "Забрать образец после начала лечения в рекомендуемое диагностическое окно и предусмотреть контрольный уровень после выздоровления.",
+            "rationale": "Может поддержать ретроспективное подтверждение диагноза и дифференциальную диагностику.",
+            "mustNotDelay": "Забор крови никогда не предшествует и не задерживает эпинефрин.",
+            "result": {
+              "result": "Активность триптазы в крови повышена относительно контрольного уровня.",
+              "abnormal": true
+            }
+          }
+        ],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "Только после стабилизации при отдельном клиническом показании.",
+            "rationale": "Умеренный лейкоцитоз не подтверждает и не исключает анафилактический шок.",
+            "mustNotDelay": "Не брать до первичных противошоковых мероприятий, если это отвлекает ресурсы.",
+            "result": {
+              "result": "WBC 11, Hgb в норме. Умеренный лейкоцитоз.",
+              "abnormal": false
+            }
+          }
+        ],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.263.v2",
+          "title": "Анафилактический шок",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/263_2"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.emergency.0005",
+      "title": "Ишемический инсульт",
+      "patient": {
+        "name": "Виктор Козлов",
+        "age": 71,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "critical",
+        "arrival": "Доставлен бригадой скорой помощи. Симптомы возникли внезапно 45 минут назад: слабость справа, невнятная речь.",
+        "chiefComplaint": "Что-то... не так. Моя рука. Мое лицо. Не могу... говорить правильно.",
+        "vitals": {
+          "hr": 88,
+          "bp": "178/102",
+          "spo2": 97,
+          "temp": 36.7,
+          "rr": 16
+        },
+        "anamnesis": [
+          {
+            "id": "case.emergency.0005.anamnesis.01",
+            "question": "Когда начались симптомы?",
+            "answer": "После обеда... часа в два, наверное. Я пил чай... потом рука... перестала слушаться.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0005.anamnesis.02",
+            "question": "С какой стороны появилась слабость?",
+            "answer": "Справа. Рука... и нога... не слушаются.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0005.anamnesis.03",
+            "question": "Вам трудно говорить или подбирать слова?",
+            "answer": "Я вас слышу... но слова... застревают.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0005.anamnesis.04",
+            "question": "Есть ли головная боль?",
+            "answer": "Нет... головной боли нет. Просто... слабость. Испугался.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0005.anamnesis.05",
+            "question": "Принимаете ли вы препараты, разжижающие кровь?",
+            "answer": "Нет... только таблетки от давления.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0005.anamnesis.06",
+            "question": "Недавно не ударялись головой, не падали?",
+            "answer": "Нет... не падал. Это просто... случилось.",
+            "relevant": true
+          }
+        ]
+      },
+      "facts": {
+        "onsetMinutes": 45,
+        "disablingDeficit": true,
+        "hemorrhageOnCt": false,
+        "systolicBp": 178,
+        "diastolicBp": 102,
+        "thrombolysisContraindication": false,
+        "largeVesselOcclusionSuspected": true,
+        "anticoagulantUse": false,
+        "suspectCoagulopathy": false,
+        "contrastStudyPlanned": true,
+        "renalImpairmentSuspected": false,
+        "spo2": 97
+      },
+      "factNotes": [
+        "Для runtime принято начало симптомов 45 минут назад; противоречивая реплика «часа в два» не используется как временная точка.",
+        "Пациент считается потенциальным кандидатом на реперфузию, окончательное решение принимается после проверки полного перечня противопоказаний."
+      ],
+      "diagnosis": {
+        "id": "condition.ischemic-stroke",
+        "label": "Ишемический инсульт",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "I63.9",
+            "display": "Инфаркт мозга неуточненный",
+            "relation": "compatible"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.pathway.stroke.activation",
+            "label": "Активация маршрута пациента с острым инсультом",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Немедленно активировать инсультную команду; устранить противоречие между «45 минут назад» и «часа в два» до решения о реперфузии.",
+            "indication": "Остро возникшие афазия, слабость справа и асимметрия лица.",
+            "checks": [
+              "Установить точное время, когда пациент последний раз был без симптомов",
+              "Оценить NIHSS",
+              "Параллельно проверить глюкозу и организовать КТ"
+            ],
+            "contraindications": [],
+            "success": "Есть надёжная временная точка, NIHSS и параллельный маршрут нейровизуализации."
+          },
+          {
+            "id": "action.procedure.thrombectomy.evaluation",
+            "label": "Оценка показаний к механической тромбэктомии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Связаться с эндоваскулярным центром немедленно при выявлении окклюзии.",
+            "indication": "Тяжёлый очаговый дефицит требует исключить окклюзию крупной артерии.",
+            "checks": [
+              "Выполнить КТ-/МР-ангиографию",
+              "Оценить клинические и визуализационные критерии эндоваскулярного лечения"
+            ],
+            "contraindications": [],
+            "success": "Кандидат либо направлен на тромбэктомию, либо документирована причина отказа."
+          },
+          {
+            "id": "action.disposition.stroke-unit",
+            "label": "Госпитализация в специализированное отделение для больных с ОНМК",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Госпитализировать в специализированное отделение для больных с ОНМК/сосудистый центр.",
+            "indication": "Острый ишемический инсульт после реперфузионного решения.",
+            "checks": [
+              "Доступны специализированный мониторинг и профилактика осложнений."
+            ],
+            "contraindications": [],
+            "success": "Маршрут обеспечивает мониторинг после реперфузии и раннюю мультидисциплинарную помощь."
+          }
+        ],
+        "conditional": [
+          {
+            "id": "action.medication.thrombolytic.intravenous",
+            "label": "Внутривенная тромболитическая терапия",
+            "decision": "conditional",
+            "when": {
+              "all": [
+                {
+                  "fact": "onsetMinutes",
+                  "op": "lte",
+                  "value": 270
+                },
+                {
+                  "fact": "disablingDeficit",
+                  "op": "eq",
+                  "value": true
+                },
+                {
+                  "fact": "hemorrhageOnCt",
+                  "op": "eq",
+                  "value": false
+                },
+                {
+                  "fact": "systolicBp",
+                  "op": "lte",
+                  "value": 185
+                },
+                {
+                  "fact": "diastolicBp",
+                  "op": "lte",
+                  "value": 110
+                },
+                {
+                  "fact": "thrombolysisContraindication",
+                  "op": "eq",
+                  "value": false
+                }
+              ]
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Для алтеплазы: 0,9 мг/кг внутривенно, максимум 90 мг; 10% болюсом, остальное за 60 минут. Конкретный препарат и актуальный протокол должны быть названы.",
+            "indication": "Инвалидизирующий ишемический инсульт в терапевтическом окне после исключения кровоизлияния.",
+            "checks": [
+              "Подтверждено время последнего нормального состояния",
+              "Оценены NIHSS, масса тела и противопоказания",
+              "АД перед лечением ниже 185/110 мм рт. ст.",
+              "Нет противопоказания по нейровизуализации и гемостазу"
+            ],
+            "contraindications": [
+              "Внутричерепное кровоизлияние",
+              "Недопустимое АД, не поддающееся коррекции",
+              "Иные абсолютные противопоказания по КР"
+            ],
+            "success": "Лечение начато в допустимом окне; АД и неврологический статус мониторируются, осложнения активно исключаются."
+          },
+          {
+            "id": "action.medication.antihypertensive.pre-thrombolysis",
+            "label": "Контролируемое снижение АД перед тромболизисом",
+            "decision": "conditional",
+            "when": {
+              "any": [
+                {
+                  "fact": "systolicBp",
+                  "op": "gt",
+                  "value": 185
+                },
+                {
+                  "fact": "diastolicBp",
+                  "op": "gt",
+                  "value": 110
+                }
+              ]
+            },
+            "applicableNow": false,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "При превышении порога выбрать титруемый внутривенный препарат и дозу по протоколу; цель — безопасно достичь допустимого АД до тромболизиса.",
+            "indication": "Только если АД превышает допустимый порог перед тромболизисом или есть другое неотложное показание.",
+            "checks": [
+              "Исходное АД 178/102 мм рт. ст. ниже порога 185/110, поэтому автоматическое снижение не требуется",
+              "Повторно измерять АД"
+            ],
+            "contraindications": [
+              "Агрессивное необоснованное снижение АД может ухудшить перфузию"
+            ],
+            "success": "АД достигло целевого диапазона без неврологического ухудшения."
+          }
+        ],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "action.support.oxygen.titrated",
+            "label": "Титрованная оксигенотерапия",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "При текущей сатурации кислород не назначать; при гипоксемии титровать к нормальной сатурации.",
+            "indication": "Только SpO₂ ниже 94% или иное клиническое показание.",
+            "checks": [
+              "Исходная SpO₂ — 97%."
+            ],
+            "contraindications": [],
+            "success": "Без показания баллы не начисляются."
+          },
+          {
+            "id": "action.disposition.high-acuity.unspecified",
+            "label": "Неспецифическая госпитализация в отделение высокой интенсивности",
+            "decision": "unscorable-as-specified",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Заменить конкретным отделением и маршрутом.",
+            "indication": "Исходная неспецифическая госпитализация не заменяет специализированный инсультный маршрут.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Сам по себе исходный код баллов не приносит."
+          }
+        ],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.imaging.ct.brain.noncontrast",
+            "label": "КТ головного мозга без внутривенного контрастирования",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "Немедленно по инсультному маршруту.",
+            "rationale": "Исключает внутричерепное кровоизлияние и оценивает ранние ишемические изменения.",
+            "mustNotDelay": "Организовать параллельно с клинической оценкой и подготовкой к реперфузии.",
+            "result": {
+              "result": "Внутричерепных кровоизлияний нет. Незначительная потеря серо-белой дифференциации на левой территории СМА.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.glucose.blood",
+            "label": "Исследование уровня глюкозы в крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "Немедленно при первичном осмотре.",
+            "rationale": "Исключает гипогликемию как имитацию инсульта.",
+            "mustNotDelay": "Экспресс-измерение выполняется параллельно и не задерживает нейровизуализацию.",
+            "result": {
+              "result": "Глюкоза 112 мг/дл. Нормально.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.imaging.ct-angiography.brain-and-neck",
+            "label": "КТ-ангиография сосудов головного мозга и брахиоцефальных артерий",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "Срочно при оценке кандидата на эндоваскулярное лечение.",
+            "rationale": "Выявляет окклюзию крупной артерии и определяет маршрут к тромбэктомии.",
+            "mustNotDelay": "Не должна необоснованно задерживать внутривенную тромболитическую терапию у подходящего пациента.",
+            "result": {
+              "result": "Окклюзия сегмента M1 левой средней мозговой артерии. Гемодинамически значимого стеноза брахиоцефальных артерий не выявлено.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.functional.ecg.resting-12-lead",
+            "label": "Электрокардиография в 12 отведениях в покое с интерпретацией",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В раннем инсультном маршруте параллельно с подготовкой лечения.",
+            "rationale": "Фибрилляция предсердий важна для последующей этиологической тактики.",
+            "mustNotDelay": "Не задерживать реперфузию.",
+            "result": {
+              "result": "Фибрилляция предсердий с частотой 88.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "Взять кровь срочно; отдельно получить число тромбоцитов.",
+            "rationale": "Тромбоцитопения влияет на безопасность тромболизиса.",
+            "mustNotDelay": "Без анамнеза, предполагающего отклонение, ожидание большинства результатов не должно задерживать лечение.",
+            "result": {
+              "result": "В пределах нормы.",
+              "abnormal": false
+            }
+          }
+        ],
+        "conditional": [
+          {
+            "id": "study.lab.coagulation.screen",
+            "label": "Коагулограмма (ориентировочное исследование системы гемостаза)",
+            "decision": "conditional",
+            "when": {
+              "any": [
+                {
+                  "fact": "anticoagulantUse",
+                  "op": "eq",
+                  "value": true
+                },
+                {
+                  "fact": "suspectCoagulopathy",
+                  "op": "eq",
+                  "value": true
+                }
+              ]
+            },
+            "applicableNow": false,
+            "timing": "До тромболизиса при приёме антикоагулянтов, болезни печени, известном нарушении гемостаза или ином основании ожидать отклонение.",
+            "rationale": "Нужна для исключения клинически значимой коагулопатии в группе риска.",
+            "mustNotDelay": "При отсутствии оснований ожидать отклонение не ждать коагулограмму до реперфузии.",
+            "result": {
+              "result": "МНО 1,0; АЧТВ и фибриноген в пределах референсных интервалов.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "order-set.lab.basic-metabolic-panel-us",
+            "label": "Набор отдельных биохимических исследований (исходная панель BMP)",
+            "decision": "conditional",
+            "when": {
+              "any": [
+                {
+                  "fact": "contrastStudyPlanned",
+                  "op": "eq",
+                  "value": true
+                },
+                {
+                  "fact": "renalImpairmentSuspected",
+                  "op": "eq",
+                  "value": true
+                }
+              ]
+            },
+            "applicableNow": true,
+            "timing": "В раннем обследовании для оценки отдельных электролитов и функции почек, особенно перед контрастированием.",
+            "rationale": "Назначать конкретные компоненты, а не неделимую американскую панель BMP.",
+            "mustNotDelay": "Не задерживать реперфузионное решение.",
+            "result": {
+              "result": "Электролиты в норме. Кр 1.0.",
+              "abnormal": false
+            }
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.171.v2",
+          "title": "Ишемический инсульт и транзиторная ишемическая атака у взрослых",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/171_2"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.emergency.0006",
+      "title": "Острый цистит",
+      "patient": {
+        "name": "Екатерина Лебедева",
+        "age": 45,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Обратилась самостоятельно. Испытывает дискомфорт, состояние стабильное.",
+        "chiefComplaint": "Уже два дня ощущаю жжение при мочеиспускании и хожу в туалет каждые 20 минут.",
+        "vitals": {
+          "hr": 84,
+          "bp": "122/76",
+          "spo2": 99,
+          "temp": 37.4,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.emergency.0006.anamnesis.01",
+            "question": "Есть ли жжение или боль при мочеиспускании?",
+            "answer": "Да, очень сильно жжёт.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0006.anamnesis.02",
+            "question": "Как часто вы мочитесь?",
+            "answer": "Примерно каждые 20 минут.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0006.anamnesis.03",
+            "question": "Есть ли боль в спине или боку?",
+            "answer": "Нет, только чувство давления внизу живота.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0006.anamnesis.04",
+            "question": "Повышалась температура, был озноб?",
+            "answer": "Кажется, температура немного повышена, но озноба нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0006.anamnesis.05",
+            "question": "Замечали ли вы кровь в моче?",
+            "answer": "Сегодня утром моча была розоватой.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0006.anamnesis.06",
+            "question": "Есть ли боль в груди?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {
+        "pregnancyExcluded": true,
+        "pyelonephritisSigns": false,
+        "complicatingFactors": false,
+        "vaginalDischarge": false,
+        "diagnosticUncertainty": false,
+        "recurrent": false,
+        "atypicalCourse": false,
+        "treatmentFailure": false,
+        "renalImpairment": false,
+        "severePain": false,
+        "stableForOutpatientCare": true
+      },
+      "factNotes": [
+        "Для готовой runtime-ветки беременность и осложняющие факторы явно исключены.",
+        "Фосфомицин и фуразидина калиевая соль являются альтернативами: нужно выбрать один режим, а не назначать оба."
+      ],
+      "diagnosis": {
+        "id": "condition.acute-cystitis",
+        "label": "Острый цистит",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "N30.0",
+            "display": "Острый цистит",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.cystitis.complicating-factors",
+            "label": "Исключение беременности, пиелонефрита и осложняющих факторов",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Зафиксировать каждый осложняющий фактор и скорректировать диагноз/маршрут при его наличии.",
+            "indication": "До присвоения статуса «неосложнённый» и выбора короткого режима терапии.",
+            "checks": [
+              "Исключить беременность",
+              "Спросить о лихорадке, ознобе и боли в боку",
+              "Уточнить вагинальные выделения",
+              "Оценить рецидивы, урологические аномалии/вмешательства, диабет и иммунодефицит"
+            ],
+            "contraindications": [],
+            "success": "Неосложнённый характер либо обоснован, либо диагноз и тактика изменены."
+          },
+          {
+            "id": "action.safety-netting.cystitis",
+            "label": "Инструктаж о признаках осложнения и повторном обращении",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Объяснить необходимость срочного обращения при лихорадке, ознобе, боли в боку, рвоте, ухудшении или отсутствии эффекта; указать срок контроля.",
+            "indication": "Любое амбулаторное ведение острого цистита.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Пациентка повторяет тревожные признаки и понимает, куда и когда обращаться."
+          }
+        ],
+        "conditional": [
+          {
+            "id": "action.medication.fosfomycin.oral",
+            "label": "Пероральный фосфомицин при неосложнённом цистите",
+            "decision": "conditional",
+            "when": {
+              "all": [
+                {
+                  "fact": "pregnancyExcluded",
+                  "op": "eq",
+                  "value": true
+                },
+                {
+                  "fact": "pyelonephritisSigns",
+                  "op": "eq",
+                  "value": false
+                },
+                {
+                  "fact": "complicatingFactors",
+                  "op": "eq",
+                  "value": false
+                }
+              ]
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Фосфомицин 3 г внутрь однократно.",
+            "indication": "Острый неосложнённый цистит после исключения беременности и осложняющих факторов.",
+            "checks": [
+              "Учесть аллергию, функцию почек, недавние антибиотики и локальную резистентность."
+            ],
+            "contraindications": [
+              "Противопоказания по актуальной инструкции",
+              "Подозрение на пиелонефрит или осложнённую инфекцию требует другой тактики"
+            ],
+            "success": "Ожидается уменьшение симптомов; при отсутствии улучшения, лихорадке или боли в боку требуется повторная оценка."
+          },
+          {
+            "id": "action.medication.furazidine-potassium-magnesium.oral",
+            "label": "Фуразидина калиевая соль с карбонатом магния внутрь",
+            "decision": "conditional",
+            "when": {
+              "all": [
+                {
+                  "fact": "pregnancyExcluded",
+                  "op": "eq",
+                  "value": true
+                },
+                {
+                  "fact": "pyelonephritisSigns",
+                  "op": "eq",
+                  "value": false
+                },
+                {
+                  "fact": "complicatingFactors",
+                  "op": "eq",
+                  "value": false
+                },
+                {
+                  "fact": "renalImpairment",
+                  "op": "eq",
+                  "value": false
+                }
+              ]
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Фуразидина калиевая соль с карбонатом магния 100 мг внутрь 3 раза в сутки 5 дней; сверить с актуальной инструкцией и индивидуальными ограничениями.",
+            "indication": "Альтернатива первой линии при подтверждённом неосложнённом цистите.",
+            "checks": [
+              "Проверить функцию почек, взаимодействия и противопоказания"
+            ],
+            "contraindications": [
+              "Противопоказания по инструкции",
+              "Подозрение на пиелонефрит"
+            ],
+            "success": "Оценить клинический ответ и переносимость; при неэффективности выполнить посев и пересмотреть диагноз."
+          },
+          {
+            "id": "action.medication.nsaid.cystitis-pain",
+            "label": "Нестероидный противовоспалительный препарат при выраженной боли",
+            "decision": "conditional",
+            "when": {
+              "fact": "severePain",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Назвать препарат, разовую/суточную дозу и краткую длительность по актуальной инструкции; универсальная доза в сценарии не задаётся.",
+            "indication": "Выраженная боль при подтверждённом цистите после исключения осложнений.",
+            "checks": [
+              "Выбрать конкретный НПВС",
+              "Оценить функцию почек, риск желудочно-кишечного кровотечения и лекарственные взаимодействия",
+              "Не заменять антибактериальную терапию при показаниях"
+            ],
+            "contraindications": [
+              "Противопоказания к выбранному НПВС",
+              "Беременность или её вероятность требует отдельной проверки безопасности"
+            ],
+            "success": "Боль уменьшается без нежелательных явлений; отсутствие эффекта требует повторной оценки диагноза."
+          },
+          {
+            "id": "action.disposition.outpatient-discharge",
+            "label": "Амбулаторное ведение и выписка",
+            "decision": "conditional",
+            "when": {
+              "all": [
+                {
+                  "fact": "stableForOutpatientCare",
+                  "op": "eq",
+                  "value": true
+                },
+                {
+                  "fact": "pyelonephritisSigns",
+                  "op": "eq",
+                  "value": false
+                },
+                {
+                  "fact": "complicatingFactors",
+                  "op": "eq",
+                  "value": false
+                }
+              ]
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Оформить амбулаторный план и сроки повторной оценки.",
+            "indication": "Стабильное состояние, отсутствие беременности, пиелонефрита и иных осложняющих факторов.",
+            "checks": [
+              "Назначен конкретный режим лечения",
+              "Пациентка понимает план наблюдения"
+            ],
+            "contraindications": [
+              "Системные симптомы",
+              "Беременность",
+              "Подозрение на осложнённую инфекцию или невозможность амбулаторного наблюдения"
+            ],
+            "success": "Выписка безопасна только вместе с инструктажем и доступом к повторной помощи."
+          }
+        ],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "action.medication.antibacterial.broad-spectrum.unspecified",
+            "label": "Неспецифицированный антибиотик широкого спектра",
+            "decision": "unscorable-as-specified",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "«Антибиотик широкого спектра» без препарата, дозы и длительности не засчитывается и может поощрять избыточную терапию.",
+            "indication": "Исходный код не соответствует рациональному выбору терапии неосложнённого цистита.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Баллы начисляются только за конкретный режим, соответствующий классификации инфекции."
+          },
+          {
+            "id": "action.medication.analgesia.unspecified",
+            "label": "Неспецифицированное обезболивание",
+            "decision": "unscorable-as-specified",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Без конкретного препарата, дозы и противопоказаний исходное действие не засчитывается.",
+            "indication": "Исходный код не указывает класс препарата и не позволяет отличить обоснованный НПВС от неоправданного опиоида.",
+            "checks": [
+              "Сначала оценить интенсивность боли и исключить пиелонефрит/осложнение."
+            ],
+            "contraindications": [
+              "Опиоидное обезболивание не обосновано текущей клиникой"
+            ],
+            "success": "Баллы начисляются только за отдельное конкретное правило симптоматической терапии."
+          }
+        ],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [],
+        "conditional": [
+          {
+            "id": "study.lab.urinalysis.general",
+            "label": "Общий (клинический) анализ мочи",
+            "decision": "conditional",
+            "when": {
+              "fact": "diagnosticUncertainty",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "timing": "При недостаточно определённой симптоматике или необходимости дифференциальной диагностики.",
+            "rationale": "Типичные дизурия и поллакиурия без вагинальных симптомов часто позволяют клинический диагноз; анализ поддерживает, но не определяет неосложнённость.",
+            "mustNotDelay": "Не откладывать лечение типичного неосложнённого эпизода после исключения осложняющих факторов.",
+            "result": {
+              "result": "Лейкоцитарная эстераза: резко положительная; нитриты положительные; выраженная лейкоцитурия, единичные эритроциты, бактериурия.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.microbiology.urine-culture.aerobic",
+            "label": "Посев мочи на аэробные и факультативно-анаэробные условно-патогенные микроорганизмы",
+            "decision": "conditional",
+            "when": {
+              "any": [
+                {
+                  "fact": "pregnancyExcluded",
+                  "op": "eq",
+                  "value": false
+                },
+                {
+                  "fact": "recurrent",
+                  "op": "eq",
+                  "value": true
+                },
+                {
+                  "fact": "atypicalCourse",
+                  "op": "eq",
+                  "value": true
+                },
+                {
+                  "fact": "pyelonephritisSigns",
+                  "op": "eq",
+                  "value": true
+                },
+                {
+                  "fact": "treatmentFailure",
+                  "op": "eq",
+                  "value": true
+                }
+              ]
+            },
+            "applicableNow": false,
+            "timing": "До антибиотика при беременности, рецидиве, атипичном течении, подозрении на пиелонефрит или неэффективности эмпирической терапии.",
+            "rationale": "Посев не требуется рутинно при каждом первом типичном эпизоде.",
+            "mustNotDelay": "При системной инфекции сначала взять материал, но не задерживать необходимую терапию.",
+            "result": {
+              "result": "Рост Escherichia coli ≥10⁵ КОЕ/мл; чувствительность к антибактериальным препаратам представлена в антибиотикограмме.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.hcg.urine.qualitative",
+            "label": "Качественное исследование мочи на хорионический гонадотропин",
+            "decision": "conditional",
+            "when": {
+              "fact": "pregnancyExcluded",
+              "op": "eq",
+              "value": false
+            },
+            "applicableNow": false,
+            "timing": "Если беременность нельзя надёжно исключить анамнезом.",
+            "rationale": "Беременность меняет классификацию инфекции, объём обследования и выбор терапии.",
+            "mustNotDelay": "При стабильном состоянии получить результат до выбора потенциально нежелательного препарата.",
+            "result": {
+              "result": "Хорионический гонадотропин в моче: отрицательно.",
+              "abnormal": false
+            }
+          }
+        ],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "Только при лихорадке, системных симптомах или подозрении на осложнённую инфекцию.",
+            "rationale": "При текущей типичной локальной симптоматике общий анализ крови не нужен рутинно.",
+            "mustNotDelay": "Не использовать пограничное число лейкоцитов как основание для расширения антибиотикотерапии.",
+            "result": {
+              "result": "WBC 10.2. Пограничный.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "order-set.lab.basic-metabolic-panel-us",
+            "label": "Набор отдельных биохимических исследований (исходная панель BMP)",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "Только при подозрении на нарушение функции почек, осложнённую инфекцию или перед препаратом, требующим оценки СКФ.",
+            "rationale": "BMP не является рутинным исследованием при типичном неосложнённом цистите.",
+            "mustNotDelay": "Не задерживать обоснованное амбулаторное лечение.",
+            "result": {
+              "result": "Cr 0.9. Нормально.",
+              "abnormal": false
+            }
+          }
+        ],
+        "unsafe": []
+      },
+      "choiceGroups": [
+        {
+          "id": "choice.cystitis.first-line-antibiotic",
+          "kind": "actions",
+          "memberIds": [
+            "action.medication.fosfomycin.oral",
+            "action.medication.furazidine-potassium-magnesium.oral"
+          ],
+          "minSelections": 1,
+          "maxSelections": 1,
+          "labelRu": "Выбрать один режим первой линии"
+        }
+      ],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.14.v3",
+          "title": "Цистит у женщин",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/14_3"
+        }
+      ],
+      "reviewStatus": "major-revision-required"
+    }
+  ]
+}

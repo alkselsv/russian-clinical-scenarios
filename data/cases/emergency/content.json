@@ -1,0 +1,524 @@
+{
+  "_meta": {
+    "schemaVersion": "1.0.0",
+    "collection": "emergency",
+    "language": "ru",
+    "clinicalSafety": "unsafe-until-clinician-approved"
+  },
+  "cases": [
+    {
+      "id": "case.emergency.0001",
+      "title": "Острый инфаркт миокарда с подъемом сегмента ST",
+      "patient": {
+        "name": "Андрей Козлов",
+        "age": 62,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "critical",
+        "arrival": "Доставлен бригадой скорой помощи. Покрыт холодным потом, держится за грудь.",
+        "chiefComplaint": "Сдавливающая боль в груди в течение 40 минут, иррадиирующая в левую руку. Такое ощущение, что я могу умереть.",
+        "vitals": {
+          "hr": 104,
+          "bp": "152/94",
+          "spo2": 95,
+          "temp": 36.9,
+          "rr": 22
+        },
+        "anamnesis": [
+          {
+            "id": "case.emergency.0001.anamnesis.01",
+            "question": "Когда начались симптомы?",
+            "answer": "40 минут назад — внезапно, когда я смотрел телевизор.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0001.anamnesis.02",
+            "question": "Куда отдаёт боль?",
+            "answer": "В левую руку и нижнюю челюсть.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0001.anamnesis.03",
+            "question": "Опишите характер боли.",
+            "answer": "Сильная сдавливающая боль, как будто на грудь сел слон.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0001.anamnesis.04",
+            "question": "Есть ли потливость или тошнота?",
+            "answer": "Я весь мокрый от пота, и меня тошнит.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0001.anamnesis.05",
+            "question": "Какие хронические заболевания у вас есть?",
+            "answer": "Артериальная гипертензия и высокий холестерин. У отца был инфаркт в 58 лет.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0001.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет, я всю неделю был дома.",
+            "relevant": false
+          },
+          {
+            "id": "case.emergency.0001.anamnesis.07",
+            "question": "Что вы сегодня ели?",
+            "answer": "Сегодня утром только кофе и тост.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.functional.ecg.resting-12-lead": {
+          "result": "Элевация ST в отведениях II, III, aVF. Реципрокная депрессия в I и aVL.",
+          "abnormal": true
+        },
+        "study.functional.ecg.right-precordial-leads": {
+          "result": "Подъёма сегмента ST в правых грудных отведениях, включая V4R, нет.",
+          "abnormal": false
+        },
+        "study.lab.troponin-i.blood.quantitative": {
+          "result": "Тропонин I: 3,2 нг/мл (референсное значение <0,04). Заметно повышен.",
+          "abnormal": true
+        },
+        "study.imaging.xray.chest": {
+          "result": "Острых сердечно-легочных нарушений нет. Размер сердца нормальный.",
+          "abnormal": false
+        },
+        "study.lab.cbc-with-differential": {
+          "result": "WBC 8.1, Hgb 14.2, Plt 240. В пределах нормы.",
+          "abnormal": false
+        },
+        "study.lab.d-dimer.blood.quantitative": {
+          "result": "D-димер 320 нг/мл (референсное значение <500). Нормально.",
+          "abnormal": false
+        }
+      }
+    },
+    {
+      "id": "case.emergency.0002",
+      "title": "Острый аппендицит",
+      "patient": {
+        "name": "Ксения Николаева",
+        "age": 19,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "urgent",
+        "arrival": "Обратилась самостоятельно. Щадит живот, идёт согнувшись.",
+        "chiefComplaint": "Со вчерашнего вечера болит живот. Сначала боль была возле пупка, теперь сместилась вправо вниз.",
+        "vitals": {
+          "hr": 98,
+          "bp": "118/72",
+          "spo2": 99,
+          "temp": 38.2,
+          "rr": 18
+        },
+        "anamnesis": [
+          {
+            "id": "case.emergency.0002.anamnesis.01",
+            "question": "Где именно сейчас болит?",
+            "answer": "Болит справа внизу живота; при надавливании боль резко усиливается.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0002.anamnesis.02",
+            "question": "Переместилась ли боль с момента её появления?",
+            "answer": "Да. Сначала болело около пупка, затем боль переместилась вправо.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0002.anamnesis.03",
+            "question": "Были ли повышение температуры или озноб?",
+            "answer": "Утром было ощущение жара, но температуру не измеряла.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0002.anamnesis.04",
+            "question": "Есть ли тошнота или рвота?",
+            "answer": "Тошнит; сегодня утром один раз вырвало.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0002.anamnesis.05",
+            "question": "Как изменился ваш аппетит?",
+            "answer": "Аппетита нет, от одной мысли о еде становится тошно.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0002.anamnesis.06",
+            "question": "Когда была последняя менструация?",
+            "answer": "Две недели назад, менструация была обычной.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0002.anamnesis.07",
+            "question": "Есть ли кашель?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.lab.cbc-with-differential": {
+          "result": "лейкоцитов 14,8 со сдвигом влево (нейтрофилы 82%). Повышен.",
+          "abnormal": true
+        },
+        "study.lab.crp.serum.quantitative": {
+          "result": "C-реактивный белок: 68 мг/л, повышен.",
+          "abnormal": true
+        },
+        "study.lab.hcg.urine.qualitative": {
+          "result": "Хорионический гонадотропин в моче: отрицательно.",
+          "abnormal": false
+        },
+        "study.imaging.ultrasound.abdomen.complete": {
+          "result": "Несжимаемая трубчатая структура в правой подвздошной области. Наводит на мысль об аппендиците.",
+          "abnormal": true
+        },
+        "study.lab.urinalysis.general": {
+          "result": "Лейкоцитарная эстераза: следы; нитриты отрицательные. Других клинически значимых изменений нет.",
+          "abnormal": false
+        },
+        "study.imaging.ct.abdomen-pelvis.protocol-unspecified": {
+          "result": "Червеобразный отросток расширен до 11 мм; определяется инфильтрация периаппендикулярной жировой клетчатки. Картина острого аппендицита.",
+          "abnormal": true
+        },
+        "order-set.lab.basic-metabolic-panel-us": {
+          "result": "Электролиты, АМК, Cr все в пределах нормы.",
+          "abnormal": false
+        }
+      }
+    },
+    {
+      "id": "case.emergency.0003",
+      "title": "Жизнеугрожающее обострение бронхиальной астмы",
+      "patient": {
+        "name": "Антон Козлов",
+        "age": 28,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "urgent",
+        "arrival": "Обратился самостоятельно с выраженной одышкой, опирается руками на колени.",
+        "chiefComplaint": "Я не могу дышать. В груди сдавило, и я хриплю. Мой ингалятор не работает.",
+        "vitals": {
+          "hr": 118,
+          "bp": "138/82",
+          "spo2": 91,
+          "temp": 37,
+          "rr": 28
+        },
+        "anamnesis": [
+          {
+            "id": "case.emergency.0003.anamnesis.01",
+            "question": "У вас есть бронхиальная астма?",
+            "answer": "Да, с детства. Пользуюсь ингалятором с альбутеролом.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0003.anamnesis.02",
+            "question": "Что спровоцировало приступ?",
+            "answer": "Я наводил порядок в пыльном подвале.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0003.anamnesis.03",
+            "question": "Сколько доз ингалятора вы использовали?",
+            "answer": "Около 10 доз за последний час, но ингалятор не помогает.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0003.anamnesis.04",
+            "question": "Повышалась ли температура?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0003.anamnesis.05",
+            "question": "Есть ли боль в груди?",
+            "answer": "Только чувство стеснения в груди, без острой боли.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0003.anamnesis.06",
+            "question": "Что вы сегодня ели?",
+            "answer": "На обед ел сэндвич.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.lab.blood-gases-and-acid-base.arterial": {
+          "result": "pH 7,38, pCO2 38, pO2 72, HCO3 22. Гипоксия легкой степени.",
+          "abnormal": true
+        },
+        "study.functional.peak-expiratory-flow": {
+          "result": "Пиковая скорость потока 180 л/мин (личный рекорд 480). 38 % от базового уровня.",
+          "abnormal": true
+        },
+        "study.imaging.xray.chest": {
+          "result": "Гипернадутые легкие. Инфильтрата и пневмоторакса нет.",
+          "abnormal": true
+        },
+        "study.functional.ecg.resting-12-lead": {
+          "result": "Синусовая тахикардия. Острых изменений нет.",
+          "abnormal": false
+        },
+        "study.lab.cbc-with-differential": {
+          "result": "Легкая эозинофилия. В остальном нормально.",
+          "abnormal": false
+        }
+      }
+    },
+    {
+      "id": "case.emergency.0004",
+      "title": "Анафилактический шок, вызванный пищевой реакцией",
+      "patient": {
+        "name": "Светлана Иванова",
+        "age": 34,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "critical",
+        "arrival": "Доставлена мужем. Лицо отёкшее, на руках крапивница.",
+        "chiefComplaint": "У меня сжимается горло. Я что-то съела в ресторане и теперь не могу дышать.",
+        "vitals": {
+          "hr": 128,
+          "bp": "88/54",
+          "spo2": 93,
+          "temp": 36.8,
+          "rr": 26
+        },
+        "anamnesis": [
+          {
+            "id": "case.emergency.0004.anamnesis.01",
+            "question": "Что вы ели перед появлением симптомов?",
+            "answer": "Тайское блюдо. Я думаю, там был арахис. У меня аллергия.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0004.anamnesis.02",
+            "question": "Когда появились симптомы?",
+            "answer": "Примерно через 20 минут после еды.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0004.anamnesis.03",
+            "question": "Появилась ли сыпь?",
+            "answer": "У меня крапивница на руках и груди.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0004.anamnesis.04",
+            "question": "Есть ли отёк?",
+            "answer": "У меня опухли губы и язык.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0004.anamnesis.05",
+            "question": "Есть ли у вас с собой автоинъектор адреналина?",
+            "answer": "Я сегодня забыла его дома.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0004.anamnesis.06",
+            "question": "Были ли подобные реакции раньше?",
+            "answer": "Да, на арахис, но такой тяжёлой реакции раньше не было.",
+            "relevant": true
+          }
+        ]
+      },
+      "studyResults": {
+        "study.functional.ecg.resting-12-lead": {
+          "result": "Синусовая тахикардия 128. Никаких изменений ST.",
+          "abnormal": false
+        },
+        "study.imaging.xray.chest": {
+          "result": "Лёгочные поля без очаговых и инфильтративных изменений.",
+          "abnormal": false
+        },
+        "study.lab.tryptase.blood": {
+          "result": "Активность триптазы в крови повышена относительно контрольного уровня.",
+          "abnormal": true
+        },
+        "study.lab.cbc-with-differential": {
+          "result": "WBC 11, Hgb в норме. Умеренный лейкоцитоз.",
+          "abnormal": false
+        }
+      }
+    },
+    {
+      "id": "case.emergency.0005",
+      "title": "Ишемический инсульт",
+      "patient": {
+        "name": "Виктор Козлов",
+        "age": 71,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "critical",
+        "arrival": "Доставлен бригадой скорой помощи. Симптомы возникли внезапно 45 минут назад: слабость справа, невнятная речь.",
+        "chiefComplaint": "Что-то... не так. Моя рука. Мое лицо. Не могу... говорить правильно.",
+        "vitals": {
+          "hr": 88,
+          "bp": "178/102",
+          "spo2": 97,
+          "temp": 36.7,
+          "rr": 16
+        },
+        "anamnesis": [
+          {
+            "id": "case.emergency.0005.anamnesis.01",
+            "question": "Когда начались симптомы?",
+            "answer": "После обеда... часа в два, наверное. Я пил чай... потом рука... перестала слушаться.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0005.anamnesis.02",
+            "question": "С какой стороны появилась слабость?",
+            "answer": "Справа. Рука... и нога... не слушаются.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0005.anamnesis.03",
+            "question": "Вам трудно говорить или подбирать слова?",
+            "answer": "Я вас слышу... но слова... застревают.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0005.anamnesis.04",
+            "question": "Есть ли головная боль?",
+            "answer": "Нет... головной боли нет. Просто... слабость. Испугался.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0005.anamnesis.05",
+            "question": "Принимаете ли вы препараты, разжижающие кровь?",
+            "answer": "Нет... только таблетки от давления.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0005.anamnesis.06",
+            "question": "Недавно не ударялись головой, не падали?",
+            "answer": "Нет... не падал. Это просто... случилось.",
+            "relevant": true
+          }
+        ]
+      },
+      "studyResults": {
+        "study.imaging.ct.brain.noncontrast": {
+          "result": "Внутричерепных кровоизлияний нет. Незначительная потеря серо-белой дифференциации на левой территории СМА.",
+          "abnormal": true
+        },
+        "study.lab.glucose.blood": {
+          "result": "Глюкоза 112 мг/дл. Нормально.",
+          "abnormal": false
+        },
+        "study.imaging.ct-angiography.brain-and-neck": {
+          "result": "Окклюзия сегмента M1 левой средней мозговой артерии. Гемодинамически значимого стеноза брахиоцефальных артерий не выявлено.",
+          "abnormal": true
+        },
+        "study.functional.ecg.resting-12-lead": {
+          "result": "Фибрилляция предсердий с частотой 88.",
+          "abnormal": true
+        },
+        "study.lab.cbc-with-differential": {
+          "result": "В пределах нормы.",
+          "abnormal": false
+        },
+        "study.lab.coagulation.screen": {
+          "result": "МНО 1,0; АЧТВ и фибриноген в пределах референсных интервалов.",
+          "abnormal": false
+        },
+        "order-set.lab.basic-metabolic-panel-us": {
+          "result": "Электролиты в норме. Кр 1.0.",
+          "abnormal": false
+        }
+      }
+    },
+    {
+      "id": "case.emergency.0006",
+      "title": "Острый цистит",
+      "patient": {
+        "name": "Екатерина Лебедева",
+        "age": 45,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Обратилась самостоятельно. Испытывает дискомфорт, состояние стабильное.",
+        "chiefComplaint": "Уже два дня ощущаю жжение при мочеиспускании и хожу в туалет каждые 20 минут.",
+        "vitals": {
+          "hr": 84,
+          "bp": "122/76",
+          "spo2": 99,
+          "temp": 37.4,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.emergency.0006.anamnesis.01",
+            "question": "Есть ли жжение или боль при мочеиспускании?",
+            "answer": "Да, очень сильно жжёт.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0006.anamnesis.02",
+            "question": "Как часто вы мочитесь?",
+            "answer": "Примерно каждые 20 минут.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0006.anamnesis.03",
+            "question": "Есть ли боль в спине или боку?",
+            "answer": "Нет, только чувство давления внизу живота.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0006.anamnesis.04",
+            "question": "Повышалась температура, был озноб?",
+            "answer": "Кажется, температура немного повышена, но озноба нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0006.anamnesis.05",
+            "question": "Замечали ли вы кровь в моче?",
+            "answer": "Сегодня утром моча была розоватой.",
+            "relevant": true
+          },
+          {
+            "id": "case.emergency.0006.anamnesis.06",
+            "question": "Есть ли боль в груди?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.lab.urinalysis.general": {
+          "result": "Лейкоцитарная эстераза: резко положительная; нитриты положительные; выраженная лейкоцитурия, единичные эритроциты, бактериурия.",
+          "abnormal": true
+        },
+        "study.microbiology.urine-culture.aerobic": {
+          "result": "Рост Escherichia coli ≥10⁵ КОЕ/мл; чувствительность к антибактериальным препаратам представлена в антибиотикограмме.",
+          "abnormal": true
+        },
+        "study.lab.hcg.urine.qualitative": {
+          "result": "Хорионический гонадотропин в моче: отрицательно.",
+          "abnormal": false
+        },
+        "study.lab.cbc-with-differential": {
+          "result": "WBC 10.2. Пограничный.",
+          "abnormal": false
+        },
+        "order-set.lab.basic-metabolic-panel-us": {
+          "result": "Cr 0.9. Нормально.",
+          "abnormal": false
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "_meta": {
+    "schemaVersion": "1.0.0",
+    "scope": "Зафиксированные версии клинических рекомендаций",
+    "reviewedAt": "2026-10-04",
+    "language": "ru"
+  },
+  "clinicalRecommendations": [
+    {
+      "id": "guideline.ru.minzdrav.157.v5",
+      "externalId": "157_5",
+      "titleRu": "Острый инфаркт миокарда с подъемом сегмента ST электрокардиограммы",
+      "year": 2024,
+      "publishedAt": "2024-11-25",
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/157_5"
+    },
+    {
+      "id": "guideline.ru.minzdrav.325.v2",
+      "externalId": "325_2",
+      "titleRu": "Острый аппендицит у взрослых",
+      "year": 2023,
+      "publishedAt": "2023-11-24",
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/325_2"
+    },
+    {
+      "id": "guideline.ru.minzdrav.359.v3",
+      "externalId": "359_3",
+      "titleRu": "Бронхиальная астма",
+      "year": 2024,
+      "publishedAt": "2024-11-15",
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/359_3"
+    },
+    {
+      "id": "guideline.ru.minzdrav.263.v2",
+      "externalId": "263_2",
+      "titleRu": "Анафилактический шок",
+      "year": 2025,
+      "publishedAt": "2025-04-14",
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/263_2"
+    },
+    {
+      "id": "guideline.ru.minzdrav.171.v2",
+      "externalId": "171_2",
+      "titleRu": "Ишемический инсульт и транзиторная ишемическая атака у взрослых",
+      "year": 2021,
+      "publishedAt": "2021-09-01",
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/171_2"
+    },
+    {
+      "id": "guideline.ru.minzdrav.14.v3",
+      "externalId": "14_3",
+      "titleRu": "Цистит у женщин",
+      "year": 2024,
+      "publishedAt": "2024-11-02",
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/14_3"
+    }
+  ]
+}
