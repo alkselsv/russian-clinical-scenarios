@@ -1,0 +1,189 @@
+{
+  "_meta": {
+    "schemaVersion": "1.0.0",
+    "purpose": "Машинные факты и условия гастроэнтерологических сценариев",
+    "conditionDsl": {
+      "always": "{\"always\":true}",
+      "comparison": "{\"fact\":\"path\",\"op\":\"eq|ne|lt|lte|gt|gte|in|exists\",\"value\":any}",
+      "all": "{\"all\":[...]}",
+      "any": "{\"any\":[...]}",
+      "not": "{\"not\":{...}}"
+    }
+  },
+  "cases": [
+    {
+      "id": "case.gastroenterology.0001",
+      "facts": {
+        "constipationPersistsAfterFiber": false,
+        "thyroidDiseaseSuspected": false
+      },
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {
+        "action.medication.macrogol": {
+          "fact": "constipationPersistsAfterFiber",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "studyConditions": {
+        "study.lab.tsh.blood": {
+          "fact": "thyroidDiseaseSuspected",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "choiceGroups": []
+    },
+    {
+      "id": "case.gastroenterology.0002",
+      "facts": {},
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {},
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.gastroenterology.0003",
+      "facts": {
+        "cardiacEvaluationIndicated": false
+      },
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {},
+      "studyConditions": {
+        "study.functional.ecg.resting-12-lead": {
+          "fact": "cardiacEvaluationIndicated",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "choiceGroups": []
+    },
+    {
+      "id": "case.gastroenterology.0004",
+      "facts": {},
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {},
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.gastroenterology.0005",
+      "facts": {
+        "infectionExcludedAndDiagnosisConfirmed": false
+      },
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {
+        "action.medication.ibd-induction-specialist": {
+          "fact": "infectionExcludedAndDiagnosisConfirmed",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.gastroenterology.0006",
+      "facts": {
+        "severeAttackOrDeterioration": false,
+        "infectionExcludedAndDiagnosisConfirmed": false,
+        "complicationSuspected": false
+      },
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {
+        "action.disposition.gastroenterology-admission": {
+          "fact": "severeAttackOrDeterioration",
+          "op": "eq",
+          "value": true
+        },
+        "action.medication.ibd-induction-specialist": {
+          "fact": "infectionExcludedAndDiagnosisConfirmed",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "studyConditions": {
+        "study.imaging.ct.abdomen-pelvis.protocol-unspecified": {
+          "fact": "complicationSuspected",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "choiceGroups": []
+    },
+    {
+      "id": "case.gastroenterology.0007",
+      "facts": {},
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {},
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.gastroenterology.0008",
+      "facts": {},
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {},
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.gastroenterology.0009",
+      "facts": {
+        "symptomsControlledAndNoComplication": true
+      },
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {
+        "action.disposition.outpatient-discharge": {
+          "fact": "symptomsControlledAndNoComplication",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.gastroenterology.0010",
+      "facts": {
+        "fitScreeningRouteChosen": false,
+        "directColonoscopyRouteChosen": true
+      },
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {},
+      "studyConditions": {
+        "study.lab.fecal-occult-blood-immunochemical": {
+          "fact": "fitScreeningRouteChosen",
+          "op": "eq",
+          "value": true
+        },
+        "study.endoscopy.colonoscopy": {
+          "fact": "directColonoscopyRouteChosen",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "choiceGroups": []
+    }
+  ]
+}

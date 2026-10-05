@@ -1,0 +1,182 @@
+{
+  "_meta": {
+    "schemaVersion": "1.0.0",
+    "purpose": "Машинные факты и условия дерматологических сценариев",
+    "conditionDsl": {
+      "always": "{\"always\":true}",
+      "comparison": "{\"fact\":\"path\",\"op\":\"eq|ne|lt|lte|gt|gte|in|exists\",\"value\":any}",
+      "all": "{\"all\":[...]}",
+      "any": "{\"any\":[...]}",
+      "not": "{\"not\":{...}}"
+    }
+  },
+  "cases": [
+    {
+      "id": "case.dermatology.0001",
+      "facts": {},
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {},
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.dermatology.0002",
+      "facts": {},
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {},
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.dermatology.0003",
+      "facts": {
+        "isotretinoinIndicated": true
+      },
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {
+        "action.medication.isotretinoin.systemic": {
+          "fact": "isotretinoinIndicated",
+          "op": "eq",
+          "value": true
+        },
+        "action.monitoring.isotretinoin.safety": {
+          "fact": "isotretinoinIndicated",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "studyConditions": {
+        "study.lab.liver-enzymes.blood": {
+          "fact": "isotretinoinIndicated",
+          "op": "eq",
+          "value": true
+        },
+        "study.lab.lipid-profile.blood": {
+          "fact": "isotretinoinIndicated",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "choiceGroups": []
+    },
+    {
+      "id": "case.dermatology.0004",
+      "facts": {
+        "markedInflammation": false
+      },
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {
+        "action.medication.topical-anti-inflammatory.short": {
+          "fact": "markedInflammation",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.dermatology.0005",
+      "facts": {},
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {},
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.dermatology.0006",
+      "facts": {
+        "allergicContactSuspected": false
+      },
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {},
+      "studyConditions": {
+        "study.allergy.patch-test.contact": {
+          "fact": "allergicContactSuspected",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "choiceGroups": []
+    },
+    {
+      "id": "case.dermatology.0007",
+      "facts": {},
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {},
+      "studyConditions": {},
+      "choiceGroups": [
+        {
+          "id": "choice.rosacea.topical-first-line",
+          "kind": "actions",
+          "minSelections": 1,
+          "maxSelections": 1,
+          "memberIds": [
+            "action.medication.rosacea.ivermectin-topical",
+            "action.medication.rosacea.metronidazole-topical"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "case.dermatology.0008",
+      "facts": {},
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {},
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.dermatology.0009",
+      "facts": {},
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {},
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.dermatology.0010",
+      "facts": {
+        "uncontrolledOnStandardDose": false,
+        "thyroidDiseaseSuspected": false,
+        "anaphylaxisPresent": false
+      },
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {
+        "action.medication.antihistamine.updose": {
+          "fact": "uncontrolledOnStandardDose",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "studyConditions": {
+        "study.lab.tsh.blood": {
+          "fact": "thyroidDiseaseSuspected",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "choiceGroups": []
+    }
+  ]
+}

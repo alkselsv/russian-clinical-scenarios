@@ -1,0 +1,1168 @@
+{
+  "_meta": {
+    "schemaVersion": "1.0.0",
+    "collection": "cardiology",
+    "language": "ru",
+    "clinicalSafety": "unsafe-until-clinician-approved",
+    "evaluationPolicy": {
+      "required": "Действие необходимо в данном сценарии.",
+      "conditional": "Действие засчитывается только при выполнении явно заданных условий.",
+      "optional": "Действие допустимо, но не влияет на прохождение ключевого алгоритма.",
+      "not-routine": "Рутинное выполнение не требуется и не должно приносить баллы.",
+      "unsafe-or-delaying": "Действие потенциально вредит или задерживает приоритетную помощь.",
+      "unscorable-as-specified": "Исходный код слишком расплывчат: без препарата, дозы, пути, времени или цели действие нельзя считать правильным."
+    }
+  },
+  "cases": [
+    {
+      "id": "case.cardiology.0001",
+      "diagnosis": {
+        "id": "condition.chronic-coronary-syndrome.stable-angina",
+        "preferredNameRu": "Стабильная стенокардия напряжения",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "I20.8",
+            "display": "Стабильная стенокардия напряжения",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.acs-exclusion",
+          "evaluation": "required",
+          "indicationRu": "Любая боль в груди требует оценки признаков ОКС и других опасных причин.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "executionRu": "Сопоставить характер боли, ЭКГ и тропонин с длительностью последнего эпизода."
+        },
+        {
+          "actionId": "action.medication.aspirin.maintenance",
+          "evaluation": "required",
+          "indicationRu": "Подтверждённая хроническая ИБС при отсутствии высокого риска кровотечения.",
+          "conditionsRu": [],
+          "contraindicationsRu": [
+            "Активное кровотечение",
+            "Тяжёлая гиперчувствительность"
+          ],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "doseRouteTimingRu": "75–100 мг внутрь 1 раз в сутки длительно."
+        },
+        {
+          "actionId": "action.medication.statin.intensive",
+          "evaluation": "required",
+          "indicationRu": "ИБС и ХС ЛНП 4,2 ммоль/л.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "doseRouteTimingRu": "Аторвастатин 40–80 мг/сут или розувастатин 20–40 мг/сут с последующей оценкой переносимости и достижения цели."
+        },
+        {
+          "actionId": "action.medication.nitroglycerin.short-acting",
+          "evaluation": "required",
+          "indicationRu": "Купирование приступа стенокардии.",
+          "conditionsRu": [],
+          "contraindicationsRu": [
+            "Гипотензия",
+            "Недавний приём ингибитора ФДЭ-5"
+          ],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "doseRouteTimingRu": "Нитроглицерин 0,4–0,5 мг сублингвально; повторять каждые 5 минут до трёх доз при сохранном АД."
+        },
+        {
+          "actionId": "action.plan.coronary-diagnostic-strategy",
+          "evaluation": "required",
+          "indicationRu": "Типичная нагрузочная боль требует подтверждения ишемии и оценки риска.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "executionRu": "Выбрать визуализирующий нагрузочный или анатомический метод с учётом вероятности ИБС и доступности."
+        },
+        {
+          "actionId": "action.safety-netting.chest-pain",
+          "evaluation": "required",
+          "indicationRu": "Риск перехода симптомов в нестабильные.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "executionRu": "Объяснить необходимость экстренного обращения при боли в покое, нарастании частоты или длительности, либо отсутствии эффекта нитрата."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.functional.ecg.resting-12-lead",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Исходная оценка ритма, проводимости и признаков ишемии.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.lab.troponin-i.blood.quantitative",
+          "evaluation": "conditional",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Нужен при недавнем или изменившемся приступе для исключения повреждения миокарда.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.functional.echo.transthoracic",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Оценка структуры и функции ЛЖ.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.lab.lipid-profile.blood",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Определение исходного уровня и цели липидснижающей терапии.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.lab.hba1c.blood",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Оценка сопутствующего нарушения углеводного обмена.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.functional.stress-echo",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Объективизация индуцируемой ишемии в выбранной стратегии.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.imaging.xray.chest",
+          "evaluation": "not-routine",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "При отсутствии признаков сердечной недостаточности рутинная рентгенография малоинформативна.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.155.v2"
+      ],
+      "reviewStatus": "major-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/cardiology.md#case-cardiology-0001"
+    },
+    {
+      "id": "case.cardiology.0002",
+      "diagnosis": {
+        "id": "condition.atrial-fibrillation.paroxysmal",
+        "preferredNameRu": "Пароксизмальная фибрилляция предсердий",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "I48.0",
+            "display": "Пароксизмальная фибрилляция предсердий",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.af-stroke-bleeding-risk",
+          "evaluation": "required",
+          "indicationRu": "Подтверждённая ФП.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "executionRu": "Рассчитать CHA₂DS₂-VASc и оценить модифицируемые факторы кровотечения; женский пол трактовать как модификатор риска."
+        },
+        {
+          "actionId": "action.medication.anticoagulant.doac",
+          "evaluation": "required",
+          "indicationRu": "CHA₂DS₂-VASc 3 у женщины 71 года с АГ.",
+          "conditionsRu": [],
+          "contraindicationsRu": [
+            "Механический клапан",
+            "Умеренный или тяжёлый митральный стеноз",
+            "Активное кровотечение"
+          ],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "doseRouteTimingRu": "Выбрать прямой пероральный антикоагулянт в зарегистрированной дозе после оценки СКФ, массы, возраста, взаимодействий и клапанной патологии."
+        },
+        {
+          "actionId": "action.medication.aspirin.maintenance",
+          "evaluation": "unsafe-or-delaying",
+          "indicationRu": "Аспирин не является заменой антикоагуляции для профилактики инсульта при ФП.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "doseRouteTimingRu": "Не использовать монотерапию аспирином вместо показанного антикоагулянта."
+        },
+        {
+          "actionId": "action.decision.af-rate-rhythm-strategy",
+          "evaluation": "required",
+          "indicationRu": "Рецидивирующие симптомные пароксизмы.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "executionRu": "Совместно с пациенткой выбрать контроль частоты/ритма и план ведения рецидива после оценки симптомов и структурного сердца."
+        },
+        {
+          "actionId": "action.disposition.outpatient-discharge",
+          "evaluation": "conditional",
+          "indicationRu": "Стабильное состояние после завершившегося пароксизма.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "executionRu": "Амбулаторное ведение допустимо при отсутствии синкопе, ишемии, СН и неконтролируемой ЧСС, с назначенным наблюдением."
+        },
+        {
+          "actionId": "action.safety-netting.arrhythmia",
+          "evaluation": "required",
+          "indicationRu": "Риск рецидива.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "executionRu": "Объяснить экстренное обращение при обмороке, боли в груди, одышке или длительном приступе с плохим самочувствием."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.functional.ecg.resting-12-lead",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Документирование ФП или подтверждение записи приступа.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.functional.ecg-ambulatory",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Оценка эпизодов и связи с симптомами.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.functional.echo.transthoracic",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Оценка структурного заболевания и размеров предсердий.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.lab.tsh.blood",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Исключение тиреотоксикоза.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "order-set.lab.renal-function-electrolytes",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Дозирование антикоагулянта и коррекция электролитов.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.imaging.xray.chest",
+          "evaluation": "not-routine",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Нет признаков застоя или лёгочной патологии.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.382.v2"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/cardiology.md#case-cardiology-0002"
+    },
+    {
+      "id": "case.cardiology.0003",
+      "diagnosis": {
+        "id": "condition.heart-failure.reduced-ef.decompensated",
+        "preferredNameRu": "Декомпенсация хронической сердечной недостаточности со сниженной ФВ ЛЖ",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "I50.0",
+            "display": "Декомпенсация хронической сердечной недостаточности со сниженной ФВ ЛЖ",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.hf-precipitant",
+          "evaluation": "required",
+          "indicationRu": "Нарастание застоя и массы тела.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "executionRu": "Оценить ишемию, аритмию, инфекцию, анемию, функцию почек, приверженность и лекарства."
+        },
+        {
+          "actionId": "action.medication.loop-diuretic",
+          "evaluation": "required",
+          "indicationRu": "Клинический и рентгенологический застой.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "doseRouteTimingRu": "Назначить петлевой диуретик с выбором дозы по предшествующей терапии; контролировать диурез, массу, креатинин и электролиты."
+        },
+        {
+          "actionId": "action.medication.hf-foundational-therapy",
+          "evaluation": "required",
+          "indicationRu": "ФВ ЛЖ 35% после стабилизации.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "executionRu": "Проверить и поэтапно оптимизировать иАРНИ/иАПФ/АРА II, бета-блокатор, антагонист минералокортикоидных рецепторов и ингибитор SGLT2 с учётом противопоказаний."
+        },
+        {
+          "actionId": "action.disposition.hf-urgent",
+          "evaluation": "required",
+          "indicationRu": "Ортопноэ, ночные приступы удушья, прибавка 4 кг и застой.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "executionRu": "Организовать неотложную очную оценку и госпитализацию при невозможности безопасного быстрого амбулаторного лечения и мониторинга."
+        },
+        {
+          "actionId": "action.support.oxygen.titrated",
+          "evaluation": "not-routine",
+          "indicationRu": "SpO₂ 96%, гипоксемии нет.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "executionRu": "Не назначать кислород рутинно; использовать при подтверждённой гипоксемии с титрованием."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.lab.nt-probnp.blood",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Поддерживает диагноз и исходную оценку риска.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.functional.echo.transthoracic",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Определение фенотипа ХСН и ФВ.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.imaging.xray.chest",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Оценка лёгочного застоя.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.functional.ecg.resting-12-lead",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Поиск ишемии и аритмии.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "order-set.lab.renal-function-electrolytes",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Безопасность диуретической и базисной терапии.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.lab.cbc-with-differential",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Поиск анемии как усугубляющего фактора.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.lab.liver-enzymes.blood",
+          "evaluation": "conditional",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Оценка при выраженном системном застое или подозрении на поражение печени.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.156.v2"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/cardiology.md#case-cardiology-0003"
+    },
+    {
+      "id": "case.cardiology.0004",
+      "diagnosis": {
+        "id": "condition.mitral-regurgitation.primary.moderate",
+        "preferredNameRu": "Умеренная первичная митральная недостаточность",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "I34.0",
+            "display": "Умеренная первичная митральная недостаточность",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.monitoring.mitral-regurgitation",
+          "evaluation": "required",
+          "indicationRu": "Умеренная МН при сохранной ФВ и КСР 38 мм.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "executionRu": "Организовать кардиологическое наблюдение, периодическую ЭхоКГ и оценку новых симптомов/ФП."
+        },
+        {
+          "actionId": "action.referral.valve-center",
+          "evaluation": "conditional",
+          "indicationRu": "Тяжёлая МН, симптомы, ухудшение функции/размеров ЛЖ, лёгочная гипертензия или новая ФП.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "executionRu": "Направить в специализированный центр для Heart Team и оценки коррекции клапана."
+        },
+        {
+          "actionId": "action.disposition.outpatient-discharge",
+          "evaluation": "required",
+          "indicationRu": "Нет признаков острой СН или инфекционного эндокардита.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "executionRu": "Продолжить амбулаторное наблюдение с конкретным сроком контроля, а не завершать случай словом «выписка»."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.functional.echo.transthoracic",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Ключевой метод оценки механизма и тяжести МН.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.functional.ecg.resting-12-lead",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Оценка ритма и гипертрофии.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.lab.nt-probnp.blood",
+          "evaluation": "optional",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Может дополнять оценку бессимптомного пациента, но не заменяет ЭхоКГ.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.imaging.xray.chest",
+          "evaluation": "not-routine",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "При отсутствии СН рутинно не требуется.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.lab.cbc-with-differential",
+          "evaluation": "not-routine",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Нет клинических признаков анемии или инфекции.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.lab.tsh.blood",
+          "evaluation": "not-routine",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Нет самостоятельного показания.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.881.v1"
+      ],
+      "reviewStatus": "major-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/cardiology.md#case-cardiology-0004"
+    },
+    {
+      "id": "case.cardiology.0005",
+      "diagnosis": {
+        "id": "condition.hypertrophic-cardiomyopathy",
+        "preferredNameRu": "Гипертрофическая кардиомиопатия",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "I42.1",
+            "display": "Гипертрофическая кардиомиопатия",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.hcm-scd-risk",
+          "evaluation": "required",
+          "indicationRu": "Нагрузочный предобморок и семейный анамнез внезапной смерти.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "executionRu": "Полностью оценить факторы риска ВСС, включая максимальную толщину стенки, синкопе, семейный анамнез, НЖТ, ФВ, апикальную аневризму и фиброз."
+        },
+        {
+          "actionId": "action.restriction.competitive-sport",
+          "evaluation": "required",
+          "indicationRu": "Симптомы во время баскетбола до завершения оценки риска.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "executionRu": "Исключить соревновательные и высокоинтенсивные нагрузки до специализированной оценки; дать индивидуальные рекомендации после неё."
+        },
+        {
+          "actionId": "action.referral.hcm-center.urgent",
+          "evaluation": "required",
+          "indicationRu": "Повторный нагрузочный предобморок и семейная внезапная смерть.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "executionRu": "Организовать срочную оценку в центре с опытом ведения ГКМП; формат госпитализации определить по текущему риску и доступности."
+        },
+        {
+          "actionId": "action.counseling.hcm-family",
+          "evaluation": "required",
+          "indicationRu": "Вероятное наследственное заболевание.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "executionRu": "Предложить генетическое консультирование и клинико-инструментальный скрининг родственников первой линии."
+        },
+        {
+          "actionId": "action.disposition.outpatient-discharge",
+          "evaluation": "unsafe-or-delaying",
+          "indicationRu": "Простая выписка без стратификации риска небезопасна.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "executionRu": "Не завершать случай обычной выпиской до определения безопасного маршрута."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.functional.ecg.resting-12-lead",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Выявление характерных изменений и аритмического риска.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.functional.echo.transthoracic",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Подтверждение гипертрофии и оценка обструкции.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.functional.ecg-ambulatory",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Поиск неустойчивой ЖТ и количественная оценка аритмий.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.imaging.cmr",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Уточнение морфологии и фиброза для стратификации риска.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.lab.troponin-i.blood.quantitative",
+          "evaluation": "not-routine",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "При отсутствии продолжающейся боли и признаков ОКС рутинно не нужен.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.imaging.xray.chest",
+          "evaluation": "not-routine",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Не подтверждает ГКМП и не влияет на текущую тактику.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.283.v2"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/cardiology.md#case-cardiology-0005"
+    },
+    {
+      "id": "case.cardiology.0006",
+      "diagnosis": {
+        "id": "condition.myopericarditis.acute",
+        "preferredNameRu": "Острый миоперикардит",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "I30.9",
+            "display": "Острый миоперикардит",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.disposition.myopericarditis-inpatient",
+          "evaluation": "required",
+          "indicationRu": "Повышение тропонина указывает на вовлечение миокарда.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "executionRu": "Госпитализировать для мониторинга, исключения ОКС и оценки функции ЛЖ/аритмий."
+        },
+        {
+          "actionId": "action.medication.nsaid.pericarditis",
+          "evaluation": "required",
+          "indicationRu": "Перикардиальная боль и воспаление.",
+          "conditionsRu": [],
+          "contraindicationsRu": [
+            "Активное кровотечение",
+            "Тяжёлая почечная недостаточность",
+            "Аллергия"
+          ],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "doseRouteTimingRu": "Ибупрофен 600 мг внутрь 3 раза в сутки либо ацетилсалициловая кислота в противовоспалительной дозе с гастропротекцией и постепенным снижением после ответа."
+        },
+        {
+          "actionId": "action.medication.colchicine.pericarditis",
+          "evaluation": "required",
+          "indicationRu": "Снижение риска рецидива при остром перикардите.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "doseRouteTimingRu": "Колхицин 0,5 мг 1 раз/сут при массе <70 кг или 0,5 мг 2 раза/сут при массе ≥70 кг обычно 3 месяца, с учётом почек, печени и взаимодействий."
+        },
+        {
+          "actionId": "action.restriction.myopericarditis-exercise",
+          "evaluation": "required",
+          "indicationRu": "Вовлечение миокарда.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "executionRu": "Исключить интенсивные и соревновательные нагрузки; срок возврата определяет кардиолог после нормализации маркеров и обследования."
+        },
+        {
+          "actionId": "action.disposition.outpatient-discharge",
+          "evaluation": "unsafe-or-delaying",
+          "indicationRu": "Тропонин повышен, поэтому это не низкорисковый изолированный перикардит.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "executionRu": "Не выписывать без мониторинга и плана оценки миокарда."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.functional.ecg.resting-12-lead",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Поддерживает диагноз и помогает исключать ОКС.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.lab.troponin-i.blood.quantitative",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Подтверждает вовлечение миокарда и требует динамики.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.functional.echo.transthoracic",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Оценка выпота, тампонады и функции ЛЖ.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.lab.crp.serum.quantitative",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Оценка активности и последующей динамики воспаления.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.imaging.cmr",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Подтверждение вовлечения миокарда при стабильном состоянии.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.lab.esr.blood",
+          "evaluation": "optional",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Неспецифический дополнительный маркер.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.imaging.xray.chest",
+          "evaluation": "not-routine",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Нормальный снимок не исключает миоперикардит.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.746.v2"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/cardiology.md#case-cardiology-0006"
+    },
+    {
+      "id": "case.cardiology.0007",
+      "diagnosis": {
+        "id": "condition.orthostatic-hypotension.drug-volume-related",
+        "preferredNameRu": "Ортостатическая гипотензия",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "I95.1",
+            "display": "Ортостатическая гипотензия",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.orthostatic-vitals",
+          "evaluation": "required",
+          "indicationRu": "Позиционно обусловленное головокружение.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "executionRu": "Измерить АД и ЧСС после покоя лёжа и через 1 и 3 минуты стоя; сопоставить с симптомами."
+        },
+        {
+          "actionId": "action.review.orthostatic-medications",
+          "evaluation": "required",
+          "indicationRu": "Тамсулозин, диуретик и иАПФ могут усиливать симптомы.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "executionRu": "Оценить показания, дозы и время приёма; согласованно уменьшить лекарственную нагрузку без бесконтрольной отмены терапии АГ/ДГПЖ."
+        },
+        {
+          "actionId": "action.support.oral-hydration",
+          "evaluation": "required",
+          "indicationRu": "Низкое потребление жидкости и признаки гиповолемии.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "executionRu": "Увеличить пероральное потребление жидкости при отсутствии СН/тяжёлой ХБП; дать индивидуальный объём."
+        },
+        {
+          "actionId": "action.support.orthostatic-nonpharmacologic",
+          "evaluation": "required",
+          "indicationRu": "Профилактика падений и симптомов.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "executionRu": "Медленно вставать, избегать перегрева, обучить физическим контрманёврам и оценить риск падений."
+        },
+        {
+          "actionId": "action.support.crystalloid.iv",
+          "evaluation": "not-routine",
+          "indicationRu": "Пациент стабилен и может пить.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "executionRu": "Не использовать внутривенную инфузию рутинно; рассматривать при невозможности пероральной регидратации или выраженной гиповолемии."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.functional.orthostatic-active-standing",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Ключевое подтверждающее исследование.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.functional.ecg.resting-12-lead",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Исключение явной брадиаритмии или нарушения проводимости.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "order-set.lab.renal-function-electrolytes",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Оценка гиповолемии, почек и электролитов.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.lab.cbc-with-differential",
+          "evaluation": "conditional",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Нужен при подозрении на анемию или кровопотерю.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.functional.echo.transthoracic",
+          "evaluation": "not-routine",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Нет шума, СН, патологической ЭКГ или нагрузочного обморока.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.lab.vitamin-b12.blood",
+          "evaluation": "not-routine",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Нет неврологических признаков дефицита.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.62.v3"
+      ],
+      "reviewStatus": "major-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/cardiology.md#case-cardiology-0007"
+    },
+    {
+      "id": "case.cardiology.0008",
+      "diagnosis": {
+        "id": "condition.premature-ventricular-contractions",
+        "preferredNameRu": "Желудочковая экстрасистолия",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "I49.3",
+            "display": "Желудочковая экстрасистолия",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.pvc-burden",
+          "evaluation": "required",
+          "indicationRu": "Ежедневные симптомные ЖЭ.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "executionRu": "Оценить суточную нагрузку, морфологию, пробежки ЖТ, связь с симптомами и структурную патологию сердца."
+        },
+        {
+          "actionId": "action.support.reduce-stimulants",
+          "evaluation": "required",
+          "indicationRu": "Пять чашек кофе в день и стресс могут усиливать симптомы.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "executionRu": "Предложить постепенное снижение кофеина, нормализацию сна и оценку динамики симптомов."
+        },
+        {
+          "actionId": "action.medication.beta-blocker.pvc",
+          "evaluation": "conditional",
+          "indicationRu": "Сохраняющиеся беспокоящие симптомы после коррекции триггеров.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "doseRouteTimingRu": "Рассмотреть бета-адреноблокатор в минимальной эффективной дозе с контролем ЧСС и АД."
+        },
+        {
+          "actionId": "action.disposition.outpatient-discharge",
+          "evaluation": "required",
+          "indicationRu": "Низкая нагрузка ЖЭ, нормальная ФВ и отсутствие ЖТ/синкопе.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "executionRu": "Амбулаторное наблюдение с инструкцией обратиться при синкопе, нагрузочных симптомах или нарастании перебоев."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.functional.ecg.resting-12-lead",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Документирование морфологии ЖЭ.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.functional.ecg-ambulatory",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Количественная оценка нагрузки и опасных форм.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.functional.echo.transthoracic",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Исключение структурной патологии и дисфункции ЛЖ.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.lab.tsh.blood",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Исключение тиреотоксикоза.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "order-set.lab.renal-function-electrolytes",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Оценка калия, магния и кальция.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.lab.troponin-i.blood.quantitative",
+          "evaluation": "not-routine",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Нет боли, ишемических изменений или острого состояния.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.569.v2"
+      ],
+      "reviewStatus": "major-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/cardiology.md#case-cardiology-0008"
+    },
+    {
+      "id": "case.cardiology.0009",
+      "diagnosis": {
+        "id": "condition.hypertension.uncontrolled-severe",
+        "preferredNameRu": "Неконтролируемая артериальная гипертензия без острого поражения органов-мишеней",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "I10",
+            "display": "Неконтролируемая артериальная гипертензия без острого поражения органов-мишеней",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.hypertensive-emergency",
+          "evaluation": "required",
+          "indicationRu": "АД 184/108 мм рт. ст. и головная боль.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "executionRu": "Повторно правильно измерить АД и целенаправленно оценить неврологические, сердечные, аортальные, почечные и офтальмологические признаки острого поражения."
+        },
+        {
+          "actionId": "action.medication.antihypertensive.restart-adjust",
+          "evaluation": "required",
+          "indicationRu": "Пропуск амлодипина и стойко высокое АД без острой органной катастрофы.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "doseRouteTimingRu": "Возобновить и рационально усилить длительно действующую пероральную терапию с учётом прежней схемы, приверженности, СКФ и электролитов."
+        },
+        {
+          "actionId": "action.avoid.rapid-bp-lowering",
+          "evaluation": "required",
+          "indicationRu": "Острое поражение органов-мишеней не выявлено.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "executionRu": "Не применять быстрое агрессивное снижение АД или внутривенные препараты; снижать давление контролируемо."
+        },
+        {
+          "actionId": "action.monitoring.bp-followup",
+          "evaluation": "required",
+          "indicationRu": "Высокое АД после перерыва терапии.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "executionRu": "Организовать домашний контроль, ранний повторный визит и проверку доступности препаратов."
+        },
+        {
+          "actionId": "action.monitoring.observation.unspecified",
+          "evaluation": "unscorable-as-specified",
+          "indicationRu": "Слово «наблюдать» не определяет частоту измерений, цель и срок решения.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "executionRu": "Не засчитывать без конкретного протокола."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.functional.ecg.resting-12-lead",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Оценка гипертрофии и острой ишемии.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "order-set.lab.renal-function-electrolytes",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Оценка функции почек и электролитов до коррекции терапии.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.lab.uacr.urine",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Оценка поражения почек как органа-мишени.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.exam.fundus",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Поиск кровоизлияний, экссудатов и отёка диска.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.lab.troponin-i.blood.quantitative",
+          "evaluation": "conditional",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Только при боли, одышке, ишемической ЭКГ или ином подозрении на повреждение миокарда.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.functional.bp-ambulatory",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Подтверждение профиля АД вне кабинета после исключения неотложности.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.imaging.xray.chest",
+          "evaluation": "not-routine",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Нет симптомов острой СН или аортального синдрома.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.62.v3"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/cardiology.md#case-cardiology-0009"
+    },
+    {
+      "id": "case.cardiology.0010",
+      "diagnosis": {
+        "id": "condition.statin-associated-muscle-symptoms.probable",
+        "preferredNameRu": "Вероятные статин-ассоциированные мышечные симптомы",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "M79.1",
+            "display": "Вероятные статин-ассоциированные мышечные симптомы",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.statin-muscle-symptoms",
+          "evaluation": "required",
+          "indicationRu": "Симметричная проксимальная миалгия через 6 недель после начала статина.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "executionRu": "Оценить временную связь, дозу, взаимодействия, тяжесть слабости, КФК, почки, ТТГ и альтернативные причины."
+        },
+        {
+          "actionId": "action.medication.statin.temporary-interruption",
+          "evaluation": "required",
+          "indicationRu": "Симптомы и умеренное повышение КФК без рабдомиолиза.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "doseRouteTimingRu": "Временно отменить текущий статин до разрешения симптомов и нормализации/стабилизации КФК; срок контроля определить явно."
+        },
+        {
+          "actionId": "action.medication.statin.rechallenge",
+          "evaluation": "required",
+          "indicationRu": "Необходимо сохранить снижение сердечно-сосудистого риска.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "doseRouteTimingRu": "После разрешения симптомов повторно назначить меньшую дозу или другой статин; при непереносимости рассмотреть комбинацию с нестатиновым препаратом по уровню риска."
+        },
+        {
+          "actionId": "action.safety-netting.rhabdomyolysis",
+          "evaluation": "required",
+          "indicationRu": "Риск редкого тяжёлого мышечного повреждения.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "executionRu": "Срочно обратиться при нарастающей слабости, тёмной моче, уменьшении диуреза или выраженной генерализованной боли."
+        },
+        {
+          "actionId": "action.disposition.outpatient-discharge",
+          "evaluation": "required",
+          "indicationRu": "Нет миоглобинурии, острой почечной недостаточности или резкого повышения КФК.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Решение и результат повторной оценки документированы.",
+          "executionRu": "Амбулаторное ведение допустимо с конкретным сроком повторной КФК и оценки симптомов."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.lab.creatine-kinase.blood",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Количественная оценка мышечного повреждения.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "order-set.lab.renal-function-electrolytes",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Исключение острого повреждения почек и электролитных нарушений.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.lab.urinalysis.general",
+          "evaluation": "conditional",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Нужно при тёмной моче, выраженной слабости или значительном повышении КФК.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.lab.tsh.blood",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Исключение гипотиреоза как фактора миалгии.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.lab.liver-enzymes.blood",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Оценка трансаминаз отдельно от КФК.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.lab.vitamin-d-25oh.blood",
+          "evaluation": "not-routine",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Низкий витамин D не подтверждает причинную связь симптомов со статином.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        },
+        {
+          "studyId": "study.lab.esr.blood",
+          "evaluation": "not-routine",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Нет клинической картины ревматической полимиалгии.",
+          "mustNotDelayRu": "Не задерживать помощь при появлении признаков нестабильности."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.752.v1"
+      ],
+      "reviewStatus": "major-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/cardiology.md#case-cardiology-0010"
+    }
+  ]
+}

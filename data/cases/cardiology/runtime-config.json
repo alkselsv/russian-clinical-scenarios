@@ -1,0 +1,189 @@
+{
+  "_meta": {
+    "schemaVersion": "1.0.0",
+    "purpose": "Машинные факты и условия кардиологических сценариев",
+    "conditionDsl": {
+      "always": "{\"always\":true}",
+      "comparison": "{\"fact\":\"path\",\"op\":\"eq|ne|lt|lte|gt|gte|in|exists\",\"value\":any}",
+      "all": "{\"all\":[...]}",
+      "any": "{\"any\":[...]}",
+      "not": "{\"not\":{...}}"
+    }
+  },
+  "cases": [
+    {
+      "id": "case.cardiology.0001",
+      "facts": {
+        "recentOrChangedPain": false
+      },
+      "factNotesRu": [
+        "Боль воспроизводима нагрузкой и быстро проходит в покое; признаков ОКС в начальном состоянии нет."
+      ],
+      "actionConditions": {},
+      "studyConditions": {
+        "study.lab.troponin-i.blood.quantitative": {
+          "fact": "recentOrChangedPain",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "choiceGroups": []
+    },
+    {
+      "id": "case.cardiology.0002",
+      "facts": {
+        "hemodynamicallyStable": true,
+        "ongoingRapidAf": false
+      },
+      "factNotesRu": [
+        "Расчётный CHA₂DS₂-VASc равен 3: возраст 65–74, артериальная гипертензия и женский пол."
+      ],
+      "actionConditions": {
+        "action.disposition.outpatient-discharge": {
+          "all": [
+            {
+              "fact": "hemodynamicallyStable",
+              "op": "eq",
+              "value": true
+            },
+            {
+              "fact": "ongoingRapidAf",
+              "op": "eq",
+              "value": false
+            }
+          ]
+        }
+      },
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.cardiology.0003",
+      "facts": {
+        "systemicCongestionMarked": false
+      },
+      "factNotesRu": [
+        "Симптомы и застой тяжелее, чем подразумевает исходная метка NYHA II."
+      ],
+      "actionConditions": {},
+      "studyConditions": {
+        "study.lab.liver-enzymes.blood": {
+          "fact": "systemicCongestionMarked",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "choiceGroups": []
+    },
+    {
+      "id": "case.cardiology.0004",
+      "facts": {
+        "severeMrOrTrigger": false
+      },
+      "factNotesRu": [
+        "ЭхоКГ соответствует умеренной, а не тяжёлой МН; немедленная клапанная операция не моделируется."
+      ],
+      "actionConditions": {
+        "action.referral.valve-center": {
+          "fact": "severeMrOrTrigger",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.cardiology.0005",
+      "facts": {},
+      "factNotesRu": [
+        "Случай требует специализированной срочной маршрутизации; неспецифическое admit-floor не является достаточным решением."
+      ],
+      "actionConditions": {},
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.cardiology.0006",
+      "facts": {},
+      "factNotesRu": [
+        "Исходный диагноз «перикардит» исправлен на миоперикардит из-за повышения тропонина и данных МРТ."
+      ],
+      "actionConditions": {},
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.cardiology.0007",
+      "facts": {
+        "anemiaOrBleedingSuspected": false
+      },
+      "factNotesRu": [
+        "Диагноз подтверждается новой ортостатической пробой; исходная обычная величина АД этого не делала."
+      ],
+      "actionConditions": {},
+      "studyConditions": {
+        "study.lab.cbc-with-differential": {
+          "fact": "anemiaOrBleedingSuspected",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "choiceGroups": []
+    },
+    {
+      "id": "case.cardiology.0008",
+      "facts": {
+        "symptomsPersistAfterTriggerReduction": false
+      },
+      "factNotesRu": [
+        "Нагрузка ЖЭ 4,5%, сердце структурно нормально; антиаритмическое лечение не является автоматическим."
+      ],
+      "actionConditions": {
+        "action.medication.beta-blocker.pvc": {
+          "fact": "symptomsPersistAfterTriggerReduction",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.cardiology.0009",
+      "facts": {
+        "suspectedAcuteCardiacDamage": false
+      },
+      "factNotesRu": [
+        "Головная боль сама по себе не доказывает гипертоническую чрезвычайную ситуацию; острое поражение органов-мишеней не выявлено."
+      ],
+      "actionConditions": {},
+      "studyConditions": {
+        "study.lab.troponin-i.blood.quantitative": {
+          "fact": "suspectedAcuteCardiacDamage",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "choiceGroups": []
+    },
+    {
+      "id": "case.cardiology.0010",
+      "facts": {
+        "rhabdomyolysisSuspected": false
+      },
+      "factNotesRu": [
+        "КФК выделена из ошибочно смешанного результата печёночных проб; диагноз остаётся вероятностным до отмены и повторного назначения."
+      ],
+      "actionConditions": {},
+      "studyConditions": {
+        "study.lab.urinalysis.general": {
+          "fact": "rhabdomyolysisSuspected",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "choiceGroups": []
+    }
+  ]
+}

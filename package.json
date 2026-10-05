@@ -5,8 +5,8 @@
   "type": "module",
   "description": "Исследовательские клинические сценарии, адаптированные к условиям российского здравоохранения",
   "scripts": {
-    "build": "node scripts/generate-runtime.mjs --collection emergency",
-    "check": "node scripts/generate-runtime.mjs --collection emergency --check",
+    "build": "node scripts/generate-runtime.mjs --collection emergency && node scripts/generate-runtime.mjs --collection cardiology && node scripts/generate-runtime.mjs --collection dermatology && node scripts/generate-runtime.mjs --collection gastroenterology",
+    "check": "node scripts/generate-runtime.mjs --collection emergency --check && node scripts/generate-runtime.mjs --collection cardiology --check && node scripts/generate-runtime.mjs --collection dermatology --check && node scripts/generate-runtime.mjs --collection gastroenterology --check",
     "validate": "node scripts/validate.mjs"
   },
   "engines": {

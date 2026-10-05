@@ -1,0 +1,3033 @@
+{
+  "_meta": {
+    "schemaVersion": "1.0.0",
+    "collection": "cardiology",
+    "generator": "scripts/generate-runtime.mjs",
+    "caseCount": 10,
+    "language": "ru",
+    "clinicalSafety": "unsafe-until-clinician-approved",
+    "scoringMode": "rules-with-structured-conditions-and-parameter-review",
+    "conditionDsl": {
+      "always": "{\"always\":true}",
+      "comparison": "{\"fact\":\"path\",\"op\":\"eq|ne|lt|lte|gt|gte|in|exists\",\"value\":any}",
+      "all": "{\"all\":[...]}",
+      "any": "{\"any\":[...]}",
+      "not": "{\"not\":{...}}"
+    },
+    "inputSha256": {
+      "actions": "98e309bbe53759105d1f0bfc7d4589c3a5eeac9b7d195494e94ed56762257ba9",
+      "studies": "2102ed0da6a8a118145c5dfc007f01badd1c28d91a31d5228122171da6ebb16f",
+      "references": "2087d857cdd11a271c3a823ff5ac87712c20a518b3c8c28edd818449200f8fbb",
+      "content": "fad07860f40399aeaaae67c640cf94c22897b4a7a47f34a78cbcb912249eaf62",
+      "rules": "198ed4658a87d3ef84ebe82aee31b8b8410f397fb36230393a2d83b6512b923d",
+      "config": "dfc9ca6d0373ba6434918ce13535757149a3123a3cb070758ec587576e1cd79c"
+    }
+  },
+  "cases": [
+    {
+      "id": "case.cardiology.0001",
+      "title": "Стабильная стенокардия напряжения",
+      "patient": {
+        "name": "Фёдор Воробьёв",
+        "age": 64,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился по поводу дискомфорта в груди при физической нагрузке.",
+        "chiefComplaint": "Когда я поднимаюсь по лестнице, у меня сжимается грудь. С отдыхом это проходит.",
+        "vitals": {
+          "hr": 78,
+          "bp": "138/84",
+          "spo2": 98,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.cardiology.0001.anamnesis.01",
+            "question": "Что провоцирует боль?",
+            "answer": "Боль появляется при ходьбе в гору или подъёме по лестнице.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0001.anamnesis.02",
+            "question": "Что помогает снять боль?",
+            "answer": "После 2–3 минут отдыха боль проходит.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0001.anamnesis.03",
+            "question": "Сколько длится один эпизод?",
+            "answer": "Несколько минут.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0001.anamnesis.04",
+            "question": "Какие хронические заболевания у вас есть?",
+            "answer": "У меня гипертония и повышенный уровень холестерина.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0001.anamnesis.05",
+            "question": "Вы курите?",
+            "answer": "Бросил 5 лет назад.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0001.anamnesis.06",
+            "question": "Что вы ели перед приступом?",
+            "answer": "Ничего необычного, питался как обычно.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {
+        "recentOrChangedPain": false
+      },
+      "factNotes": [
+        "Боль воспроизводима нагрузкой и быстро проходит в покое; признаков ОКС в начальном состоянии нет."
+      ],
+      "diagnosis": {
+        "id": "condition.chronic-coronary-syndrome.stable-angina",
+        "label": "Стабильная стенокардия напряжения",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "I20.8",
+            "display": "Стабильная стенокардия напряжения",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.acs-exclusion",
+            "label": "Исключение острого коронарного синдрома и опасных причин боли",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Сопоставить характер боли, ЭКГ и тропонин с длительностью последнего эпизода.",
+            "indication": "Любая боль в груди требует оценки признаков ОКС и других опасных причин.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          },
+          {
+            "id": "action.medication.aspirin.maintenance",
+            "label": "Антитромбоцитарная терапия ацетилсалициловой кислотой",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "75–100 мг внутрь 1 раз в сутки длительно.",
+            "indication": "Подтверждённая хроническая ИБС при отсутствии высокого риска кровотечения.",
+            "checks": [],
+            "contraindications": [
+              "Активное кровотечение",
+              "Тяжёлая гиперчувствительность"
+            ],
+            "success": "Решение и результат повторной оценки документированы."
+          },
+          {
+            "id": "action.medication.statin.intensive",
+            "label": "Интенсивная липидснижающая терапия статином",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Аторвастатин 40–80 мг/сут или розувастатин 20–40 мг/сут с последующей оценкой переносимости и достижения цели.",
+            "indication": "ИБС и ХС ЛНП 4,2 ммоль/л.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          },
+          {
+            "id": "action.medication.nitroglycerin.short-acting",
+            "label": "Короткодействующий нитрат для купирования боли",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Нитроглицерин 0,4–0,5 мг сублингвально; повторять каждые 5 минут до трёх доз при сохранном АД.",
+            "indication": "Купирование приступа стенокардии.",
+            "checks": [],
+            "contraindications": [
+              "Гипотензия",
+              "Недавний приём ингибитора ФДЭ-5"
+            ],
+            "success": "Решение и результат повторной оценки документированы."
+          },
+          {
+            "id": "action.plan.coronary-diagnostic-strategy",
+            "label": "Выбор стратегии подтверждения ишемии и оценки коронарных артерий",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Выбрать визуализирующий нагрузочный или анатомический метод с учётом вероятности ИБС и доступности.",
+            "indication": "Типичная нагрузочная боль требует подтверждения ишемии и оценки риска.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          },
+          {
+            "id": "action.safety-netting.chest-pain",
+            "label": "Инструктаж при изменении характера боли в груди",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Объяснить необходимость экстренного обращения при боли в покое, нарастании частоты или длительности, либо отсутствии эффекта нитрата.",
+            "indication": "Риск перехода симптомов в нестабильные.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.functional.ecg.resting-12-lead",
+            "label": "Электрокардиография в 12 отведениях в покое с интерпретацией",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Исходная оценка ритма, проводимости и признаков ишемии.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Синусовый ритм 78 в минуту. Неспецифические изменения зубца T в V4–V6; острых изменений сегмента ST нет.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.functional.echo.transthoracic",
+            "label": "Эхокардиография трансторакальная",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Оценка структуры и функции ЛЖ.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "ФВ ЛЖ 55%, лёгкая гипертрофия ЛЖ; нарушений локальной сократимости в покое нет.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.lipid-profile.blood",
+            "label": "Исследование липидного профиля крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Определение исходного уровня и цели липидснижающей терапии.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "ХС ЛНП 4,2 ммоль/л, ХС ЛВП 0,93 ммоль/л, триглицериды 2,24 ммоль/л, общий холестерин 6,0 ммоль/л.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.hba1c.blood",
+            "label": "Исследование уровня гликированного гемоглобина в крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Оценка сопутствующего нарушения углеводного обмена.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "HbA1c 6,0%.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.functional.stress-echo",
+            "label": "Стресс-эхокардиография",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Объективизация индуцируемой ишемии в выбранной стратегии.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "При нагрузке воспроизведена типичная боль; выявлена индуцируемая гипокинезия нижнебоковых сегментов ЛЖ.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [
+          {
+            "id": "study.lab.troponin-i.blood.quantitative",
+            "label": "Количественное исследование уровня сердечного тропонина I в крови",
+            "decision": "conditional",
+            "when": {
+              "fact": "recentOrChangedPain",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Нужен при недавнем или изменившемся приступе для исключения повреждения миокарда.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Высокочувствительный тропонин I: 6 нг/л, ниже 99-го перцентиля.",
+              "abnormal": false
+            }
+          }
+        ],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "study.imaging.xray.chest",
+            "label": "Обзорная рентгенография органов грудной клетки",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "При отсутствии признаков сердечной недостаточности рутинная рентгенография малоинформативна.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Размер сердца на верхней границе нормы, очаговых и застойных изменений в лёгких нет.",
+              "abnormal": false
+            }
+          }
+        ],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.155.v2",
+          "title": "Стабильная ишемическая болезнь сердца",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/155_2"
+        }
+      ],
+      "reviewStatus": "major-revision-required"
+    },
+    {
+      "id": "case.cardiology.0002",
+      "title": "Пароксизмальная фибрилляция предсердий",
+      "patient": {
+        "name": "Елена Волкова",
+        "age": 71,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась после приступа сердцебиения.",
+        "chiefComplaint": "Вчера в течение 2 часов сердце сильно и нерегулярно билось.",
+        "vitals": {
+          "hr": 86,
+          "bp": "128/78",
+          "spo2": 98,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.cardiology.0002.anamnesis.01",
+            "question": "Как часто это происходит?",
+            "answer": "Несколько раз в месяц.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0002.anamnesis.02",
+            "question": "Что обычно провоцирует приступ?",
+            "answer": "Иногда приступ начинается после кофе.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0002.anamnesis.03",
+            "question": "Вы когда-нибудь теряли сознание во время приступа?",
+            "answer": "Нет, сознание не теряла, только кружилась голова.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0002.anamnesis.04",
+            "question": "Какие хронические заболевания у вас есть?",
+            "answer": "У меня гипертония.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0002.anamnesis.05",
+            "question": "Употребляете ли вы алкоголь?",
+            "answer": "Иногда пью вино.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0002.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {
+        "hemodynamicallyStable": true,
+        "ongoingRapidAf": false
+      },
+      "factNotes": [
+        "Расчётный CHA₂DS₂-VASc равен 3: возраст 65–74, артериальная гипертензия и женский пол."
+      ],
+      "diagnosis": {
+        "id": "condition.atrial-fibrillation.paroxysmal",
+        "label": "Пароксизмальная фибрилляция предсердий",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "I48.0",
+            "display": "Пароксизмальная фибрилляция предсердий",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.af-stroke-bleeding-risk",
+            "label": "Оценка риска инсульта и кровотечения при фибрилляции предсердий",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Рассчитать CHA₂DS₂-VASc и оценить модифицируемые факторы кровотечения; женский пол трактовать как модификатор риска.",
+            "indication": "Подтверждённая ФП.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          },
+          {
+            "id": "action.medication.anticoagulant.doac",
+            "label": "Пероральный антикоагулянт при фибрилляции предсердий",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Выбрать прямой пероральный антикоагулянт в зарегистрированной дозе после оценки СКФ, массы, возраста, взаимодействий и клапанной патологии.",
+            "indication": "CHA₂DS₂-VASc 3 у женщины 71 года с АГ.",
+            "checks": [],
+            "contraindications": [
+              "Механический клапан",
+              "Умеренный или тяжёлый митральный стеноз",
+              "Активное кровотечение"
+            ],
+            "success": "Решение и результат повторной оценки документированы."
+          },
+          {
+            "id": "action.decision.af-rate-rhythm-strategy",
+            "label": "Выбор стратегии контроля частоты или ритма при ФП",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Совместно с пациенткой выбрать контроль частоты/ритма и план ведения рецидива после оценки симптомов и структурного сердца.",
+            "indication": "Рецидивирующие симптомные пароксизмы.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          },
+          {
+            "id": "action.safety-netting.arrhythmia",
+            "label": "Инструктаж при рецидиве аритмии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Объяснить экстренное обращение при обмороке, боли в груди, одышке или длительном приступе с плохим самочувствием.",
+            "indication": "Риск рецидива.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          }
+        ],
+        "conditional": [
+          {
+            "id": "action.disposition.outpatient-discharge",
+            "label": "Амбулаторное ведение и выписка",
+            "decision": "conditional",
+            "when": {
+              "all": [
+                {
+                  "fact": "hemodynamicallyStable",
+                  "op": "eq",
+                  "value": true
+                },
+                {
+                  "fact": "ongoingRapidAf",
+                  "op": "eq",
+                  "value": false
+                }
+              ]
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Амбулаторное ведение допустимо при отсутствии синкопе, ишемии, СН и неконтролируемой ЧСС, с назначенным наблюдением.",
+            "indication": "Стабильное состояние после завершившегося пароксизма.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": [
+          {
+            "id": "action.medication.aspirin.maintenance",
+            "label": "Антитромбоцитарная терапия ацетилсалициловой кислотой",
+            "decision": "unsafe-or-delaying",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Не использовать монотерапию аспирином вместо показанного антикоагулянта.",
+            "indication": "Аспирин не является заменой антикоагуляции для профилактики инсульта при ФП.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          }
+        ]
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.functional.ecg.resting-12-lead",
+            "label": "Электрокардиография в 12 отведениях в покое с интерпретацией",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Документирование ФП или подтверждение записи приступа.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Сейчас синусовый ритм 86 в минуту. На записи во время приступа — фибрилляция предсердий с узкими QRS.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.functional.ecg-ambulatory",
+            "label": "Холтеровское мониторирование сердечного ритма",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Оценка эпизодов и связи с симптомами.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Зарегистрирован двухчасовой пароксизм фибрилляции предсердий; пауз и опасных желудочковых аритмий нет.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.functional.echo.transthoracic",
+            "label": "Эхокардиография трансторакальная",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Оценка структурного заболевания и размеров предсердий.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Левое предсердие умеренно увеличено; ФВ ЛЖ 60%, значимого клапанного порока нет.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.tsh.blood",
+            "label": "Исследование уровня тиреотропного гормона в крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Исключение тиреотоксикоза.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "ТТГ 2,4 мМЕ/л.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "order-set.lab.renal-function-electrolytes",
+            "label": "Набор отдельных исследований функции почек и электролитов",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Дозирование антикоагулянта и коррекция электролитов.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Креатинин 80 мкмоль/л, калий 4,2 ммоль/л, магний 0,82 ммоль/л.",
+              "abnormal": false
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "study.imaging.xray.chest",
+            "label": "Обзорная рентгенография органов грудной клетки",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Нет признаков застоя или лёгочной патологии.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Размер сердца не увеличен, признаков застоя в лёгких нет.",
+              "abnormal": false
+            }
+          }
+        ],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.382.v2",
+          "title": "Фибрилляция и трепетание предсердий",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/382_2"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.cardiology.0003",
+      "title": "Декомпенсация ХСН со сниженной фракцией выброса",
+      "patient": {
+        "name": "Михаил Кузнецов",
+        "age": 68,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился по поводу усиливающегося отека ног и одышки при физической нагрузке.",
+        "chiefComplaint": "У меня перехватывает дыхание, когда я иду к почтовому ящику, и у меня опухли лодыжки.",
+        "vitals": {
+          "hr": 82,
+          "bp": "132/80",
+          "spo2": 96,
+          "temp": 36.7,
+          "rr": 18
+        },
+        "anamnesis": [
+          {
+            "id": "case.cardiology.0003.anamnesis.01",
+            "question": "Как давно появились симптомы?",
+            "answer": "Они появились около 3 месяцев назад и постепенно усиливаются.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0003.anamnesis.02",
+            "question": "На скольких подушках вы спите, чтобы не задыхаться?",
+            "answer": "Теперь приходится спать на трёх подушках.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0003.anamnesis.03",
+            "question": "Просыпаетесь ли вы ночью от нехватки воздуха?",
+            "answer": "Примерно два раза в неделю.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0003.anamnesis.04",
+            "question": "Какие сердечно-сосудистые заболевания у вас были раньше?",
+            "answer": "4 года назад перенёс инфаркт миокарда.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0003.anamnesis.05",
+            "question": "Изменился ли ваш вес?",
+            "answer": "За последние 2 недели прибавил 4 кг.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0003.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {
+        "systemicCongestionMarked": false
+      },
+      "factNotes": [
+        "Симптомы и застой тяжелее, чем подразумевает исходная метка NYHA II."
+      ],
+      "diagnosis": {
+        "id": "condition.heart-failure.reduced-ef.decompensated",
+        "label": "Декомпенсация хронической сердечной недостаточности со сниженной ФВ ЛЖ",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "I50.0",
+            "display": "Декомпенсация хронической сердечной недостаточности со сниженной ФВ ЛЖ",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.hf-precipitant",
+            "label": "Поиск причины декомпенсации сердечной недостаточности",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Оценить ишемию, аритмию, инфекцию, анемию, функцию почек, приверженность и лекарства.",
+            "indication": "Нарастание застоя и массы тела.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          },
+          {
+            "id": "action.medication.loop-diuretic",
+            "label": "Петлевой диуретик при застое",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Назначить петлевой диуретик с выбором дозы по предшествующей терапии; контролировать диурез, массу, креатинин и электролиты.",
+            "indication": "Клинический и рентгенологический застой.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          },
+          {
+            "id": "action.medication.hf-foundational-therapy",
+            "label": "Оптимизация базисной терапии ХСН со сниженной ФВ",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Проверить и поэтапно оптимизировать иАРНИ/иАПФ/АРА II, бета-блокатор, антагонист минералокортикоидных рецепторов и ингибитор SGLT2 с учётом противопоказаний.",
+            "indication": "ФВ ЛЖ 35% после стабилизации.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          },
+          {
+            "id": "action.disposition.hf-urgent",
+            "label": "Неотложная маршрутизация при декомпенсации ХСН",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Организовать неотложную очную оценку и госпитализацию при невозможности безопасного быстрого амбулаторного лечения и мониторинга.",
+            "indication": "Ортопноэ, ночные приступы удушья, прибавка 4 кг и застой.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "action.support.oxygen.titrated",
+            "label": "Титрованная оксигенотерапия",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Не назначать кислород рутинно; использовать при подтверждённой гипоксемии с титрованием.",
+            "indication": "SpO₂ 96%, гипоксемии нет.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          }
+        ],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.lab.nt-probnp.blood",
+            "label": "Исследование уровня N-концевого фрагмента натрийуретического пропептида B-типа в крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Поддерживает диагноз и исходную оценку риска.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "NT-proBNP 820 пг/мл, повышен.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.functional.echo.transthoracic",
+            "label": "Эхокардиография трансторакальная",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Определение фенотипа ХСН и ФВ.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "ФВ ЛЖ 35%, глобальная гипокинезия и постинфарктное истончение передней стенки.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.imaging.xray.chest",
+            "label": "Обзорная рентгенография органов грудной клетки",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Оценка лёгочного застоя.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Кардиомегалия, линии Керли B и признаки венозного застоя в лёгких.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.functional.ecg.resting-12-lead",
+            "label": "Электрокардиография в 12 отведениях в покое с интерпретацией",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Поиск ишемии и аритмии.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Синусовый ритм 82 в минуту; патологические Q в V1–V4, внутрижелудочковая задержка проведения.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "order-set.lab.renal-function-electrolytes",
+            "label": "Набор отдельных исследований функции почек и электролитов",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Безопасность диуретической и базисной терапии.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Креатинин 106 мкмоль/л, натрий 138 ммоль/л, калий 4,4 ммоль/л.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Поиск анемии как усугубляющего фактора.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Гемоглобин 126 г/л, лейкоциты 7,0×10⁹/л.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [
+          {
+            "id": "study.lab.liver-enzymes.blood",
+            "label": "Исследование активности АЛТ и АСТ в крови",
+            "decision": "conditional",
+            "when": {
+              "fact": "systemicCongestionMarked",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Оценка при выраженном системном застое или подозрении на поражение печени.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "АСТ 36 Ед/л, АЛТ 32 Ед/л.",
+              "abnormal": false
+            }
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.156.v2",
+          "title": "Хроническая сердечная недостаточность",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/156_2"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.cardiology.0004",
+      "title": "Умеренная первичная митральная недостаточность",
+      "patient": {
+        "name": "Мария Кузнецова",
+        "age": 59,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась для обследования по поводу шума в сердце.",
+        "chiefComplaint": "Мой врач услышал шум в сердце и хочет его проверить.",
+        "vitals": {
+          "hr": 74,
+          "bp": "124/76",
+          "spo2": 98,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.cardiology.0004.anamnesis.01",
+            "question": "Какие симптомы вас беспокоят?",
+            "answer": "Немного быстрее устаю и иногда чувствую сильное сердцебиение.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0004.anamnesis.02",
+            "question": "Есть ли одышка?",
+            "answer": "Только при сильной нагрузке.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0004.anamnesis.03",
+            "question": "Раньше выявляли заболевания сердца?",
+            "answer": "Несколько лет назад у меня обнаружили пролапс митрального клапана.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0004.anamnesis.04",
+            "question": "Какие заболевания были у близких родственников?",
+            "answer": "У близких родственников подобных заболеваний не было.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0004.anamnesis.05",
+            "question": "Были ли повышение температуры или озноб?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0004.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {
+        "severeMrOrTrigger": false
+      },
+      "factNotes": [
+        "ЭхоКГ соответствует умеренной, а не тяжёлой МН; немедленная клапанная операция не моделируется."
+      ],
+      "diagnosis": {
+        "id": "condition.mitral-regurgitation.primary.moderate",
+        "label": "Умеренная первичная митральная недостаточность",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "I34.0",
+            "display": "Умеренная первичная митральная недостаточность",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.monitoring.mitral-regurgitation",
+            "label": "Динамическое наблюдение при митральной недостаточности",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Организовать кардиологическое наблюдение, периодическую ЭхоКГ и оценку новых симптомов/ФП.",
+            "indication": "Умеренная МН при сохранной ФВ и КСР 38 мм.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          },
+          {
+            "id": "action.disposition.outpatient-discharge",
+            "label": "Амбулаторное ведение и выписка",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Продолжить амбулаторное наблюдение с конкретным сроком контроля, а не завершать случай словом «выписка».",
+            "indication": "Нет признаков острой СН или инфекционного эндокардита.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          }
+        ],
+        "conditional": [
+          {
+            "id": "action.referral.valve-center",
+            "label": "Направление в специализированный клапанный центр",
+            "decision": "conditional",
+            "when": {
+              "fact": "severeMrOrTrigger",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Направить в специализированный центр для Heart Team и оценки коррекции клапана.",
+            "indication": "Тяжёлая МН, симптомы, ухудшение функции/размеров ЛЖ, лёгочная гипертензия или новая ФП.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.functional.echo.transthoracic",
+            "label": "Эхокардиография трансторакальная",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Ключевой метод оценки механизма и тяжести МН.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Умеренная первичная митральная регургитация при пролапсе задней створки; ФВ ЛЖ 60%, КСР ЛЖ 38 мм.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.functional.ecg.resting-12-lead",
+            "label": "Электрокардиография в 12 отведениях в покое с интерпретацией",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Оценка ритма и гипертрофии.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Синусовый ритм 74 в минуту, признаков гипертрофии ЛЖ нет.",
+              "abnormal": false
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [
+          {
+            "id": "study.lab.nt-probnp.blood",
+            "label": "Исследование уровня N-концевого фрагмента натрийуретического пропептида B-типа в крови",
+            "decision": "optional",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Может дополнять оценку бессимптомного пациента, но не заменяет ЭхоКГ.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "NT-proBNP 90 пг/мл.",
+              "abnormal": false
+            }
+          }
+        ],
+        "avoid": [
+          {
+            "id": "study.imaging.xray.chest",
+            "label": "Обзорная рентгенография органов грудной клетки",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "При отсутствии СН рутинно не требуется.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Застойных изменений нет.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Нет клинических признаков анемии или инфекции.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Гемоглобин 136 г/л, лейкоциты 6,0×10⁹/л.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.lab.tsh.blood",
+            "label": "Исследование уровня тиреотропного гормона в крови",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Нет самостоятельного показания.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "ТТГ 1,8 мМЕ/л.",
+              "abnormal": false
+            }
+          }
+        ],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.881.v1",
+          "title": "Митральная недостаточность",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/881_1"
+        }
+      ],
+      "reviewStatus": "major-revision-required"
+    },
+    {
+      "id": "case.cardiology.0005",
+      "title": "Гипертрофическая кардиомиопатия с нагрузочным предобмороком",
+      "patient": {
+        "name": "Фёдор Воробьёв",
+        "age": 24,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился после обморока во время игры в баскетбол.",
+        "chiefComplaint": "Во время игры в баскетбол у меня закружилась голова, появилось давление в груди, и я чуть не потерял сознание.",
+        "vitals": {
+          "hr": 72,
+          "bp": "118/72",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.cardiology.0005.anamnesis.01",
+            "question": "Были ли случаи внезапной смерти у близких родственников?",
+            "answer": "Дядя внезапно умер в 32 года.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0005.anamnesis.02",
+            "question": "Такое произошло впервые?",
+            "answer": "Нет, в прошлом году у меня уже было предобморочное состояние.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0005.anamnesis.03",
+            "question": "Говорили ли вам раньше, что у вас шум в сердце?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0005.anamnesis.04",
+            "question": "Ощущаете ли вы учащённое или нерегулярное сердцебиение?",
+            "answer": "Да, изредка чувствую сердцебиение.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0005.anamnesis.05",
+            "question": "Употребляете ли вы психоактивные вещества?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0005.anamnesis.06",
+            "question": "Ели ли вы перед тренировкой или игрой?",
+            "answer": "Да.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {},
+      "factNotes": [
+        "Случай требует специализированной срочной маршрутизации; неспецифическое admit-floor не является достаточным решением."
+      ],
+      "diagnosis": {
+        "id": "condition.hypertrophic-cardiomyopathy",
+        "label": "Гипертрофическая кардиомиопатия",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "I42.1",
+            "display": "Гипертрофическая кардиомиопатия",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.hcm-scd-risk",
+            "label": "Стратификация риска внезапной сердечной смерти при ГКМП",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Полностью оценить факторы риска ВСС, включая максимальную толщину стенки, синкопе, семейный анамнез, НЖТ, ФВ, апикальную аневризму и фиброз.",
+            "indication": "Нагрузочный предобморок и семейный анамнез внезапной смерти.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          },
+          {
+            "id": "action.restriction.competitive-sport",
+            "label": "Временное исключение соревновательных нагрузок",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Исключить соревновательные и высокоинтенсивные нагрузки до специализированной оценки; дать индивидуальные рекомендации после неё.",
+            "indication": "Симптомы во время баскетбола до завершения оценки риска.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          },
+          {
+            "id": "action.referral.hcm-center.urgent",
+            "label": "Срочное направление в специализированный центр ГКМП",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Организовать срочную оценку в центре с опытом ведения ГКМП; формат госпитализации определить по текущему риску и доступности.",
+            "indication": "Повторный нагрузочный предобморок и семейная внезапная смерть.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          },
+          {
+            "id": "action.counseling.hcm-family",
+            "label": "Генетическое консультирование и обследование родственников",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Предложить генетическое консультирование и клинико-инструментальный скрининг родственников первой линии.",
+            "indication": "Вероятное наследственное заболевание.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": [
+          {
+            "id": "action.disposition.outpatient-discharge",
+            "label": "Амбулаторное ведение и выписка",
+            "decision": "unsafe-or-delaying",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Не завершать случай обычной выпиской до определения безопасного маршрута.",
+            "indication": "Простая выписка без стратификации риска небезопасна.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          }
+        ]
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.functional.ecg.resting-12-lead",
+            "label": "Электрокардиография в 12 отведениях в покое с интерпретацией",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Выявление характерных изменений и аритмического риска.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Синусовый ритм; признаки гипертрофии ЛЖ, патологические узкие Q и инверсия T в V4–V6.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.functional.echo.transthoracic",
+            "label": "Эхокардиография трансторакальная",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Подтверждение гипертрофии и оценка обструкции.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Асимметричная гипертрофия МЖП до 18 мм, SAM митрального клапана; провоцируемый градиент в ВТЛЖ 42 мм рт. ст.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.functional.ecg-ambulatory",
+            "label": "Холтеровское мониторирование сердечного ритма",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Поиск неустойчивой ЖТ и количественная оценка аритмий.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Редкие одиночные желудочковые экстрасистолы; неустойчивая желудочковая тахикардия не зарегистрирована.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.imaging.cmr",
+            "label": "Магнитно-резонансная томография сердца",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Уточнение морфологии и фиброза для стратификации риска.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Максимальная толщина МЖП 19 мм; позднее контрастирование около 8% массы ЛЖ.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "study.lab.troponin-i.blood.quantitative",
+            "label": "Количественное исследование уровня сердечного тропонина I в крови",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "При отсутствии продолжающейся боли и признаков ОКС рутинно не нужен.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Высокочувствительный тропонин I 8 нг/л, ниже 99-го перцентиля.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.imaging.xray.chest",
+            "label": "Обзорная рентгенография органов грудной клетки",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Не подтверждает ГКМП и не влияет на текущую тактику.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Размер сердца не увеличен, лёгкие без очаговых и застойных изменений.",
+              "abnormal": false
+            }
+          }
+        ],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.283.v2",
+          "title": "Гипертрофическая кардиомиопатия",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/283_2"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.cardiology.0006",
+      "title": "Острый миоперикардит",
+      "patient": {
+        "name": "Светлана Воробьёва",
+        "age": 33,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась с болью в груди, которая уменьшается при наклоне вперёд.",
+        "chiefComplaint": "У меня резкая боль в груди, которая усиливается в положении лежа. Началось после простуды.",
+        "vitals": {
+          "hr": 92,
+          "bp": "122/76",
+          "spo2": 98,
+          "temp": 37.6,
+          "rr": 16
+        },
+        "anamnesis": [
+          {
+            "id": "case.cardiology.0006.anamnesis.01",
+            "question": "Когда начались симптомы?",
+            "answer": "3 дня назад, после болезни, похожей на грипп.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0006.anamnesis.02",
+            "question": "Зависит ли боль от положения тела?",
+            "answer": "Когда лежу на спине, боль усиливается, а если наклонюсь вперёд — становится легче.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0006.anamnesis.03",
+            "question": "Какая это боль?",
+            "answer": "Боль острая, колющая.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0006.anamnesis.04",
+            "question": "Куда отдаёт боль?",
+            "answer": "Иногда в левое плечо.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0006.anamnesis.05",
+            "question": "Усиливается ли боль при глубоком вдохе?",
+            "answer": "Да.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0006.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {},
+      "factNotes": [
+        "Исходный диагноз «перикардит» исправлен на миоперикардит из-за повышения тропонина и данных МРТ."
+      ],
+      "diagnosis": {
+        "id": "condition.myopericarditis.acute",
+        "label": "Острый миоперикардит",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "I30.9",
+            "display": "Острый миоперикардит",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.disposition.myopericarditis-inpatient",
+            "label": "Госпитализация для оценки миоперикардита",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Госпитализировать для мониторинга, исключения ОКС и оценки функции ЛЖ/аритмий.",
+            "indication": "Повышение тропонина указывает на вовлечение миокарда.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          },
+          {
+            "id": "action.medication.nsaid.pericarditis",
+            "label": "НПВС или ацетилсалициловая кислота при перикардите",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Ибупрофен 600 мг внутрь 3 раза в сутки либо ацетилсалициловая кислота в противовоспалительной дозе с гастропротекцией и постепенным снижением после ответа.",
+            "indication": "Перикардиальная боль и воспаление.",
+            "checks": [],
+            "contraindications": [
+              "Активное кровотечение",
+              "Тяжёлая почечная недостаточность",
+              "Аллергия"
+            ],
+            "success": "Решение и результат повторной оценки документированы."
+          },
+          {
+            "id": "action.medication.colchicine.pericarditis",
+            "label": "Колхицин при остром перикардите",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Колхицин 0,5 мг 1 раз/сут при массе <70 кг или 0,5 мг 2 раза/сут при массе ≥70 кг обычно 3 месяца, с учётом почек, печени и взаимодействий.",
+            "indication": "Снижение риска рецидива при остром перикардите.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          },
+          {
+            "id": "action.restriction.myopericarditis-exercise",
+            "label": "Ограничение физической нагрузки при миоперикардите",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Исключить интенсивные и соревновательные нагрузки; срок возврата определяет кардиолог после нормализации маркеров и обследования.",
+            "indication": "Вовлечение миокарда.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": [
+          {
+            "id": "action.disposition.outpatient-discharge",
+            "label": "Амбулаторное ведение и выписка",
+            "decision": "unsafe-or-delaying",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Не выписывать без мониторинга и плана оценки миокарда.",
+            "indication": "Тропонин повышен, поэтому это не низкорисковый изолированный перикардит.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          }
+        ]
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.functional.ecg.resting-12-lead",
+            "label": "Электрокардиография в 12 отведениях в покое с интерпретацией",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Поддерживает диагноз и помогает исключать ОКС.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Синусовая тахикардия 92 в минуту; диффузный вогнутый подъём ST и депрессия PR, кроме aVR.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.troponin-i.blood.quantitative",
+            "label": "Количественное исследование уровня сердечного тропонина I в крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Подтверждает вовлечение миокарда и требует динамики.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Высокочувствительный тропонин I 78 нг/л, выше 99-го перцентиля.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.functional.echo.transthoracic",
+            "label": "Эхокардиография трансторакальная",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Оценка выпота, тампонады и функции ЛЖ.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Небольшой выпот в полости перикарда до 6 мм; ФВ ЛЖ 60%, признаков тампонады нет.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.crp.serum.quantitative",
+            "label": "Исследование уровня C-реактивного белка в сыворотке крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Оценка активности и последующей динамики воспаления.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "С-реактивный белок 64 мг/л.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.imaging.cmr",
+            "label": "Магнитно-резонансная томография сердца",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Подтверждение вовлечения миокарда при стабильном состоянии.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Отёк и субэпикардиальное позднее контрастирование миокарда с сопутствующим воспалением перикарда.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [
+          {
+            "id": "study.lab.esr.blood",
+            "label": "Исследование скорости оседания эритроцитов",
+            "decision": "optional",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Неспецифический дополнительный маркер.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "СОЭ 38 мм/ч.",
+              "abnormal": true
+            }
+          }
+        ],
+        "avoid": [
+          {
+            "id": "study.imaging.xray.chest",
+            "label": "Обзорная рентгенография органов грудной клетки",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Нормальный снимок не исключает миоперикардит.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Силуэт сердца не увеличен, лёгкие без очаговых изменений.",
+              "abnormal": false
+            }
+          }
+        ],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.746.v2",
+          "title": "Перикардиты",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/746_2"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.cardiology.0007",
+      "title": "Лекарственно- и гиповолемически обусловленная ортостатическая гипотензия",
+      "patient": {
+        "name": "Иван Васильев",
+        "age": 76,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился по поводу эпизодов головокружения в положении стоя.",
+        "chiefComplaint": "У меня кружится голова каждый раз, когда я быстро встаю.",
+        "vitals": {
+          "hr": 72,
+          "bp": "118/72",
+          "spo2": 97,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.cardiology.0007.anamnesis.01",
+            "question": "В какой момент появляется головокружение?",
+            "answer": "Когда встаю с кровати или со стула.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0007.anamnesis.02",
+            "question": "Были ли падения?",
+            "answer": "В прошлом месяце два раза чуть не упал.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0007.anamnesis.03",
+            "question": "Какие лекарства вы принимаете?",
+            "answer": "Тамсулозин, лизиноприл и гидрохлоротиазид.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0007.anamnesis.04",
+            "question": "Какие хронические заболевания у вас есть?",
+            "answer": "Аденома простаты и гипертония.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0007.anamnesis.05",
+            "question": "Сколько жидкости вы пьёте?",
+            "answer": "Пью мало жидкости, стараюсь избегать воды.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0007.anamnesis.06",
+            "question": "Изменилось ли зрение?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {
+        "anemiaOrBleedingSuspected": false
+      },
+      "factNotes": [
+        "Диагноз подтверждается новой ортостатической пробой; исходная обычная величина АД этого не делала."
+      ],
+      "diagnosis": {
+        "id": "condition.orthostatic-hypotension.drug-volume-related",
+        "label": "Ортостатическая гипотензия",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "I95.1",
+            "display": "Ортостатическая гипотензия",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.orthostatic-vitals",
+            "label": "Подтверждение ортостатической гипотензии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Измерить АД и ЧСС после покоя лёжа и через 1 и 3 минуты стоя; сопоставить с симптомами.",
+            "indication": "Позиционно обусловленное головокружение.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          },
+          {
+            "id": "action.review.orthostatic-medications",
+            "label": "Пересмотр препаратов, усиливающих ортостатическую гипотензию",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Оценить показания, дозы и время приёма; согласованно уменьшить лекарственную нагрузку без бесконтрольной отмены терапии АГ/ДГПЖ.",
+            "indication": "Тамсулозин, диуретик и иАПФ могут усиливать симптомы.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          },
+          {
+            "id": "action.support.oral-hydration",
+            "label": "Коррекция питьевого режима",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Увеличить пероральное потребление жидкости при отсутствии СН/тяжёлой ХБП; дать индивидуальный объём.",
+            "indication": "Низкое потребление жидкости и признаки гиповолемии.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          },
+          {
+            "id": "action.support.orthostatic-nonpharmacologic",
+            "label": "Немедикаментозная профилактика ортостатических симптомов",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Медленно вставать, избегать перегрева, обучить физическим контрманёврам и оценить риск падений.",
+            "indication": "Профилактика падений и симптомов.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "action.support.crystalloid.iv",
+            "label": "Внутривенная инфузия кристаллоидного раствора",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Не использовать внутривенную инфузию рутинно; рассматривать при невозможности пероральной регидратации или выраженной гиповолемии.",
+            "indication": "Пациент стабилен и может пить.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          }
+        ],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.functional.orthostatic-active-standing",
+            "label": "Активная ортостатическая проба с измерением АД и ЧСС",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Ключевое подтверждающее исследование.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "После 5 минут лёжа АД 132/76, ЧСС 70; через 3 минуты стоя АД 102/64, ЧСС 82, возникло головокружение.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.functional.ecg.resting-12-lead",
+            "label": "Электрокардиография в 12 отведениях в покое с интерпретацией",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Исключение явной брадиаритмии или нарушения проводимости.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Синусовый ритм 72 в минуту, блокад и ишемических изменений нет.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "order-set.lab.renal-function-electrolytes",
+            "label": "Набор отдельных исследований функции почек и электролитов",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Оценка гиповолемии, почек и электролитов.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Мочевина 10,0 ммоль/л, креатинин 97 мкмоль/л, натрий 141 ммоль/л, калий 4,0 ммоль/л; вероятна умеренная гиповолемия.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "conditional",
+            "when": {
+              "fact": "anemiaOrBleedingSuspected",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Нужен при подозрении на анемию или кровопотерю.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Гемоглобин 128 г/л, лейкоциты 6,4×10⁹/л.",
+              "abnormal": false
+            }
+          }
+        ],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "study.functional.echo.transthoracic",
+            "label": "Эхокардиография трансторакальная",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Нет шума, СН, патологической ЭКГ или нагрузочного обморока.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "ФВ ЛЖ 60%, значимой клапанной патологии нет.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.lab.vitamin-b12.blood",
+            "label": "Определение уровня витамина B12 (цианокобаламина) в крови",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Нет неврологических признаков дефицита.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Витамин B12 380 пг/мл.",
+              "abnormal": false
+            }
+          }
+        ],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.62.v3",
+          "title": "Артериальная гипертензия у взрослых",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/62_3"
+        }
+      ],
+      "reviewStatus": "major-revision-required"
+    },
+    {
+      "id": "case.cardiology.0008",
+      "title": "Симптомная мономорфная желудочковая экстрасистолия",
+      "patient": {
+        "name": "Татьяна Павлова",
+        "age": 45,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась из-за ощущения перебоев в работе сердца.",
+        "chiefComplaint": "Несколько раз в день ощущаю перебои в работе сердца.",
+        "vitals": {
+          "hr": 76,
+          "bp": "120/74",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.cardiology.0008.anamnesis.01",
+            "question": "Когда начались симптомы?",
+            "answer": "Несколько месяцев назад.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0008.anamnesis.02",
+            "question": "Сколько кофеина вы употребляете?",
+            "answer": "Пью около 5 чашек кофе в день.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0008.anamnesis.03",
+            "question": "В последнее время у вас много стресса?",
+            "answer": "Да, в последнее время на работе очень напряжённо.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0008.anamnesis.04",
+            "question": "Были ли обмороки или предобморочные состояния?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0008.anamnesis.05",
+            "question": "Есть ли одышка?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0008.anamnesis.06",
+            "question": "Как изменился ваш аппетит?",
+            "answer": "Аппетит обычный.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {
+        "symptomsPersistAfterTriggerReduction": false
+      },
+      "factNotes": [
+        "Нагрузка ЖЭ 4,5%, сердце структурно нормально; антиаритмическое лечение не является автоматическим."
+      ],
+      "diagnosis": {
+        "id": "condition.premature-ventricular-contractions",
+        "label": "Желудочковая экстрасистолия",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "I49.3",
+            "display": "Желудочковая экстрасистолия",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.pvc-burden",
+            "label": "Оценка нагрузки желудочковой экстрасистолией",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Оценить суточную нагрузку, морфологию, пробежки ЖТ, связь с симптомами и структурную патологию сердца.",
+            "indication": "Ежедневные симптомные ЖЭ.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          },
+          {
+            "id": "action.support.reduce-stimulants",
+            "label": "Снижение потребления стимуляторов",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Предложить постепенное снижение кофеина, нормализацию сна и оценку динамики симптомов.",
+            "indication": "Пять чашек кофе в день и стресс могут усиливать симптомы.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          },
+          {
+            "id": "action.disposition.outpatient-discharge",
+            "label": "Амбулаторное ведение и выписка",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Амбулаторное наблюдение с инструкцией обратиться при синкопе, нагрузочных симптомах или нарастании перебоев.",
+            "indication": "Низкая нагрузка ЖЭ, нормальная ФВ и отсутствие ЖТ/синкопе.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          }
+        ],
+        "conditional": [
+          {
+            "id": "action.medication.beta-blocker.pvc",
+            "label": "Бета-адреноблокатор при симптомной желудочковой экстрасистолии",
+            "decision": "conditional",
+            "when": {
+              "fact": "symptomsPersistAfterTriggerReduction",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Рассмотреть бета-адреноблокатор в минимальной эффективной дозе с контролем ЧСС и АД.",
+            "indication": "Сохраняющиеся беспокоящие симптомы после коррекции триггеров.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.functional.ecg.resting-12-lead",
+            "label": "Электрокардиография в 12 отведениях в покое с интерпретацией",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Документирование морфологии ЖЭ.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Синусовый ритм 76 в минуту, частые мономорфные желудочковые экстрасистолы.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.functional.ecg-ambulatory",
+            "label": "Холтеровское мониторирование сердечного ритма",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Количественная оценка нагрузки и опасных форм.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Мономорфная желудочковая экстрасистолия, нагрузка 4,5%; пробежек желудочковой тахикардии нет.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.functional.echo.transthoracic",
+            "label": "Эхокардиография трансторакальная",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Исключение структурной патологии и дисфункции ЛЖ.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Структурной патологии сердца не выявлено, ФВ ЛЖ 62%.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.lab.tsh.blood",
+            "label": "Исследование уровня тиреотропного гормона в крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Исключение тиреотоксикоза.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "ТТГ 1,7 мМЕ/л.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "order-set.lab.renal-function-electrolytes",
+            "label": "Набор отдельных исследований функции почек и электролитов",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Оценка калия, магния и кальция.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Калий 4,0 ммоль/л, магний 0,82 ммоль/л, кальций 2,35 ммоль/л.",
+              "abnormal": false
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "study.lab.troponin-i.blood.quantitative",
+            "label": "Количественное исследование уровня сердечного тропонина I в крови",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Нет боли, ишемических изменений или острого состояния.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Высокочувствительный тропонин I 4 нг/л, ниже 99-го перцентиля.",
+              "abnormal": false
+            }
+          }
+        ],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.569.v2",
+          "title": "Желудочковые нарушения ритма сердца. Внезапная сердечная смерть",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/569_2"
+        }
+      ],
+      "reviewStatus": "major-revision-required"
+    },
+    {
+      "id": "case.cardiology.0009",
+      "title": "Неконтролируемая артериальная гипертензия без острого поражения органов-мишеней",
+      "patient": {
+        "name": "Виктор Орлов",
+        "age": 57,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "urgent",
+        "arrival": "Самостоятельно обратился после измерения артериального давления 188/112 мм рт. ст. дома.",
+        "chiefComplaint": "Домашний тонометр показал давление 188/112 мм рт. ст.; болит голова.",
+        "vitals": {
+          "hr": 88,
+          "bp": "184/108",
+          "spo2": 98,
+          "temp": 36.7,
+          "rr": 16
+        },
+        "anamnesis": [
+          {
+            "id": "case.cardiology.0009.anamnesis.01",
+            "question": "Какие препараты от давления вы принимаете?",
+            "answer": "Амлодипин, но таблетки закончились ещё на прошлой неделе.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0009.anamnesis.02",
+            "question": "Как давно у вас повышено давление?",
+            "answer": "Гипертония у меня уже около 10 лет.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0009.anamnesis.03",
+            "question": "Есть ли головная боль или нарушения зрения?",
+            "answer": "Легкая головная боль, изменений в зрении нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0009.anamnesis.04",
+            "question": "Есть ли боль в груди?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0009.anamnesis.05",
+            "question": "Есть ли слабость или онемение?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0009.anamnesis.06",
+            "question": "Много ли соли вы употребляете?",
+            "answer": "Да, употребляю много соли.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {
+        "suspectedAcuteCardiacDamage": false
+      },
+      "factNotes": [
+        "Головная боль сама по себе не доказывает гипертоническую чрезвычайную ситуацию; острое поражение органов-мишеней не выявлено."
+      ],
+      "diagnosis": {
+        "id": "condition.hypertension.uncontrolled-severe",
+        "label": "Неконтролируемая артериальная гипертензия без острого поражения органов-мишеней",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "I10",
+            "display": "Неконтролируемая артериальная гипертензия без острого поражения органов-мишеней",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.hypertensive-emergency",
+            "label": "Исключение гипертонической чрезвычайной ситуации",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Повторно правильно измерить АД и целенаправленно оценить неврологические, сердечные, аортальные, почечные и офтальмологические признаки острого поражения.",
+            "indication": "АД 184/108 мм рт. ст. и головная боль.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          },
+          {
+            "id": "action.medication.antihypertensive.restart-adjust",
+            "label": "Возобновление и коррекция плановой антигипертензивной терапии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Возобновить и рационально усилить длительно действующую пероральную терапию с учётом прежней схемы, приверженности, СКФ и электролитов.",
+            "indication": "Пропуск амлодипина и стойко высокое АД без острой органной катастрофы.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          },
+          {
+            "id": "action.avoid.rapid-bp-lowering",
+            "label": "Отказ от быстрого неконтролируемого снижения АД",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Не применять быстрое агрессивное снижение АД или внутривенные препараты; снижать давление контролируемо.",
+            "indication": "Острое поражение органов-мишеней не выявлено.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          },
+          {
+            "id": "action.monitoring.bp-followup",
+            "label": "Ранний контроль артериального давления",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Организовать домашний контроль, ранний повторный визит и проверку доступности препаратов.",
+            "indication": "Высокое АД после перерыва терапии.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "action.monitoring.observation.unspecified",
+            "label": "Неспецифицированное наблюдение",
+            "decision": "unscorable-as-specified",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Не засчитывать без конкретного протокола.",
+            "indication": "Слово «наблюдать» не определяет частоту измерений, цель и срок решения.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          }
+        ],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.functional.ecg.resting-12-lead",
+            "label": "Электрокардиография в 12 отведениях в покое с интерпретацией",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Оценка гипертрофии и острой ишемии.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Синусовый ритм 88 в минуту; электрокардиографические признаки гипертрофии ЛЖ с вторичными изменениями реполяризации.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "order-set.lab.renal-function-electrolytes",
+            "label": "Набор отдельных исследований функции почек и электролитов",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Оценка функции почек и электролитов до коррекции терапии.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Креатинин 88 мкмоль/л, калий 4,2 ммоль/л, натрий 140 ммоль/л; расчётная СКФ сохранена.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.lab.uacr.urine",
+            "label": "Расчёт отношения альбумин/креатинин в моче",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Оценка поражения почек как органа-мишени.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Отношение альбумин/креатинин мочи 4,2 мг/ммоль, умеренно повышено.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.exam.fundus",
+            "label": "Офтальмоскопия (осмотр глазного дна)",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Поиск кровоизлияний, экссудатов и отёка диска.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Сужение артериол и артериовенозные перекрёсты; кровоизлияний, экссудатов и отёка диска зрительного нерва нет.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.functional.bp-ambulatory",
+            "label": "Суточное мониторирование артериального давления",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Подтверждение профиля АД вне кабинета после исключения неотложности.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Среднесуточное АД 168/98 мм рт. ст.; ночное снижение недостаточное.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [
+          {
+            "id": "study.lab.troponin-i.blood.quantitative",
+            "label": "Количественное исследование уровня сердечного тропонина I в крови",
+            "decision": "conditional",
+            "when": {
+              "fact": "suspectedAcuteCardiacDamage",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Только при боли, одышке, ишемической ЭКГ или ином подозрении на повреждение миокарда.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Высокочувствительный тропонин I 9 нг/л, ниже 99-го перцентиля.",
+              "abnormal": false
+            }
+          }
+        ],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "study.imaging.xray.chest",
+            "label": "Обзорная рентгенография органов грудной клетки",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Нет симптомов острой СН или аортального синдрома.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Размер сердца на верхней границе нормы; отёка лёгких нет.",
+              "abnormal": false
+            }
+          }
+        ],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.62.v3",
+          "title": "Артериальная гипертензия у взрослых",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/62_3"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.cardiology.0010",
+      "title": "Вероятные статин-ассоциированные мышечные симптомы",
+      "patient": {
+        "name": "Виктория Павлова",
+        "age": 62,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась из-за мышечной боли на фоне приёма статина.",
+        "chiefComplaint": "После начала приёма нового препарата для снижения холестерина у меня болят мышцы бёдер.",
+        "vitals": {
+          "hr": 72,
+          "bp": "124/76",
+          "spo2": 98,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.cardiology.0010.anamnesis.01",
+            "question": "Через какое время после начала приёма аторвастатина появились симптомы?",
+            "answer": "Примерно через 6 недель после начала приёма.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0010.anamnesis.02",
+            "question": "Где именно болят мышцы?",
+            "answer": "Болят оба бедра, сильнее в верхней части, ближе к тазу.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0010.anamnesis.03",
+            "question": "Становилась ли моча тёмной?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0010.anamnesis.04",
+            "question": "Усиливаются ли симптомы при физической нагрузке?",
+            "answer": "Да, при нагрузке боль немного усиливается.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0010.anamnesis.05",
+            "question": "Есть ли слабость?",
+            "answer": "Да, есть небольшая слабость.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0010.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {
+        "rhabdomyolysisSuspected": false
+      },
+      "factNotes": [
+        "КФК выделена из ошибочно смешанного результата печёночных проб; диагноз остаётся вероятностным до отмены и повторного назначения."
+      ],
+      "diagnosis": {
+        "id": "condition.statin-associated-muscle-symptoms.probable",
+        "label": "Вероятные статин-ассоциированные мышечные симптомы",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "M79.1",
+            "display": "Вероятные статин-ассоциированные мышечные симптомы",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.statin-muscle-symptoms",
+            "label": "Оценка статин-ассоциированных мышечных симптомов",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Оценить временную связь, дозу, взаимодействия, тяжесть слабости, КФК, почки, ТТГ и альтернативные причины.",
+            "indication": "Симметричная проксимальная миалгия через 6 недель после начала статина.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          },
+          {
+            "id": "action.medication.statin.temporary-interruption",
+            "label": "Временная отмена статина для оценки связи симптомов",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Временно отменить текущий статин до разрешения симптомов и нормализации/стабилизации КФК; срок контроля определить явно.",
+            "indication": "Симптомы и умеренное повышение КФК без рабдомиолиза.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          },
+          {
+            "id": "action.medication.statin.rechallenge",
+            "label": "Повторный подбор переносимой липидснижающей терапии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "После разрешения симптомов повторно назначить меньшую дозу или другой статин; при непереносимости рассмотреть комбинацию с нестатиновым препаратом по уровню риска.",
+            "indication": "Необходимо сохранить снижение сердечно-сосудистого риска.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          },
+          {
+            "id": "action.safety-netting.rhabdomyolysis",
+            "label": "Инструктаж о признаках рабдомиолиза",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Срочно обратиться при нарастающей слабости, тёмной моче, уменьшении диуреза или выраженной генерализованной боли.",
+            "indication": "Риск редкого тяжёлого мышечного повреждения.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          },
+          {
+            "id": "action.disposition.outpatient-discharge",
+            "label": "Амбулаторное ведение и выписка",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Амбулаторное ведение допустимо с конкретным сроком повторной КФК и оценки симптомов.",
+            "indication": "Нет миоглобинурии, острой почечной недостаточности или резкого повышения КФК.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Решение и результат повторной оценки документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.lab.creatine-kinase.blood",
+            "label": "Определение активности креатинкиназы в крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Количественная оценка мышечного повреждения.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Креатинкиназа 410 Ед/л — умеренное повышение.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "order-set.lab.renal-function-electrolytes",
+            "label": "Набор отдельных исследований функции почек и электролитов",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Исключение острого повреждения почек и электролитных нарушений.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Креатинин 80 мкмоль/л, калий 4,1 ммоль/л, натрий 140 ммоль/л.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.lab.tsh.blood",
+            "label": "Исследование уровня тиреотропного гормона в крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Исключение гипотиреоза как фактора миалгии.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "ТТГ 2,0 мМЕ/л.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.lab.liver-enzymes.blood",
+            "label": "Исследование активности АЛТ и АСТ в крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Оценка трансаминаз отдельно от КФК.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "АСТ 52 Ед/л, АЛТ 48 Ед/л — менее трёх верхних границ нормы.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [
+          {
+            "id": "study.lab.urinalysis.general",
+            "label": "Общий (клинический) анализ мочи",
+            "decision": "conditional",
+            "when": {
+              "fact": "rhabdomyolysisSuspected",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Нужно при тёмной моче, выраженной слабости или значительном повышении КФК.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "Кровь и миоглобин в моче не выявлены.",
+              "abnormal": false
+            }
+          }
+        ],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "study.lab.vitamin-d-25oh.blood",
+            "label": "Исследование уровня 25-OH витамина D в крови",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Низкий витамин D не подтверждает причинную связь симптомов со статином.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "25-OH витамин D 22 нг/мл.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.esr.blood",
+            "label": "Исследование скорости оседания эритроцитов",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Нет клинической картины ревматической полимиалгии.",
+            "mustNotDelay": "Не задерживать помощь при появлении признаков нестабильности.",
+            "result": {
+              "result": "СОЭ 14 мм/ч.",
+              "abnormal": false
+            }
+          }
+        ],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.752.v1",
+          "title": "Нарушения липидного обмена",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/752_1"
+        }
+      ],
+      "reviewStatus": "major-revision-required"
+    }
+  ]
+}

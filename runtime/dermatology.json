@@ -1,0 +1,2419 @@
+{
+  "_meta": {
+    "schemaVersion": "1.0.0",
+    "collection": "dermatology",
+    "generator": "scripts/generate-runtime.mjs",
+    "caseCount": 10,
+    "language": "ru",
+    "clinicalSafety": "unsafe-until-clinician-approved",
+    "scoringMode": "rules-with-structured-conditions-and-parameter-review",
+    "conditionDsl": {
+      "always": "{\"always\":true}",
+      "comparison": "{\"fact\":\"path\",\"op\":\"eq|ne|lt|lte|gt|gte|in|exists\",\"value\":any}",
+      "all": "{\"all\":[...]}",
+      "any": "{\"any\":[...]}",
+      "not": "{\"not\":{...}}"
+    },
+    "inputSha256": {
+      "actions": "98e309bbe53759105d1f0bfc7d4589c3a5eeac9b7d195494e94ed56762257ba9",
+      "studies": "2102ed0da6a8a118145c5dfc007f01badd1c28d91a31d5228122171da6ebb16f",
+      "references": "2087d857cdd11a271c3a823ff5ac87712c20a518b3c8c28edd818449200f8fbb",
+      "content": "9ba0c2aa0e3b9368ebbc67b6d56d0b1352bf7a258860ae97cf6ba0e8bd88bf75",
+      "rules": "9c871f50912c9242bef041f1a5a64358ba8e00306c1464c2cc5abce260de1da3",
+      "config": "385fbad1a672aef851dbe774383edebd2f017b0a2beb55a5c8c2ed255bc61cb9"
+    }
+  },
+  "cases": [
+    {
+      "id": "case.dermatology.0001",
+      "title": "Бляшечный псориаз с подозрением на поражение суставов",
+      "patient": {
+        "name": "Павел Петров",
+        "age": 36,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился из-за очередного обострения высыпаний на локтях и коленях.",
+        "chiefComplaint": "Несколько лет появляются красные шелушащиеся бляшки на локтях, коленях и волосистой части головы.",
+        "vitals": {
+          "hr": 74,
+          "bp": "122/78",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.dermatology.0001.anamnesis.01",
+            "question": "Где расположены высыпания?",
+            "answer": "На локтях, коленях и волосистой части головы.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0001.anamnesis.02",
+            "question": "Есть ли похожее заболевание у родственников?",
+            "answer": "У отца был псориаз.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0001.anamnesis.03",
+            "question": "Бывают ли боль или утренняя скованность в суставах?",
+            "answer": "Пальцы иногда болят и скованы около 40 минут после пробуждения.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0001.anamnesis.04",
+            "question": "Изменились ли ногти?",
+            "answer": "На нескольких ногтях появились точечные углубления.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0001.anamnesis.05",
+            "question": "Как выглядят очаги и насколько они зудят?",
+            "answer": "Это чёткие красные бляшки с серебристыми чешуйками; зуд умеренный.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0001.anamnesis.06",
+            "question": "Вы недавно путешествовали?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {},
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.psoriasis.plaque",
+        "label": "Бляшечный псориаз",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "L40.0",
+            "display": "Псориаз обыкновенный",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.psoriasis-joints",
+            "label": "Оценка тяжести псориаза и скрининг псориатического артрита",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Оценить BSA/PASI или эквивалентную клиническую тяжесть, влияние на качество жизни, ногти и воспалительные суставные симптомы.",
+            "indication": "Бляшки, изменения ногтей и утренняя скованность требуют оценки площади, тяжести и суставных симптомов.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.psoriasis.topical-vitamin-d-steroid",
+            "label": "Наружная терапия псориаза аналогом витамина D и глюкокортикостероидом",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Комбинация кальципотриола и бетаметазона наружно 1 раз в сутки на бляшки курсом до 4 недель с учётом локализации.",
+            "indication": "При ограниченном бляшечном псориазе наружная терапия является стартовой.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.emollient.regular",
+            "label": "Регулярное применение эмолентов",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Наносить эмолент без отдушек на сухие участки не менее 2 раз в сутки и после водных процедур.",
+            "indication": "Уменьшение сухости, шелушения и зуда.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.referral.rheumatology.psoriatic-arthritis",
+            "label": "Направление к ревматологу при подозрении на псориатический артрит",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Направить к ревматологу для очной оценки; не откладывать направление до ухудшения функции суставов.",
+            "indication": "Утренняя скованность около 40 минут и поражение ногтей повышают вероятность псориатического артрита.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "action.disposition.outpatient-discharge",
+            "label": "Амбулаторное ведение и выписка",
+            "decision": "unscorable-as-specified",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Сформировать конкретный амбулаторный план лечения, контроля и маршрутизации.",
+            "indication": "Одна формулировка «выписать» не содержит лечения и плана наблюдения.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "unsafe": [
+          {
+            "id": "action.avoid.systemic-glucocorticoid.dermatosis",
+            "label": "Отказ от необоснованного системного глюкокортикостероида",
+            "decision": "unsafe-or-delaying",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Не назначать системный глюкокортикостероид без отдельного специализированного показания.",
+            "indication": "Внутривенный системный глюкокортикостероид не является рутинной терапией ограниченного бляшечного псориаза.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ]
+      },
+      "studies": {
+        "required": [],
+        "conditional": [],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Для клинической диагностики ограниченного псориаза ОАК не требуется; он может понадобиться перед отдельными видами системной терапии.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Гемоглобин 145 г/л, лейкоциты 6,4×10⁹/л, тромбоциты 238×10⁹/л.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.lab.liver-enzymes.blood",
+            "label": "Исследование активности АЛТ и АСТ в крови",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Печёночные ферменты нужны в контексте планируемой системной терапии, которой в начальном состоянии нет.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "АЛТ 24 Ед/л, АСТ 22 Ед/л.",
+              "abnormal": false
+            }
+          }
+        ],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.234.v2",
+          "title": "Псориаз",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/234_2"
+        },
+        {
+          "id": "guideline.ru.minzdrav.562.v3",
+          "title": "Псориаз артропатический. Псориатический артрит",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/562_3"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.dermatology.0002",
+      "title": "Атопический дерматит у взрослой пациентки",
+      "patient": {
+        "name": "Дарья Иванова",
+        "age": 22,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась из-за усиления зуда и высыпаний в сгибах конечностей.",
+        "chiefComplaint": "С детства зудит кожа в локтевых и подколенных сгибах; сейчас стало хуже.",
+        "vitals": {
+          "hr": 74,
+          "bp": "122/78",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.dermatology.0002.anamnesis.01",
+            "question": "Когда впервые появились высыпания?",
+            "answer": "Ещё в младенчестве, затем они периодически возвращались.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0002.anamnesis.02",
+            "question": "Есть ли бронхиальная астма или аллергический ринит?",
+            "answer": "Да, у меня есть и астма, и сезонный аллергический ринит.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0002.anamnesis.03",
+            "question": "После чего обычно становится хуже?",
+            "answer": "После контакта с шерстью, агрессивным мылом и во время стресса.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0002.anamnesis.04",
+            "question": "Где сейчас расположены очаги?",
+            "answer": "В локтевых и подколенных сгибах и на кистях.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0002.anamnesis.05",
+            "question": "Насколько выражен зуд? Есть ли мокнутие или гнойные корки?",
+            "answer": "Зуд сильный, есть расчёсы, но мокнутия и гнойных корок нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0002.anamnesis.06",
+            "question": "Вы недавно путешествовали?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {},
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.atopic-dermatitis.flexural",
+        "label": "Атопический дерматит, обострение",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "L20.8",
+            "display": "Другие атопические дерматиты",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.atopic-dermatitis-infection",
+            "label": "Оценка тяжести атопического дерматита и признаков инфекции",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Оценить EASI/SCORAD либо документировать распространённость и интенсивность; проверить мокнутие, корки, пустулы и лихорадку.",
+            "indication": "Необходимо оценить тяжесть, площадь поражения, сон и исключить вторичную инфекцию.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.emollient.regular",
+            "label": "Регулярное применение эмолентов",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Наносить эмолент без отдушек обильно не менее 2 раз в сутки и сразу после короткого тёплого душа.",
+            "indication": "Базисное восстановление кожного барьера.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.topical-corticosteroid.course",
+            "label": "Короткий курс наружного глюкокортикостероида",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Наружный глюкокортикостероид подходящей для зоны активности и формы 1 раз в сутки коротким курсом 7–14 дней с последующим снижением частоты.",
+            "indication": "Обострение с выраженным зудом без признаков инфекции.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.education.atopic-trigger-care",
+            "label": "План ухода и безопасного исключения провоцирующих факторов при атопическом дерматите",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Обсудить мягкое очищение, эмоленты, избегание индивидуально подтверждённых раздражителей и признаки инфекции, требующие повторного обращения.",
+            "indication": "Нужен выполнимый план ухода без неоправданных элиминационных диет.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "action.medication.antihistamine.second-generation",
+            "label": "Неседативный H1-антигистаминный препарат второго поколения",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Не назначать рутинно; рассматривать только при сопутствующей крапивнице или риноконъюнктивите.",
+            "indication": "Антигистаминный препарат не лечит воспаление кожи и не является базисной терапией зуда при атопическом дерматите.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [],
+        "conditional": [],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Эозинофилия неспецифична и не подтверждает диагноз или тяжесть атопического дерматита.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Лейкоциты 6,8×10⁹/л; эозинофилы 0,55×10⁹/л, умеренно повышены.",
+              "abnormal": true
+            }
+          }
+        ],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.265.v3",
+          "title": "Атопический дерматит",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/265_3"
+        }
+      ],
+      "reviewStatus": "major-revision-required"
+    },
+    {
+      "id": "case.dermatology.0003",
+      "title": "Узловатые акне с формированием рубцов",
+      "patient": {
+        "name": "Фёдор Семёнов",
+        "age": 17,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Обратился с матерью из-за прогрессирования акне и появления рубцов.",
+        "chiefComplaint": "В течение года много воспалённых элементов на лице и спине, появились болезненные узлы и рубцы.",
+        "vitals": {
+          "hr": 74,
+          "bp": "122/78",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.dermatology.0003.anamnesis.01",
+            "question": "Где расположены высыпания?",
+            "answer": "На лбу, щеках, подбородке и верхней части спины.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0003.anamnesis.02",
+            "question": "Какие элементы преобладают?",
+            "answer": "Есть открытые и закрытые комедоны, воспалённые папулы и несколько болезненных узлов.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0003.anamnesis.03",
+            "question": "Что вы уже применяли?",
+            "answer": "Бензоилпероксид нерегулярно около двух месяцев; выраженного улучшения нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0003.anamnesis.04",
+            "question": "Остаются ли рубцы?",
+            "answer": "Да, на щеках уже появились небольшие атрофические рубцы.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0003.anamnesis.05",
+            "question": "Принимаете ли вы анаболические стероиды или другие препараты?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0003.anamnesis.06",
+            "question": "Связываете ли вы обострения с каким-то отдельным продуктом?",
+            "answer": "Нет, чёткой связи не замечал.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {
+        "isotretinoinIndicated": true
+      },
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.acne-vulgaris.nodular-scarring",
+        "label": "Акне вульгарные, узловатая форма с рубцеванием",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "L70.0",
+            "display": "Угри обыкновенные",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.acne-severity-scarring",
+            "label": "Оценка тяжести акне и риска рубцевания",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Оценить число и тип элементов, площадь, рубцы, предшествующую приверженность и влияние на качество жизни.",
+            "indication": "Узлы и уже сформировавшиеся рубцы требуют документирования тяжести и психосоциального влияния.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.referral.dermatologist",
+            "label": "Направление к врачу-дерматовенерологу",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Организовать очную консультацию дерматовенеролога в ближайшее время.",
+            "indication": "Узловатые акне с рубцеванием требуют ведения дерматовенерологом.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.acne.adapalene-benzoyl-peroxide",
+            "label": "Наружная комбинация адапалена и бензоила пероксида",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Адапален 0,1% + бензоила пероксид 2,5% тонким слоем вечером 1 раз в сутки с постепенным началом при раздражении.",
+            "indication": "Комедоны и воспалительные элементы требуют комбинированной наружной терапии.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [
+          {
+            "id": "action.medication.isotretinoin.systemic",
+            "label": "Системный изотретиноин под наблюдением дерматовенеролога",
+            "decision": "conditional",
+            "when": {
+              "fact": "isotretinoinIndicated",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Начать дерматовенерологом после оценки противопоказаний ориентировочно с 0,5 мг/кг/сут внутрь с пищей и дальнейшей индивидуальной титрацией.",
+            "indication": "Узловатая форма, рубцевание или отсутствие ответа на адекватный курс терапии могут быть показанием к системному изотретиноину.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.monitoring.isotretinoin.safety",
+            "label": "Контроль безопасности системного изотретиноина",
+            "decision": "conditional",
+            "when": {
+              "fact": "isotretinoinIndicated",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Проверить липиды и печёночные показатели до начала и далее по клиническому протоколу; оценивать нежелательные реакции на каждом визите.",
+            "indication": "Системный изотретиноин требует исходного и динамического контроля безопасности.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "action.disposition.outpatient-discharge",
+            "label": "Амбулаторное ведение и выписка",
+            "decision": "unscorable-as-specified",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Сформировать конкретную терапию и срок повторной оценки.",
+            "indication": "Выписка без лечения при рубцующихся акне закрепляет риск необратимых рубцов.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [],
+        "conditional": [
+          {
+            "id": "study.lab.liver-enzymes.blood",
+            "label": "Исследование активности АЛТ и АСТ в крови",
+            "decision": "conditional",
+            "when": {
+              "fact": "isotretinoinIndicated",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Исходный контроль перед системным изотретиноином.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "АЛТ 20 Ед/л, АСТ 21 Ед/л.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.lab.lipid-profile.blood",
+            "label": "Исследование липидного профиля крови",
+            "decision": "conditional",
+            "when": {
+              "fact": "isotretinoinIndicated",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Исходный контроль перед системным изотретиноином.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Общий холестерин 4,1 ммоль/л, триглицериды 0,9 ммоль/л.",
+              "abnormal": false
+            }
+          }
+        ],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "ОАК не подтверждает акне и рутинно до наружной терапии не нужен.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Гемоглобин 148 г/л, лейкоциты 6,6×10⁹/л, тромбоциты 251×10⁹/л.",
+              "abnormal": false
+            }
+          }
+        ],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.rodvk.acne.2020",
+          "title": "Акне вульгарные",
+          "url": "https://www.cnikvi.ru/docs/clinic_recs/klinicheskie-rekomendatsii-2019-2020/"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.dermatology.0004",
+      "title": "Себорейный дерматит волосистой части головы и лица",
+      "patient": {
+        "name": "Сергей Захаров",
+        "age": 50,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился из-за стойкого шелушения волосистой части головы и лица.",
+        "chiefComplaint": "На коже головы, в бровях и у носа появляются красные участки с жирными чешуйками.",
+        "vitals": {
+          "hr": 74,
+          "bp": "122/78",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.dermatology.0004.anamnesis.01",
+            "question": "Где расположены очаги?",
+            "answer": "На волосистой части головы, в бровях и носогубных складках.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0004.anamnesis.02",
+            "question": "Как они выглядят?",
+            "answer": "Кожа красная, сверху желтоватые жирные чешуйки.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0004.anamnesis.03",
+            "question": "Есть ли зуд или боль?",
+            "answer": "Есть небольшой зуд, боли нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0004.anamnesis.04",
+            "question": "Меняется ли состояние летом?",
+            "answer": "Летом обычно становится лучше.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0004.anamnesis.05",
+            "question": "Есть ли заболевание или лечение, подавляющее иммунитет?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0004.anamnesis.06",
+            "question": "Вы недавно путешествовали?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {
+        "markedInflammation": false
+      },
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.seborrheic-dermatitis",
+        "label": "Себорейный дерматит",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "L21.9",
+            "display": "Себорейный дерматит неуточнённый",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.dermatologic-severity",
+            "label": "Оценка распространённости, тяжести и дифференциального диагноза дерматоза",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Осмотреть волосистую часть головы, лицо, уши и верхнюю часть туловища; документировать распространённость.",
+            "indication": "Клиническая картина типична, но нужно оценить площадь, воспаление и исключить псориаз и дерматофитию при атипии.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.seborrheic.ketoconazole-scalp",
+            "label": "Наружный кетоконазол для волосистой части головы",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Шампунь кетоконазола 2% дважды в неделю 2–4 недели, выдерживать на коже 3–5 минут; затем поддерживающе по необходимости.",
+            "indication": "Поражение волосистой части головы с жирными чешуйками.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.seborrheic.ketoconazole-face",
+            "label": "Наружный кетоконазол для кожи лица",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Кетоконазол 2% крем тонким слоем 1–2 раза в сутки 2–4 недели.",
+            "indication": "Поражение бровей и носогубных складок.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.education.skin-care",
+            "label": "Обучение щадящему уходу за кожей",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Объяснить хроническое течение, мягкое очищение и поддерживающее применение противогрибкового шампуня.",
+            "indication": "Заболевание рецидивирует и требует поддерживающего ухода.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [
+          {
+            "id": "action.medication.topical-anti-inflammatory.short",
+            "label": "Короткий курс наружной противовоспалительной терапии",
+            "decision": "conditional",
+            "when": {
+              "fact": "markedInflammation",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Низкопотентный наружный глюкокортикостероид на лицо 1 раз в сутки не более 3–5 дней либо ингибитор кальциневрина по инструкции.",
+            "indication": "При выраженном воспалении допустим короткий курс безопасного для лица противовоспалительного средства.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [],
+        "conditional": [],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Диагноз устанавливается клинически; нормальный ОАК не подтверждает его.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Гемоглобин 143 г/л, лейкоциты 6,1×10⁹/л.",
+              "abnormal": false
+            }
+          }
+        ],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.215.v3",
+          "title": "Себорейный дерматит",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/215_3"
+        }
+      ],
+      "reviewStatus": "major-revision-required"
+    },
+    {
+      "id": "case.dermatology.0005",
+      "title": "Дерматофития гладкой кожи туловища",
+      "patient": {
+        "name": "Юрий Соколов",
+        "age": 28,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился по поводу увеличивающегося кольцевидного очага на туловище.",
+        "chiefComplaint": "На туловище появилось зудящее красное кольцо, которое постепенно увеличивается.",
+        "vitals": {
+          "hr": 74,
+          "bp": "122/78",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.dermatology.0005.anamnesis.01",
+            "question": "Как выглядит очаг?",
+            "answer": "Красное кольцо с более светлой кожей в центре и шелушащимся приподнятым краем.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0005.anamnesis.02",
+            "question": "Занимаетесь ли вы контактным спортом?",
+            "answer": "Да, занимаюсь борьбой.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0005.anamnesis.03",
+            "question": "Есть ли контакт с животными?",
+            "answer": "Недавно взяли котёнка.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0005.anamnesis.04",
+            "question": "Изменяется ли размер очага?",
+            "answer": "Он постепенно расширяется по краям.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0005.anamnesis.05",
+            "question": "Применяли ли вы гормональную мазь?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0005.anamnesis.06",
+            "question": "Вы недавно путешествовали?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {},
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.dermatophytosis.tinea-corporis",
+        "label": "Дерматофития гладкой кожи туловища",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "B35.4",
+            "display": "Микоз туловища",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.dermatologic-severity",
+            "label": "Оценка распространённости, тяжести и дифференциального диагноза дерматоза",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Осмотреть активный край очага и другие участки кожи, волосистую часть головы и ногти.",
+            "indication": "Кольцевидный очаг требует осмотра всей кожи, волос и ногтей и дифференциации с воспалительными дерматозами.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.tinea.topical-antifungal",
+            "label": "Наружная противогрибковая терапия дерматофитии гладкой кожи",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Тербинафин 1% наружно 1 раз в сутки на очаг и 1–2 см вокруг в течение 1–2 недель либо зарегистрированная альтернатива по инструкции.",
+            "indication": "Ограниченная лабораторно подтверждённая дерматофития гладкой кожи.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.education.tinea-transmission",
+            "label": "Профилактика передачи дерматофитии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Не делиться полотенцами и экипировкой, стирать одежду, обследовать животное у ветеринара и сообщить спортивной команде по правилам инфекционного контроля.",
+            "indication": "Есть вероятные источники передачи — контактный спорт и котёнок.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.restriction.contact-sport.tinea",
+            "label": "Временное ограничение контактных тренировок при дерматофитии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Приостановить контактные тренировки до начала эффективной терапии и допуска по санитарным правилам спортивной организации.",
+            "indication": "Контактные тренировки создают риск передачи инфекции.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": [
+          {
+            "id": "action.avoid.topical-steroid-monotherapy.tinea",
+            "label": "Отказ от монотерапии наружным глюкокортикостероидом при дерматофитии",
+            "decision": "unsafe-or-delaying",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Не применять наружный глюкокортикостероид в монотерапии.",
+            "indication": "Глюкокортикостероид без антимикотика маскирует и может распространить дерматофитию.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ]
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.microbiology.skin-scraping.fungi-microscopy",
+            "label": "Микроскопическое исследование соскоба с кожи на грибы",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "До начала противогрибковой терапии взять соскоб с активного края очага.",
+            "rationale": "Российская КР требует лабораторного подтверждения дерматофитии.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "В соскобе с активного края очага обнаружены нити септированного мицелия.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "ОАК не подтверждает локальную дерматофитию и не нужен перед наружной терапией.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Гемоглобин 146 г/л, лейкоциты 6,9×10⁹/л.",
+              "abnormal": false
+            }
+          }
+        ],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.1037.v1",
+          "title": "Дерматофития",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/1037_1"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.dermatology.0006",
+      "title": "Раздражительный контактный дерматит кистей",
+      "patient": {
+        "name": "Ольга Алексеева",
+        "age": 39,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась из-за воспаления кожи кистей после контакта с моющим средством.",
+        "chiefComplaint": "После мытья посуды кисти краснеют, зудят, появляются мелкие пузырьки и трещины.",
+        "vitals": {
+          "hr": 74,
+          "bp": "122/78",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.dermatology.0006.anamnesis.01",
+            "question": "Меняли ли вы бытовую химию перед появлением симптомов?",
+            "answer": "Месяц назад начала пользоваться новым средством для мытья посуды.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0006.anamnesis.02",
+            "question": "Где расположены изменения?",
+            "answer": "На ладонях, тыльной стороне кистей и между пальцами.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0006.anamnesis.03",
+            "question": "Как симптомы связаны с контактом с водой и моющим средством?",
+            "answer": "После мытья посуды становится заметно хуже, в выходные — лучше.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0006.anamnesis.04",
+            "question": "Используете ли вы защитные перчатки?",
+            "answer": "Обычно нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0006.anamnesis.05",
+            "question": "Есть ли похожие высыпания в других местах?",
+            "answer": "Нет, только на кистях.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0006.anamnesis.06",
+            "question": "Есть ли у вас сезонный аллергический ринит?",
+            "answer": "Да, лёгкий.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {
+        "allergicContactSuspected": false
+      },
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.contact-dermatitis.irritant-detergent",
+        "label": "Раздражительный контактный дерматит кистей",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "L24.0",
+            "display": "Простой раздражительный контактный дерматит, вызванный моющими средствами",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.dermatologic-severity",
+            "label": "Оценка распространённости, тяжести и дифференциального диагноза дерматоза",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Оценить морфологию, границы, связь с экспозицией, профессию и состояние ногтей и стоп.",
+            "indication": "Нужно отличить раздражительный дерматит от аллергического, атопического дерматита и микоза кистей.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.avoidance.contact-irritant",
+            "label": "Исключение контакта с причинным раздражителем",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Прекратить использование подозреваемого средства и минимизировать контакт с детергентами.",
+            "indication": "Есть воспроизводимая связь с новым моющим средством.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.protection.hand-dermatitis",
+            "label": "Защита кожи рук от воды и бытовой химии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Использовать хлопковые подкладочные и подходящие защитные перчатки, короткие циклы влажной работы и мягкое средство для очищения.",
+            "indication": "Повторный контакт с водой и химией поддерживает воспаление.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.emollient.regular",
+            "label": "Регулярное применение эмолентов",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Жирный эмолент без отдушек после каждого мытья и несколько раз в течение дня.",
+            "indication": "Нарушен кожный барьер кистей.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.topical-corticosteroid.course",
+            "label": "Короткий курс наружного глюкокортикостероида",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Наружный глюкокортикостероид подходящей активности для кожи кистей 1 раз в сутки 7–14 дней с повторной оценкой.",
+            "indication": "Локальное обострение без признаков инфекции.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "action.medication.antihistamine.second-generation",
+            "label": "Неседативный H1-антигистаминный препарат второго поколения",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Не использовать вместо устранения раздражителя и наружной противовоспалительной терапии.",
+            "indication": "Антигистаминный препарат не устраняет раздражительное воспаление кожи.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [],
+        "conditional": [
+          {
+            "id": "study.allergy.patch-test.contact",
+            "label": "Аппликационные кожные пробы при контактном дерматите",
+            "decision": "conditional",
+            "when": {
+              "fact": "allergicContactSuspected",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Нужен при сохраняющемся подозрении на аллергический контактный дерматит или неясной множественной экспозиции.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Аппликационные тесты со стандартной серией аллергенов отрицательные.",
+              "abnormal": false
+            }
+          }
+        ],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "ОАК не различает раздражительный и аллергический контактный дерматит.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Гемоглобин 132 г/л, лейкоциты 6,0×10⁹/л.",
+              "abnormal": false
+            }
+          }
+        ],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.213.v3",
+          "title": "Дерматит контактный",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/213_3"
+        }
+      ],
+      "reviewStatus": "major-revision-required"
+    },
+    {
+      "id": "case.dermatology.0007",
+      "title": "Папуло-пустулёзная розацеа с глазными симптомами",
+      "patient": {
+        "name": "Наталья Кузнецова",
+        "age": 45,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась из-за стойкого покраснения и воспалительных элементов на лице.",
+        "chiefComplaint": "Лицо часто краснеет, а на щеках и носу появляются небольшие красные воспалённые элементы.",
+        "vitals": {
+          "hr": 74,
+          "bp": "122/78",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.dermatology.0007.anamnesis.01",
+            "question": "Что провоцирует покраснение?",
+            "answer": "Солнце, алкоголь, горячие напитки и острая пища.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0007.anamnesis.02",
+            "question": "Где расположены высыпания?",
+            "answer": "В центральной части лица — на щеках и носу.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0007.anamnesis.03",
+            "question": "Есть ли жжение, сухость или ощущение песка в глазах?",
+            "answer": "Иногда глаза сухие и появляется ощущение песка.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0007.anamnesis.04",
+            "question": "Есть ли открытые или закрытые комедоны?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0007.anamnesis.05",
+            "question": "Заметны ли расширенные сосуды?",
+            "answer": "Да, особенно на щеках.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0007.anamnesis.06",
+            "question": "Вы недавно путешествовали?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {},
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.rosacea.papulopustular-ocular-symptoms",
+        "label": "Папуло-пустулёзная розацеа с глазными симптомами",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "L71.8",
+            "display": "Другой вид розацеа",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.dermatologic-severity",
+            "label": "Оценка распространённости, тяжести и дифференциального диагноза дерматоза",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Документировать фенотипы розацеа и осмотреть веки и конъюнктиву в пределах компетенции.",
+            "indication": "Центральная эритема, телеангиэктазии и папулы без комедонов типичны для розацеа; нужно оценить глазные проявления.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.education.rosacea-trigger-photoprotection",
+            "label": "Исключение триггеров розацеа и ежедневная фотозащита",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Ежедневно использовать SPF 30–50 с широким спектром, мягкий уход и избегать индивидуальных триггеров без чрезмерных ограничений.",
+            "indication": "Солнце и индивидуальные триггеры воспроизводимо усиливают симптомы.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.rosacea.ivermectin-topical",
+            "label": "Наружный ивермектин при папуло-пустулёзной розацеа",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Ивермектин 1% крем тонким слоем на поражённые зоны 1 раз в сутки до 4 месяцев.",
+            "indication": "Папуло-пустулёзные элементы требуют наружной противовоспалительной терапии.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.rosacea.metronidazole-topical",
+            "label": "Наружный метронидазол при папуло-пустулёзной розацеа",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Метронидазол 0,75–1% наружно 1–2 раза в сутки курсом по инструкции.",
+            "indication": "Допустимая альтернативная наружная терапия папуло-пустулёзной розацеа.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.referral.ophthalmology.ocular-rosacea",
+            "label": "Направление к офтальмологу при глазных симптомах розацеа",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Направить к офтальмологу; при боли, светобоязни или снижении зрения — срочно.",
+            "indication": "Сухость и ощущение песка могут быть проявлением глазной розацеа.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": [
+          {
+            "id": "action.avoid.topical-steroids.face-rosacea",
+            "label": "Отказ от наружных глюкокортикостероидов на лице при розацеа",
+            "decision": "unsafe-or-delaying",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Не назначать глюкокортикостероид на лицо для лечения розацеа.",
+            "indication": "Наружные глюкокортикостероиды могут ухудшить розацеа.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ]
+      },
+      "studies": {
+        "required": [],
+        "conditional": [],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Диагноз клинический; ОАК не подтверждает розацеа.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Гемоглобин 137 г/л, лейкоциты 5,9×10⁹/л.",
+              "abnormal": false
+            }
+          }
+        ],
+        "unsafe": []
+      },
+      "choiceGroups": [
+        {
+          "id": "choice.rosacea.topical-first-line",
+          "kind": "actions",
+          "minSelections": 1,
+          "maxSelections": 1,
+          "memberIds": [
+            "action.medication.rosacea.ivermectin-topical",
+            "action.medication.rosacea.metronidazole-topical"
+          ]
+        }
+      ],
+      "references": [
+        {
+          "id": "guideline.ru.rodvk.rosacea.2016",
+          "title": "Розацеа",
+          "url": "https://medi.ru/klinicheskie-rekomendatsii/rozatsea_14251/"
+        }
+      ],
+      "reviewStatus": "major-revision-required"
+    },
+    {
+      "id": "case.dermatology.0008",
+      "title": "Меланома кожи спины",
+      "patient": {
+        "name": "Олег Орлов",
+        "age": 54,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "urgent",
+        "arrival": "Самостоятельно обратился из-за изменившегося пигментного образования на спине.",
+        "chiefComplaint": "Родинка на спине увеличилась, потемнела и однажды кровоточила.",
+        "vitals": {
+          "hr": 74,
+          "bp": "122/78",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.dermatology.0008.anamnesis.01",
+            "question": "Как изменилось образование?",
+            "answer": "Оно стало асимметричным, края неровные, цвет неоднородный, диаметр около 8 мм.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0008.anamnesis.02",
+            "question": "Было ли кровотечение или изъязвление?",
+            "answer": "Однажды немного кровоточило без явной травмы.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0008.anamnesis.03",
+            "question": "Насколько выражено воздействие солнца?",
+            "answer": "Работаю на стройке и много времени провожу на солнце.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0008.anamnesis.04",
+            "question": "Была ли меланома у близких родственников?",
+            "answer": "У тёти была меланома.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0008.anamnesis.05",
+            "question": "Изменяются ли другие родинки?",
+            "answer": "Других изменившихся образований не замечал.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0008.anamnesis.06",
+            "question": "Принимаете ли антикоагулянты?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {},
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.melanoma.skin-trunk",
+        "label": "Меланома кожи туловища",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "C43.5",
+            "display": "Злокачественная меланома туловища",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.procedure.melanoma.excisional-biopsy",
+            "label": "Эксцизионная биопсия подозрительного меланоцитарного образования",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Выполнить полное эксцизионное удаление образования с узким отступом клинически неизменённой кожи для корректной оценки толщины опухоли.",
+            "indication": "Изменение по ABCDE и кровотечение требуют морфологической верификации.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.referral.oncology.melanoma-urgent",
+            "label": "Срочная маршрутизация при подтверждённой или вероятной меланоме",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Срочно направить к онкологу для стадирования и определения объёма радикального иссечения и показаний к биопсии сторожевого лимфоузла.",
+            "indication": "Гистология подтверждает меланому кожи туловища.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.safety-netting.pigmented-lesion",
+            "label": "Инструктаж при изменяющемся пигментном образовании",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Объяснить необходимость не откладывать биопсию и повторно обратиться при кровотечении, изъязвлении или быстром росте.",
+            "indication": "До завершения маршрута пациент должен понимать срочность.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": [
+          {
+            "id": "action.disposition.outpatient-discharge",
+            "label": "Амбулаторное ведение и выписка",
+            "decision": "unsafe-or-delaying",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Не завершать обращение без оформленного маршрута и срока биопсии.",
+            "indication": "Выписка без срочного диагностического и онкологического маршрута опасно задерживает лечение.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ]
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.exam.dermoscopy.pigmented-lesion",
+            "label": "Дерматоскопия пигментного образования кожи",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "При первичном дерматологическом осмотре.",
+            "rationale": "Уточнение дерматоскопических признаков подозрительного образования.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Асимметрия структур и цвета, атипичная пигментная сеть, бело-голубая вуаль и нерегулярные точки; образование подозрительно на меланому.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.pathology.skin-lesion.histology",
+            "label": "Патолого-анатомическое исследование удалённого образования кожи",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "Сразу после эксцизионной биопсии.",
+            "rationale": "Диагноз меланомы устанавливается морфологически и требует параметров прогноза.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Поверхностно распространяющаяся меланома кожи туловища; толщина по Бреслоу 0,9 мм, изъязвления нет, края первичной эксцизии свободны.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Нормальный ОАК не исключает меланому и не заменяет морфологическую диагностику.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Гемоглобин 141 г/л, лейкоциты 6,5×10⁹/л, тромбоциты 245×10⁹/л.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.lab.liver-enzymes.blood",
+            "label": "Исследование активности АЛТ и АСТ в крови",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Печёночные ферменты не являются способом первичного подтверждения локальной меланомы.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "АЛТ 26 Ед/л, АСТ 24 Ед/л.",
+              "abnormal": false
+            }
+          }
+        ],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.921.v1",
+          "title": "Меланома кожи и слизистых оболочек",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/921_1"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.dermatology.0009",
+      "title": "Ограниченная гнездная алопеция",
+      "patient": {
+        "name": "Юлия Кузнецова",
+        "age": 27,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась по поводу округлого участка выпадения волос.",
+        "chiefComplaint": "Два месяца назад заметила на голове гладкий округлый участок без волос.",
+        "vitals": {
+          "hr": 74,
+          "bp": "122/78",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.dermatology.0009.anamnesis.01",
+            "question": "Когда вы заметили выпадение волос?",
+            "answer": "Около двух месяцев назад.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0009.anamnesis.02",
+            "question": "Какого размера очаг и как выглядит кожа?",
+            "answer": "Около 3 см, кожа гладкая, без рубца и шелушения.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0009.anamnesis.03",
+            "question": "Есть ли зуд, боль или сломанные волосы?",
+            "answer": "Нет, боли и зуда нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0009.anamnesis.04",
+            "question": "Есть ли заболевания щитовидной железы или другие аутоиммунные болезни?",
+            "answer": "Есть аутоиммунный тиреоидит, принимаю левотироксин.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0009.anamnesis.05",
+            "question": "Есть ли выпадение волос в других местах или изменения ногтей?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0009.anamnesis.06",
+            "question": "Был ли значимый стресс?",
+            "answer": "Последние месяцы были напряжёнными.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {},
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.alopecia-areata.localized",
+        "label": "Гнездная алопеция, ограниченная форма",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "L63.9",
+            "display": "Гнездная алопеция неуточнённая",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.alopecia-areata-extent",
+            "label": "Оценка распространённости и активности гнездной алопеции",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Осмотреть всю волосистую часть головы, брови, ресницы и ногти; документировать площадь и признаки активности.",
+            "indication": "Нерубцовый гладкий очаг требует оценки активности, площади, ногтей и исключения имитирующих состояний.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.alopecia.topical-steroid",
+            "label": "Наружный глюкокортикостероид при ограниченной гнездной алопеции",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Сильный наружный глюкокортикостероид на очаг 1 раз в сутки ограниченным курсом по назначению дерматовенеролога.",
+            "indication": "Один ограниченный активный очаг у взрослой пациентки.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.monitoring.thyroid-disease",
+            "label": "Контроль сопутствующего заболевания щитовидной железы",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Организовать плановый контроль терапии щитовидной железы без утверждения, что коррекция ТТГ сама восстановит волосы.",
+            "indication": "Известен аутоиммунный тиреоидит и ТТГ выше индивидуальной цели.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [
+          {
+            "id": "action.procedure.alopecia.intralesional-steroid",
+            "label": "Внутриочаговое введение глюкокортикостероида при ограниченной гнездной алопеции",
+            "decision": "optional",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Внутриочаговое введение триамцинолона выполняет дерматовенеролог с учётом риска атрофии кожи.",
+            "indication": "Для ограниченной формы у взрослой пациентки возможна внутриочаговая терапия специалистом.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "avoid": [],
+        "unsafe": [
+          {
+            "id": "action.avoid.systemic-glucocorticoid.dermatosis",
+            "label": "Отказ от необоснованного системного глюкокортикостероида",
+            "decision": "unsafe-or-delaying",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Не назначать внутривенный глюкокортикостероид при одиночном очаге.",
+            "indication": "Внутривенный системный глюкокортикостероид не соответствует ограниченной форме.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ]
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.lab.tsh.blood",
+            "label": "Исследование уровня тиреотропного гормона в крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Контроль известного аутоиммунного тиреоидита и заместительной терапии, а не подтверждение алопеции.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "ТТГ 4,2 мМЕ/л, незначительно выше целевого диапазона для пациентки на терапии.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "ОАК не подтверждает типичную ограниченную гнездную алопецию без системных симптомов.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Гемоглобин 135 г/л, лейкоциты 6,2×10⁹/л.",
+              "abnormal": false
+            }
+          }
+        ],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.196.v2",
+          "title": "Гнездная алопеция",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/196_2"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.dermatology.0010",
+      "title": "Хроническая спонтанная крапивница с ангиоотёком",
+      "patient": {
+        "name": "Анна Орлова",
+        "age": 34,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась из-за почти ежедневных волдырей и эпизодов отёка губ.",
+        "chiefComplaint": "В течение трёх месяцев почти каждый день появляются зудящие волдыри без понятной причины.",
+        "vitals": {
+          "hr": 74,
+          "bp": "122/78",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.dermatology.0010.anamnesis.01",
+            "question": "Как давно и как часто появляются волдыри?",
+            "answer": "Около трёх месяцев, почти ежедневно.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0010.anamnesis.02",
+            "question": "Сколько сохраняется каждый отдельный элемент?",
+            "answer": "Исчезает бесследно меньше чем за сутки и появляется в другом месте.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0010.anamnesis.03",
+            "question": "Есть ли явный провоцирующий фактор?",
+            "answer": "Нет, связи с конкретной пищей, лекарствами или нагрузкой не заметила.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0010.anamnesis.04",
+            "question": "Бывает ли отёк губ, языка или горла?",
+            "answer": "Иногда отекают губы, но язык и горло не отекали, одышки не было.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0010.anamnesis.05",
+            "question": "Принимаете ли НПВС, ингибиторы АПФ или другие постоянные препараты?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0010.anamnesis.06",
+            "question": "Остаются ли синяки или пятна после элементов?",
+            "answer": "Нет, кожа становится обычной.",
+            "relevant": true
+          }
+        ]
+      },
+      "facts": {
+        "uncontrolledOnStandardDose": false,
+        "thyroidDiseaseSuspected": false,
+        "anaphylaxisPresent": false
+      },
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.urticaria.chronic-spontaneous",
+        "label": "Хроническая спонтанная крапивница с ангиоотёком",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "L50.8",
+            "display": "Другая крапивница",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.urticaria-anaphylaxis",
+            "label": "Исключение анафилаксии и опасного ангиоотёка",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Уточнить отёк языка и гортани, затруднение дыхания, гипотензию и связь с возможным триггером; сейчас критериев анафилаксии нет.",
+            "indication": "Ангиоотёк требует исключения поражения дыхательных путей и анафилаксии.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.antihistamine.second-generation",
+            "label": "Неседативный H1-антигистаминный препарат второго поколения",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Неседативный H1-антигистаминный препарат второго поколения в стандартной зарегистрированной дозе внутрь ежедневно, а не только при появлении элементов.",
+            "indication": "Первая линия терапии хронической спонтанной крапивницы.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.referral.allergy-dermatology.urticaria",
+            "label": "Направление при хронической крапивнице к аллергологу-иммунологу или дерматовенерологу",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Направить к аллергологу-иммунологу или дерматовенерологу для оценки активности, контроля и следующей линии терапии.",
+            "indication": "Симптомы сохраняются более шести недель и включают ангиоотёк.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.safety-netting.angioedema",
+            "label": "Инструктаж при ангиоотёке и признаках анафилаксии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Немедленно вызывать скорую помощь при отёке языка или горла, осиплости, удушье, головокружении или системной реакции.",
+            "indication": "Пациентка должна различать изолированный отёк губ и опасные признаки.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [
+          {
+            "id": "action.medication.antihistamine.updose",
+            "label": "Увеличение дозы H1-антигистаминного препарата второго поколения",
+            "decision": "conditional",
+            "when": {
+              "fact": "uncontrolledOnStandardDose",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "После оценки приверженности увеличить суточную дозу выбранного препарата до четырёхкратной под врачебным контролем с учётом инструкции и факторов риска.",
+            "indication": "При недостаточном контроле стандартной дозой допустимо ступенчатое увеличение.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "action.medication.glucocorticoid.systemic",
+            "label": "Системный глюкокортикостероид",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Не назначать внутривенно или длительным курсом; краткий курс возможен только при отдельном тяжёлом обострении по решению врача.",
+            "indication": "Системный глюкокортикостероид не используется для длительного контроля хронической крапивницы.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Ограниченный базовый поиск признаков воспаления и гематологических отклонений.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Гемоглобин 134 г/л, лейкоциты 6,7×10⁹/л; эозинофилы 0,48×10⁹/л, погранично повышены.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.crp.serum.quantitative",
+            "label": "Исследование уровня C-реактивного белка в сыворотке крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Базовая оценка системного воспаления при хроническом течении.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "С-реактивный белок 2,1 мг/л, в референсном диапазоне.",
+              "abnormal": false
+            }
+          }
+        ],
+        "conditional": [
+          {
+            "id": "study.lab.tsh.blood",
+            "label": "Исследование уровня тиреотропного гормона в крови",
+            "decision": "conditional",
+            "when": {
+              "fact": "thyroidDiseaseSuspected",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Исследование оправдано при симптомах или анамнезе заболевания щитовидной железы, но не требуется всем пациентам.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "ТТГ 2,1 мМЕ/л.",
+              "abnormal": false
+            }
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.264.v2",
+          "title": "Крапивница",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/264_2"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    }
+  ]
+}

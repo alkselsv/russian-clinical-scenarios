@@ -1,0 +1,2882 @@
+{
+  "_meta": {
+    "schemaVersion": "1.0.0",
+    "collection": "gastroenterology",
+    "generator": "scripts/generate-runtime.mjs",
+    "caseCount": 10,
+    "language": "ru",
+    "clinicalSafety": "unsafe-until-clinician-approved",
+    "scoringMode": "rules-with-structured-conditions-and-parameter-review",
+    "conditionDsl": {
+      "always": "{\"always\":true}",
+      "comparison": "{\"fact\":\"path\",\"op\":\"eq|ne|lt|lte|gt|gte|in|exists\",\"value\":any}",
+      "all": "{\"all\":[...]}",
+      "any": "{\"any\":[...]}",
+      "not": "{\"not\":{...}}"
+    },
+    "inputSha256": {
+      "actions": "98e309bbe53759105d1f0bfc7d4589c3a5eeac9b7d195494e94ed56762257ba9",
+      "studies": "2102ed0da6a8a118145c5dfc007f01badd1c28d91a31d5228122171da6ebb16f",
+      "references": "2087d857cdd11a271c3a823ff5ac87712c20a518b3c8c28edd818449200f8fbb",
+      "content": "125b136b70db0e5ef7474c6e738654d2bd41347e6d1b7c339919e61a20493d15",
+      "rules": "1a60df4017bb15652c4337527e40f316a65bf32fa3e0c3655e3015144c64b288",
+      "config": "823293ef91eda7ef4a82a2595fe1828ceff6de011030fdddb7d6987a5ec1ec2c"
+    }
+  },
+  "cases": [
+    {
+      "id": "case.gastroenterology.0001",
+      "title": "Синдром раздражённого кишечника с преобладанием запора",
+      "patient": {
+        "name": "Юлия Григорьева",
+        "age": 34,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась из-за хронического запора, вздутия и повторяющихся спазмов.",
+        "chiefComplaint": "В течение трёх лет большую часть недели беспокоят вздутие, спазмы и редкий плотный стул.",
+        "vitals": {
+          "hr": 74,
+          "bp": "118/72",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.gastroenterology.0001.anamnesis.01",
+            "question": "Как давно появились симптомы?",
+            "answer": "Около трёх лет назад; выраженность меняется, но полностью они не исчезают.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0001.anamnesis.02",
+            "question": "Связана ли боль с дефекацией?",
+            "answer": "После дефекации спазмы обычно уменьшаются.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0001.anamnesis.03",
+            "question": "Как часто бывает стул и какой он по консистенции?",
+            "answer": "Обычно два раза в неделю, плотный, приходится натуживаться.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0001.anamnesis.04",
+            "question": "Есть ли кровь в стуле, лихорадка или ночные симптомы?",
+            "answer": "Нет, крови и температуры не было, ночью из-за кишечника не просыпаюсь.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0001.anamnesis.05",
+            "question": "Снижался ли вес без намерения похудеть?",
+            "answer": "Нет, вес стабильный.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0001.anamnesis.06",
+            "question": "Влияет ли стресс?",
+            "answer": "Да, во время напряжённых периодов симптомы усиливаются.",
+            "relevant": true
+          }
+        ]
+      },
+      "facts": {
+        "constipationPersistsAfterFiber": false,
+        "thyroidDiseaseSuspected": false
+      },
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.ibs.constipation-predominant",
+        "label": "Синдром раздражённого кишечника с преобладанием запора",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "K58.2",
+            "display": "Синдром раздражённого кишечника с преобладанием запоров",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.gastrointestinal-red-flags",
+            "label": "Оценка гастроэнтерологических тревожных признаков",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Проверить кровотечение, анемию, похудание, ночные симптомы, лихорадку, семейный анамнез ВЗК/рака и данные осмотра.",
+            "indication": "Функциональный диагноз допустим после оценки тревожных признаков.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.assessment.ibs-rome4",
+            "label": "Клиническая оценка синдрома раздражённого кишечника по Римским критериям IV",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Документировать соответствие Римским критериям IV и вариант с преобладанием запора.",
+            "indication": "Хроническая связь боли с дефекацией и изменение частоты и формы стула соответствуют СРК-З при отсутствии красных флагов.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.psyllium",
+            "label": "Растворимые пищевые волокна на основе псиллиума",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Начать с небольшой дозы псиллиума внутрь ежедневно, постепенно увеличивать при достаточном питье и хорошей переносимости.",
+            "indication": "Растворимая клетчатка может улучшить консистенцию и частоту стула.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.education.ibs-diet",
+            "label": "Индивидуальная коррекция питания при синдроме раздражённого кишечника",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Вести дневник симптомов; обсуждать индивидуальные триггеры, регулярное питание и при необходимости ограниченную пробу low-FODMAP с последующим расширением рациона.",
+            "indication": "Жёсткие исключающие диеты без контроля повышают риск ограничений и дефицитов.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.followup.gastroenterology-outpatient",
+            "label": "Плановое амбулаторное наблюдение гастроэнтеролога",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Повторная оценка через 4–6 недель или раньше при крови, похудании, лихорадке, ночных симптомах либо нарастании боли.",
+            "indication": "Нужно оценить ответ и пересмотреть диагноз при появлении тревожных признаков.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [
+          {
+            "id": "action.medication.macrogol",
+            "label": "Осмотическое слабительное на основе макрогола",
+            "decision": "conditional",
+            "when": {
+              "fact": "constipationPersistsAfterFiber",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Макрогол внутрь в зарегистрированной дозе с подбором по эффекту и переносимости.",
+            "indication": "Добавляется при сохраняющемся запоре несмотря на растворимые пищевые волокна.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "action.disposition.outpatient-discharge",
+            "label": "Амбулаторное ведение и выписка",
+            "decision": "unscorable-as-specified",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Оформить конкретный амбулаторный план.",
+            "indication": "Формулировка без плана лечения и контроля недостаточна.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Однократно помогает исключить анемию и выраженные воспалительные изменения.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Гемоглобин 132 г/л, лейкоциты 6,1×10⁹/л, тромбоциты 248×10⁹/л.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.lab.crp.serum.quantitative",
+            "label": "Исследование уровня C-реактивного белка в сыворотке крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Нормальный СРБ поддерживает отсутствие активного системного воспаления, но не является самостоятельным тестом на СРК.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "С-реактивный белок 1,2 мг/л.",
+              "abnormal": false
+            }
+          }
+        ],
+        "conditional": [
+          {
+            "id": "study.lab.tsh.blood",
+            "label": "Исследование уровня тиреотропного гормона в крови",
+            "decision": "conditional",
+            "when": {
+              "fact": "thyroidDiseaseSuspected",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Нужен при симптомах или анамнезе дисфункции щитовидной железы; рутинность для каждого пациента ограничена.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "ТТГ 2,1 мМЕ/л.",
+              "abnormal": false
+            }
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.892.v1",
+          "title": "Синдром раздражённого кишечника",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/892_1"
+        }
+      ],
+      "reviewStatus": "major-revision-required"
+    },
+    {
+      "id": "case.gastroenterology.0002",
+      "title": "Язва двенадцатиперстной кишки после НПВП с недавней меленой",
+      "patient": {
+        "name": "Дмитрий Григорьев",
+        "age": 55,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "urgent",
+        "arrival": "Самостоятельно обратился из-за жгучей боли в эпигастрии и эпизода чёрного стула.",
+        "chiefComplaint": "Боль возникает натощак и через несколько часов после еды; неделю назад один раз был чёрный дегтеобразный стул.",
+        "vitals": {
+          "hr": 76,
+          "bp": "124/76",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.gastroenterology.0002.anamnesis.01",
+            "question": "Как боль связана с едой?",
+            "answer": "Натощак хуже, после еды и антацида становится легче.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0002.anamnesis.02",
+            "question": "Принимаете ли вы НПВП?",
+            "answer": "Каждый день принимаю ибупрофен из-за боли в колене.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0002.anamnesis.03",
+            "question": "Был ли чёрный стул или рвота кровью?",
+            "answer": "Один раз на прошлой неделе был чёрный дегтеобразный стул; рвоты кровью не было.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0002.anamnesis.04",
+            "question": "Есть ли слабость, обморок или одышка?",
+            "answer": "Устаю немного быстрее, обмороков и одышки нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0002.anamnesis.05",
+            "question": "Обследовали ли вас на Helicobacter pylori?",
+            "answer": "Нет, раньше не обследовали.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0002.anamnesis.06",
+            "question": "Употребляете ли алкоголь?",
+            "answer": "Редко, по праздникам.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {},
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.duodenal-ulcer.h-pylori-nsaid",
+        "label": "Язва двенадцатиперстной кишки, ассоциированная с H. pylori и приёмом НПВП",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "K26.4",
+            "display": "Язва двенадцатиперстной кишки хроническая или неуточнённая с кровотечением",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.upper-gi-bleeding",
+            "label": "Оценка риска кровотечения из верхних отделов ЖКТ",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Оценить гемодинамику, повторную мелену, синкопе, сопутствующие заболевания и срочность стационарного маршрута.",
+            "indication": "Недавняя мелена и анемия у пациента на ежедневном НПВП требуют оценки риска кровотечения.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.referral.endoscopy.urgent",
+            "label": "Срочное направление на эндоскопическое исследование",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Организовать срочную ЭГДС; при повторном кровотечении или нестабильности — экстренно в стационаре.",
+            "indication": "Тревожные признаки требуют ЭГДС, а не эмпирической выписки.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.avoid.nsaid",
+            "label": "Отмена необязательного НПВП и подбор безопасной альтернативы",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Отменить необязательный ибупрофен и согласовать альтернативное обезболивание с учётом риска ЖКТ.",
+            "indication": "Ежедневный ибупрофен поддерживает язвообразование и риск повторного кровотечения.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.ppi",
+            "label": "Терапия ингибитором протонной помпы",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "ИПП внутрь в стандартной лечебной дозе; режим и продолжительность уточнить по результату ЭГДС и схеме эрадикации.",
+            "indication": "ИПП необходим для заживления подтверждённой язвы.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.h-pylori-eradication",
+            "label": "Эрадикационная терапия Helicobacter pylori",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Назначить рекомендованную локально эрадикационную схему с ИПП и антибактериальными препаратами с учётом аллергии и предыдущих антибиотиков.",
+            "indication": "H. pylori подтверждён валидным тестом.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.monitoring.h-pylori-eradication",
+            "label": "Контроль эрадикации Helicobacter pylori",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Проверить эрадикацию не ранее чем через 4 недели после антибиотиков и после необходимой отмены ИПП перед тестом.",
+            "indication": "Клиническое улучшение не доказывает эрадикацию.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": [
+          {
+            "id": "action.disposition.outpatient-discharge",
+            "label": "Амбулаторное ведение и выписка",
+            "decision": "unsafe-or-delaying",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Не завершать обращение одной выпиской.",
+            "indication": "Выписка без оценки недавней мелены, ЭГДС и плана ведения создаёт риск повторного кровотечения.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ]
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Определяет анемию и исходный уровень гемоглобина.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Гемоглобин 118 г/л, MCV 79 фл, лейкоциты 7,0×10⁹/л, тромбоциты 310×10⁹/л.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.endoscopy.egds",
+            "label": "Эзофагогастродуоденоскопия",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "Срочно с учётом клинического риска.",
+            "rationale": "Подтверждает язву, локализацию и признаки текущего или недавнего кровотечения.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "В луковице двенадцатиперстной кишки язва 8 мм с чистым дном; признаков продолжающегося кровотечения нет.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.microbiology.h-pylori.stool-antigen",
+            "label": "Определение антигена Helicobacter pylori в кале",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Определяет этиологический фактор и необходимость эрадикации.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Антиген Helicobacter pylori обнаружен.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "study.lab.liver-enzymes.blood",
+            "label": "Исследование активности АЛТ и АСТ в крови",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Печёночные ферменты не подтверждают пептическую язву.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "АЛТ 26 Ед/л, АСТ 23 Ед/л.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.lab.lipase.blood",
+            "label": "Исследование активности липазы в крови",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Липаза не нужна при типичном язвенном синдроме без признаков панкреатита.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Липаза 31 Ед/л.",
+              "abnormal": false
+            }
+          }
+        ],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.277.v2",
+          "title": "Язвенная болезнь",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/277_2"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.gastroenterology.0003",
+      "title": "Гастроэзофагеальная рефлюксная болезнь с дисфагией",
+      "patient": {
+        "name": "Александра Егорова",
+        "age": 45,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "urgent",
+        "arrival": "Самостоятельно обратилась из-за длительной изжоги и эпизодов затруднения глотания.",
+        "chiefComplaint": "Восемь месяцев беспокоят изжога после еды и кислый привкус; иногда твёрдая пища застревает.",
+        "vitals": {
+          "hr": 72,
+          "bp": "122/74",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.gastroenterology.0003.anamnesis.01",
+            "question": "Когда появились симптомы?",
+            "answer": "Около восьми месяцев назад.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0003.anamnesis.02",
+            "question": "Усиливаются ли они лёжа?",
+            "answer": "Да, особенно если ложусь вскоре после еды.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0003.anamnesis.03",
+            "question": "Какие продукты провоцируют симптомы?",
+            "answer": "Чаще кофе и блюда с томатами.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0003.anamnesis.04",
+            "question": "Что происходит при глотании?",
+            "answer": "Иногда твёрдая пища ненадолго застревает за грудиной; жидкость проходит свободно.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0003.anamnesis.05",
+            "question": "Снижался ли вес, была ли рвота или кровь?",
+            "answer": "Вес не менялся, рвоты и крови не было.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0003.anamnesis.06",
+            "question": "Связана ли боль с физической нагрузкой?",
+            "answer": "Нет, от ходьбы и подъёма по лестнице не возникает.",
+            "relevant": true
+          }
+        ]
+      },
+      "facts": {
+        "cardiacEvaluationIndicated": false
+      },
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.gerd.erosive-esophagitis",
+        "label": "Гастроэзофагеальная рефлюксная болезнь с эрозивным эзофагитом",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "K21.0",
+            "display": "Гастроэзофагеальный рефлюкс с эзофагитом",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.gastrointestinal-red-flags",
+            "label": "Оценка гастроэнтерологических тревожных признаков",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Уточнить прогрессирование, связь с твёрдой и жидкой пищей, потерю веса, анемию и кровотечение.",
+            "indication": "Интермиттирующая дисфагия является тревожным признаком.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.referral.endoscopy.urgent",
+            "label": "Срочное направление на эндоскопическое исследование",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Организовать ЭГДС с биопсией подозрительных участков при необходимости.",
+            "indication": "Дисфагия требует своевременной ЭГДС до обычной эмпирической тактики.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.ppi",
+            "label": "Терапия ингибитором протонной помпы",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "ИПП внутрь в стандартной дозе курсом с последующей оценкой контроля симптомов и заживления по показаниям.",
+            "indication": "Эрозивный эзофагит подтверждён эндоскопически.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.education.gerd-lifestyle",
+            "label": "Коррекция образа жизни при гастроэзофагеальной рефлюксной болезни",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Не ложиться 2–3 часа после еды, корректировать массу тела при избытке, поднять изголовье при ночных симптомах и избегать только воспроизводимых триггеров.",
+            "indication": "Поздний приём пищи и индивидуальные триггеры усиливают рефлюкс.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": [
+          {
+            "id": "action.disposition.outpatient-discharge",
+            "label": "Амбулаторное ведение и выписка",
+            "decision": "unsafe-or-delaying",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Сначала обеспечить эндоскопический маршрут и сроки контроля.",
+            "indication": "Выписка без исследования дисфагии может задержать диагностику стриктуры или опухоли.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ]
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.endoscopy.egds",
+            "label": "Эзофагогастродуоденоскопия",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В приоритетном порядке.",
+            "rationale": "Выявляет эзофагит и исключает механическую причину дисфагии.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Эрозивный рефлюкс-эзофагит степени B по Лос-Анджелесской классификации; стриктуры и опухолевого образования не выявлено.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Помогает выявить анемию как дополнительный тревожный признак.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Гемоглобин 136 г/л, лейкоциты 5,9×10⁹/л, тромбоциты 234×10⁹/л.",
+              "abnormal": false
+            }
+          }
+        ],
+        "conditional": [
+          {
+            "id": "study.functional.ecg.resting-12-lead",
+            "label": "Электрокардиография в 12 отведениях в покое с интерпретацией",
+            "decision": "conditional",
+            "when": {
+              "fact": "cardiacEvaluationIndicated",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "ЭКГ оправдана при боли в груди и сердечно-сосудистом риске, но нормальная запись не подтверждает ГЭРБ.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Синусовый ритм 70 в минуту, острых ишемических изменений нет.",
+              "abnormal": false
+            }
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.rga.gerd.2024",
+          "title": "Диагностика и лечение гастроэзофагеальной рефлюксной болезни",
+          "url": "https://doi.org/10.22416/1382-4376-2024-34-5-111-135"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.gastroenterology.0004",
+      "title": "Целиакия с железодефицитной анемией",
+      "patient": {
+        "name": "Дмитрий Фёдоров",
+        "age": 37,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился из-за хронической диареи, вздутия и снижения массы тела.",
+        "chiefComplaint": "В течение года жидкий стул и вздутие усиливаются после хлеба и макарон; похудел на семь килограммов.",
+        "vitals": {
+          "hr": 78,
+          "bp": "118/72",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.gastroenterology.0004.anamnesis.01",
+            "question": "После каких продуктов становится хуже?",
+            "answer": "После хлеба, выпечки и макарон.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0004.anamnesis.02",
+            "question": "Как изменился вес?",
+            "answer": "За год похудел на семь килограммов, хотя специально не худел.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0004.anamnesis.03",
+            "question": "Есть ли целиакия у родственников?",
+            "answer": "Да, у сестры диагноз подтверждён.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0004.anamnesis.04",
+            "question": "Появляется ли зудящая сыпь?",
+            "answer": "Иногда на локтях появляются очень зудящие пузырьки.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0004.anamnesis.05",
+            "question": "Говорили ли вам об анемии?",
+            "answer": "Да, несколько месяцев назад обнаружили анемию.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0004.anamnesis.06",
+            "question": "Исключили ли вы глютен?",
+            "answer": "Пока нет, ем обычную пищу.",
+            "relevant": true
+          }
+        ]
+      },
+      "facts": {},
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.celiac-disease.adult",
+        "label": "Целиакия",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "K90.0",
+            "display": "Целиакия",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.avoid.gluten-free-before-celiac-confirmation",
+            "label": "Сохранение глютена в рационе до завершения диагностики целиакии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Сохранять привычное употребление глютена до завершения диагностического этапа, если нет медицинского противопоказания.",
+            "indication": "Преждевременное исключение глютена снижает чувствительность серологии и морфологии.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.assessment.celiac-deficiencies",
+            "label": "Оценка нутритивных дефицитов и осложнений целиакии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Оценить железо, ферритин, фолат, B12, витамин D, кальций, альбумин и состояние костной ткани по показаниям.",
+            "indication": "Похудание и микроцитарная анемия указывают на мальабсорбцию.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.diet.gluten-free",
+            "label": "Пожизненная безглютеновая диета после подтверждения целиакии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "После подтверждения полностью и пожизненно исключить пшеницу, рожь и ячмень, предупреждать перекрёстное загрязнение.",
+            "indication": "Диагноз подтверждён серологически и морфологически.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.referral.dietitian.celiac",
+            "label": "Консультация диетолога при целиакии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Организовать консультацию диетолога, знакомого с целиакией, и обучение чтению маркировки.",
+            "indication": "Диета сложна и несёт риск дефицитов.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.followup.gastroenterology-outpatient",
+            "label": "Плановое амбулаторное наблюдение гастроэнтеролога",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Составить план лабораторного и клинического контроля после начала диеты.",
+            "indication": "Нужен контроль симптомов, массы, анемии, серологии и приверженности.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": [
+          {
+            "id": "action.disposition.outpatient-discharge",
+            "label": "Амбулаторное ведение и выписка",
+            "decision": "unsafe-or-delaying",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Завершить диагностический маршрут и обеспечить наблюдение.",
+            "indication": "Одна выписка без подтверждения и обучения не является лечением целиакии.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ]
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Фиксирует анемию и исходную тяжесть дефицита.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Гемоглобин 108 г/л, MCV 72 фл, тромбоциты 390×10⁹/л.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.immunology.celiac-ttg-iga",
+            "label": "Антитела класса IgA к тканевой трансглутаминазе",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Основной серологический тест у пациента, употребляющего глютен.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Антитела IgA к тканевой трансглутаминазе 128 Ед/мл, более чем в 10 раз выше верхней границы нормы.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.immunoglobulin-a.blood",
+            "label": "Исследование уровня иммуноглобулина A в крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Исключает дефицит IgA, который может сделать IgA-серологию ложноотрицательной.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Общий IgA 1,9 г/л, в пределах референсного интервала.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.endoscopy.egds",
+            "label": "Эзофагогастродуоденоскопия",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Позволяет получить множественные биоптаты двенадцатиперстной кишки.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Складки двенадцатиперстной кишки сглажены; выполнена мультифокальная биопсия.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.pathology.duodenum-biopsy",
+            "label": "Патолого-анатомическое исследование биоптатов двенадцатиперстной кишки",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Подтверждает энтеропатию у взрослого перед пожизненной диетой.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Атрофия ворсинок, гиперплазия крипт и увеличение числа внутриэпителиальных лимфоцитов; Marsh 3.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.liver-enzymes.blood",
+            "label": "Исследование активности АЛТ и АСТ в крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Умеренное повышение трансаминаз возможно при целиакии, но требует контроля и исключения других причин.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "АЛТ 58 Ед/л, АСТ 49 Ед/л.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.nogr.celiac.2025",
+          "title": "Целиакия у взрослых: практические рекомендации",
+          "url": "https://medj.rucml.ru/journal/4e432d4e4f47522d41525449434c452d323032352d302d342d302d35342d3830"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.gastroenterology.0005",
+      "title": "Болезнь Крона с поражением терминального отдела подвздошной кишки",
+      "patient": {
+        "name": "Олег Козлов",
+        "age": 26,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "urgent",
+        "arrival": "Самостоятельно обратился из-за диареи с кровью, боли, похудания и слабости.",
+        "chiefComplaint": "Четыре месяца стул шесть-восемь раз в сутки, иногда с кровью; похудел на пять килограммов.",
+        "vitals": {
+          "hr": 94,
+          "bp": "110/68",
+          "spo2": 99,
+          "temp": 37.8,
+          "rr": 16
+        },
+        "anamnesis": [
+          {
+            "id": "case.gastroenterology.0005.anamnesis.01",
+            "question": "Как давно продолжается диарея?",
+            "answer": "Около четырёх месяцев.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0005.anamnesis.02",
+            "question": "Есть ли кровь и ночной стул?",
+            "answer": "Кровь бывает не каждый день, иногда просыпаюсь ночью из-за позыва.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0005.anamnesis.03",
+            "question": "Как изменился вес?",
+            "answer": "Похудел на пять килограммов.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0005.anamnesis.04",
+            "question": "Бывают ли язвы во рту?",
+            "answer": "Да, они периодически появляются.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0005.anamnesis.05",
+            "question": "Были ли проблемы в перианальной области?",
+            "answer": "В прошлом году дренировали перианальный абсцесс, после него оставался свищ.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0005.anamnesis.06",
+            "question": "Принимали ли антибиотики или путешествовали?",
+            "answer": "Недавно антибиотики не принимал и не путешествовал.",
+            "relevant": true
+          }
+        ]
+      },
+      "facts": {
+        "infectionExcludedAndDiagnosisConfirmed": false
+      },
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.crohn.terminal-ileitis",
+        "label": "Болезнь Крона терминального отдела подвздошной кишки",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "K50.0",
+            "display": "Болезнь Крона тонкой кишки",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.ibd-severity",
+            "label": "Оценка тяжести и осложнений воспалительного заболевания кишечника",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Оценить дегидратацию, нутритивный статус, абсцесс, свищ, стеноз, токсическую дилатацию и внекишечные проявления.",
+            "indication": "Частый стул, кровь, похудание, анемия, воспаление и перианальный анамнез требуют оценки тяжести и осложнений.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.referral.ibd-center.urgent",
+            "label": "Срочное направление в центр воспалительных заболеваний кишечника",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Срочно направить к гастроэнтерологу/колопроктологу, занимающемуся ВЗК.",
+            "indication": "Вероятна активная болезнь Крона с неблагоприятными факторами.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.disposition.gastroenterology-admission",
+            "label": "Госпитализация в гастроэнтерологический стационар",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Госпитализировать для верификации, коррекции дефицитов и начала лечения.",
+            "indication": "Анемия, системное воспаление, частая диарея и лихорадка требуют стационарной оценки.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [
+          {
+            "id": "action.medication.ibd-induction-specialist",
+            "label": "Индукционная терапия воспалительного заболевания кишечника по решению специалиста",
+            "decision": "conditional",
+            "when": {
+              "fact": "infectionExcludedAndDiagnosisConfirmed",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Начать терапию по решению профильного специалиста; конкретный препарат зависит от активности, локализации, осложнений и инфекционного скрининга.",
+            "indication": "Индукционная терапия выбирается после подтверждения диагноза, тяжести, фенотипа и исключения инфекции.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": [
+          {
+            "id": "action.avoid.ibd-steroid-before-infection-exclusion",
+            "label": "Отказ от эмпирического системного ГКС до исключения инфекции",
+            "decision": "unsafe-or-delaying",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Не начинать системный ГКС только по КТ и симптомам до необходимой проверки.",
+            "indication": "Эмпирический внутривенный ГКС до исключения инфекции и абсцесса может навредить.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.disposition.outpatient-discharge",
+            "label": "Амбулаторное ведение и выписка",
+            "decision": "unsafe-or-delaying",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Не завершать обращение без срочного специализированного маршрута.",
+            "indication": "Обычная выписка недооценивает активность и риск осложнений.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ]
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Оценивает анемию, лейкоцитоз и тромбоцитоз.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Лейкоциты 12,0×10⁹/л, гемоглобин 104 г/л, тромбоциты 460×10⁹/л.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.crp.serum.quantitative",
+            "label": "Исследование уровня C-реактивного белка в сыворотке крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Оценивает системную воспалительную активность.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "С-реактивный белок 48 мг/л.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.fecal-calprotectin",
+            "label": "Исследование кальпротектина в кале",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Поддерживает наличие кишечного воспаления и служит исходной точкой мониторинга.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Кальпротектин кала 920 мкг/г.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.microbiology.c-difficile-toxin.stool",
+            "label": "Определение токсинов Clostridioides difficile в кале",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Инфекцию C. difficile необходимо исключить до иммуносупрессивной терапии; дополнительно нужен поиск других энтеропатогенов по ситуации.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Токсины Clostridioides difficile не обнаружены.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.imaging.ct-enterography",
+            "label": "КТ-энтерография",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Оценивает тонкую кишку, стенозы, свищи и абсцессы.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Сегментарное утолщение и гиперваскуляризация стенки терминального отдела подвздошной кишки; абсцесса и непроходимости нет.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.endoscopy.ileocolonoscopy",
+            "label": "Илеоколоноскопия с осмотром терминального отдела подвздошной кишки",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Определяет локализацию и позволяет выполнить сегментарные биопсии.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Глубокие продольные язвы и участки неизменённой слизистой терминального отдела подвздошной кишки; взяты биоптаты.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.pathology.colon-biopsy",
+            "label": "Патолого-анатомическое исследование биоптатов толстой кишки",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Морфология нужна для подтверждения хронического воспаления и дифференциальной диагностики.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Очаговый хронический активный илеит; морфология совместима с болезнью Крона, гранулёмы не обнаружены.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.176.v2",
+          "title": "Болезнь Крона",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/176_2"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.gastroenterology.0006",
+      "title": "Язвенный колит, левостороннее поражение, среднетяжёлая атака",
+      "patient": {
+        "name": "Алёна Григорьева",
+        "age": 30,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "urgent",
+        "arrival": "Самостоятельно обратилась из-за частого стула с кровью и спазмов внизу живота.",
+        "chiefComplaint": "Несколько недель стул с кровью до восьми раз в сутки, выраженные неотложные позывы и снижение веса.",
+        "vitals": {
+          "hr": 88,
+          "bp": "112/70",
+          "spo2": 99,
+          "temp": 37.4,
+          "rr": 16
+        },
+        "anamnesis": [
+          {
+            "id": "case.gastroenterology.0006.anamnesis.01",
+            "question": "Как часто бывает кровь в стуле?",
+            "answer": "Кровь и слизь есть почти при каждой дефекации.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0006.anamnesis.02",
+            "question": "Бывают ли трудно сдерживаемые позывы?",
+            "answer": "Да, иногда не успеваю дойти до туалета.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0006.anamnesis.03",
+            "question": "Где болит и что происходит после дефекации?",
+            "answer": "Болит внизу живота, после стула немного легче.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0006.anamnesis.04",
+            "question": "Как изменился вес?",
+            "answer": "За месяц похудела на три килограмма.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0006.anamnesis.05",
+            "question": "Есть ли ночной стул?",
+            "answer": "Да, обычно один-два раза за ночь.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0006.anamnesis.06",
+            "question": "Принимали ли антибиотики или были кишечные инфекции?",
+            "answer": "Антибиотиков не было, контакта с заболевшими не помню.",
+            "relevant": true
+          }
+        ]
+      },
+      "facts": {
+        "severeAttackOrDeterioration": false,
+        "infectionExcludedAndDiagnosisConfirmed": false,
+        "complicationSuspected": false
+      },
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.ulcerative-colitis.left-sided",
+        "label": "Левосторонний язвенный колит, среднетяжёлая атака",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "K51.5",
+            "display": "Левосторонний колит",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.ibd-severity",
+            "label": "Оценка тяжести и осложнений воспалительного заболевания кишечника",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Оценить критерии тяжёлой атаки, дегидратацию, токсическую дилатацию и потребность в стационаре.",
+            "indication": "Восемь кровянистых дефекаций, ночной стул, анемия и воспаление требуют формальной оценки тяжести.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.referral.ibd-center.urgent",
+            "label": "Срочное направление в центр воспалительных заболеваний кишечника",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Организовать срочную консультацию гастроэнтеролога/колопроктолога по ВЗК.",
+            "indication": "Новый активный язвенный колит требует срочного ведения специалистом.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [
+          {
+            "id": "action.disposition.gastroenterology-admission",
+            "label": "Госпитализация в гастроэнтерологический стационар",
+            "decision": "conditional",
+            "when": {
+              "fact": "severeAttackOrDeterioration",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Госпитализировать при выполнении критериев тяжести или клиническом ухудшении.",
+            "indication": "Госпитализация требуется при тяжёлой атаке, ухудшении, невозможности пить, значимом кровотечении или отсутствии быстрого амбулаторного маршрута.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.ibd-induction-specialist",
+            "label": "Индукционная терапия воспалительного заболевания кишечника по решению специалиста",
+            "decision": "conditional",
+            "when": {
+              "fact": "infectionExcludedAndDiagnosisConfirmed",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Начать согласованную специалистом индукционную терапию после завершения обязательного диагностического минимума.",
+            "indication": "Выбор 5-АСК, системного ГКС или иной терапии зависит от подтверждённых протяжённости и тяжести после исключения инфекции.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": [
+          {
+            "id": "action.avoid.ibd-steroid-before-infection-exclusion",
+            "label": "Отказ от эмпирического системного ГКС до исключения инфекции",
+            "decision": "unsafe-or-delaying",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Не назначать системный ГКС автоматически до микробиологической оценки.",
+            "indication": "Внутривенный ГКС без исключения C. difficile и другой инфекции может ухудшить исход.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.disposition.outpatient-discharge",
+            "label": "Амбулаторное ведение и выписка",
+            "decision": "unsafe-or-delaying",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Обеспечить конкретный срочный маршрут.",
+            "indication": "Выписка без определения тяжести, эндоскопии и срочного наблюдения опасно задерживает лечение.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ]
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Оценивает анемию, лейкоцитоз и тромбоцитоз.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Гемоглобин 110 г/л, лейкоциты 11,0×10⁹/л, тромбоциты 410×10⁹/л.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.crp.serum.quantitative",
+            "label": "Исследование уровня C-реактивного белка в сыворотке крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Нужен для оценки системной воспалительной активности.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "С-реактивный белок 26 мг/л.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.fecal-calprotectin",
+            "label": "Исследование кальпротектина в кале",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Поддерживает кишечное воспаление и создаёт исходный уровень мониторинга.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Кальпротектин кала 780 мкг/г.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.microbiology.c-difficile-toxin.stool",
+            "label": "Определение токсинов Clostridioides difficile в кале",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Исключение C. difficile обязательно перед иммуносупрессией; другие патогены исследуются по эпиданамнезу.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Токсины Clostridioides difficile не обнаружены.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.endoscopy.ileocolonoscopy",
+            "label": "Илеоколоноскопия с осмотром терминального отдела подвздошной кишки",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Подтверждает непрерывное воспаление и протяжённость; при тяжёлой атаке объём эндоскопии ограничивают безопасным исследованием.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Непрерывное воспаление от прямой кишки до селезёночного изгиба: контактная кровоточивость, эрозии и поверхностные язвы.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.pathology.colon-biopsy",
+            "label": "Патолого-анатомическое исследование биоптатов толстой кишки",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Подтверждает хронический активный колит и исключает альтернативы.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Хронический активный колит с криптитом и крипт-абсцессами; данные совместимы с язвенным колитом.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [
+          {
+            "id": "study.imaging.ct.abdomen-pelvis.protocol-unspecified",
+            "label": "КТ органов брюшной полости и малого таза, протокол не указан",
+            "decision": "conditional",
+            "when": {
+              "fact": "complicationSuspected",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "КТ нужна при подозрении на осложнение, но не заменяет эндоскопию и морфологию.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Непрерывное утолщение стенки прямой и сигмовидной кишки; токсической дилатации и перфорации нет.",
+              "abnormal": true
+            }
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.193.v2",
+          "title": "Язвенный колит",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/193_2"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.gastroenterology.0007",
+      "title": "Хронический вирусный гепатит B с активной репликацией",
+      "patient": {
+        "name": "Фёдор Лебедев",
+        "age": 49,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился после выявления HBsAg при профилактическом обследовании.",
+        "chiefComplaint": "Жалоб нет; хочет понять значение положительного анализа на гепатит B.",
+        "vitals": {
+          "hr": 72,
+          "bp": "124/76",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.gastroenterology.0007.anamnesis.01",
+            "question": "Раньше HBsAg уже выявляли?",
+            "answer": "Да, похожий результат был около года назад, но дальше не обследовался.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0007.anamnesis.02",
+            "question": "Как могло произойти заражение?",
+            "answer": "У матери был гепатит B; возможно, заразился при рождении.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0007.anamnesis.03",
+            "question": "Есть ли желтуха, отёки, увеличение живота или кровоточивость?",
+            "answer": "Нет, ничего такого не замечал.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0007.anamnesis.04",
+            "question": "Употребляете ли алкоголь?",
+            "answer": "Редко, несколько раз в год.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0007.anamnesis.05",
+            "question": "Обследованы ли партнёр и дети, привиты ли они?",
+            "answer": "Не знаю их иммунный статус, специально не обследовались.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0007.anamnesis.06",
+            "question": "Есть ли татуировки или инъекционное употребление наркотиков?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {},
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.chronic-hepatitis-b",
+        "label": "Хронический вирусный гепатит B с активной репликацией",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "B18.1",
+            "display": "Хронический вирусный гепатит B без дельта-агента",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.hbv-phase-fibrosis",
+            "label": "Подтверждение хронической HBV-инфекции и оценка её фазы и фиброза",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Подтвердить длительность инфекции, оценить HBeAg/anti-HBe, HBV DNA, АЛТ, синтетическую функцию, фиброз и коинфекции.",
+            "indication": "Один HBsAg не описывает фазу инфекции и не определяет лечение.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.referral.hepatology-infectious-disease",
+            "label": "Направление к инфекционисту или гепатологу",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Направить к инфекционисту или гепатологу для определения показаний и схемы лечения.",
+            "indication": "Активная репликация и повышение АЛТ требуют профильной оценки.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.hbv-antiviral",
+            "label": "Противовирусная терапия хронического гепатита B",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Назначить препарат первой линии с высоким барьером резистентности с учётом функции почек, костного риска и сопутствующих состояний.",
+            "indication": "Высокая HBV DNA, повышение АЛТ и вероятный фиброз поддерживают показание к терапии после врачебной верификации.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.education.hbv-transmission-vaccination",
+            "label": "Профилактика передачи HBV и вакцинация контактных лиц",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Обследовать партнёра и членов семьи на маркеры HBV, вакцинировать неиммунных; не делиться предметами с кровью, закрывать раны, сообщить о риске половой передачи.",
+            "indication": "Контактные лица могут быть восприимчивы к HBV.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.monitoring.hbv-hcc",
+            "label": "Динамическое наблюдение при HBV и скрининг гепатоцеллюлярного рака по показаниям",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Составить график АЛТ, HBV DNA, функции почек при терапии и УЗИ печени с/без АФП по индивидуальным показаниям.",
+            "indication": "Хронический HBV требует долгосрочного наблюдения; объём скрининга ГЦР зависит от риска.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": [
+          {
+            "id": "action.disposition.outpatient-discharge",
+            "label": "Амбулаторное ведение и выписка",
+            "decision": "unsafe-or-delaying",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Не завершать обращение без профильного маршрута и плана.",
+            "indication": "Одна выписка оставляет активную HBV-инфекцию без стадирования и профилактики передачи.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ]
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.virology.hbv-serology-panel",
+            "label": "Серологический профиль вирусного гепатита B",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Подтверждает профиль HBV и помогает определить фазу инфекции.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "HBsAg подтверждён; anti-HBc IgG положительные, anti-HBc IgM отрицательные; HBeAg положительный, anti-HBe отрицательные.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.virology.hbv-dna.quantitative",
+            "label": "Количественное определение ДНК вируса гепатита B в крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Вирусная нагрузка необходима для определения активности и мониторинга.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "ДНК HBV 8,2×10⁵ МЕ/мл.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.liver-enzymes.blood",
+            "label": "Исследование активности АЛТ и АСТ в крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "АЛТ и АСТ входят в оценку активности, но не отражают весь риск.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "АЛТ 68 Ед/л, АСТ 52 Ед/л.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Тромбоциты участвуют в неинвазивной оценке фиброза и выявляют цитопении.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Гемоглобин 148 г/л, лейкоциты 5,8×10⁹/л, тромбоциты 186×10⁹/л.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.lab.coagulation.screen",
+            "label": "Коагулограмма (ориентировочное исследование системы гемостаза)",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "МНО помогает оценить синтетическую функцию при подозрении на выраженное поражение печени.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "МНО 1,0, АЧТВ 31 с, фибриноген 3,1 г/л.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.virology.hdv-antibodies",
+            "label": "Определение антител к вирусу гепатита D",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Скрининг HDV важен у HBsAg-положительного пациента; положительный результат требует РНК HDV.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Суммарные антитела к HDV не обнаружены.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.imaging.ultrasound.abdomen.complete",
+            "label": "УЗИ органов брюшной полости (комплексное)",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Оценивает структуру печени, портальную гипертензию и очаговые изменения.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Печень обычных размеров, очаговых образований нет, портальная вена не расширена, селезёнка не увеличена.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.imaging.liver-elastometry",
+            "label": "Эластометрия печени",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Неинвазивно оценивает вероятность фиброза, но интерпретируется вместе с лабораторными данными.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Медиана жёсткости печени 8,2 кПа при корректном измерении; вероятен умеренный фиброз, требуется клиническая интерпретация.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.900.v1",
+          "title": "Хронический вирусный гепатит B у взрослых",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/900_1"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.gastroenterology.0008",
+      "title": "Хронический внутренний геморрой II стадии с кровотечением",
+      "patient": {
+        "name": "Алексей Захаров",
+        "age": 52,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился из-за повторяющейся ярко-красной крови на туалетной бумаге.",
+        "chiefComplaint": "После плотного стула замечает кровь на бумаге и зуд; иногда узел выпадает и самостоятельно вправляется.",
+        "vitals": {
+          "hr": 72,
+          "bp": "126/76",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.gastroenterology.0008.anamnesis.01",
+            "question": "Как часто бывает стул и приходится ли натуживаться?",
+            "answer": "Стул два-три раза в неделю, часто сильно натуживаюсь.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0008.anamnesis.02",
+            "question": "Где находится кровь?",
+            "answer": "Она ярко-красная, остаётся на бумаге и не смешана со стулом.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0008.anamnesis.03",
+            "question": "Есть ли сильная боль?",
+            "answer": "Есть зуд и небольшой дискомфорт, сильной боли нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0008.anamnesis.04",
+            "question": "Выпадают ли узлы?",
+            "answer": "Иногда после дефекации узел выходит, затем сам вправляется.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0008.anamnesis.05",
+            "question": "Снижался ли вес или менялся ли характер стула?",
+            "answer": "Нет, вес и привычный характер стула не изменились.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0008.anamnesis.06",
+            "question": "Проходили ли вы колоноскопию?",
+            "answer": "Никогда.",
+            "relevant": true
+          }
+        ]
+      },
+      "facts": {},
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.internal-hemorrhoids.grade-2",
+        "label": "Хронический внутренний геморрой II стадии",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "K64.1",
+            "display": "Геморрой второй степени",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.exam.anorectal",
+            "label": "Осмотр перианальной области и пальцевое исследование прямой кишки",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Осмотреть перианальную область, выполнить пальцевое исследование и оценить другие источники кровотечения.",
+            "indication": "Диагноз геморроя требует осмотра и пальцевого исследования, а не только описания крови.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.education.hemorrhoid-constipation",
+            "label": "Коррекция запора и натуживания при геморрое",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Постепенно увеличить пищевые волокна и жидкость, нормализовать консистенцию стула, не задерживаться на унитазе и избегать длительного натуживания.",
+            "indication": "Запор и натуживание поддерживают симптомы.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.referral.coloproctology",
+            "label": "Направление к колопроктологу",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Направить к колопроктологу для подтверждения стадии и выбора консервативной либо малоинвазивной тактики.",
+            "indication": "Повторное кровотечение и выпадение узла требуют плановой оценки вариантов лечения.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.avoid.attributing-rectal-bleeding-to-hemorrhoids",
+            "label": "Отказ от необоснованного объяснения всей крови геморроем",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Выполнить возрастной и симптомный диагностический маршрут для исключения другой патологии.",
+            "indication": "У пациента старше 45 лет нельзя считать геморрой единственной причиной крови без исследования толстой кишки.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "action.disposition.outpatient-discharge",
+            "label": "Амбулаторное ведение и выписка",
+            "decision": "unscorable-as-specified",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Оформить план коррекции запора, колоноскопии и наблюдения.",
+            "indication": "Амбулаторное ведение допустимо, но слово «выписать» не содержит обследования и лечения.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Исключает значимую анемию при повторном кровотечении.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Гемоглобин 136 г/л, MCV 88 фл, лейкоциты 6,5×10⁹/л, тромбоциты 251×10⁹/л.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.exam.anoscopy",
+            "label": "Аноскопия",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Подтверждает внутренние узлы и стадию выпадения.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Внутренние геморроидальные узлы; один узел выпадает при натуживании и самостоятельно вправляется, активного кровотечения нет.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.endoscopy.colonoscopy",
+            "label": "Колоноскопия",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Рекомендована для дифференциальной диагностики кровотечения у пациента старше 45 лет.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Колоноскопия до купола слепой кишки, подготовка адекватная; опухолей, полипов и воспалительных изменений не выявлено.",
+              "abnormal": false
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.178.v2",
+          "title": "Геморрой",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/178_2"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.gastroenterology.0009",
+      "title": "Желчная колика при камнях желчного пузыря",
+      "patient": {
+        "name": "Марина Воробьёва",
+        "age": 42,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "urgent",
+        "arrival": "Самостоятельно обратилась из-за сильной боли в правом подреберье после жирной пищи.",
+        "chiefComplaint": "Приступ продолжается три часа, боль отдаёт в правое плечо, была двукратная рвота.",
+        "vitals": {
+          "hr": 92,
+          "bp": "134/82",
+          "spo2": 98,
+          "temp": 37.4,
+          "rr": 18
+        },
+        "anamnesis": [
+          {
+            "id": "case.gastroenterology.0009.anamnesis.01",
+            "question": "Когда начался приступ?",
+            "answer": "Три часа назад.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0009.anamnesis.02",
+            "question": "Что ему предшествовало?",
+            "answer": "Началось примерно через час после жирного ужина.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0009.anamnesis.03",
+            "question": "Куда отдаёт боль?",
+            "answer": "Под правую лопатку и в правое плечо.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0009.anamnesis.04",
+            "question": "Есть ли рвота, озноб или желтуха?",
+            "answer": "Дважды вырвало, но озноба и желтизны кожи не заметила.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0009.anamnesis.05",
+            "question": "Такие приступы уже были?",
+            "answer": "Да, дважды, но проходили быстрее и были слабее.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0009.anamnesis.06",
+            "question": "Темнеет ли моча или светлеет стул?",
+            "answer": "Нет.",
+            "relevant": true
+          }
+        ]
+      },
+      "facts": {
+        "symptomsControlledAndNoComplication": true
+      },
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.cholelithiasis.biliary-colic",
+        "label": "Желчнокаменная болезнь: желчная колика",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "K80.2",
+            "display": "Камни желчного пузыря без холецистита",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.gastrointestinal-red-flags",
+            "label": "Оценка гастроэнтерологических тревожных признаков",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Оценить длительность боли, лихорадку, желтуху, локальные перитонеальные признаки, лабораторный холестаз и расширение протоков.",
+            "indication": "Нужно исключить холецистит, холангит, холедохолитиаз и панкреатит.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.analgesia.unspecified",
+            "label": "Неспецифицированное обезболивание",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Назначить обезболивание с учётом противопоказаний и недавней рвоты; оценить эффект и не маскировать ухудшение.",
+            "indication": "Сильная желчная колика требует своевременного обезболивания.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.referral.surgery.elective-cholecystectomy",
+            "label": "Направление к хирургу для плановой холецистэктомии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "После купирования приступа направить к хирургу для плановой лапароскопической холецистэктомии.",
+            "indication": "Повторные симптомные приступы при камнях являются основанием для планового хирургического лечения.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.safety-netting.biliary-colic",
+            "label": "Инструктаж о признаках осложнения желчнокаменной болезни",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Немедленно обратиться при боли более 6 часов или её усилении, лихорадке, ознобе, желтухе, повторной рвоте, потемнении мочи или выраженной слабости.",
+            "indication": "Приступ может осложниться воспалением или обструкцией.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [
+          {
+            "id": "action.disposition.outpatient-discharge",
+            "label": "Амбулаторное ведение и выписка",
+            "decision": "conditional",
+            "when": {
+              "fact": "symptomsControlledAndNoComplication",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Выписка возможна только при стабильности, контроле симптомов и оформленном хирургическом маршруте.",
+            "indication": "Амбулаторное ведение допустимо после купирования боли и исключения осложнений.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "optional": [
+          {
+            "id": "action.medication.ondansetron",
+            "label": "Противорвотная терапия ондансетроном",
+            "decision": "optional",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Ондансетрон в зарегистрированной дозе и пути введения с учётом QT и взаимодействий.",
+            "indication": "Двукратная рвота позволяет использовать противорвотное средство при отсутствии противопоказаний.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.imaging.ultrasound.abdomen.complete",
+            "label": "УЗИ органов брюшной полости (комплексное)",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Подтверждает камни и оценивает признаки холецистита и обструкции.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "В желчном пузыре несколько подвижных конкрементов; стенка 2 мм, перивезикальной жидкости нет, общий желчный проток не расширен.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.liver-enzymes.blood",
+            "label": "Исследование активности АЛТ и АСТ в крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Вместе с билирубином и холестатическими ферментами оценивает вероятность обструкции общего протока.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "АЛТ 24 Ед/л, АСТ 22 Ед/л; билирубин и щелочная фосфатаза в пределах референсных значений.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.lab.lipase.blood",
+            "label": "Исследование активности липазы в крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Исключает билиарный панкреатит при сильной боли и рвоте.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Липаза 34 Ед/л.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Лейкоцитоз поддерживал бы воспалительное осложнение.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Лейкоциты 7,8×10⁹/л, гемоглобин 132 г/л, тромбоциты 240×10⁹/л.",
+              "abnormal": false
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.877.v1",
+          "title": "Желчнокаменная болезнь",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/877_1"
+        }
+      ],
+      "reviewStatus": "major-revision-required"
+    },
+    {
+      "id": "case.gastroenterology.0010",
+      "title": "Скрининг колоректального рака у пациента с семейным анамнезом",
+      "patient": {
+        "name": "Владимир Васильев",
+        "age": 60,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился для выбора программы скрининга колоректального рака.",
+        "chiefComplaint": "Жалоб нет; раньше не проходил исследование кала на скрытую кровь или колоноскопию.",
+        "vitals": {
+          "hr": 72,
+          "bp": "124/76",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.gastroenterology.0010.anamnesis.01",
+            "question": "Есть ли кровь в стуле, стойкое изменение его характера или боль?",
+            "answer": "Нет, ничего такого не замечал.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0010.anamnesis.02",
+            "question": "Снижался ли вес без намерения похудеть?",
+            "answer": "Нет, вес стабильный.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0010.anamnesis.03",
+            "question": "Был ли колоректальный рак у родственников?",
+            "answer": "У отца рак толстой кишки обнаружили в 70 лет.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0010.anamnesis.04",
+            "question": "Были ли у родственников множественные полипы или рак в молодом возрасте?",
+            "answer": "Нет, об этом не знаю.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0010.anamnesis.05",
+            "question": "Проходили ли вы раньше скрининг?",
+            "answer": "Нет, ни анализ кала, ни колоноскопию не делал.",
+            "relevant": true
+          },
+          {
+            "id": "case.gastroenterology.0010.anamnesis.06",
+            "question": "Есть ли воспалительное заболевание кишечника?",
+            "answer": "Нет.",
+            "relevant": true
+          }
+        ]
+      },
+      "facts": {
+        "fitScreeningRouteChosen": false,
+        "directColonoscopyRouteChosen": true
+      },
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.crc-screening.indicated",
+        "label": "Показание к скринингу колоректального рака",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "Z12.1",
+            "display": "Специальное скрининговое обследование с целью выявления новообразования кишечника",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.crc-screening-risk",
+            "label": "Оценка риска и выбор маршрута скрининга колоректального рака",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Уточнить возраст родственника при диагнозе, число родственников, полипоз, ВЗК, симптомы и предыдущие исследования; согласовать метод с пациентом.",
+            "indication": "Возраст 60 лет, отсутствие предыдущего скрининга и рак толстой кишки у отца требуют индивидуального выбора маршрута.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.followup.crc-screening",
+            "label": "Организация завершения и повторения скрининга колоректального рака",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Зафиксировать выбранный метод, результат, необходимость колоноскопии после положительного теста и дату следующего исследования.",
+            "indication": "Однократное назначение без контроля результата не завершает скрининг.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "action.disposition.outpatient-discharge",
+            "label": "Амбулаторное ведение и выписка",
+            "decision": "unscorable-as-specified",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Оформить конкретный скрининговый маршрут.",
+            "indication": "Выписка без выполненного или запланированного скрининга не решает задачу обращения.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [],
+        "conditional": [
+          {
+            "id": "study.lab.fecal-occult-blood-immunochemical",
+            "label": "Иммунохимическое исследование кала на скрытую кровь",
+            "decision": "conditional",
+            "when": {
+              "fact": "fitScreeningRouteChosen",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Иммунохимический тест входит в популяционный маршрут диспансеризации; положительный результат требует колоноскопии.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Иммунохимический тест на скрытую кровь отрицательный.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.endoscopy.colonoscopy",
+            "label": "Колоноскопия",
+            "decision": "conditional",
+            "when": {
+              "fact": "directColonoscopyRouteChosen",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Прямая визуализация допустима как выбранный маршрут с учётом семейного анамнеза и отсутствия предыдущего скрининга.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Колоноскопия до купола слепой кишки, подготовка адекватная; полипов, опухолей и воспалительных изменений не выявлено.",
+              "abnormal": false
+            }
+          }
+        ],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Нормальный ОАК не исключает предраковые образования и не заменяет скрининг.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Гемоглобин 146 г/л, MCV 89 фл, лейкоциты 6,2×10⁹/л, тромбоциты 232×10⁹/л.",
+              "abnormal": false
+            }
+          }
+        ],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "regulation.ru.minzdrav.404n.2021",
+          "title": "Порядок проведения профилактического медицинского осмотра и диспансеризации определённых групп взрослого населения",
+          "url": "https://www.consultant.ru/document/cons_doc_LAW_388771/"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    }
+  ]
+}

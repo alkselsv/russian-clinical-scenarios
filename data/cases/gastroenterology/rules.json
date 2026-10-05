@@ -1,0 +1,1114 @@
+{
+  "_meta": {
+    "schemaVersion": "1.0.0",
+    "collection": "gastroenterology",
+    "language": "ru",
+    "clinicalSafety": "unsafe-until-clinician-approved",
+    "evaluationPolicy": {
+      "required": "Действие необходимо в данном сценарии.",
+      "conditional": "Действие засчитывается только при выполнении явно заданных условий.",
+      "optional": "Действие допустимо, но не влияет на прохождение ключевого алгоритма.",
+      "not-routine": "Рутинное выполнение не требуется и не должно приносить баллы.",
+      "unsafe-or-delaying": "Действие потенциально вредит или задерживает приоритетную помощь.",
+      "unscorable-as-specified": "Формулировка недостаточно конкретна для оценки."
+    }
+  },
+  "cases": [
+    {
+      "id": "case.gastroenterology.0001",
+      "diagnosis": {
+        "id": "condition.ibs.constipation-predominant",
+        "preferredNameRu": "Синдром раздражённого кишечника с преобладанием запора",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "K58.2",
+            "display": "Синдром раздражённого кишечника с преобладанием запоров",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.gastrointestinal-red-flags",
+          "evaluation": "required",
+          "indicationRu": "Функциональный диагноз допустим после оценки тревожных признаков.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Проверить кровотечение, анемию, похудание, ночные симптомы, лихорадку, семейный анамнез ВЗК/рака и данные осмотра."
+        },
+        {
+          "actionId": "action.assessment.ibs-rome4",
+          "evaluation": "required",
+          "indicationRu": "Хроническая связь боли с дефекацией и изменение частоты и формы стула соответствуют СРК-З при отсутствии красных флагов.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Документировать соответствие Римским критериям IV и вариант с преобладанием запора."
+        },
+        {
+          "actionId": "action.medication.psyllium",
+          "evaluation": "required",
+          "indicationRu": "Растворимая клетчатка может улучшить консистенцию и частоту стула.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Начать с небольшой дозы псиллиума внутрь ежедневно, постепенно увеличивать при достаточном питье и хорошей переносимости."
+        },
+        {
+          "actionId": "action.medication.macrogol",
+          "evaluation": "conditional",
+          "indicationRu": "Добавляется при сохраняющемся запоре несмотря на растворимые пищевые волокна.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Макрогол внутрь в зарегистрированной дозе с подбором по эффекту и переносимости."
+        },
+        {
+          "actionId": "action.education.ibs-diet",
+          "evaluation": "required",
+          "indicationRu": "Жёсткие исключающие диеты без контроля повышают риск ограничений и дефицитов.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Вести дневник симптомов; обсуждать индивидуальные триггеры, регулярное питание и при необходимости ограниченную пробу low-FODMAP с последующим расширением рациона."
+        },
+        {
+          "actionId": "action.followup.gastroenterology-outpatient",
+          "evaluation": "required",
+          "indicationRu": "Нужно оценить ответ и пересмотреть диагноз при появлении тревожных признаков.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Повторная оценка через 4–6 недель или раньше при крови, похудании, лихорадке, ночных симптомах либо нарастании боли."
+        },
+        {
+          "actionId": "action.disposition.outpatient-discharge",
+          "evaluation": "unscorable-as-specified",
+          "indicationRu": "Формулировка без плана лечения и контроля недостаточна.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Оформить конкретный амбулаторный план."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.lab.cbc-with-differential",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Однократно помогает исключить анемию и выраженные воспалительные изменения.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.crp.serum.quantitative",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Нормальный СРБ поддерживает отсутствие активного системного воспаления, но не является самостоятельным тестом на СРК.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.tsh.blood",
+          "evaluation": "conditional",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Нужен при симптомах или анамнезе дисфункции щитовидной железы; рутинность для каждого пациента ограничена.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.892.v1"
+      ],
+      "reviewStatus": "major-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/gastroenterology.md#case-gastroenterology-0001"
+    },
+    {
+      "id": "case.gastroenterology.0002",
+      "diagnosis": {
+        "id": "condition.duodenal-ulcer.h-pylori-nsaid",
+        "preferredNameRu": "Язва двенадцатиперстной кишки, ассоциированная с H. pylori и приёмом НПВП",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "K26.4",
+            "display": "Язва двенадцатиперстной кишки хроническая или неуточнённая с кровотечением",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.upper-gi-bleeding",
+          "evaluation": "required",
+          "indicationRu": "Недавняя мелена и анемия у пациента на ежедневном НПВП требуют оценки риска кровотечения.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Оценить гемодинамику, повторную мелену, синкопе, сопутствующие заболевания и срочность стационарного маршрута."
+        },
+        {
+          "actionId": "action.referral.endoscopy.urgent",
+          "evaluation": "required",
+          "indicationRu": "Тревожные признаки требуют ЭГДС, а не эмпирической выписки.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Организовать срочную ЭГДС; при повторном кровотечении или нестабильности — экстренно в стационаре."
+        },
+        {
+          "actionId": "action.avoid.nsaid",
+          "evaluation": "required",
+          "indicationRu": "Ежедневный ибупрофен поддерживает язвообразование и риск повторного кровотечения.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Отменить необязательный ибупрофен и согласовать альтернативное обезболивание с учётом риска ЖКТ."
+        },
+        {
+          "actionId": "action.medication.ppi",
+          "evaluation": "required",
+          "indicationRu": "ИПП необходим для заживления подтверждённой язвы.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "ИПП внутрь в стандартной лечебной дозе; режим и продолжительность уточнить по результату ЭГДС и схеме эрадикации."
+        },
+        {
+          "actionId": "action.medication.h-pylori-eradication",
+          "evaluation": "required",
+          "indicationRu": "H. pylori подтверждён валидным тестом.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Назначить рекомендованную локально эрадикационную схему с ИПП и антибактериальными препаратами с учётом аллергии и предыдущих антибиотиков."
+        },
+        {
+          "actionId": "action.monitoring.h-pylori-eradication",
+          "evaluation": "required",
+          "indicationRu": "Клиническое улучшение не доказывает эрадикацию.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Проверить эрадикацию не ранее чем через 4 недели после антибиотиков и после необходимой отмены ИПП перед тестом."
+        },
+        {
+          "actionId": "action.disposition.outpatient-discharge",
+          "evaluation": "unsafe-or-delaying",
+          "indicationRu": "Выписка без оценки недавней мелены, ЭГДС и плана ведения создаёт риск повторного кровотечения.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Не завершать обращение одной выпиской."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.lab.cbc-with-differential",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Определяет анемию и исходный уровень гемоглобина.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.endoscopy.egds",
+          "evaluation": "required",
+          "timingRu": "Срочно с учётом клинического риска.",
+          "rationaleRu": "Подтверждает язву, локализацию и признаки текущего или недавнего кровотечения.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.microbiology.h-pylori.stool-antigen",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Определяет этиологический фактор и необходимость эрадикации.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.liver-enzymes.blood",
+          "evaluation": "not-routine",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Печёночные ферменты не подтверждают пептическую язву.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.lipase.blood",
+          "evaluation": "not-routine",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Липаза не нужна при типичном язвенном синдроме без признаков панкреатита.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.277.v2"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/gastroenterology.md#case-gastroenterology-0002"
+    },
+    {
+      "id": "case.gastroenterology.0003",
+      "diagnosis": {
+        "id": "condition.gerd.erosive-esophagitis",
+        "preferredNameRu": "Гастроэзофагеальная рефлюксная болезнь с эрозивным эзофагитом",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "K21.0",
+            "display": "Гастроэзофагеальный рефлюкс с эзофагитом",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.gastrointestinal-red-flags",
+          "evaluation": "required",
+          "indicationRu": "Интермиттирующая дисфагия является тревожным признаком.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Уточнить прогрессирование, связь с твёрдой и жидкой пищей, потерю веса, анемию и кровотечение."
+        },
+        {
+          "actionId": "action.referral.endoscopy.urgent",
+          "evaluation": "required",
+          "indicationRu": "Дисфагия требует своевременной ЭГДС до обычной эмпирической тактики.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Организовать ЭГДС с биопсией подозрительных участков при необходимости."
+        },
+        {
+          "actionId": "action.medication.ppi",
+          "evaluation": "required",
+          "indicationRu": "Эрозивный эзофагит подтверждён эндоскопически.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "ИПП внутрь в стандартной дозе курсом с последующей оценкой контроля симптомов и заживления по показаниям."
+        },
+        {
+          "actionId": "action.education.gerd-lifestyle",
+          "evaluation": "required",
+          "indicationRu": "Поздний приём пищи и индивидуальные триггеры усиливают рефлюкс.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Не ложиться 2–3 часа после еды, корректировать массу тела при избытке, поднять изголовье при ночных симптомах и избегать только воспроизводимых триггеров."
+        },
+        {
+          "actionId": "action.disposition.outpatient-discharge",
+          "evaluation": "unsafe-or-delaying",
+          "indicationRu": "Выписка без исследования дисфагии может задержать диагностику стриктуры или опухоли.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Сначала обеспечить эндоскопический маршрут и сроки контроля."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.endoscopy.egds",
+          "evaluation": "required",
+          "timingRu": "В приоритетном порядке.",
+          "rationaleRu": "Выявляет эзофагит и исключает механическую причину дисфагии.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.functional.ecg.resting-12-lead",
+          "evaluation": "conditional",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "ЭКГ оправдана при боли в груди и сердечно-сосудистом риске, но нормальная запись не подтверждает ГЭРБ.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.cbc-with-differential",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Помогает выявить анемию как дополнительный тревожный признак.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.rga.gerd.2024"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/gastroenterology.md#case-gastroenterology-0003"
+    },
+    {
+      "id": "case.gastroenterology.0004",
+      "diagnosis": {
+        "id": "condition.celiac-disease.adult",
+        "preferredNameRu": "Целиакия",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "K90.0",
+            "display": "Целиакия",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.avoid.gluten-free-before-celiac-confirmation",
+          "evaluation": "required",
+          "indicationRu": "Преждевременное исключение глютена снижает чувствительность серологии и морфологии.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Сохранять привычное употребление глютена до завершения диагностического этапа, если нет медицинского противопоказания."
+        },
+        {
+          "actionId": "action.assessment.celiac-deficiencies",
+          "evaluation": "required",
+          "indicationRu": "Похудание и микроцитарная анемия указывают на мальабсорбцию.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Оценить железо, ферритин, фолат, B12, витамин D, кальций, альбумин и состояние костной ткани по показаниям."
+        },
+        {
+          "actionId": "action.diet.gluten-free",
+          "evaluation": "required",
+          "indicationRu": "Диагноз подтверждён серологически и морфологически.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "После подтверждения полностью и пожизненно исключить пшеницу, рожь и ячмень, предупреждать перекрёстное загрязнение."
+        },
+        {
+          "actionId": "action.referral.dietitian.celiac",
+          "evaluation": "required",
+          "indicationRu": "Диета сложна и несёт риск дефицитов.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Организовать консультацию диетолога, знакомого с целиакией, и обучение чтению маркировки."
+        },
+        {
+          "actionId": "action.followup.gastroenterology-outpatient",
+          "evaluation": "required",
+          "indicationRu": "Нужен контроль симптомов, массы, анемии, серологии и приверженности.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Составить план лабораторного и клинического контроля после начала диеты."
+        },
+        {
+          "actionId": "action.disposition.outpatient-discharge",
+          "evaluation": "unsafe-or-delaying",
+          "indicationRu": "Одна выписка без подтверждения и обучения не является лечением целиакии.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Завершить диагностический маршрут и обеспечить наблюдение."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.lab.cbc-with-differential",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Фиксирует анемию и исходную тяжесть дефицита.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.immunology.celiac-ttg-iga",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Основной серологический тест у пациента, употребляющего глютен.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.immunoglobulin-a.blood",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Исключает дефицит IgA, который может сделать IgA-серологию ложноотрицательной.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.endoscopy.egds",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Позволяет получить множественные биоптаты двенадцатиперстной кишки.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.pathology.duodenum-biopsy",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Подтверждает энтеропатию у взрослого перед пожизненной диетой.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.liver-enzymes.blood",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Умеренное повышение трансаминаз возможно при целиакии, но требует контроля и исключения других причин.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.nogr.celiac.2025"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/gastroenterology.md#case-gastroenterology-0004"
+    },
+    {
+      "id": "case.gastroenterology.0005",
+      "diagnosis": {
+        "id": "condition.crohn.terminal-ileitis",
+        "preferredNameRu": "Болезнь Крона терминального отдела подвздошной кишки",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "K50.0",
+            "display": "Болезнь Крона тонкой кишки",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.ibd-severity",
+          "evaluation": "required",
+          "indicationRu": "Частый стул, кровь, похудание, анемия, воспаление и перианальный анамнез требуют оценки тяжести и осложнений.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Оценить дегидратацию, нутритивный статус, абсцесс, свищ, стеноз, токсическую дилатацию и внекишечные проявления."
+        },
+        {
+          "actionId": "action.referral.ibd-center.urgent",
+          "evaluation": "required",
+          "indicationRu": "Вероятна активная болезнь Крона с неблагоприятными факторами.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Срочно направить к гастроэнтерологу/колопроктологу, занимающемуся ВЗК."
+        },
+        {
+          "actionId": "action.disposition.gastroenterology-admission",
+          "evaluation": "required",
+          "indicationRu": "Анемия, системное воспаление, частая диарея и лихорадка требуют стационарной оценки.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Госпитализировать для верификации, коррекции дефицитов и начала лечения."
+        },
+        {
+          "actionId": "action.medication.ibd-induction-specialist",
+          "evaluation": "conditional",
+          "indicationRu": "Индукционная терапия выбирается после подтверждения диагноза, тяжести, фенотипа и исключения инфекции.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Начать терапию по решению профильного специалиста; конкретный препарат зависит от активности, локализации, осложнений и инфекционного скрининга."
+        },
+        {
+          "actionId": "action.avoid.ibd-steroid-before-infection-exclusion",
+          "evaluation": "unsafe-or-delaying",
+          "indicationRu": "Эмпирический внутривенный ГКС до исключения инфекции и абсцесса может навредить.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Не начинать системный ГКС только по КТ и симптомам до необходимой проверки."
+        },
+        {
+          "actionId": "action.disposition.outpatient-discharge",
+          "evaluation": "unsafe-or-delaying",
+          "indicationRu": "Обычная выписка недооценивает активность и риск осложнений.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Не завершать обращение без срочного специализированного маршрута."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.lab.cbc-with-differential",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Оценивает анемию, лейкоцитоз и тромбоцитоз.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.crp.serum.quantitative",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Оценивает системную воспалительную активность.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.fecal-calprotectin",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Поддерживает наличие кишечного воспаления и служит исходной точкой мониторинга.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.microbiology.c-difficile-toxin.stool",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Инфекцию C. difficile необходимо исключить до иммуносупрессивной терапии; дополнительно нужен поиск других энтеропатогенов по ситуации.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.imaging.ct-enterography",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Оценивает тонкую кишку, стенозы, свищи и абсцессы.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.endoscopy.ileocolonoscopy",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Определяет локализацию и позволяет выполнить сегментарные биопсии.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.pathology.colon-biopsy",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Морфология нужна для подтверждения хронического воспаления и дифференциальной диагностики.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.176.v2"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/gastroenterology.md#case-gastroenterology-0005"
+    },
+    {
+      "id": "case.gastroenterology.0006",
+      "diagnosis": {
+        "id": "condition.ulcerative-colitis.left-sided",
+        "preferredNameRu": "Левосторонний язвенный колит, среднетяжёлая атака",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "K51.5",
+            "display": "Левосторонний колит",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.ibd-severity",
+          "evaluation": "required",
+          "indicationRu": "Восемь кровянистых дефекаций, ночной стул, анемия и воспаление требуют формальной оценки тяжести.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Оценить критерии тяжёлой атаки, дегидратацию, токсическую дилатацию и потребность в стационаре."
+        },
+        {
+          "actionId": "action.referral.ibd-center.urgent",
+          "evaluation": "required",
+          "indicationRu": "Новый активный язвенный колит требует срочного ведения специалистом.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Организовать срочную консультацию гастроэнтеролога/колопроктолога по ВЗК."
+        },
+        {
+          "actionId": "action.disposition.gastroenterology-admission",
+          "evaluation": "conditional",
+          "indicationRu": "Госпитализация требуется при тяжёлой атаке, ухудшении, невозможности пить, значимом кровотечении или отсутствии быстрого амбулаторного маршрута.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Госпитализировать при выполнении критериев тяжести или клиническом ухудшении."
+        },
+        {
+          "actionId": "action.medication.ibd-induction-specialist",
+          "evaluation": "conditional",
+          "indicationRu": "Выбор 5-АСК, системного ГКС или иной терапии зависит от подтверждённых протяжённости и тяжести после исключения инфекции.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Начать согласованную специалистом индукционную терапию после завершения обязательного диагностического минимума."
+        },
+        {
+          "actionId": "action.avoid.ibd-steroid-before-infection-exclusion",
+          "evaluation": "unsafe-or-delaying",
+          "indicationRu": "Внутривенный ГКС без исключения C. difficile и другой инфекции может ухудшить исход.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Не назначать системный ГКС автоматически до микробиологической оценки."
+        },
+        {
+          "actionId": "action.disposition.outpatient-discharge",
+          "evaluation": "unsafe-or-delaying",
+          "indicationRu": "Выписка без определения тяжести, эндоскопии и срочного наблюдения опасно задерживает лечение.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Обеспечить конкретный срочный маршрут."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.lab.cbc-with-differential",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Оценивает анемию, лейкоцитоз и тромбоцитоз.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.crp.serum.quantitative",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Нужен для оценки системной воспалительной активности.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.fecal-calprotectin",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Поддерживает кишечное воспаление и создаёт исходный уровень мониторинга.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.microbiology.c-difficile-toxin.stool",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Исключение C. difficile обязательно перед иммуносупрессией; другие патогены исследуются по эпиданамнезу.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.endoscopy.ileocolonoscopy",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Подтверждает непрерывное воспаление и протяжённость; при тяжёлой атаке объём эндоскопии ограничивают безопасным исследованием.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.pathology.colon-biopsy",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Подтверждает хронический активный колит и исключает альтернативы.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.imaging.ct.abdomen-pelvis.protocol-unspecified",
+          "evaluation": "conditional",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "КТ нужна при подозрении на осложнение, но не заменяет эндоскопию и морфологию.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.193.v2"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/gastroenterology.md#case-gastroenterology-0006"
+    },
+    {
+      "id": "case.gastroenterology.0007",
+      "diagnosis": {
+        "id": "condition.chronic-hepatitis-b",
+        "preferredNameRu": "Хронический вирусный гепатит B с активной репликацией",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "B18.1",
+            "display": "Хронический вирусный гепатит B без дельта-агента",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.hbv-phase-fibrosis",
+          "evaluation": "required",
+          "indicationRu": "Один HBsAg не описывает фазу инфекции и не определяет лечение.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Подтвердить длительность инфекции, оценить HBeAg/anti-HBe, HBV DNA, АЛТ, синтетическую функцию, фиброз и коинфекции."
+        },
+        {
+          "actionId": "action.referral.hepatology-infectious-disease",
+          "evaluation": "required",
+          "indicationRu": "Активная репликация и повышение АЛТ требуют профильной оценки.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Направить к инфекционисту или гепатологу для определения показаний и схемы лечения."
+        },
+        {
+          "actionId": "action.medication.hbv-antiviral",
+          "evaluation": "required",
+          "indicationRu": "Высокая HBV DNA, повышение АЛТ и вероятный фиброз поддерживают показание к терапии после врачебной верификации.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Назначить препарат первой линии с высоким барьером резистентности с учётом функции почек, костного риска и сопутствующих состояний."
+        },
+        {
+          "actionId": "action.education.hbv-transmission-vaccination",
+          "evaluation": "required",
+          "indicationRu": "Контактные лица могут быть восприимчивы к HBV.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Обследовать партнёра и членов семьи на маркеры HBV, вакцинировать неиммунных; не делиться предметами с кровью, закрывать раны, сообщить о риске половой передачи."
+        },
+        {
+          "actionId": "action.monitoring.hbv-hcc",
+          "evaluation": "required",
+          "indicationRu": "Хронический HBV требует долгосрочного наблюдения; объём скрининга ГЦР зависит от риска.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Составить график АЛТ, HBV DNA, функции почек при терапии и УЗИ печени с/без АФП по индивидуальным показаниям."
+        },
+        {
+          "actionId": "action.disposition.outpatient-discharge",
+          "evaluation": "unsafe-or-delaying",
+          "indicationRu": "Одна выписка оставляет активную HBV-инфекцию без стадирования и профилактики передачи.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Не завершать обращение без профильного маршрута и плана."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.virology.hbv-serology-panel",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Подтверждает профиль HBV и помогает определить фазу инфекции.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.virology.hbv-dna.quantitative",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Вирусная нагрузка необходима для определения активности и мониторинга.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.liver-enzymes.blood",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "АЛТ и АСТ входят в оценку активности, но не отражают весь риск.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.cbc-with-differential",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Тромбоциты участвуют в неинвазивной оценке фиброза и выявляют цитопении.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.coagulation.screen",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "МНО помогает оценить синтетическую функцию при подозрении на выраженное поражение печени.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.virology.hdv-antibodies",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Скрининг HDV важен у HBsAg-положительного пациента; положительный результат требует РНК HDV.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.imaging.ultrasound.abdomen.complete",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Оценивает структуру печени, портальную гипертензию и очаговые изменения.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.imaging.liver-elastometry",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Неинвазивно оценивает вероятность фиброза, но интерпретируется вместе с лабораторными данными.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.900.v1"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/gastroenterology.md#case-gastroenterology-0007"
+    },
+    {
+      "id": "case.gastroenterology.0008",
+      "diagnosis": {
+        "id": "condition.internal-hemorrhoids.grade-2",
+        "preferredNameRu": "Хронический внутренний геморрой II стадии",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "K64.1",
+            "display": "Геморрой второй степени",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.exam.anorectal",
+          "evaluation": "required",
+          "indicationRu": "Диагноз геморроя требует осмотра и пальцевого исследования, а не только описания крови.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Осмотреть перианальную область, выполнить пальцевое исследование и оценить другие источники кровотечения."
+        },
+        {
+          "actionId": "action.education.hemorrhoid-constipation",
+          "evaluation": "required",
+          "indicationRu": "Запор и натуживание поддерживают симптомы.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Постепенно увеличить пищевые волокна и жидкость, нормализовать консистенцию стула, не задерживаться на унитазе и избегать длительного натуживания."
+        },
+        {
+          "actionId": "action.referral.coloproctology",
+          "evaluation": "required",
+          "indicationRu": "Повторное кровотечение и выпадение узла требуют плановой оценки вариантов лечения.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Направить к колопроктологу для подтверждения стадии и выбора консервативной либо малоинвазивной тактики."
+        },
+        {
+          "actionId": "action.avoid.attributing-rectal-bleeding-to-hemorrhoids",
+          "evaluation": "required",
+          "indicationRu": "У пациента старше 45 лет нельзя считать геморрой единственной причиной крови без исследования толстой кишки.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Выполнить возрастной и симптомный диагностический маршрут для исключения другой патологии."
+        },
+        {
+          "actionId": "action.disposition.outpatient-discharge",
+          "evaluation": "unscorable-as-specified",
+          "indicationRu": "Амбулаторное ведение допустимо, но слово «выписать» не содержит обследования и лечения.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Оформить план коррекции запора, колоноскопии и наблюдения."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.lab.cbc-with-differential",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Исключает значимую анемию при повторном кровотечении.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.exam.anoscopy",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Подтверждает внутренние узлы и стадию выпадения.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.endoscopy.colonoscopy",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Рекомендована для дифференциальной диагностики кровотечения у пациента старше 45 лет.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.178.v2"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/gastroenterology.md#case-gastroenterology-0008"
+    },
+    {
+      "id": "case.gastroenterology.0009",
+      "diagnosis": {
+        "id": "condition.cholelithiasis.biliary-colic",
+        "preferredNameRu": "Желчнокаменная болезнь: желчная колика",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "K80.2",
+            "display": "Камни желчного пузыря без холецистита",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.gastrointestinal-red-flags",
+          "evaluation": "required",
+          "indicationRu": "Нужно исключить холецистит, холангит, холедохолитиаз и панкреатит.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Оценить длительность боли, лихорадку, желтуху, локальные перитонеальные признаки, лабораторный холестаз и расширение протоков."
+        },
+        {
+          "actionId": "action.medication.analgesia.unspecified",
+          "evaluation": "required",
+          "indicationRu": "Сильная желчная колика требует своевременного обезболивания.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Назначить обезболивание с учётом противопоказаний и недавней рвоты; оценить эффект и не маскировать ухудшение."
+        },
+        {
+          "actionId": "action.medication.ondansetron",
+          "evaluation": "optional",
+          "indicationRu": "Двукратная рвота позволяет использовать противорвотное средство при отсутствии противопоказаний.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Ондансетрон в зарегистрированной дозе и пути введения с учётом QT и взаимодействий."
+        },
+        {
+          "actionId": "action.referral.surgery.elective-cholecystectomy",
+          "evaluation": "required",
+          "indicationRu": "Повторные симптомные приступы при камнях являются основанием для планового хирургического лечения.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "После купирования приступа направить к хирургу для плановой лапароскопической холецистэктомии."
+        },
+        {
+          "actionId": "action.safety-netting.biliary-colic",
+          "evaluation": "required",
+          "indicationRu": "Приступ может осложниться воспалением или обструкцией.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Немедленно обратиться при боли более 6 часов или её усилении, лихорадке, ознобе, желтухе, повторной рвоте, потемнении мочи или выраженной слабости."
+        },
+        {
+          "actionId": "action.disposition.outpatient-discharge",
+          "evaluation": "conditional",
+          "indicationRu": "Амбулаторное ведение допустимо после купирования боли и исключения осложнений.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Выписка возможна только при стабильности, контроле симптомов и оформленном хирургическом маршруте."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.imaging.ultrasound.abdomen.complete",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Подтверждает камни и оценивает признаки холецистита и обструкции.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.liver-enzymes.blood",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Вместе с билирубином и холестатическими ферментами оценивает вероятность обструкции общего протока.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.lipase.blood",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Исключает билиарный панкреатит при сильной боли и рвоте.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.cbc-with-differential",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Лейкоцитоз поддерживал бы воспалительное осложнение.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.877.v1"
+      ],
+      "reviewStatus": "major-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/gastroenterology.md#case-gastroenterology-0009"
+    },
+    {
+      "id": "case.gastroenterology.0010",
+      "diagnosis": {
+        "id": "condition.crc-screening.indicated",
+        "preferredNameRu": "Показание к скринингу колоректального рака",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "Z12.1",
+            "display": "Специальное скрининговое обследование с целью выявления новообразования кишечника",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.crc-screening-risk",
+          "evaluation": "required",
+          "indicationRu": "Возраст 60 лет, отсутствие предыдущего скрининга и рак толстой кишки у отца требуют индивидуального выбора маршрута.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Уточнить возраст родственника при диагнозе, число родственников, полипоз, ВЗК, симптомы и предыдущие исследования; согласовать метод с пациентом."
+        },
+        {
+          "actionId": "action.followup.crc-screening",
+          "evaluation": "required",
+          "indicationRu": "Однократное назначение без контроля результата не завершает скрининг.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Зафиксировать выбранный метод, результат, необходимость колоноскопии после положительного теста и дату следующего исследования."
+        },
+        {
+          "actionId": "action.disposition.outpatient-discharge",
+          "evaluation": "unscorable-as-specified",
+          "indicationRu": "Выписка без выполненного или запланированного скрининга не решает задачу обращения.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Оформить конкретный скрининговый маршрут."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.lab.fecal-occult-blood-immunochemical",
+          "evaluation": "conditional",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Иммунохимический тест входит в популяционный маршрут диспансеризации; положительный результат требует колоноскопии.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.endoscopy.colonoscopy",
+          "evaluation": "conditional",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Прямая визуализация допустима как выбранный маршрут с учётом семейного анамнеза и отсутствия предыдущего скрининга.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.cbc-with-differential",
+          "evaluation": "not-routine",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Нормальный ОАК не исключает предраковые образования и не заменяет скрининг.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "regulation.ru.minzdrav.404n.2021"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/gastroenterology.md#case-gastroenterology-0010"
+    }
+  ]
+}

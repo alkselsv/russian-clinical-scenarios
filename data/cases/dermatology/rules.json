@@ -1,0 +1,892 @@
+{
+  "_meta": {
+    "schemaVersion": "1.0.0",
+    "collection": "dermatology",
+    "language": "ru",
+    "clinicalSafety": "unsafe-until-clinician-approved",
+    "evaluationPolicy": {
+      "required": "Действие необходимо в данном сценарии.",
+      "conditional": "Действие засчитывается только при выполнении явно заданных условий.",
+      "optional": "Действие допустимо, но не влияет на прохождение ключевого алгоритма.",
+      "not-routine": "Рутинное выполнение не требуется и не должно приносить баллы.",
+      "unsafe-or-delaying": "Действие потенциально вредит или задерживает приоритетную помощь.",
+      "unscorable-as-specified": "Формулировка недостаточно конкретна для оценки."
+    }
+  },
+  "cases": [
+    {
+      "id": "case.dermatology.0001",
+      "diagnosis": {
+        "id": "condition.psoriasis.plaque",
+        "preferredNameRu": "Бляшечный псориаз",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "L40.0",
+            "display": "Псориаз обыкновенный",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.psoriasis-joints",
+          "evaluation": "required",
+          "indicationRu": "Бляшки, изменения ногтей и утренняя скованность требуют оценки площади, тяжести и суставных симптомов.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Оценить BSA/PASI или эквивалентную клиническую тяжесть, влияние на качество жизни, ногти и воспалительные суставные симптомы."
+        },
+        {
+          "actionId": "action.medication.psoriasis.topical-vitamin-d-steroid",
+          "evaluation": "required",
+          "indicationRu": "При ограниченном бляшечном псориазе наружная терапия является стартовой.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Комбинация кальципотриола и бетаметазона наружно 1 раз в сутки на бляшки курсом до 4 недель с учётом локализации."
+        },
+        {
+          "actionId": "action.medication.emollient.regular",
+          "evaluation": "required",
+          "indicationRu": "Уменьшение сухости, шелушения и зуда.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Наносить эмолент без отдушек на сухие участки не менее 2 раз в сутки и после водных процедур."
+        },
+        {
+          "actionId": "action.referral.rheumatology.psoriatic-arthritis",
+          "evaluation": "required",
+          "indicationRu": "Утренняя скованность около 40 минут и поражение ногтей повышают вероятность псориатического артрита.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Направить к ревматологу для очной оценки; не откладывать направление до ухудшения функции суставов."
+        },
+        {
+          "actionId": "action.avoid.systemic-glucocorticoid.dermatosis",
+          "evaluation": "unsafe-or-delaying",
+          "indicationRu": "Внутривенный системный глюкокортикостероид не является рутинной терапией ограниченного бляшечного псориаза.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Не назначать системный глюкокортикостероид без отдельного специализированного показания."
+        },
+        {
+          "actionId": "action.disposition.outpatient-discharge",
+          "evaluation": "unscorable-as-specified",
+          "indicationRu": "Одна формулировка «выписать» не содержит лечения и плана наблюдения.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Сформировать конкретный амбулаторный план лечения, контроля и маршрутизации."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.lab.cbc-with-differential",
+          "evaluation": "not-routine",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Для клинической диагностики ограниченного псориаза ОАК не требуется; он может понадобиться перед отдельными видами системной терапии.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.liver-enzymes.blood",
+          "evaluation": "not-routine",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Печёночные ферменты нужны в контексте планируемой системной терапии, которой в начальном состоянии нет.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.234.v2",
+        "guideline.ru.minzdrav.562.v3"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/dermatology.md#case-dermatology-0001"
+    },
+    {
+      "id": "case.dermatology.0002",
+      "diagnosis": {
+        "id": "condition.atopic-dermatitis.flexural",
+        "preferredNameRu": "Атопический дерматит, обострение",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "L20.8",
+            "display": "Другие атопические дерматиты",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.atopic-dermatitis-infection",
+          "evaluation": "required",
+          "indicationRu": "Необходимо оценить тяжесть, площадь поражения, сон и исключить вторичную инфекцию.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Оценить EASI/SCORAD либо документировать распространённость и интенсивность; проверить мокнутие, корки, пустулы и лихорадку."
+        },
+        {
+          "actionId": "action.medication.emollient.regular",
+          "evaluation": "required",
+          "indicationRu": "Базисное восстановление кожного барьера.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Наносить эмолент без отдушек обильно не менее 2 раз в сутки и сразу после короткого тёплого душа."
+        },
+        {
+          "actionId": "action.medication.topical-corticosteroid.course",
+          "evaluation": "required",
+          "indicationRu": "Обострение с выраженным зудом без признаков инфекции.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Наружный глюкокортикостероид подходящей для зоны активности и формы 1 раз в сутки коротким курсом 7–14 дней с последующим снижением частоты."
+        },
+        {
+          "actionId": "action.education.atopic-trigger-care",
+          "evaluation": "required",
+          "indicationRu": "Нужен выполнимый план ухода без неоправданных элиминационных диет.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Обсудить мягкое очищение, эмоленты, избегание индивидуально подтверждённых раздражителей и признаки инфекции, требующие повторного обращения."
+        },
+        {
+          "actionId": "action.medication.antihistamine.second-generation",
+          "evaluation": "not-routine",
+          "indicationRu": "Антигистаминный препарат не лечит воспаление кожи и не является базисной терапией зуда при атопическом дерматите.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Не назначать рутинно; рассматривать только при сопутствующей крапивнице или риноконъюнктивите."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.lab.cbc-with-differential",
+          "evaluation": "not-routine",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Эозинофилия неспецифична и не подтверждает диагноз или тяжесть атопического дерматита.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.265.v3"
+      ],
+      "reviewStatus": "major-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/dermatology.md#case-dermatology-0002"
+    },
+    {
+      "id": "case.dermatology.0003",
+      "diagnosis": {
+        "id": "condition.acne-vulgaris.nodular-scarring",
+        "preferredNameRu": "Акне вульгарные, узловатая форма с рубцеванием",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "L70.0",
+            "display": "Угри обыкновенные",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.acne-severity-scarring",
+          "evaluation": "required",
+          "indicationRu": "Узлы и уже сформировавшиеся рубцы требуют документирования тяжести и психосоциального влияния.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Оценить число и тип элементов, площадь, рубцы, предшествующую приверженность и влияние на качество жизни."
+        },
+        {
+          "actionId": "action.referral.dermatologist",
+          "evaluation": "required",
+          "indicationRu": "Узловатые акне с рубцеванием требуют ведения дерматовенерологом.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Организовать очную консультацию дерматовенеролога в ближайшее время."
+        },
+        {
+          "actionId": "action.medication.acne.adapalene-benzoyl-peroxide",
+          "evaluation": "required",
+          "indicationRu": "Комедоны и воспалительные элементы требуют комбинированной наружной терапии.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Адапален 0,1% + бензоила пероксид 2,5% тонким слоем вечером 1 раз в сутки с постепенным началом при раздражении."
+        },
+        {
+          "actionId": "action.medication.isotretinoin.systemic",
+          "evaluation": "conditional",
+          "indicationRu": "Узловатая форма, рубцевание или отсутствие ответа на адекватный курс терапии могут быть показанием к системному изотретиноину.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Начать дерматовенерологом после оценки противопоказаний ориентировочно с 0,5 мг/кг/сут внутрь с пищей и дальнейшей индивидуальной титрацией."
+        },
+        {
+          "actionId": "action.monitoring.isotretinoin.safety",
+          "evaluation": "conditional",
+          "indicationRu": "Системный изотретиноин требует исходного и динамического контроля безопасности.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Проверить липиды и печёночные показатели до начала и далее по клиническому протоколу; оценивать нежелательные реакции на каждом визите."
+        },
+        {
+          "actionId": "action.disposition.outpatient-discharge",
+          "evaluation": "unscorable-as-specified",
+          "indicationRu": "Выписка без лечения при рубцующихся акне закрепляет риск необратимых рубцов.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Сформировать конкретную терапию и срок повторной оценки."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.lab.cbc-with-differential",
+          "evaluation": "not-routine",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "ОАК не подтверждает акне и рутинно до наружной терапии не нужен.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.liver-enzymes.blood",
+          "evaluation": "conditional",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Исходный контроль перед системным изотретиноином.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.lipid-profile.blood",
+          "evaluation": "conditional",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Исходный контроль перед системным изотретиноином.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.rodvk.acne.2020"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/dermatology.md#case-dermatology-0003"
+    },
+    {
+      "id": "case.dermatology.0004",
+      "diagnosis": {
+        "id": "condition.seborrheic-dermatitis",
+        "preferredNameRu": "Себорейный дерматит",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "L21.9",
+            "display": "Себорейный дерматит неуточнённый",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.dermatologic-severity",
+          "evaluation": "required",
+          "indicationRu": "Клиническая картина типична, но нужно оценить площадь, воспаление и исключить псориаз и дерматофитию при атипии.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Осмотреть волосистую часть головы, лицо, уши и верхнюю часть туловища; документировать распространённость."
+        },
+        {
+          "actionId": "action.medication.seborrheic.ketoconazole-scalp",
+          "evaluation": "required",
+          "indicationRu": "Поражение волосистой части головы с жирными чешуйками.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Шампунь кетоконазола 2% дважды в неделю 2–4 недели, выдерживать на коже 3–5 минут; затем поддерживающе по необходимости."
+        },
+        {
+          "actionId": "action.medication.seborrheic.ketoconazole-face",
+          "evaluation": "required",
+          "indicationRu": "Поражение бровей и носогубных складок.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Кетоконазол 2% крем тонким слоем 1–2 раза в сутки 2–4 недели."
+        },
+        {
+          "actionId": "action.medication.topical-anti-inflammatory.short",
+          "evaluation": "conditional",
+          "indicationRu": "При выраженном воспалении допустим короткий курс безопасного для лица противовоспалительного средства.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Низкопотентный наружный глюкокортикостероид на лицо 1 раз в сутки не более 3–5 дней либо ингибитор кальциневрина по инструкции."
+        },
+        {
+          "actionId": "action.education.skin-care",
+          "evaluation": "required",
+          "indicationRu": "Заболевание рецидивирует и требует поддерживающего ухода.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Объяснить хроническое течение, мягкое очищение и поддерживающее применение противогрибкового шампуня."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.lab.cbc-with-differential",
+          "evaluation": "not-routine",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Диагноз устанавливается клинически; нормальный ОАК не подтверждает его.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.215.v3"
+      ],
+      "reviewStatus": "major-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/dermatology.md#case-dermatology-0004"
+    },
+    {
+      "id": "case.dermatology.0005",
+      "diagnosis": {
+        "id": "condition.dermatophytosis.tinea-corporis",
+        "preferredNameRu": "Дерматофития гладкой кожи туловища",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "B35.4",
+            "display": "Микоз туловища",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.dermatologic-severity",
+          "evaluation": "required",
+          "indicationRu": "Кольцевидный очаг требует осмотра всей кожи, волос и ногтей и дифференциации с воспалительными дерматозами.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Осмотреть активный край очага и другие участки кожи, волосистую часть головы и ногти."
+        },
+        {
+          "actionId": "action.medication.tinea.topical-antifungal",
+          "evaluation": "required",
+          "indicationRu": "Ограниченная лабораторно подтверждённая дерматофития гладкой кожи.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Тербинафин 1% наружно 1 раз в сутки на очаг и 1–2 см вокруг в течение 1–2 недель либо зарегистрированная альтернатива по инструкции."
+        },
+        {
+          "actionId": "action.education.tinea-transmission",
+          "evaluation": "required",
+          "indicationRu": "Есть вероятные источники передачи — контактный спорт и котёнок.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Не делиться полотенцами и экипировкой, стирать одежду, обследовать животное у ветеринара и сообщить спортивной команде по правилам инфекционного контроля."
+        },
+        {
+          "actionId": "action.restriction.contact-sport.tinea",
+          "evaluation": "required",
+          "indicationRu": "Контактные тренировки создают риск передачи инфекции.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Приостановить контактные тренировки до начала эффективной терапии и допуска по санитарным правилам спортивной организации."
+        },
+        {
+          "actionId": "action.avoid.topical-steroid-monotherapy.tinea",
+          "evaluation": "unsafe-or-delaying",
+          "indicationRu": "Глюкокортикостероид без антимикотика маскирует и может распространить дерматофитию.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Не применять наружный глюкокортикостероид в монотерапии."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.microbiology.skin-scraping.fungi-microscopy",
+          "evaluation": "required",
+          "timingRu": "До начала противогрибковой терапии взять соскоб с активного края очага.",
+          "rationaleRu": "Российская КР требует лабораторного подтверждения дерматофитии.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.cbc-with-differential",
+          "evaluation": "not-routine",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "ОАК не подтверждает локальную дерматофитию и не нужен перед наружной терапией.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.1037.v1"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/dermatology.md#case-dermatology-0005"
+    },
+    {
+      "id": "case.dermatology.0006",
+      "diagnosis": {
+        "id": "condition.contact-dermatitis.irritant-detergent",
+        "preferredNameRu": "Раздражительный контактный дерматит кистей",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "L24.0",
+            "display": "Простой раздражительный контактный дерматит, вызванный моющими средствами",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.dermatologic-severity",
+          "evaluation": "required",
+          "indicationRu": "Нужно отличить раздражительный дерматит от аллергического, атопического дерматита и микоза кистей.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Оценить морфологию, границы, связь с экспозицией, профессию и состояние ногтей и стоп."
+        },
+        {
+          "actionId": "action.avoidance.contact-irritant",
+          "evaluation": "required",
+          "indicationRu": "Есть воспроизводимая связь с новым моющим средством.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Прекратить использование подозреваемого средства и минимизировать контакт с детергентами."
+        },
+        {
+          "actionId": "action.protection.hand-dermatitis",
+          "evaluation": "required",
+          "indicationRu": "Повторный контакт с водой и химией поддерживает воспаление.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Использовать хлопковые подкладочные и подходящие защитные перчатки, короткие циклы влажной работы и мягкое средство для очищения."
+        },
+        {
+          "actionId": "action.medication.emollient.regular",
+          "evaluation": "required",
+          "indicationRu": "Нарушен кожный барьер кистей.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Жирный эмолент без отдушек после каждого мытья и несколько раз в течение дня."
+        },
+        {
+          "actionId": "action.medication.topical-corticosteroid.course",
+          "evaluation": "required",
+          "indicationRu": "Локальное обострение без признаков инфекции.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Наружный глюкокортикостероид подходящей активности для кожи кистей 1 раз в сутки 7–14 дней с повторной оценкой."
+        },
+        {
+          "actionId": "action.medication.antihistamine.second-generation",
+          "evaluation": "not-routine",
+          "indicationRu": "Антигистаминный препарат не устраняет раздражительное воспаление кожи.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Не использовать вместо устранения раздражителя и наружной противовоспалительной терапии."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.allergy.patch-test.contact",
+          "evaluation": "conditional",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Нужен при сохраняющемся подозрении на аллергический контактный дерматит или неясной множественной экспозиции.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.cbc-with-differential",
+          "evaluation": "not-routine",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "ОАК не различает раздражительный и аллергический контактный дерматит.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.213.v3"
+      ],
+      "reviewStatus": "major-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/dermatology.md#case-dermatology-0006"
+    },
+    {
+      "id": "case.dermatology.0007",
+      "diagnosis": {
+        "id": "condition.rosacea.papulopustular-ocular-symptoms",
+        "preferredNameRu": "Папуло-пустулёзная розацеа с глазными симптомами",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "L71.8",
+            "display": "Другой вид розацеа",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.dermatologic-severity",
+          "evaluation": "required",
+          "indicationRu": "Центральная эритема, телеангиэктазии и папулы без комедонов типичны для розацеа; нужно оценить глазные проявления.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Документировать фенотипы розацеа и осмотреть веки и конъюнктиву в пределах компетенции."
+        },
+        {
+          "actionId": "action.education.rosacea-trigger-photoprotection",
+          "evaluation": "required",
+          "indicationRu": "Солнце и индивидуальные триггеры воспроизводимо усиливают симптомы.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Ежедневно использовать SPF 30–50 с широким спектром, мягкий уход и избегать индивидуальных триггеров без чрезмерных ограничений."
+        },
+        {
+          "actionId": "action.medication.rosacea.ivermectin-topical",
+          "evaluation": "required",
+          "indicationRu": "Папуло-пустулёзные элементы требуют наружной противовоспалительной терапии.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Ивермектин 1% крем тонким слоем на поражённые зоны 1 раз в сутки до 4 месяцев."
+        },
+        {
+          "actionId": "action.medication.rosacea.metronidazole-topical",
+          "evaluation": "required",
+          "indicationRu": "Допустимая альтернативная наружная терапия папуло-пустулёзной розацеа.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Метронидазол 0,75–1% наружно 1–2 раза в сутки курсом по инструкции."
+        },
+        {
+          "actionId": "action.referral.ophthalmology.ocular-rosacea",
+          "evaluation": "required",
+          "indicationRu": "Сухость и ощущение песка могут быть проявлением глазной розацеа.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Направить к офтальмологу; при боли, светобоязни или снижении зрения — срочно."
+        },
+        {
+          "actionId": "action.avoid.topical-steroids.face-rosacea",
+          "evaluation": "unsafe-or-delaying",
+          "indicationRu": "Наружные глюкокортикостероиды могут ухудшить розацеа.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Не назначать глюкокортикостероид на лицо для лечения розацеа."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.lab.cbc-with-differential",
+          "evaluation": "not-routine",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Диагноз клинический; ОАК не подтверждает розацеа.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.rodvk.rosacea.2016"
+      ],
+      "reviewStatus": "major-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/dermatology.md#case-dermatology-0007"
+    },
+    {
+      "id": "case.dermatology.0008",
+      "diagnosis": {
+        "id": "condition.melanoma.skin-trunk",
+        "preferredNameRu": "Меланома кожи туловища",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "C43.5",
+            "display": "Злокачественная меланома туловища",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.procedure.melanoma.excisional-biopsy",
+          "evaluation": "required",
+          "indicationRu": "Изменение по ABCDE и кровотечение требуют морфологической верификации.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Выполнить полное эксцизионное удаление образования с узким отступом клинически неизменённой кожи для корректной оценки толщины опухоли."
+        },
+        {
+          "actionId": "action.referral.oncology.melanoma-urgent",
+          "evaluation": "required",
+          "indicationRu": "Гистология подтверждает меланому кожи туловища.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Срочно направить к онкологу для стадирования и определения объёма радикального иссечения и показаний к биопсии сторожевого лимфоузла."
+        },
+        {
+          "actionId": "action.safety-netting.pigmented-lesion",
+          "evaluation": "required",
+          "indicationRu": "До завершения маршрута пациент должен понимать срочность.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Объяснить необходимость не откладывать биопсию и повторно обратиться при кровотечении, изъязвлении или быстром росте."
+        },
+        {
+          "actionId": "action.disposition.outpatient-discharge",
+          "evaluation": "unsafe-or-delaying",
+          "indicationRu": "Выписка без срочного диагностического и онкологического маршрута опасно задерживает лечение.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Не завершать обращение без оформленного маршрута и срока биопсии."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.exam.dermoscopy.pigmented-lesion",
+          "evaluation": "required",
+          "timingRu": "При первичном дерматологическом осмотре.",
+          "rationaleRu": "Уточнение дерматоскопических признаков подозрительного образования.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.pathology.skin-lesion.histology",
+          "evaluation": "required",
+          "timingRu": "Сразу после эксцизионной биопсии.",
+          "rationaleRu": "Диагноз меланомы устанавливается морфологически и требует параметров прогноза.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.cbc-with-differential",
+          "evaluation": "not-routine",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Нормальный ОАК не исключает меланому и не заменяет морфологическую диагностику.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.liver-enzymes.blood",
+          "evaluation": "not-routine",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Печёночные ферменты не являются способом первичного подтверждения локальной меланомы.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.921.v1"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/dermatology.md#case-dermatology-0008"
+    },
+    {
+      "id": "case.dermatology.0009",
+      "diagnosis": {
+        "id": "condition.alopecia-areata.localized",
+        "preferredNameRu": "Гнездная алопеция, ограниченная форма",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "L63.9",
+            "display": "Гнездная алопеция неуточнённая",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.alopecia-areata-extent",
+          "evaluation": "required",
+          "indicationRu": "Нерубцовый гладкий очаг требует оценки активности, площади, ногтей и исключения имитирующих состояний.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Осмотреть всю волосистую часть головы, брови, ресницы и ногти; документировать площадь и признаки активности."
+        },
+        {
+          "actionId": "action.medication.alopecia.topical-steroid",
+          "evaluation": "required",
+          "indicationRu": "Один ограниченный активный очаг у взрослой пациентки.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Сильный наружный глюкокортикостероид на очаг 1 раз в сутки ограниченным курсом по назначению дерматовенеролога."
+        },
+        {
+          "actionId": "action.procedure.alopecia.intralesional-steroid",
+          "evaluation": "optional",
+          "indicationRu": "Для ограниченной формы у взрослой пациентки возможна внутриочаговая терапия специалистом.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Внутриочаговое введение триамцинолона выполняет дерматовенеролог с учётом риска атрофии кожи."
+        },
+        {
+          "actionId": "action.monitoring.thyroid-disease",
+          "evaluation": "required",
+          "indicationRu": "Известен аутоиммунный тиреоидит и ТТГ выше индивидуальной цели.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Организовать плановый контроль терапии щитовидной железы без утверждения, что коррекция ТТГ сама восстановит волосы."
+        },
+        {
+          "actionId": "action.avoid.systemic-glucocorticoid.dermatosis",
+          "evaluation": "unsafe-or-delaying",
+          "indicationRu": "Внутривенный системный глюкокортикостероид не соответствует ограниченной форме.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Не назначать внутривенный глюкокортикостероид при одиночном очаге."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.lab.tsh.blood",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Контроль известного аутоиммунного тиреоидита и заместительной терапии, а не подтверждение алопеции.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.cbc-with-differential",
+          "evaluation": "not-routine",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "ОАК не подтверждает типичную ограниченную гнездную алопецию без системных симптомов.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.196.v2"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/dermatology.md#case-dermatology-0009"
+    },
+    {
+      "id": "case.dermatology.0010",
+      "diagnosis": {
+        "id": "condition.urticaria.chronic-spontaneous",
+        "preferredNameRu": "Хроническая спонтанная крапивница с ангиоотёком",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "L50.8",
+            "display": "Другая крапивница",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.urticaria-anaphylaxis",
+          "evaluation": "required",
+          "indicationRu": "Ангиоотёк требует исключения поражения дыхательных путей и анафилаксии.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Уточнить отёк языка и гортани, затруднение дыхания, гипотензию и связь с возможным триггером; сейчас критериев анафилаксии нет."
+        },
+        {
+          "actionId": "action.medication.antihistamine.second-generation",
+          "evaluation": "required",
+          "indicationRu": "Первая линия терапии хронической спонтанной крапивницы.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Неседативный H1-антигистаминный препарат второго поколения в стандартной зарегистрированной дозе внутрь ежедневно, а не только при появлении элементов."
+        },
+        {
+          "actionId": "action.medication.antihistamine.updose",
+          "evaluation": "conditional",
+          "indicationRu": "При недостаточном контроле стандартной дозой допустимо ступенчатое увеличение.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "После оценки приверженности увеличить суточную дозу выбранного препарата до четырёхкратной под врачебным контролем с учётом инструкции и факторов риска."
+        },
+        {
+          "actionId": "action.referral.allergy-dermatology.urticaria",
+          "evaluation": "required",
+          "indicationRu": "Симптомы сохраняются более шести недель и включают ангиоотёк.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Направить к аллергологу-иммунологу или дерматовенерологу для оценки активности, контроля и следующей линии терапии."
+        },
+        {
+          "actionId": "action.safety-netting.angioedema",
+          "evaluation": "required",
+          "indicationRu": "Пациентка должна различать изолированный отёк губ и опасные признаки.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Немедленно вызывать скорую помощь при отёке языка или горла, осиплости, удушье, головокружении или системной реакции."
+        },
+        {
+          "actionId": "action.medication.glucocorticoid.systemic",
+          "evaluation": "not-routine",
+          "indicationRu": "Системный глюкокортикостероид не используется для длительного контроля хронической крапивницы.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Не назначать внутривенно или длительным курсом; краткий курс возможен только при отдельном тяжёлом обострении по решению врача."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.lab.cbc-with-differential",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Ограниченный базовый поиск признаков воспаления и гематологических отклонений.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.crp.serum.quantitative",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Базовая оценка системного воспаления при хроническом течении.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.tsh.blood",
+          "evaluation": "conditional",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Исследование оправдано при симптомах или анамнезе заболевания щитовидной железы, но не требуется всем пациентам.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.264.v2"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/dermatology.md#case-dermatology-0010"
+    }
+  ]
+}

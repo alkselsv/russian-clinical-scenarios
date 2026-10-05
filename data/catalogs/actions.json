@@ -205,6 +205,581 @@
       "id": "action.safety-netting.cystitis",
       "preferredNameRu": "Инструктаж о признаках осложнения и повторном обращении",
       "kind": "communication"
+    },
+    {
+      "id": "action.assessment.acs-exclusion",
+      "preferredNameRu": "Исключение острого коронарного синдрома и опасных причин боли",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.medication.aspirin.maintenance",
+      "preferredNameRu": "Антитромбоцитарная терапия ацетилсалициловой кислотой",
+      "kind": "medication"
+    },
+    {
+      "id": "action.medication.statin.intensive",
+      "preferredNameRu": "Интенсивная липидснижающая терапия статином",
+      "kind": "medication"
+    },
+    {
+      "id": "action.medication.beta-blocker.antianginal",
+      "preferredNameRu": "Бета-адреноблокатор для контроля стенокардии",
+      "kind": "medication"
+    },
+    {
+      "id": "action.plan.coronary-diagnostic-strategy",
+      "preferredNameRu": "Выбор стратегии подтверждения ишемии и оценки коронарных артерий",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.safety-netting.chest-pain",
+      "preferredNameRu": "Инструктаж при изменении характера боли в груди",
+      "kind": "communication"
+    },
+    {
+      "id": "action.assessment.af-stroke-bleeding-risk",
+      "preferredNameRu": "Оценка риска инсульта и кровотечения при фибрилляции предсердий",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.medication.anticoagulant.doac",
+      "preferredNameRu": "Пероральный антикоагулянт при фибрилляции предсердий",
+      "kind": "medication"
+    },
+    {
+      "id": "action.decision.af-rate-rhythm-strategy",
+      "preferredNameRu": "Выбор стратегии контроля частоты или ритма при ФП",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.safety-netting.arrhythmia",
+      "preferredNameRu": "Инструктаж при рецидиве аритмии",
+      "kind": "communication"
+    },
+    {
+      "id": "action.assessment.hf-precipitant",
+      "preferredNameRu": "Поиск причины декомпенсации сердечной недостаточности",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.medication.loop-diuretic",
+      "preferredNameRu": "Петлевой диуретик при застое",
+      "kind": "medication"
+    },
+    {
+      "id": "action.medication.hf-foundational-therapy",
+      "preferredNameRu": "Оптимизация базисной терапии ХСН со сниженной ФВ",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.disposition.hf-urgent",
+      "preferredNameRu": "Неотложная маршрутизация при декомпенсации ХСН",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.monitoring.mitral-regurgitation",
+      "preferredNameRu": "Динамическое наблюдение при митральной недостаточности",
+      "kind": "monitoring"
+    },
+    {
+      "id": "action.referral.valve-center",
+      "preferredNameRu": "Направление в специализированный клапанный центр",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.assessment.hcm-scd-risk",
+      "preferredNameRu": "Стратификация риска внезапной сердечной смерти при ГКМП",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.restriction.competitive-sport",
+      "preferredNameRu": "Временное исключение соревновательных нагрузок",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.referral.hcm-center.urgent",
+      "preferredNameRu": "Срочное направление в специализированный центр ГКМП",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.counseling.hcm-family",
+      "preferredNameRu": "Генетическое консультирование и обследование родственников",
+      "kind": "communication"
+    },
+    {
+      "id": "action.medication.nsaid.pericarditis",
+      "preferredNameRu": "НПВС или ацетилсалициловая кислота при перикардите",
+      "kind": "medication"
+    },
+    {
+      "id": "action.medication.colchicine.pericarditis",
+      "preferredNameRu": "Колхицин при остром перикардите",
+      "kind": "medication"
+    },
+    {
+      "id": "action.restriction.myopericarditis-exercise",
+      "preferredNameRu": "Ограничение физической нагрузки при миоперикардите",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.disposition.myopericarditis-inpatient",
+      "preferredNameRu": "Госпитализация для оценки миоперикардита",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.assessment.orthostatic-vitals",
+      "preferredNameRu": "Подтверждение ортостатической гипотензии",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.review.orthostatic-medications",
+      "preferredNameRu": "Пересмотр препаратов, усиливающих ортостатическую гипотензию",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.support.oral-hydration",
+      "preferredNameRu": "Коррекция питьевого режима",
+      "kind": "support"
+    },
+    {
+      "id": "action.support.orthostatic-nonpharmacologic",
+      "preferredNameRu": "Немедикаментозная профилактика ортостатических симптомов",
+      "kind": "support"
+    },
+    {
+      "id": "action.assessment.pvc-burden",
+      "preferredNameRu": "Оценка нагрузки желудочковой экстрасистолией",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.support.reduce-stimulants",
+      "preferredNameRu": "Снижение потребления стимуляторов",
+      "kind": "support"
+    },
+    {
+      "id": "action.medication.beta-blocker.pvc",
+      "preferredNameRu": "Бета-адреноблокатор при симптомной желудочковой экстрасистолии",
+      "kind": "medication"
+    },
+    {
+      "id": "action.assessment.hypertensive-emergency",
+      "preferredNameRu": "Исключение гипертонической чрезвычайной ситуации",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.medication.antihypertensive.restart-adjust",
+      "preferredNameRu": "Возобновление и коррекция плановой антигипертензивной терапии",
+      "kind": "medication"
+    },
+    {
+      "id": "action.monitoring.bp-followup",
+      "preferredNameRu": "Ранний контроль артериального давления",
+      "kind": "monitoring"
+    },
+    {
+      "id": "action.avoid.rapid-bp-lowering",
+      "preferredNameRu": "Отказ от быстрого неконтролируемого снижения АД",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.assessment.statin-muscle-symptoms",
+      "preferredNameRu": "Оценка статин-ассоциированных мышечных симптомов",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.medication.statin.temporary-interruption",
+      "preferredNameRu": "Временная отмена статина для оценки связи симптомов",
+      "kind": "medication"
+    },
+    {
+      "id": "action.medication.statin.rechallenge",
+      "preferredNameRu": "Повторный подбор переносимой липидснижающей терапии",
+      "kind": "medication"
+    },
+    {
+      "id": "action.safety-netting.rhabdomyolysis",
+      "preferredNameRu": "Инструктаж о признаках рабдомиолиза",
+      "kind": "communication"
+    },
+    {
+      "id": "action.assessment.dermatologic-severity",
+      "preferredNameRu": "Оценка распространённости, тяжести и дифференциального диагноза дерматоза",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.education.skin-care",
+      "preferredNameRu": "Обучение щадящему уходу за кожей",
+      "kind": "communication"
+    },
+    {
+      "id": "action.medication.emollient.regular",
+      "preferredNameRu": "Регулярное применение эмолентов",
+      "kind": "medication"
+    },
+    {
+      "id": "action.assessment.psoriasis-joints",
+      "preferredNameRu": "Оценка тяжести псориаза и скрининг псориатического артрита",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.medication.psoriasis.topical-vitamin-d-steroid",
+      "preferredNameRu": "Наружная терапия псориаза аналогом витамина D и глюкокортикостероидом",
+      "kind": "medication"
+    },
+    {
+      "id": "action.referral.rheumatology.psoriatic-arthritis",
+      "preferredNameRu": "Направление к ревматологу при подозрении на псориатический артрит",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.avoid.systemic-glucocorticoid.dermatosis",
+      "preferredNameRu": "Отказ от необоснованного системного глюкокортикостероида",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.assessment.atopic-dermatitis-infection",
+      "preferredNameRu": "Оценка тяжести атопического дерматита и признаков инфекции",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.medication.topical-corticosteroid.course",
+      "preferredNameRu": "Короткий курс наружного глюкокортикостероида",
+      "kind": "medication"
+    },
+    {
+      "id": "action.education.atopic-trigger-care",
+      "preferredNameRu": "План ухода и безопасного исключения провоцирующих факторов при атопическом дерматите",
+      "kind": "communication"
+    },
+    {
+      "id": "action.assessment.acne-severity-scarring",
+      "preferredNameRu": "Оценка тяжести акне и риска рубцевания",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.referral.dermatologist",
+      "preferredNameRu": "Направление к врачу-дерматовенерологу",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.medication.acne.adapalene-benzoyl-peroxide",
+      "preferredNameRu": "Наружная комбинация адапалена и бензоила пероксида",
+      "kind": "medication"
+    },
+    {
+      "id": "action.medication.isotretinoin.systemic",
+      "preferredNameRu": "Системный изотретиноин под наблюдением дерматовенеролога",
+      "kind": "medication"
+    },
+    {
+      "id": "action.monitoring.isotretinoin.safety",
+      "preferredNameRu": "Контроль безопасности системного изотретиноина",
+      "kind": "monitoring"
+    },
+    {
+      "id": "action.medication.seborrheic.ketoconazole-scalp",
+      "preferredNameRu": "Наружный кетоконазол для волосистой части головы",
+      "kind": "medication"
+    },
+    {
+      "id": "action.medication.seborrheic.ketoconazole-face",
+      "preferredNameRu": "Наружный кетоконазол для кожи лица",
+      "kind": "medication"
+    },
+    {
+      "id": "action.medication.topical-anti-inflammatory.short",
+      "preferredNameRu": "Короткий курс наружной противовоспалительной терапии",
+      "kind": "medication"
+    },
+    {
+      "id": "action.medication.tinea.topical-antifungal",
+      "preferredNameRu": "Наружная противогрибковая терапия дерматофитии гладкой кожи",
+      "kind": "medication"
+    },
+    {
+      "id": "action.education.tinea-transmission",
+      "preferredNameRu": "Профилактика передачи дерматофитии",
+      "kind": "communication"
+    },
+    {
+      "id": "action.restriction.contact-sport.tinea",
+      "preferredNameRu": "Временное ограничение контактных тренировок при дерматофитии",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.avoid.topical-steroid-monotherapy.tinea",
+      "preferredNameRu": "Отказ от монотерапии наружным глюкокортикостероидом при дерматофитии",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.avoidance.contact-irritant",
+      "preferredNameRu": "Исключение контакта с причинным раздражителем",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.protection.hand-dermatitis",
+      "preferredNameRu": "Защита кожи рук от воды и бытовой химии",
+      "kind": "communication"
+    },
+    {
+      "id": "action.education.rosacea-trigger-photoprotection",
+      "preferredNameRu": "Исключение триггеров розацеа и ежедневная фотозащита",
+      "kind": "communication"
+    },
+    {
+      "id": "action.medication.rosacea.ivermectin-topical",
+      "preferredNameRu": "Наружный ивермектин при папуло-пустулёзной розацеа",
+      "kind": "medication"
+    },
+    {
+      "id": "action.medication.rosacea.metronidazole-topical",
+      "preferredNameRu": "Наружный метронидазол при папуло-пустулёзной розацеа",
+      "kind": "medication"
+    },
+    {
+      "id": "action.referral.ophthalmology.ocular-rosacea",
+      "preferredNameRu": "Направление к офтальмологу при глазных симптомах розацеа",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.avoid.topical-steroids.face-rosacea",
+      "preferredNameRu": "Отказ от наружных глюкокортикостероидов на лице при розацеа",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.procedure.melanoma.excisional-biopsy",
+      "preferredNameRu": "Эксцизионная биопсия подозрительного меланоцитарного образования",
+      "kind": "procedure"
+    },
+    {
+      "id": "action.referral.oncology.melanoma-urgent",
+      "preferredNameRu": "Срочная маршрутизация при подтверждённой или вероятной меланоме",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.safety-netting.pigmented-lesion",
+      "preferredNameRu": "Инструктаж при изменяющемся пигментном образовании",
+      "kind": "communication"
+    },
+    {
+      "id": "action.assessment.alopecia-areata-extent",
+      "preferredNameRu": "Оценка распространённости и активности гнездной алопеции",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.medication.alopecia.topical-steroid",
+      "preferredNameRu": "Наружный глюкокортикостероид при ограниченной гнездной алопеции",
+      "kind": "medication"
+    },
+    {
+      "id": "action.procedure.alopecia.intralesional-steroid",
+      "preferredNameRu": "Внутриочаговое введение глюкокортикостероида при ограниченной гнездной алопеции",
+      "kind": "procedure"
+    },
+    {
+      "id": "action.monitoring.thyroid-disease",
+      "preferredNameRu": "Контроль сопутствующего заболевания щитовидной железы",
+      "kind": "monitoring"
+    },
+    {
+      "id": "action.assessment.urticaria-anaphylaxis",
+      "preferredNameRu": "Исключение анафилаксии и опасного ангиоотёка",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.medication.antihistamine.second-generation",
+      "preferredNameRu": "Неседативный H1-антигистаминный препарат второго поколения",
+      "kind": "medication"
+    },
+    {
+      "id": "action.medication.antihistamine.updose",
+      "preferredNameRu": "Увеличение дозы H1-антигистаминного препарата второго поколения",
+      "kind": "medication"
+    },
+    {
+      "id": "action.referral.allergy-dermatology.urticaria",
+      "preferredNameRu": "Направление при хронической крапивнице к аллергологу-иммунологу или дерматовенерологу",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.safety-netting.angioedema",
+      "preferredNameRu": "Инструктаж при ангиоотёке и признаках анафилаксии",
+      "kind": "communication"
+    },
+    {
+      "id": "action.assessment.gastrointestinal-red-flags",
+      "preferredNameRu": "Оценка гастроэнтерологических тревожных признаков",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.assessment.ibs-rome4",
+      "preferredNameRu": "Клиническая оценка синдрома раздражённого кишечника по Римским критериям IV",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.medication.psyllium",
+      "preferredNameRu": "Растворимые пищевые волокна на основе псиллиума",
+      "kind": "medication"
+    },
+    {
+      "id": "action.medication.macrogol",
+      "preferredNameRu": "Осмотическое слабительное на основе макрогола",
+      "kind": "medication"
+    },
+    {
+      "id": "action.education.ibs-diet",
+      "preferredNameRu": "Индивидуальная коррекция питания при синдроме раздражённого кишечника",
+      "kind": "communication"
+    },
+    {
+      "id": "action.followup.gastroenterology-outpatient",
+      "preferredNameRu": "Плановое амбулаторное наблюдение гастроэнтеролога",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.assessment.upper-gi-bleeding",
+      "preferredNameRu": "Оценка риска кровотечения из верхних отделов ЖКТ",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.avoid.nsaid",
+      "preferredNameRu": "Отмена необязательного НПВП и подбор безопасной альтернативы",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.medication.ppi",
+      "preferredNameRu": "Терапия ингибитором протонной помпы",
+      "kind": "medication"
+    },
+    {
+      "id": "action.medication.h-pylori-eradication",
+      "preferredNameRu": "Эрадикационная терапия Helicobacter pylori",
+      "kind": "medication"
+    },
+    {
+      "id": "action.monitoring.h-pylori-eradication",
+      "preferredNameRu": "Контроль эрадикации Helicobacter pylori",
+      "kind": "monitoring"
+    },
+    {
+      "id": "action.referral.endoscopy.urgent",
+      "preferredNameRu": "Срочное направление на эндоскопическое исследование",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.education.gerd-lifestyle",
+      "preferredNameRu": "Коррекция образа жизни при гастроэзофагеальной рефлюксной болезни",
+      "kind": "communication"
+    },
+    {
+      "id": "action.avoid.gluten-free-before-celiac-confirmation",
+      "preferredNameRu": "Сохранение глютена в рационе до завершения диагностики целиакии",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.diet.gluten-free",
+      "preferredNameRu": "Пожизненная безглютеновая диета после подтверждения целиакии",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.referral.dietitian.celiac",
+      "preferredNameRu": "Консультация диетолога при целиакии",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.assessment.celiac-deficiencies",
+      "preferredNameRu": "Оценка нутритивных дефицитов и осложнений целиакии",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.assessment.ibd-severity",
+      "preferredNameRu": "Оценка тяжести и осложнений воспалительного заболевания кишечника",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.referral.ibd-center.urgent",
+      "preferredNameRu": "Срочное направление в центр воспалительных заболеваний кишечника",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.disposition.gastroenterology-admission",
+      "preferredNameRu": "Госпитализация в гастроэнтерологический стационар",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.medication.ibd-induction-specialist",
+      "preferredNameRu": "Индукционная терапия воспалительного заболевания кишечника по решению специалиста",
+      "kind": "medication"
+    },
+    {
+      "id": "action.avoid.ibd-steroid-before-infection-exclusion",
+      "preferredNameRu": "Отказ от эмпирического системного ГКС до исключения инфекции",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.assessment.hbv-phase-fibrosis",
+      "preferredNameRu": "Подтверждение хронической HBV-инфекции и оценка её фазы и фиброза",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.referral.hepatology-infectious-disease",
+      "preferredNameRu": "Направление к инфекционисту или гепатологу",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.medication.hbv-antiviral",
+      "preferredNameRu": "Противовирусная терапия хронического гепатита B",
+      "kind": "medication"
+    },
+    {
+      "id": "action.education.hbv-transmission-vaccination",
+      "preferredNameRu": "Профилактика передачи HBV и вакцинация контактных лиц",
+      "kind": "communication"
+    },
+    {
+      "id": "action.monitoring.hbv-hcc",
+      "preferredNameRu": "Динамическое наблюдение при HBV и скрининг гепатоцеллюлярного рака по показаниям",
+      "kind": "monitoring"
+    },
+    {
+      "id": "action.exam.anorectal",
+      "preferredNameRu": "Осмотр перианальной области и пальцевое исследование прямой кишки",
+      "kind": "procedure"
+    },
+    {
+      "id": "action.education.hemorrhoid-constipation",
+      "preferredNameRu": "Коррекция запора и натуживания при геморрое",
+      "kind": "communication"
+    },
+    {
+      "id": "action.referral.coloproctology",
+      "preferredNameRu": "Направление к колопроктологу",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.avoid.attributing-rectal-bleeding-to-hemorrhoids",
+      "preferredNameRu": "Отказ от необоснованного объяснения всей крови геморроем",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.referral.surgery.elective-cholecystectomy",
+      "preferredNameRu": "Направление к хирургу для плановой холецистэктомии",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.safety-netting.biliary-colic",
+      "preferredNameRu": "Инструктаж о признаках осложнения желчнокаменной болезни",
+      "kind": "communication"
+    },
+    {
+      "id": "action.assessment.crc-screening-risk",
+      "preferredNameRu": "Оценка риска и выбор маршрута скрининга колоректального рака",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.followup.crc-screening",
+      "preferredNameRu": "Организация завершения и повторения скрининга колоректального рака",
+      "kind": "monitoring"
     }
   ]
 }

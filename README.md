@@ -2,7 +2,7 @@
 
 Автономный исследовательский набор клинических случаев. Репозиторий содержит редакторские данные, справочники, правила оценки, генератор и готовые runtime-варианты. Исходные выгрузки и идентификаторы внешнего набора в него не входят.
 
-Сейчас реализована коллекция `emergency` из шести случаев. Все случаи имеют статус `unsafe-until-clinician-approved`: структура пригодна для разработки исследовательского прототипа, но клиническое содержание ещё требует независимой врачебной приёмки.
+Сейчас реализованы коллекции `emergency` из шести случаев и по десять амбулаторных случаев в коллекциях `cardiology`, `dermatology` и `gastroenterology`. Все случаи имеют статус `unsafe-until-clinician-approved`: структура пригодна для разработки исследовательского прототипа, но клиническое содержание ещё требует независимой врачебной приёмки.
 
 ## Структура
 
@@ -15,17 +15,23 @@ data/
       content.json                  # пациент, анамнез и результаты исследований
       rules.json                    # диагнозы и правила оценки
       runtime-config.json           # факты, условия и группы выбора
+    cardiology/                     # те же три файла для кардиологии
+    dermatology/                    # те же три файла для дерматологии
+    gastroenterology/               # те же три файла для гастроэнтерологии
 docs/
   audits/                           # клинические аудиты
   SCHEMA.md                         # контракт редакторского и runtime-слоёв
 runtime/
   emergency.json                    # сгенерированный файл для приложения
+  cardiology.json                   # сгенерированные амбулаторные случаи
+  dermatology.json                  # сгенерированные дерматологические случаи
+  gastroenterology.json             # сгенерированные гастроэнтерологические случаи
 scripts/
   generate-runtime.mjs              # конвертор редакторских данных в runtime
   validate.mjs                      # проверка автономности и связности
 ```
 
-Приложение читает только `runtime/emergency.json`. Файлы в `data/` предназначены для редакторов, медицинских экспертов и генератора.
+Приложение читает готовый файл `runtime/<collection>.json` нужной коллекции. Файлы в `data/` предназначены для редакторов, медицинских экспертов и генератора.
 
 ## Команды
 
@@ -46,6 +52,10 @@ npm run validate
 ```bash
 node scripts/generate-runtime.mjs --collection emergency
 node scripts/generate-runtime.mjs --collection emergency --check
+node scripts/generate-runtime.mjs --collection dermatology
+node scripts/generate-runtime.mjs --collection dermatology --check
+node scripts/generate-runtime.mjs --collection gastroenterology
+node scripts/generate-runtime.mjs --collection gastroenterology --check
 ```
 
 ## Добавление коллекции
@@ -71,4 +81,4 @@ node scripts/generate-runtime.mjs --collection <collection>
 - сведения необходимо повторно сверять при обновлении клинических рекомендаций и нормативных справочников;
 - точные коды ФСЛИ пока не присвоены.
 
-Подробная схема приведена в [docs/SCHEMA.md](docs/SCHEMA.md), результаты медицинского анализа — в [docs/audits/emergency.md](docs/audits/emergency.md).
+Общий порядок подготовки новых блоков приведён в [CONTRIBUTING.md](CONTRIBUTING.md), подробная схема — в [docs/SCHEMA.md](docs/SCHEMA.md), результаты медицинского анализа — в каталоге [docs/audits](docs/audits/).

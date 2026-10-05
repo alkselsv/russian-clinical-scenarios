@@ -1,0 +1,704 @@
+{
+  "_meta": {
+    "schemaVersion": "1.0.0",
+    "collection": "dermatology",
+    "language": "ru",
+    "clinicalSafety": "unsafe-until-clinician-approved"
+  },
+  "cases": [
+    {
+      "id": "case.dermatology.0001",
+      "title": "Бляшечный псориаз с подозрением на поражение суставов",
+      "patient": {
+        "name": "Павел Петров",
+        "age": 36,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился из-за очередного обострения высыпаний на локтях и коленях.",
+        "chiefComplaint": "Несколько лет появляются красные шелушащиеся бляшки на локтях, коленях и волосистой части головы.",
+        "vitals": {
+          "hr": 74,
+          "bp": "122/78",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.dermatology.0001.anamnesis.01",
+            "question": "Где расположены высыпания?",
+            "answer": "На локтях, коленях и волосистой части головы.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0001.anamnesis.02",
+            "question": "Есть ли похожее заболевание у родственников?",
+            "answer": "У отца был псориаз.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0001.anamnesis.03",
+            "question": "Бывают ли боль или утренняя скованность в суставах?",
+            "answer": "Пальцы иногда болят и скованы около 40 минут после пробуждения.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0001.anamnesis.04",
+            "question": "Изменились ли ногти?",
+            "answer": "На нескольких ногтях появились точечные углубления.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0001.anamnesis.05",
+            "question": "Как выглядят очаги и насколько они зудят?",
+            "answer": "Это чёткие красные бляшки с серебристыми чешуйками; зуд умеренный.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0001.anamnesis.06",
+            "question": "Вы недавно путешествовали?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.lab.cbc-with-differential": {
+          "result": "Гемоглобин 145 г/л, лейкоциты 6,4×10⁹/л, тромбоциты 238×10⁹/л.",
+          "abnormal": false
+        },
+        "study.lab.liver-enzymes.blood": {
+          "result": "АЛТ 24 Ед/л, АСТ 22 Ед/л.",
+          "abnormal": false
+        }
+      }
+    },
+    {
+      "id": "case.dermatology.0002",
+      "title": "Атопический дерматит у взрослой пациентки",
+      "patient": {
+        "name": "Дарья Иванова",
+        "age": 22,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась из-за усиления зуда и высыпаний в сгибах конечностей.",
+        "chiefComplaint": "С детства зудит кожа в локтевых и подколенных сгибах; сейчас стало хуже.",
+        "vitals": {
+          "hr": 74,
+          "bp": "122/78",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.dermatology.0002.anamnesis.01",
+            "question": "Когда впервые появились высыпания?",
+            "answer": "Ещё в младенчестве, затем они периодически возвращались.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0002.anamnesis.02",
+            "question": "Есть ли бронхиальная астма или аллергический ринит?",
+            "answer": "Да, у меня есть и астма, и сезонный аллергический ринит.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0002.anamnesis.03",
+            "question": "После чего обычно становится хуже?",
+            "answer": "После контакта с шерстью, агрессивным мылом и во время стресса.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0002.anamnesis.04",
+            "question": "Где сейчас расположены очаги?",
+            "answer": "В локтевых и подколенных сгибах и на кистях.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0002.anamnesis.05",
+            "question": "Насколько выражен зуд? Есть ли мокнутие или гнойные корки?",
+            "answer": "Зуд сильный, есть расчёсы, но мокнутия и гнойных корок нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0002.anamnesis.06",
+            "question": "Вы недавно путешествовали?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.lab.cbc-with-differential": {
+          "result": "Лейкоциты 6,8×10⁹/л; эозинофилы 0,55×10⁹/л, умеренно повышены.",
+          "abnormal": true
+        }
+      }
+    },
+    {
+      "id": "case.dermatology.0003",
+      "title": "Узловатые акне с формированием рубцов",
+      "patient": {
+        "name": "Фёдор Семёнов",
+        "age": 17,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Обратился с матерью из-за прогрессирования акне и появления рубцов.",
+        "chiefComplaint": "В течение года много воспалённых элементов на лице и спине, появились болезненные узлы и рубцы.",
+        "vitals": {
+          "hr": 74,
+          "bp": "122/78",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.dermatology.0003.anamnesis.01",
+            "question": "Где расположены высыпания?",
+            "answer": "На лбу, щеках, подбородке и верхней части спины.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0003.anamnesis.02",
+            "question": "Какие элементы преобладают?",
+            "answer": "Есть открытые и закрытые комедоны, воспалённые папулы и несколько болезненных узлов.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0003.anamnesis.03",
+            "question": "Что вы уже применяли?",
+            "answer": "Бензоилпероксид нерегулярно около двух месяцев; выраженного улучшения нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0003.anamnesis.04",
+            "question": "Остаются ли рубцы?",
+            "answer": "Да, на щеках уже появились небольшие атрофические рубцы.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0003.anamnesis.05",
+            "question": "Принимаете ли вы анаболические стероиды или другие препараты?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0003.anamnesis.06",
+            "question": "Связываете ли вы обострения с каким-то отдельным продуктом?",
+            "answer": "Нет, чёткой связи не замечал.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.lab.cbc-with-differential": {
+          "result": "Гемоглобин 148 г/л, лейкоциты 6,6×10⁹/л, тромбоциты 251×10⁹/л.",
+          "abnormal": false
+        },
+        "study.lab.liver-enzymes.blood": {
+          "result": "АЛТ 20 Ед/л, АСТ 21 Ед/л.",
+          "abnormal": false
+        },
+        "study.lab.lipid-profile.blood": {
+          "result": "Общий холестерин 4,1 ммоль/л, триглицериды 0,9 ммоль/л.",
+          "abnormal": false
+        }
+      }
+    },
+    {
+      "id": "case.dermatology.0004",
+      "title": "Себорейный дерматит волосистой части головы и лица",
+      "patient": {
+        "name": "Сергей Захаров",
+        "age": 50,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился из-за стойкого шелушения волосистой части головы и лица.",
+        "chiefComplaint": "На коже головы, в бровях и у носа появляются красные участки с жирными чешуйками.",
+        "vitals": {
+          "hr": 74,
+          "bp": "122/78",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.dermatology.0004.anamnesis.01",
+            "question": "Где расположены очаги?",
+            "answer": "На волосистой части головы, в бровях и носогубных складках.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0004.anamnesis.02",
+            "question": "Как они выглядят?",
+            "answer": "Кожа красная, сверху желтоватые жирные чешуйки.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0004.anamnesis.03",
+            "question": "Есть ли зуд или боль?",
+            "answer": "Есть небольшой зуд, боли нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0004.anamnesis.04",
+            "question": "Меняется ли состояние летом?",
+            "answer": "Летом обычно становится лучше.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0004.anamnesis.05",
+            "question": "Есть ли заболевание или лечение, подавляющее иммунитет?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0004.anamnesis.06",
+            "question": "Вы недавно путешествовали?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.lab.cbc-with-differential": {
+          "result": "Гемоглобин 143 г/л, лейкоциты 6,1×10⁹/л.",
+          "abnormal": false
+        }
+      }
+    },
+    {
+      "id": "case.dermatology.0005",
+      "title": "Дерматофития гладкой кожи туловища",
+      "patient": {
+        "name": "Юрий Соколов",
+        "age": 28,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился по поводу увеличивающегося кольцевидного очага на туловище.",
+        "chiefComplaint": "На туловище появилось зудящее красное кольцо, которое постепенно увеличивается.",
+        "vitals": {
+          "hr": 74,
+          "bp": "122/78",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.dermatology.0005.anamnesis.01",
+            "question": "Как выглядит очаг?",
+            "answer": "Красное кольцо с более светлой кожей в центре и шелушащимся приподнятым краем.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0005.anamnesis.02",
+            "question": "Занимаетесь ли вы контактным спортом?",
+            "answer": "Да, занимаюсь борьбой.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0005.anamnesis.03",
+            "question": "Есть ли контакт с животными?",
+            "answer": "Недавно взяли котёнка.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0005.anamnesis.04",
+            "question": "Изменяется ли размер очага?",
+            "answer": "Он постепенно расширяется по краям.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0005.anamnesis.05",
+            "question": "Применяли ли вы гормональную мазь?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0005.anamnesis.06",
+            "question": "Вы недавно путешествовали?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.lab.cbc-with-differential": {
+          "result": "Гемоглобин 146 г/л, лейкоциты 6,9×10⁹/л.",
+          "abnormal": false
+        },
+        "study.microbiology.skin-scraping.fungi-microscopy": {
+          "result": "В соскобе с активного края очага обнаружены нити септированного мицелия.",
+          "abnormal": true
+        }
+      }
+    },
+    {
+      "id": "case.dermatology.0006",
+      "title": "Раздражительный контактный дерматит кистей",
+      "patient": {
+        "name": "Ольга Алексеева",
+        "age": 39,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась из-за воспаления кожи кистей после контакта с моющим средством.",
+        "chiefComplaint": "После мытья посуды кисти краснеют, зудят, появляются мелкие пузырьки и трещины.",
+        "vitals": {
+          "hr": 74,
+          "bp": "122/78",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.dermatology.0006.anamnesis.01",
+            "question": "Меняли ли вы бытовую химию перед появлением симптомов?",
+            "answer": "Месяц назад начала пользоваться новым средством для мытья посуды.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0006.anamnesis.02",
+            "question": "Где расположены изменения?",
+            "answer": "На ладонях, тыльной стороне кистей и между пальцами.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0006.anamnesis.03",
+            "question": "Как симптомы связаны с контактом с водой и моющим средством?",
+            "answer": "После мытья посуды становится заметно хуже, в выходные — лучше.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0006.anamnesis.04",
+            "question": "Используете ли вы защитные перчатки?",
+            "answer": "Обычно нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0006.anamnesis.05",
+            "question": "Есть ли похожие высыпания в других местах?",
+            "answer": "Нет, только на кистях.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0006.anamnesis.06",
+            "question": "Есть ли у вас сезонный аллергический ринит?",
+            "answer": "Да, лёгкий.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.lab.cbc-with-differential": {
+          "result": "Гемоглобин 132 г/л, лейкоциты 6,0×10⁹/л.",
+          "abnormal": false
+        },
+        "study.allergy.patch-test.contact": {
+          "result": "Аппликационные тесты со стандартной серией аллергенов отрицательные.",
+          "abnormal": false
+        }
+      }
+    },
+    {
+      "id": "case.dermatology.0007",
+      "title": "Папуло-пустулёзная розацеа с глазными симптомами",
+      "patient": {
+        "name": "Наталья Кузнецова",
+        "age": 45,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась из-за стойкого покраснения и воспалительных элементов на лице.",
+        "chiefComplaint": "Лицо часто краснеет, а на щеках и носу появляются небольшие красные воспалённые элементы.",
+        "vitals": {
+          "hr": 74,
+          "bp": "122/78",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.dermatology.0007.anamnesis.01",
+            "question": "Что провоцирует покраснение?",
+            "answer": "Солнце, алкоголь, горячие напитки и острая пища.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0007.anamnesis.02",
+            "question": "Где расположены высыпания?",
+            "answer": "В центральной части лица — на щеках и носу.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0007.anamnesis.03",
+            "question": "Есть ли жжение, сухость или ощущение песка в глазах?",
+            "answer": "Иногда глаза сухие и появляется ощущение песка.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0007.anamnesis.04",
+            "question": "Есть ли открытые или закрытые комедоны?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0007.anamnesis.05",
+            "question": "Заметны ли расширенные сосуды?",
+            "answer": "Да, особенно на щеках.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0007.anamnesis.06",
+            "question": "Вы недавно путешествовали?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.lab.cbc-with-differential": {
+          "result": "Гемоглобин 137 г/л, лейкоциты 5,9×10⁹/л.",
+          "abnormal": false
+        }
+      }
+    },
+    {
+      "id": "case.dermatology.0008",
+      "title": "Меланома кожи спины",
+      "patient": {
+        "name": "Олег Орлов",
+        "age": 54,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "urgent",
+        "arrival": "Самостоятельно обратился из-за изменившегося пигментного образования на спине.",
+        "chiefComplaint": "Родинка на спине увеличилась, потемнела и однажды кровоточила.",
+        "vitals": {
+          "hr": 74,
+          "bp": "122/78",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.dermatology.0008.anamnesis.01",
+            "question": "Как изменилось образование?",
+            "answer": "Оно стало асимметричным, края неровные, цвет неоднородный, диаметр около 8 мм.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0008.anamnesis.02",
+            "question": "Было ли кровотечение или изъязвление?",
+            "answer": "Однажды немного кровоточило без явной травмы.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0008.anamnesis.03",
+            "question": "Насколько выражено воздействие солнца?",
+            "answer": "Работаю на стройке и много времени провожу на солнце.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0008.anamnesis.04",
+            "question": "Была ли меланома у близких родственников?",
+            "answer": "У тёти была меланома.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0008.anamnesis.05",
+            "question": "Изменяются ли другие родинки?",
+            "answer": "Других изменившихся образований не замечал.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0008.anamnesis.06",
+            "question": "Принимаете ли антикоагулянты?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.exam.dermoscopy.pigmented-lesion": {
+          "result": "Асимметрия структур и цвета, атипичная пигментная сеть, бело-голубая вуаль и нерегулярные точки; образование подозрительно на меланому.",
+          "abnormal": true
+        },
+        "study.pathology.skin-lesion.histology": {
+          "result": "Поверхностно распространяющаяся меланома кожи туловища; толщина по Бреслоу 0,9 мм, изъязвления нет, края первичной эксцизии свободны.",
+          "abnormal": true
+        },
+        "study.lab.cbc-with-differential": {
+          "result": "Гемоглобин 141 г/л, лейкоциты 6,5×10⁹/л, тромбоциты 245×10⁹/л.",
+          "abnormal": false
+        },
+        "study.lab.liver-enzymes.blood": {
+          "result": "АЛТ 26 Ед/л, АСТ 24 Ед/л.",
+          "abnormal": false
+        }
+      }
+    },
+    {
+      "id": "case.dermatology.0009",
+      "title": "Ограниченная гнездная алопеция",
+      "patient": {
+        "name": "Юлия Кузнецова",
+        "age": 27,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась по поводу округлого участка выпадения волос.",
+        "chiefComplaint": "Два месяца назад заметила на голове гладкий округлый участок без волос.",
+        "vitals": {
+          "hr": 74,
+          "bp": "122/78",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.dermatology.0009.anamnesis.01",
+            "question": "Когда вы заметили выпадение волос?",
+            "answer": "Около двух месяцев назад.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0009.anamnesis.02",
+            "question": "Какого размера очаг и как выглядит кожа?",
+            "answer": "Около 3 см, кожа гладкая, без рубца и шелушения.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0009.anamnesis.03",
+            "question": "Есть ли зуд, боль или сломанные волосы?",
+            "answer": "Нет, боли и зуда нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0009.anamnesis.04",
+            "question": "Есть ли заболевания щитовидной железы или другие аутоиммунные болезни?",
+            "answer": "Есть аутоиммунный тиреоидит, принимаю левотироксин.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0009.anamnesis.05",
+            "question": "Есть ли выпадение волос в других местах или изменения ногтей?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0009.anamnesis.06",
+            "question": "Был ли значимый стресс?",
+            "answer": "Последние месяцы были напряжёнными.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.lab.tsh.blood": {
+          "result": "ТТГ 4,2 мМЕ/л, незначительно выше целевого диапазона для пациентки на терапии.",
+          "abnormal": true
+        },
+        "study.lab.cbc-with-differential": {
+          "result": "Гемоглобин 135 г/л, лейкоциты 6,2×10⁹/л.",
+          "abnormal": false
+        }
+      }
+    },
+    {
+      "id": "case.dermatology.0010",
+      "title": "Хроническая спонтанная крапивница с ангиоотёком",
+      "patient": {
+        "name": "Анна Орлова",
+        "age": 34,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась из-за почти ежедневных волдырей и эпизодов отёка губ.",
+        "chiefComplaint": "В течение трёх месяцев почти каждый день появляются зудящие волдыри без понятной причины.",
+        "vitals": {
+          "hr": 74,
+          "bp": "122/78",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.dermatology.0010.anamnesis.01",
+            "question": "Как давно и как часто появляются волдыри?",
+            "answer": "Около трёх месяцев, почти ежедневно.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0010.anamnesis.02",
+            "question": "Сколько сохраняется каждый отдельный элемент?",
+            "answer": "Исчезает бесследно меньше чем за сутки и появляется в другом месте.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0010.anamnesis.03",
+            "question": "Есть ли явный провоцирующий фактор?",
+            "answer": "Нет, связи с конкретной пищей, лекарствами или нагрузкой не заметила.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0010.anamnesis.04",
+            "question": "Бывает ли отёк губ, языка или горла?",
+            "answer": "Иногда отекают губы, но язык и горло не отекали, одышки не было.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0010.anamnesis.05",
+            "question": "Принимаете ли НПВС, ингибиторы АПФ или другие постоянные препараты?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.dermatology.0010.anamnesis.06",
+            "question": "Остаются ли синяки или пятна после элементов?",
+            "answer": "Нет, кожа становится обычной.",
+            "relevant": true
+          }
+        ]
+      },
+      "studyResults": {
+        "study.lab.cbc-with-differential": {
+          "result": "Гемоглобин 134 г/л, лейкоциты 6,7×10⁹/л; эозинофилы 0,48×10⁹/л, погранично повышены.",
+          "abnormal": true
+        },
+        "study.lab.crp.serum.quantitative": {
+          "result": "С-реактивный белок 2,1 мг/л, в референсном диапазоне.",
+          "abnormal": false
+        },
+        "study.lab.tsh.blood": {
+          "result": "ТТГ 2,1 мМЕ/л.",
+          "abnormal": false
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,896 @@
+{
+  "_meta": {
+    "schemaVersion": "1.0.0",
+    "collection": "cardiology",
+    "language": "ru",
+    "clinicalSafety": "unsafe-until-clinician-approved"
+  },
+  "cases": [
+    {
+      "id": "case.cardiology.0001",
+      "title": "Стабильная стенокардия напряжения",
+      "patient": {
+        "name": "Фёдор Воробьёв",
+        "age": 64,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился по поводу дискомфорта в груди при физической нагрузке.",
+        "chiefComplaint": "Когда я поднимаюсь по лестнице, у меня сжимается грудь. С отдыхом это проходит.",
+        "vitals": {
+          "hr": 78,
+          "bp": "138/84",
+          "spo2": 98,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.cardiology.0001.anamnesis.01",
+            "question": "Что провоцирует боль?",
+            "answer": "Боль появляется при ходьбе в гору или подъёме по лестнице.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0001.anamnesis.02",
+            "question": "Что помогает снять боль?",
+            "answer": "После 2–3 минут отдыха боль проходит.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0001.anamnesis.03",
+            "question": "Сколько длится один эпизод?",
+            "answer": "Несколько минут.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0001.anamnesis.04",
+            "question": "Какие хронические заболевания у вас есть?",
+            "answer": "У меня гипертония и повышенный уровень холестерина.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0001.anamnesis.05",
+            "question": "Вы курите?",
+            "answer": "Бросил 5 лет назад.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0001.anamnesis.06",
+            "question": "Что вы ели перед приступом?",
+            "answer": "Ничего необычного, питался как обычно.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.functional.ecg.resting-12-lead": {
+          "result": "Синусовый ритм 78 в минуту. Неспецифические изменения зубца T в V4–V6; острых изменений сегмента ST нет.",
+          "abnormal": true
+        },
+        "study.lab.troponin-i.blood.quantitative": {
+          "result": "Высокочувствительный тропонин I: 6 нг/л, ниже 99-го перцентиля.",
+          "abnormal": false
+        },
+        "study.functional.echo.transthoracic": {
+          "result": "ФВ ЛЖ 55%, лёгкая гипертрофия ЛЖ; нарушений локальной сократимости в покое нет.",
+          "abnormal": true
+        },
+        "study.lab.lipid-profile.blood": {
+          "result": "ХС ЛНП 4,2 ммоль/л, ХС ЛВП 0,93 ммоль/л, триглицериды 2,24 ммоль/л, общий холестерин 6,0 ммоль/л.",
+          "abnormal": true
+        },
+        "study.lab.hba1c.blood": {
+          "result": "HbA1c 6,0%.",
+          "abnormal": true
+        },
+        "study.lab.cbc-with-differential": {
+          "result": "Гемоглобин 142 г/л, лейкоциты 7,2×10⁹/л, тромбоциты 240×10⁹/л.",
+          "abnormal": false
+        },
+        "order-set.lab.renal-function-electrolytes": {
+          "result": "Креатинин 88 мкмоль/л, калий 4,2 ммоль/л; расчётная СКФ сохранена.",
+          "abnormal": false
+        },
+        "study.imaging.xray.chest": {
+          "result": "Размер сердца на верхней границе нормы, очаговых и застойных изменений в лёгких нет.",
+          "abnormal": false
+        },
+        "study.functional.stress-echo": {
+          "result": "При нагрузке воспроизведена типичная боль; выявлена индуцируемая гипокинезия нижнебоковых сегментов ЛЖ.",
+          "abnormal": true
+        }
+      }
+    },
+    {
+      "id": "case.cardiology.0002",
+      "title": "Пароксизмальная фибрилляция предсердий",
+      "patient": {
+        "name": "Елена Волкова",
+        "age": 71,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась после приступа сердцебиения.",
+        "chiefComplaint": "Вчера в течение 2 часов сердце сильно и нерегулярно билось.",
+        "vitals": {
+          "hr": 86,
+          "bp": "128/78",
+          "spo2": 98,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.cardiology.0002.anamnesis.01",
+            "question": "Как часто это происходит?",
+            "answer": "Несколько раз в месяц.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0002.anamnesis.02",
+            "question": "Что обычно провоцирует приступ?",
+            "answer": "Иногда приступ начинается после кофе.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0002.anamnesis.03",
+            "question": "Вы когда-нибудь теряли сознание во время приступа?",
+            "answer": "Нет, сознание не теряла, только кружилась голова.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0002.anamnesis.04",
+            "question": "Какие хронические заболевания у вас есть?",
+            "answer": "У меня гипертония.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0002.anamnesis.05",
+            "question": "Употребляете ли вы алкоголь?",
+            "answer": "Иногда пью вино.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0002.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.functional.ecg.resting-12-lead": {
+          "result": "Сейчас синусовый ритм 86 в минуту. На записи во время приступа — фибрилляция предсердий с узкими QRS.",
+          "abnormal": true
+        },
+        "study.lab.tsh.blood": {
+          "result": "ТТГ 2,4 мМЕ/л.",
+          "abnormal": false
+        },
+        "study.functional.echo.transthoracic": {
+          "result": "Левое предсердие умеренно увеличено; ФВ ЛЖ 60%, значимого клапанного порока нет.",
+          "abnormal": true
+        },
+        "order-set.lab.renal-function-electrolytes": {
+          "result": "Креатинин 80 мкмоль/л, калий 4,2 ммоль/л, магний 0,82 ммоль/л.",
+          "abnormal": false
+        },
+        "study.lab.cbc-with-differential": {
+          "result": "Гемоглобин 134 г/л, лейкоциты 6,2×10⁹/л.",
+          "abnormal": false
+        },
+        "study.functional.ecg-ambulatory": {
+          "result": "Зарегистрирован двухчасовой пароксизм фибрилляции предсердий; пауз и опасных желудочковых аритмий нет.",
+          "abnormal": true
+        },
+        "study.imaging.xray.chest": {
+          "result": "Размер сердца не увеличен, признаков застоя в лёгких нет.",
+          "abnormal": false
+        }
+      }
+    },
+    {
+      "id": "case.cardiology.0003",
+      "title": "Декомпенсация ХСН со сниженной фракцией выброса",
+      "patient": {
+        "name": "Михаил Кузнецов",
+        "age": 68,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился по поводу усиливающегося отека ног и одышки при физической нагрузке.",
+        "chiefComplaint": "У меня перехватывает дыхание, когда я иду к почтовому ящику, и у меня опухли лодыжки.",
+        "vitals": {
+          "hr": 82,
+          "bp": "132/80",
+          "spo2": 96,
+          "temp": 36.7,
+          "rr": 18
+        },
+        "anamnesis": [
+          {
+            "id": "case.cardiology.0003.anamnesis.01",
+            "question": "Как давно появились симптомы?",
+            "answer": "Они появились около 3 месяцев назад и постепенно усиливаются.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0003.anamnesis.02",
+            "question": "На скольких подушках вы спите, чтобы не задыхаться?",
+            "answer": "Теперь приходится спать на трёх подушках.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0003.anamnesis.03",
+            "question": "Просыпаетесь ли вы ночью от нехватки воздуха?",
+            "answer": "Примерно два раза в неделю.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0003.anamnesis.04",
+            "question": "Какие сердечно-сосудистые заболевания у вас были раньше?",
+            "answer": "4 года назад перенёс инфаркт миокарда.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0003.anamnesis.05",
+            "question": "Изменился ли ваш вес?",
+            "answer": "За последние 2 недели прибавил 4 кг.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0003.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.lab.nt-probnp.blood": {
+          "result": "NT-proBNP 820 пг/мл, повышен.",
+          "abnormal": true
+        },
+        "study.functional.echo.transthoracic": {
+          "result": "ФВ ЛЖ 35%, глобальная гипокинезия и постинфарктное истончение передней стенки.",
+          "abnormal": true
+        },
+        "study.imaging.xray.chest": {
+          "result": "Кардиомегалия, линии Керли B и признаки венозного застоя в лёгких.",
+          "abnormal": true
+        },
+        "study.functional.ecg.resting-12-lead": {
+          "result": "Синусовый ритм 82 в минуту; патологические Q в V1–V4, внутрижелудочковая задержка проведения.",
+          "abnormal": true
+        },
+        "order-set.lab.renal-function-electrolytes": {
+          "result": "Креатинин 106 мкмоль/л, натрий 138 ммоль/л, калий 4,4 ммоль/л.",
+          "abnormal": false
+        },
+        "study.lab.cbc-with-differential": {
+          "result": "Гемоглобин 126 г/л, лейкоциты 7,0×10⁹/л.",
+          "abnormal": true
+        },
+        "study.lab.liver-enzymes.blood": {
+          "result": "АСТ 36 Ед/л, АЛТ 32 Ед/л.",
+          "abnormal": false
+        }
+      }
+    },
+    {
+      "id": "case.cardiology.0004",
+      "title": "Умеренная первичная митральная недостаточность",
+      "patient": {
+        "name": "Мария Кузнецова",
+        "age": 59,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась для обследования по поводу шума в сердце.",
+        "chiefComplaint": "Мой врач услышал шум в сердце и хочет его проверить.",
+        "vitals": {
+          "hr": 74,
+          "bp": "124/76",
+          "spo2": 98,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.cardiology.0004.anamnesis.01",
+            "question": "Какие симптомы вас беспокоят?",
+            "answer": "Немного быстрее устаю и иногда чувствую сильное сердцебиение.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0004.anamnesis.02",
+            "question": "Есть ли одышка?",
+            "answer": "Только при сильной нагрузке.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0004.anamnesis.03",
+            "question": "Раньше выявляли заболевания сердца?",
+            "answer": "Несколько лет назад у меня обнаружили пролапс митрального клапана.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0004.anamnesis.04",
+            "question": "Какие заболевания были у близких родственников?",
+            "answer": "У близких родственников подобных заболеваний не было.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0004.anamnesis.05",
+            "question": "Были ли повышение температуры или озноб?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0004.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.functional.echo.transthoracic": {
+          "result": "Умеренная первичная митральная регургитация при пролапсе задней створки; ФВ ЛЖ 60%, КСР ЛЖ 38 мм.",
+          "abnormal": true
+        },
+        "study.functional.ecg.resting-12-lead": {
+          "result": "Синусовый ритм 74 в минуту, признаков гипертрофии ЛЖ нет.",
+          "abnormal": false
+        },
+        "study.lab.nt-probnp.blood": {
+          "result": "NT-proBNP 90 пг/мл.",
+          "abnormal": false
+        },
+        "study.imaging.xray.chest": {
+          "result": "Застойных изменений нет.",
+          "abnormal": false
+        },
+        "study.lab.cbc-with-differential": {
+          "result": "Гемоглобин 136 г/л, лейкоциты 6,0×10⁹/л.",
+          "abnormal": false
+        },
+        "study.lab.tsh.blood": {
+          "result": "ТТГ 1,8 мМЕ/л.",
+          "abnormal": false
+        }
+      }
+    },
+    {
+      "id": "case.cardiology.0005",
+      "title": "Гипертрофическая кардиомиопатия с нагрузочным предобмороком",
+      "patient": {
+        "name": "Фёдор Воробьёв",
+        "age": 24,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился после обморока во время игры в баскетбол.",
+        "chiefComplaint": "Во время игры в баскетбол у меня закружилась голова, появилось давление в груди, и я чуть не потерял сознание.",
+        "vitals": {
+          "hr": 72,
+          "bp": "118/72",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.cardiology.0005.anamnesis.01",
+            "question": "Были ли случаи внезапной смерти у близких родственников?",
+            "answer": "Дядя внезапно умер в 32 года.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0005.anamnesis.02",
+            "question": "Такое произошло впервые?",
+            "answer": "Нет, в прошлом году у меня уже было предобморочное состояние.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0005.anamnesis.03",
+            "question": "Говорили ли вам раньше, что у вас шум в сердце?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0005.anamnesis.04",
+            "question": "Ощущаете ли вы учащённое или нерегулярное сердцебиение?",
+            "answer": "Да, изредка чувствую сердцебиение.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0005.anamnesis.05",
+            "question": "Употребляете ли вы психоактивные вещества?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0005.anamnesis.06",
+            "question": "Ели ли вы перед тренировкой или игрой?",
+            "answer": "Да.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.functional.ecg.resting-12-lead": {
+          "result": "Синусовый ритм; признаки гипертрофии ЛЖ, патологические узкие Q и инверсия T в V4–V6.",
+          "abnormal": true
+        },
+        "study.functional.echo.transthoracic": {
+          "result": "Асимметричная гипертрофия МЖП до 18 мм, SAM митрального клапана; провоцируемый градиент в ВТЛЖ 42 мм рт. ст.",
+          "abnormal": true
+        },
+        "study.functional.ecg-ambulatory": {
+          "result": "Редкие одиночные желудочковые экстрасистолы; неустойчивая желудочковая тахикардия не зарегистрирована.",
+          "abnormal": false
+        },
+        "study.imaging.cmr": {
+          "result": "Максимальная толщина МЖП 19 мм; позднее контрастирование около 8% массы ЛЖ.",
+          "abnormal": true
+        },
+        "study.lab.troponin-i.blood.quantitative": {
+          "result": "Высокочувствительный тропонин I 8 нг/л, ниже 99-го перцентиля.",
+          "abnormal": false
+        },
+        "study.imaging.xray.chest": {
+          "result": "Размер сердца не увеличен, лёгкие без очаговых и застойных изменений.",
+          "abnormal": false
+        }
+      }
+    },
+    {
+      "id": "case.cardiology.0006",
+      "title": "Острый миоперикардит",
+      "patient": {
+        "name": "Светлана Воробьёва",
+        "age": 33,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась с болью в груди, которая уменьшается при наклоне вперёд.",
+        "chiefComplaint": "У меня резкая боль в груди, которая усиливается в положении лежа. Началось после простуды.",
+        "vitals": {
+          "hr": 92,
+          "bp": "122/76",
+          "spo2": 98,
+          "temp": 37.6,
+          "rr": 16
+        },
+        "anamnesis": [
+          {
+            "id": "case.cardiology.0006.anamnesis.01",
+            "question": "Когда начались симптомы?",
+            "answer": "3 дня назад, после болезни, похожей на грипп.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0006.anamnesis.02",
+            "question": "Зависит ли боль от положения тела?",
+            "answer": "Когда лежу на спине, боль усиливается, а если наклонюсь вперёд — становится легче.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0006.anamnesis.03",
+            "question": "Какая это боль?",
+            "answer": "Боль острая, колющая.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0006.anamnesis.04",
+            "question": "Куда отдаёт боль?",
+            "answer": "Иногда в левое плечо.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0006.anamnesis.05",
+            "question": "Усиливается ли боль при глубоком вдохе?",
+            "answer": "Да.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0006.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.functional.ecg.resting-12-lead": {
+          "result": "Синусовая тахикардия 92 в минуту; диффузный вогнутый подъём ST и депрессия PR, кроме aVR.",
+          "abnormal": true
+        },
+        "study.lab.troponin-i.blood.quantitative": {
+          "result": "Высокочувствительный тропонин I 78 нг/л, выше 99-го перцентиля.",
+          "abnormal": true
+        },
+        "study.functional.echo.transthoracic": {
+          "result": "Небольшой выпот в полости перикарда до 6 мм; ФВ ЛЖ 60%, признаков тампонады нет.",
+          "abnormal": true
+        },
+        "study.lab.crp.serum.quantitative": {
+          "result": "С-реактивный белок 64 мг/л.",
+          "abnormal": true
+        },
+        "study.lab.esr.blood": {
+          "result": "СОЭ 38 мм/ч.",
+          "abnormal": true
+        },
+        "study.imaging.cmr": {
+          "result": "Отёк и субэпикардиальное позднее контрастирование миокарда с сопутствующим воспалением перикарда.",
+          "abnormal": true
+        },
+        "study.imaging.xray.chest": {
+          "result": "Силуэт сердца не увеличен, лёгкие без очаговых изменений.",
+          "abnormal": false
+        }
+      }
+    },
+    {
+      "id": "case.cardiology.0007",
+      "title": "Лекарственно- и гиповолемически обусловленная ортостатическая гипотензия",
+      "patient": {
+        "name": "Иван Васильев",
+        "age": 76,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился по поводу эпизодов головокружения в положении стоя.",
+        "chiefComplaint": "У меня кружится голова каждый раз, когда я быстро встаю.",
+        "vitals": {
+          "hr": 72,
+          "bp": "118/72",
+          "spo2": 97,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.cardiology.0007.anamnesis.01",
+            "question": "В какой момент появляется головокружение?",
+            "answer": "Когда встаю с кровати или со стула.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0007.anamnesis.02",
+            "question": "Были ли падения?",
+            "answer": "В прошлом месяце два раза чуть не упал.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0007.anamnesis.03",
+            "question": "Какие лекарства вы принимаете?",
+            "answer": "Тамсулозин, лизиноприл и гидрохлоротиазид.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0007.anamnesis.04",
+            "question": "Какие хронические заболевания у вас есть?",
+            "answer": "Аденома простаты и гипертония.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0007.anamnesis.05",
+            "question": "Сколько жидкости вы пьёте?",
+            "answer": "Пью мало жидкости, стараюсь избегать воды.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0007.anamnesis.06",
+            "question": "Изменилось ли зрение?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "order-set.lab.renal-function-electrolytes": {
+          "result": "Мочевина 10,0 ммоль/л, креатинин 97 мкмоль/л, натрий 141 ммоль/л, калий 4,0 ммоль/л; вероятна умеренная гиповолемия.",
+          "abnormal": true
+        },
+        "study.functional.ecg.resting-12-lead": {
+          "result": "Синусовый ритм 72 в минуту, блокад и ишемических изменений нет.",
+          "abnormal": false
+        },
+        "study.lab.cbc-with-differential": {
+          "result": "Гемоглобин 128 г/л, лейкоциты 6,4×10⁹/л.",
+          "abnormal": false
+        },
+        "study.functional.orthostatic-active-standing": {
+          "result": "После 5 минут лёжа АД 132/76, ЧСС 70; через 3 минуты стоя АД 102/64, ЧСС 82, возникло головокружение.",
+          "abnormal": true
+        },
+        "study.lab.vitamin-b12.blood": {
+          "result": "Витамин B12 380 пг/мл.",
+          "abnormal": false
+        },
+        "study.functional.echo.transthoracic": {
+          "result": "ФВ ЛЖ 60%, значимой клапанной патологии нет.",
+          "abnormal": false
+        }
+      }
+    },
+    {
+      "id": "case.cardiology.0008",
+      "title": "Симптомная мономорфная желудочковая экстрасистолия",
+      "patient": {
+        "name": "Татьяна Павлова",
+        "age": 45,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась из-за ощущения перебоев в работе сердца.",
+        "chiefComplaint": "Несколько раз в день ощущаю перебои в работе сердца.",
+        "vitals": {
+          "hr": 76,
+          "bp": "120/74",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.cardiology.0008.anamnesis.01",
+            "question": "Когда начались симптомы?",
+            "answer": "Несколько месяцев назад.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0008.anamnesis.02",
+            "question": "Сколько кофеина вы употребляете?",
+            "answer": "Пью около 5 чашек кофе в день.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0008.anamnesis.03",
+            "question": "В последнее время у вас много стресса?",
+            "answer": "Да, в последнее время на работе очень напряжённо.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0008.anamnesis.04",
+            "question": "Были ли обмороки или предобморочные состояния?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0008.anamnesis.05",
+            "question": "Есть ли одышка?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0008.anamnesis.06",
+            "question": "Как изменился ваш аппетит?",
+            "answer": "Аппетит обычный.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.functional.ecg.resting-12-lead": {
+          "result": "Синусовый ритм 76 в минуту, частые мономорфные желудочковые экстрасистолы.",
+          "abnormal": true
+        },
+        "study.functional.echo.transthoracic": {
+          "result": "Структурной патологии сердца не выявлено, ФВ ЛЖ 62%.",
+          "abnormal": false
+        },
+        "study.lab.tsh.blood": {
+          "result": "ТТГ 1,7 мМЕ/л.",
+          "abnormal": false
+        },
+        "order-set.lab.renal-function-electrolytes": {
+          "result": "Калий 4,0 ммоль/л, магний 0,82 ммоль/л, кальций 2,35 ммоль/л.",
+          "abnormal": false
+        },
+        "study.functional.ecg-ambulatory": {
+          "result": "Мономорфная желудочковая экстрасистолия, нагрузка 4,5%; пробежек желудочковой тахикардии нет.",
+          "abnormal": true
+        },
+        "study.lab.troponin-i.blood.quantitative": {
+          "result": "Высокочувствительный тропонин I 4 нг/л, ниже 99-го перцентиля.",
+          "abnormal": false
+        }
+      }
+    },
+    {
+      "id": "case.cardiology.0009",
+      "title": "Неконтролируемая артериальная гипертензия без острого поражения органов-мишеней",
+      "patient": {
+        "name": "Виктор Орлов",
+        "age": 57,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "urgent",
+        "arrival": "Самостоятельно обратился после измерения артериального давления 188/112 мм рт. ст. дома.",
+        "chiefComplaint": "Домашний тонометр показал давление 188/112 мм рт. ст.; болит голова.",
+        "vitals": {
+          "hr": 88,
+          "bp": "184/108",
+          "spo2": 98,
+          "temp": 36.7,
+          "rr": 16
+        },
+        "anamnesis": [
+          {
+            "id": "case.cardiology.0009.anamnesis.01",
+            "question": "Какие препараты от давления вы принимаете?",
+            "answer": "Амлодипин, но таблетки закончились ещё на прошлой неделе.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0009.anamnesis.02",
+            "question": "Как давно у вас повышено давление?",
+            "answer": "Гипертония у меня уже около 10 лет.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0009.anamnesis.03",
+            "question": "Есть ли головная боль или нарушения зрения?",
+            "answer": "Легкая головная боль, изменений в зрении нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0009.anamnesis.04",
+            "question": "Есть ли боль в груди?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0009.anamnesis.05",
+            "question": "Есть ли слабость или онемение?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0009.anamnesis.06",
+            "question": "Много ли соли вы употребляете?",
+            "answer": "Да, употребляю много соли.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.functional.ecg.resting-12-lead": {
+          "result": "Синусовый ритм 88 в минуту; электрокардиографические признаки гипертрофии ЛЖ с вторичными изменениями реполяризации.",
+          "abnormal": true
+        },
+        "order-set.lab.renal-function-electrolytes": {
+          "result": "Креатинин 88 мкмоль/л, калий 4,2 ммоль/л, натрий 140 ммоль/л; расчётная СКФ сохранена.",
+          "abnormal": false
+        },
+        "study.lab.uacr.urine": {
+          "result": "Отношение альбумин/креатинин мочи 4,2 мг/ммоль, умеренно повышено.",
+          "abnormal": true
+        },
+        "study.lab.troponin-i.blood.quantitative": {
+          "result": "Высокочувствительный тропонин I 9 нг/л, ниже 99-го перцентиля.",
+          "abnormal": false
+        },
+        "study.exam.fundus": {
+          "result": "Сужение артериол и артериовенозные перекрёсты; кровоизлияний, экссудатов и отёка диска зрительного нерва нет.",
+          "abnormal": true
+        },
+        "study.functional.echo.transthoracic": {
+          "result": "Концентрическая гипертрофия ЛЖ; ФВ ЛЖ 58%.",
+          "abnormal": true
+        },
+        "study.functional.bp-ambulatory": {
+          "result": "Среднесуточное АД 168/98 мм рт. ст.; ночное снижение недостаточное.",
+          "abnormal": true
+        },
+        "study.imaging.xray.chest": {
+          "result": "Размер сердца на верхней границе нормы; отёка лёгких нет.",
+          "abnormal": false
+        }
+      }
+    },
+    {
+      "id": "case.cardiology.0010",
+      "title": "Вероятные статин-ассоциированные мышечные симптомы",
+      "patient": {
+        "name": "Виктория Павлова",
+        "age": 62,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась из-за мышечной боли на фоне приёма статина.",
+        "chiefComplaint": "После начала приёма нового препарата для снижения холестерина у меня болят мышцы бёдер.",
+        "vitals": {
+          "hr": 72,
+          "bp": "124/76",
+          "spo2": 98,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.cardiology.0010.anamnesis.01",
+            "question": "Через какое время после начала приёма аторвастатина появились симптомы?",
+            "answer": "Примерно через 6 недель после начала приёма.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0010.anamnesis.02",
+            "question": "Где именно болят мышцы?",
+            "answer": "Болят оба бедра, сильнее в верхней части, ближе к тазу.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0010.anamnesis.03",
+            "question": "Становилась ли моча тёмной?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0010.anamnesis.04",
+            "question": "Усиливаются ли симптомы при физической нагрузке?",
+            "answer": "Да, при нагрузке боль немного усиливается.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0010.anamnesis.05",
+            "question": "Есть ли слабость?",
+            "answer": "Да, есть небольшая слабость.",
+            "relevant": true
+          },
+          {
+            "id": "case.cardiology.0010.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "order-set.lab.renal-function-electrolytes": {
+          "result": "Креатинин 80 мкмоль/л, калий 4,1 ммоль/л, натрий 140 ммоль/л.",
+          "abnormal": false
+        },
+        "study.lab.liver-enzymes.blood": {
+          "result": "АСТ 52 Ед/л, АЛТ 48 Ед/л — менее трёх верхних границ нормы.",
+          "abnormal": true
+        },
+        "study.lab.creatine-kinase.blood": {
+          "result": "Креатинкиназа 410 Ед/л — умеренное повышение.",
+          "abnormal": true
+        },
+        "study.lab.tsh.blood": {
+          "result": "ТТГ 2,0 мМЕ/л.",
+          "abnormal": false
+        },
+        "study.lab.vitamin-d-25oh.blood": {
+          "result": "25-OH витамин D 22 нг/мл.",
+          "abnormal": true
+        },
+        "study.lab.urinalysis.general": {
+          "result": "Кровь и миоглобин в моче не выявлены.",
+          "abnormal": false
+        },
+        "study.lab.esr.blood": {
+          "result": "СОЭ 14 мм/ч.",
+          "abnormal": false
+        }
+      }
+    }
+  ]
+}

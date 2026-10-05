@@ -2,7 +2,7 @@
   "_meta": {
     "schemaVersion": "1.0.0",
     "scope": "Зафиксированные версии клинических рекомендаций",
-    "reviewedAt": "2026-10-04",
+    "reviewedAt": "2026-10-05",
     "language": "ru"
   },
   "clinicalRecommendations": [
@@ -59,6 +59,246 @@
       "publishedAt": "2024-11-02",
       "statusAtReview": "Применяется",
       "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/14_3"
+    },
+    {
+      "id": "guideline.ru.minzdrav.155.v2",
+      "externalId": "155_2",
+      "titleRu": "Стабильная ишемическая болезнь сердца",
+      "year": 2024,
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/155_2"
+    },
+    {
+      "id": "guideline.ru.minzdrav.382.v2",
+      "externalId": "382_2",
+      "titleRu": "Фибрилляция и трепетание предсердий",
+      "year": 2025,
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/382_2"
+    },
+    {
+      "id": "guideline.ru.minzdrav.156.v2",
+      "externalId": "156_2",
+      "titleRu": "Хроническая сердечная недостаточность",
+      "year": 2024,
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/156_2"
+    },
+    {
+      "id": "guideline.ru.minzdrav.881.v1",
+      "externalId": "881_1",
+      "titleRu": "Митральная недостаточность",
+      "year": 2024,
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/881_1"
+    },
+    {
+      "id": "guideline.ru.minzdrav.283.v2",
+      "externalId": "283_2",
+      "titleRu": "Гипертрофическая кардиомиопатия",
+      "year": 2025,
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/283_2"
+    },
+    {
+      "id": "guideline.ru.minzdrav.746.v2",
+      "externalId": "746_2",
+      "titleRu": "Перикардиты",
+      "year": 2025,
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/746_2"
+    },
+    {
+      "id": "guideline.ru.minzdrav.569.v2",
+      "externalId": "569_2",
+      "titleRu": "Желудочковые нарушения ритма сердца. Внезапная сердечная смерть",
+      "year": 2025,
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/569_2"
+    },
+    {
+      "id": "guideline.ru.minzdrav.62.v3",
+      "externalId": "62_3",
+      "titleRu": "Артериальная гипертензия у взрослых",
+      "year": 2024,
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/62_3"
+    },
+    {
+      "id": "guideline.ru.minzdrav.752.v1",
+      "externalId": "752_1",
+      "titleRu": "Нарушения липидного обмена",
+      "year": 2023,
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/752_1"
+    },
+    {
+      "id": "guideline.ru.minzdrav.234.v2",
+      "externalId": "234_2",
+      "titleRu": "Псориаз",
+      "year": 2023,
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/234_2"
+    },
+    {
+      "id": "guideline.ru.minzdrav.562.v3",
+      "externalId": "562_3",
+      "titleRu": "Псориаз артропатический. Псориатический артрит",
+      "year": 2024,
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/562_3"
+    },
+    {
+      "id": "guideline.ru.minzdrav.265.v3",
+      "externalId": "265_3",
+      "titleRu": "Атопический дерматит",
+      "year": 2024,
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/265_3"
+    },
+    {
+      "id": "guideline.ru.rodvk.acne.2020",
+      "externalId": "RODVK-ACNE-2020",
+      "titleRu": "Акне вульгарные",
+      "year": 2020,
+      "statusAtReview": "Профессиональные рекомендации; актуальная КР Минздрава в рубрикаторе на дату проверки не найдена",
+      "officialUrl": "https://www.cnikvi.ru/docs/clinic_recs/klinicheskie-rekomendatsii-2019-2020/"
+    },
+    {
+      "id": "guideline.ru.minzdrav.215.v3",
+      "externalId": "215_3",
+      "titleRu": "Себорейный дерматит",
+      "year": 2025,
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/215_3"
+    },
+    {
+      "id": "guideline.ru.minzdrav.1037.v1",
+      "externalId": "1037_1",
+      "titleRu": "Дерматофития",
+      "year": 2026,
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/1037_1"
+    },
+    {
+      "id": "guideline.ru.minzdrav.213.v3",
+      "externalId": "213_3",
+      "titleRu": "Дерматит контактный",
+      "year": 2024,
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/213_3"
+    },
+    {
+      "id": "guideline.ru.rodvk.rosacea.2016",
+      "externalId": "RODVK-ROSACEA-2016",
+      "titleRu": "Розацеа",
+      "year": 2016,
+      "statusAtReview": "Архивные профессиональные рекомендации; актуальная КР Минздрава в рубрикаторе на дату проверки не найдена",
+      "officialUrl": "https://medi.ru/klinicheskie-rekomendatsii/rozatsea_14251/"
+    },
+    {
+      "id": "guideline.ru.minzdrav.921.v1",
+      "externalId": "921_1",
+      "titleRu": "Меланома кожи и слизистых оболочек",
+      "year": 2025,
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/921_1"
+    },
+    {
+      "id": "guideline.ru.minzdrav.196.v2",
+      "externalId": "196_2",
+      "titleRu": "Гнездная алопеция",
+      "year": 2024,
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/196_2"
+    },
+    {
+      "id": "guideline.ru.minzdrav.264.v2",
+      "externalId": "264_2",
+      "titleRu": "Крапивница",
+      "year": 2023,
+      "statusAtReview": "Применяется на дату проверки; срок планового пересмотра истёк",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/264_2"
+    },
+    {
+      "id": "guideline.ru.minzdrav.892.v1",
+      "externalId": "892_1",
+      "titleRu": "Синдром раздражённого кишечника",
+      "year": 2024,
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/892_1"
+    },
+    {
+      "id": "guideline.ru.minzdrav.277.v2",
+      "externalId": "277_2",
+      "titleRu": "Язвенная болезнь",
+      "year": 2024,
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/277_2"
+    },
+    {
+      "id": "guideline.ru.rga.gerd.2024",
+      "externalId": "RGA-GERD-2024",
+      "titleRu": "Диагностика и лечение гастроэзофагеальной рефлюксной болезни",
+      "year": 2024,
+      "statusAtReview": "Профессиональные рекомендации; актуальная КР Минздрава для взрослых в рубрикаторе на дату проверки не найдена",
+      "officialUrl": "https://doi.org/10.22416/1382-4376-2024-34-5-111-135"
+    },
+    {
+      "id": "guideline.ru.nogr.celiac.2025",
+      "externalId": "NOGR-CELIAC-2025",
+      "titleRu": "Целиакия у взрослых: практические рекомендации",
+      "year": 2025,
+      "statusAtReview": "Профессиональные рекомендации; утверждённая КР Минздрава для взрослых в рубрикаторе на дату проверки не найдена",
+      "officialUrl": "https://medj.rucml.ru/journal/4e432d4e4f47522d41525449434c452d323032352d302d342d302d35342d3830"
+    },
+    {
+      "id": "guideline.ru.minzdrav.176.v2",
+      "externalId": "176_2",
+      "titleRu": "Болезнь Крона",
+      "year": 2024,
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/176_2"
+    },
+    {
+      "id": "guideline.ru.minzdrav.193.v2",
+      "externalId": "193_2",
+      "titleRu": "Язвенный колит",
+      "year": 2024,
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/193_2"
+    },
+    {
+      "id": "guideline.ru.minzdrav.900.v1",
+      "externalId": "900_1",
+      "titleRu": "Хронический вирусный гепатит B у взрослых",
+      "year": 2024,
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/900_1"
+    },
+    {
+      "id": "guideline.ru.minzdrav.178.v2",
+      "externalId": "178_2",
+      "titleRu": "Геморрой",
+      "year": 2024,
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/178_2"
+    },
+    {
+      "id": "guideline.ru.minzdrav.877.v1",
+      "externalId": "877_1",
+      "titleRu": "Желчнокаменная болезнь",
+      "year": 2024,
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/877_1"
+    },
+    {
+      "id": "regulation.ru.minzdrav.404n.2021",
+      "externalId": "404н",
+      "titleRu": "Порядок проведения профилактического медицинского осмотра и диспансеризации определённых групп взрослого населения",
+      "year": 2021,
+      "statusAtReview": "Действует с изменениями; редакцию проверять на дату применения",
+      "officialUrl": "https://www.consultant.ru/document/cons_doc_LAW_388771/"
     }
   ]
 }
