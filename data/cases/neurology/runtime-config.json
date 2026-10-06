@@ -1,0 +1,206 @@
+{
+  "_meta": {
+    "schemaVersion": "1.0.0",
+    "purpose": "Машинные факты и условия неврологических сценариев",
+    "conditionDsl": {
+      "always": "{\"always\":true}",
+      "comparison": "{\"fact\":\"path\",\"op\":\"eq|ne|lt|lte|gt|gte|in|exists\",\"value\":any}",
+      "all": "{\"all\":[...]}",
+      "any": "{\"any\":[...]}",
+      "not": "{\"not\":{...}}"
+    }
+  },
+  "cases": [
+    {
+      "id": "case.neurology.0001",
+      "facts": {
+        "nauseaTreatmentNeeded": true,
+        "migrainePreventionIndicated": true
+      },
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {
+        "action.medication.migraine-antiemetic": {
+          "fact": "nauseaTreatmentNeeded",
+          "op": "eq",
+          "value": true
+        },
+        "action.decision.migraine-prevention": {
+          "fact": "migrainePreventionIndicated",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.neurology.0002",
+      "facts": {
+        "preventionIndicatedAfterDiary": false
+      },
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {
+        "action.decision.tension-headache-prevention": {
+          "fact": "preventionIndicatedAfterDiary",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.neurology.0003",
+      "facts": {
+        "severeOrHerpeticFacialPalsy": false,
+        "atypicalFacialPalsy": false
+      },
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {
+        "action.medication.antiviral-bell-palsy": {
+          "fact": "severeOrHerpeticFacialPalsy",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "studyConditions": {
+        "study.imaging.mri.brain": {
+          "fact": "atypicalFacialPalsy",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "choiceGroups": []
+    },
+    {
+      "id": "case.neurology.0004",
+      "facts": {
+        "injectionAppropriate": false
+      },
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {
+        "action.procedure.carpal-tunnel-steroid-injection": {
+          "fact": "injectionAppropriate",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.neurology.0005",
+      "facts": {},
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {},
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.neurology.0006",
+      "facts": {
+        "medicallyRefractoryTrigeminalNeuralgia": false
+      },
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {
+        "action.referral.neurosurgery-trigeminal": {
+          "fact": "medicallyRefractoryTrigeminalNeuralgia",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.neurology.0007",
+      "facts": {
+        "emgAddsDiagnosticValue": false
+      },
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {},
+      "studyConditions": {
+        "study.functional.emg-needle": {
+          "fact": "emgAddsDiagnosticValue",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "choiceGroups": []
+    },
+    {
+      "id": "case.neurology.0008",
+      "facts": {
+        "transitionalPreventionIndicated": true
+      },
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {
+        "action.decision.cluster-transitional-prevention": {
+          "fact": "transitionalPreventionIndicated",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.neurology.0009",
+      "facts": {
+        "tremorFunctionallyLimiting": true,
+        "atypicalOrRefractoryTremor": false
+      },
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {
+        "action.decision.essential-tremor-treatment": {
+          "fact": "tremorFunctionallyLimiting",
+          "op": "eq",
+          "value": true
+        },
+        "action.referral.movement-disorder-specialist": {
+          "fact": "atypicalOrRefractoryTremor",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.neurology.0010",
+      "facts": {
+        "sleepApneaEvaluationIndicated": true
+      },
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {},
+      "studyConditions": {
+        "study.sleep.polysomnography": {
+          "fact": "sleepApneaEvaluationIndicated",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "choiceGroups": []
+    }
+  ]
+}

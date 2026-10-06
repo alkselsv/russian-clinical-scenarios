@@ -1,0 +1,2331 @@
+{
+  "_meta": {
+    "schemaVersion": "1.0.0",
+    "collection": "ent",
+    "generator": "scripts/generate-runtime.mjs",
+    "caseCount": 10,
+    "language": "ru",
+    "clinicalSafety": "unsafe-until-clinician-approved",
+    "scoringMode": "rules-with-structured-conditions-and-parameter-review",
+    "conditionDsl": {
+      "always": "{\"always\":true}",
+      "comparison": "{\"fact\":\"path\",\"op\":\"eq|ne|lt|lte|gt|gte|in|exists\",\"value\":any}",
+      "all": "{\"all\":[...]}",
+      "any": "{\"any\":[...]}",
+      "not": "{\"not\":{...}}"
+    },
+    "inputSha256": {
+      "actions": "4a565ef472310a5adeaf95cda3408d1b73d8b7cde4f26417976c648306901a70",
+      "studies": "5b3fc8cd11378a4164364336e83e4867219ed5058f82356394ab71b12c313fbd",
+      "references": "7e550f6c0e468e15f35f5fca8d3c711dc9db3d8a61ffb50484dc215f814442df",
+      "content": "ee6abe9de69b283bd375fe71ff994b9aa1802c56f86cb6297d3e4a61b61e761a",
+      "rules": "866219c9a1ca4ce3d40cab9867888cc80fc12629c1f397ac7056858c9306f08b",
+      "config": "72110782809afe453285efe2eb82d1275c357bac3b41a077541746ed35f09e4a"
+    }
+  },
+  "cases": [
+    {
+      "id": "case.ent.0001",
+      "title": "Острый бактериальный риносинусит",
+      "patient": {
+        "name": "Александр Захаров",
+        "age": 37,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "urgent",
+        "arrival": "Самостоятельно обратился с повышенной температурой.",
+        "chiefComplaint": "Давление на лицо, желтые выделения из носа, лихорадка в течение 10 дней после простуды.",
+        "vitals": {
+          "hr": 92,
+          "bp": "124/78",
+          "spo2": 98,
+          "temp": 38.6,
+          "rr": 16
+        },
+        "anamnesis": [
+          {
+            "id": "case.ent.0001.anamnesis.01",
+            "question": "Как давно это началось?",
+            "answer": "Симптомы появились около 10 дней назад и продолжают усиливаться.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0001.anamnesis.02",
+            "question": "Есть ли выделения из носа и какие они?",
+            "answer": "Да, выделения густые, жёлтые.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0001.anamnesis.03",
+            "question": "Где болит и когда боль усиливается?",
+            "answer": "Болит в области щёк и верхней челюсти; при наклоне вперёд боль усиливается.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0001.anamnesis.04",
+            "question": "До каких значений повышалась температура?",
+            "answer": "До 38,6 °C.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0001.anamnesis.05",
+            "question": "Есть ли зубная боль?",
+            "answer": "Болят верхние зубы.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0001.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {},
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.acute-bacterial-rhinosinusitis",
+        "label": "Острый бактериальный риносинусит",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "J01.9",
+            "display": "Острый синусит неуточнённый",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.ent-red-flags",
+            "label": "Оценка неотложных ЛОР-симптомов и осложнений",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Проверить отёк века, нарушение зрения и движений глаза, менингеальные и очаговые неврологические симптомы.",
+            "indication": "Нужно исключить орбитальное и внутричерепное осложнение.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.amoxicillin-clavulanate",
+            "label": "Амоксициллин с клавулановой кислотой",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Назначить внутрь в зарегистрированной возрастной дозе с учётом аллергии, функции почек и локальной резистентности.",
+            "indication": "Лихорадка, гнойные выделения и ухудшение на 10-й день соответствуют вероятному бактериальному процессу.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.intranasal-corticosteroid",
+            "label": "Интраназальный глюкокортикостероид",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Интраназально в зарегистрированной дозе, обучив технике применения.",
+            "indication": "Уменьшает воспаление и назальные симптомы.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.analgesia.unspecified",
+            "label": "Неспецифицированное обезболивание",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Выбрать анальгетик с учётом противопоказаний.",
+            "indication": "Есть выраженная лицевая боль и лихорадка.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.followup.ent",
+            "label": "Контроль у врача-оториноларинголога",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Контроль через 48–72 часа или немедленно при красных флагах.",
+            "indication": "Нужна повторная оценка при отсутствии улучшения.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [
+          {
+            "id": "action.support.nasal-saline",
+            "label": "Орошение полости носа солевым раствором",
+            "decision": "optional",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Орошать полость носа стерильным/приготовленным безопасным солевым раствором.",
+            "indication": "Допустимо для облегчения симптомов.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "avoid": [
+          {
+            "id": "action.medication.antibacterial.broad-spectrum.unspecified",
+            "label": "Неспецифицированный антибиотик широкого спектра",
+            "decision": "unscorable-as-specified",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Не использовать неопределённый «широкий антибиотик».",
+            "indication": "Формулировка не задаёт препарат и режим.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [],
+        "conditional": [],
+        "optional": [
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "optional",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Лейкоцитоз поддерживает воспаление, но диагноз обычно клинический.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Лейкоциты 13,0×10⁹/л, нейтрофилёз.",
+              "abnormal": true
+            }
+          }
+        ],
+        "avoid": [
+          {
+            "id": "study.imaging.ct.paranasal-sinuses",
+            "label": "КТ околоносовых пазух",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "КТ не нужна при неосложнённом типичном эпизоде; показана при осложнении или особой диагностической задаче.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Исследование не выполнено: признаков орбитального или внутричерепного осложнения нет.",
+              "abnormal": false
+            }
+          }
+        ],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.313.v3",
+          "title": "Острый синусит",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/313_3"
+        }
+      ],
+      "reviewStatus": "major-revision-required"
+    },
+    {
+      "id": "case.ent.0002",
+      "title": "Острый средний отит справа",
+      "patient": {
+        "name": "Дарья Петрова",
+        "age": 29,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась с болью в ухе.",
+        "chiefComplaint": "Боль и заложенность в правом ухе в течение 3 дней после простуды.",
+        "vitals": {
+          "hr": 80,
+          "bp": "118/72",
+          "spo2": 99,
+          "temp": 37.8,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.ent.0002.anamnesis.01",
+            "question": "Была ли недавно простуда?",
+            "answer": "Да.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0002.anamnesis.02",
+            "question": "Изменился ли слух?",
+            "answer": "Да, слышу хуже, как будто ухо заложено.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0002.anamnesis.03",
+            "question": "Есть ли выделения из уха?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0002.anamnesis.04",
+            "question": "Повышалась ли температура?",
+            "answer": "Да, немного повышалась.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0002.anamnesis.05",
+            "question": "Есть ли ощущение вращения?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0002.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {
+        "antibioticIndicated": true,
+        "outpatientSafe": true
+      },
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.acute-otitis-media.right",
+        "label": "Острый средний отит справа",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "H66.0",
+            "display": "Острый гнойный средний отит",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.ent-red-flags",
+            "label": "Оценка неотложных ЛОР-симптомов и осложнений",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Оценить заушную болезненность/отёк, оттопыривание уха, сильное головокружение и неврологические симптомы.",
+            "indication": "Нужно исключить мастоидит и внутричерепное осложнение.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.analgesia.unspecified",
+            "label": "Неспецифицированное обезболивание",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Назначить парацетамол или НПВП при отсутствии противопоказаний.",
+            "indication": "Обезболивание является обязательной частью лечения.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.followup.ent",
+            "label": "Контроль у врача-оториноларинголога",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Повторный осмотр через 48–72 часа при отсутствии улучшения.",
+            "indication": "Нужен контроль динамики слуха и боли.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [
+          {
+            "id": "action.medication.amoxicillin-clavulanate",
+            "label": "Амоксициллин с клавулановой кислотой",
+            "decision": "conditional",
+            "when": {
+              "fact": "antibioticIndicated",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Выбрать амоксициллин или амоксициллин/клавуланат по стадии, предшествующей терапии и рискам.",
+            "indication": "Системный антибиотик требуется при гнойной стадии, тяжёлом течении, перфорации или неэффективности наблюдения.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.disposition.outpatient-discharge",
+            "label": "Амбулаторное ведение и выписка",
+            "decision": "conditional",
+            "when": {
+              "fact": "outpatientSafe",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Оформить конкретный план обезболивания, наблюдения и возврата.",
+            "indication": "Амбулаторное ведение допустимо при стабильности и отсутствии осложнения.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.exam.otoscopy",
+            "label": "Отоскопия",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Диагноз требует визуальной оценки барабанной перепонки.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Справа барабанная перепонка гиперемирована и выбухает, опознавательные знаки сглажены; отделяемого нет.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [
+          {
+            "id": "study.functional.tympanometry",
+            "label": "Тимпанометрия",
+            "decision": "optional",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Подтверждает выпот, но не заменяет отоскопию.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Справа тимпанограмма типа B; слева типа A.",
+              "abnormal": true
+            }
+          }
+        ],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.314.v2",
+          "title": "Острый средний отит",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/314_2"
+        }
+      ],
+      "reviewStatus": "major-revision-required"
+    },
+    {
+      "id": "case.ent.0003",
+      "title": "Стрептококковый острый тонзиллофарингит",
+      "patient": {
+        "name": "Александр Николаев",
+        "age": 17,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился с болью в горле.",
+        "chiefComplaint": "Сильная боль в горле, температура, кашля нет.",
+        "vitals": {
+          "hr": 92,
+          "bp": "118/72",
+          "spo2": 99,
+          "temp": 38.8,
+          "rr": 16
+        },
+        "anamnesis": [
+          {
+            "id": "case.ent.0003.anamnesis.01",
+            "question": "Есть ли у вас кашель?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0003.anamnesis.02",
+            "question": "Есть ли белые пятна или налёт во рту?",
+            "answer": "Да, белый налёт на миндалинах.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0003.anamnesis.03",
+            "question": "Увеличены и болезненны ли лимфатические узлы на шее?",
+            "answer": "Да, они болезненны при прикосновении.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0003.anamnesis.04",
+            "question": "Были ли контакты с людьми с похожими симптомами?",
+            "answer": "У сестры недавно была стрептококковая ангина.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0003.anamnesis.05",
+            "question": "Есть ли у вас сыпь?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0003.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {},
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.acute-streptococcal-tonsillopharyngitis",
+        "label": "Стрептококковый острый тонзиллофарингит",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "J03.0",
+            "display": "Стрептококковый тонзиллит",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.ent-red-flags",
+            "label": "Оценка неотложных ЛОР-симптомов и осложнений",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Оценить тризм, слюнотечение, асимметрию, смещение язычка, стридор и обезвоживание.",
+            "indication": "Нужно исключить паратонзиллярный абсцесс и нарушение дыхательных путей.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.penicillin-or-amoxicillin",
+            "label": "Пенициллин или амоксициллин",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Назначить узкоспектрный пенициллин или амоксициллин полным курсом с учётом аллергии.",
+            "indication": "Положительный экспресс-тест подтверждает БГСА-этиологию.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.analgesia.unspecified",
+            "label": "Неспецифицированное обезболивание",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Парацетамол или НПВП при отсутствии противопоказаний; обеспечить питьё.",
+            "indication": "Высокая температура и сильная боль требуют симптоматической помощи.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": [
+          {
+            "id": "action.medication.antibacterial.broad-spectrum.unspecified",
+            "label": "Неспецифицированный антибиотик широкого спектра",
+            "decision": "unsafe-or-delaying",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Выбрать узкоспектрный препарат и конкретный режим.",
+            "indication": "Неопределённый антибиотик широкого спектра не является корректной заменой этиотропной схемы.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ]
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.exam.pharyngoscopy",
+            "label": "Фарингоскопия",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Подтверждает воспаление и исключает локальное осложнение.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Миндалины увеличены, гиперемированы, с двусторонним экссудатом; тризма и смещения язычка нет.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.microbiology.strep-a-radt",
+            "label": "Экспресс-исследование мазка из зева на стрептококк группы A",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Подтверждает стрептококковую этиологию в данном сценарии.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Антиген стрептококка группы A обнаружен.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "ОАК не определяет БГСА-этиологию и не нужен при типичном неосложнённом течении.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Лейкоциты 13,0×10⁹/л, нейтрофилёз.",
+              "abnormal": true
+            }
+          }
+        ],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.306.v3",
+          "title": "Острый тонзиллит и фарингит (острый тонзиллофарингит)",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/306_3"
+        }
+      ],
+      "reviewStatus": "major-revision-required"
+    },
+    {
+      "id": "case.ent.0004",
+      "title": "Доброкачественное пароксизмальное позиционное головокружение",
+      "patient": {
+        "name": "Валентина Воробьёва",
+        "age": 55,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась из-за приступов вращательного головокружения при поворотах головы.",
+        "chiefComplaint": "Комната кружится несколько секунд, когда я поворачиваюсь в постели или смотрю вверх.",
+        "vitals": {
+          "hr": 74,
+          "bp": "124/76",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.ent.0004.anamnesis.01",
+            "question": "Что провоцирует симптомы?",
+            "answer": "Приступы возникают, когда я меняю положение головы.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0004.anamnesis.02",
+            "question": "Сколько длится один эпизод?",
+            "answer": "Несколько секунд.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0004.anamnesis.03",
+            "question": "Изменился ли слух?",
+            "answer": "Слух не изменился.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0004.anamnesis.04",
+            "question": "Есть ли звон или шум в ушах?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0004.anamnesis.05",
+            "question": "Есть ли слабость, онемение или другие неврологические симптомы?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0004.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {},
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.bppv.posterior-canal.right",
+        "label": "ДППГ правого заднего полукружного канала",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "H81.1",
+            "display": "Доброкачественное пароксизмальное головокружение",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.ent-red-flags",
+            "label": "Оценка неотложных ЛОР-симптомов и осложнений",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Провести неврологический осмотр и оценить нетипичный нистагм, новую головную боль, атаксию и очаговые симптомы.",
+            "indication": "Перед позиционной пробой нужно исключить центральные признаки.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.procedure.canalith-repositioning",
+            "label": "Репозиционный манёвр при ДППГ",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Выполнить манёвр Эпли и повторно оценить симптомы/нистагм.",
+            "indication": "Типичная положительная проба указывает на поражение правого заднего канала.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.safety-netting.vertigo",
+            "label": "Инструктаж при головокружении",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Срочно обратиться при слабости, нарушении речи, постоянной атаксии, новой сильной головной боли или непрерывном головокружении.",
+            "indication": "Новые центральные симптомы меняют срочность.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [
+          {
+            "id": "action.medication.ondansetron",
+            "label": "Противорвотная терапия ондансетроном",
+            "decision": "optional",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Назначить только симптоматически с учётом QT и взаимодействий.",
+            "indication": "Можно кратковременно использовать при выраженной тошноте.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.exam.dix-hallpike",
+            "label": "Позиционная проба Дикса—Холлпайка",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Ключевая диагностическая проба для заднего канала.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "При пробе справа после короткой латентности возникли привычное головокружение и кратковременный вертикально-ротаторный нистагм.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "study.imaging.ct.brain.noncontrast",
+            "label": "КТ головного мозга без внутривенного контрастирования",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "При типичном ДППГ без неврологических признаков КТ не требуется.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Не выполнена: центральных неврологических признаков нет.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "ОАК не подтверждает ДППГ.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Не назначен: клинических показаний нет.",
+              "abnormal": false
+            }
+          }
+        ],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.professional.bppv.2024",
+          "title": "Доброкачественное пароксизмальное позиционное головокружение: профессиональный обзор",
+          "url": "https://journal.neurology.ru/rnd/article/view/1495"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.ent.0005",
+      "title": "Двусторонний субъективный шум в ушах при воздействии производственного шума",
+      "patient": {
+        "name": "Илья Алексеев",
+        "age": 48,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился.",
+        "chiefComplaint": "Постоянный звон в обоих ушах в течение 6 месяцев.",
+        "vitals": {
+          "hr": 72,
+          "bp": "124/76",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.ent.0005.anamnesis.01",
+            "question": "Подвергались ли вы длительному воздействию громкого шума?",
+            "answer": "Работаю на стройке, постоянно нахожусь в шуме.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0005.anamnesis.02",
+            "question": "Изменился ли слух?",
+            "answer": "Слух немного снизился.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0005.anamnesis.03",
+            "question": "Есть ли ощущение вращения?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0005.anamnesis.04",
+            "question": "Принимаете ли вы какие-либо лекарства?",
+            "answer": "Нет, никаких.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0005.anamnesis.05",
+            "question": "Испытываете ли вы стресс?",
+            "answer": "Испытываю умеренный стресс.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0005.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {},
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.tinnitus.bilateral-noise-associated",
+        "label": "Двусторонний субъективный шум в ушах, вероятно связанный с шумовой потерей слуха",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "H93.1",
+            "display": "Шум в ушах",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.ent-red-flags",
+            "label": "Оценка неотложных ЛОР-симптомов и осложнений",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Уточнить латеральность, пульсацию, лекарства, шум, влияние на сон и настроение; провести осмотр.",
+            "indication": "Односторонний, пульсирующий шум, асимметрия слуха и неврологические симптомы требуют иного маршрута.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.education.hearing-protection",
+            "label": "Защита слуха от производственного шума",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Организовать производственную защиту слуха и оценку условий труда.",
+            "indication": "Продолжающееся воздействие шума может ухудшать слух.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.counseling.tinnitus",
+            "label": "Обучение стратегиям контроля шума в ушах",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Обсудить сон, фоновые звуки и реалистичные цели; оценить тревогу/депрессию.",
+            "indication": "Обучение и звуковое обогащение уменьшают дистресс; при значимом дистрессе рассмотреть КПТ.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.referral.audiology",
+            "label": "Направление на аудиологическую оценку",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Направить к сурдологу-оториноларингологу для оценки слуха и потребности в слухопротезировании.",
+            "indication": "Есть жалоба на снижение слуха и шум.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.exam.otoscopy",
+            "label": "Отоскопия",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Исключает устранимую патологию наружного и среднего уха.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Наружные слуховые проходы свободны, барабанные перепонки без острых изменений.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.functional.audiometry.pure-tone-threshold",
+            "label": "Тональная пороговая аудиометрия",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Определяет тип, степень и симметрию потери слуха.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Двустороннее симметричное снижение слуха по сенсоневральному типу преимущественно на высоких частотах.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "study.lab.tsh.blood",
+            "label": "Исследование уровня тиреотропного гормона в крови",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "ТТГ назначается по клиническим показаниям, а не каждому пациенту с шумом.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Не назначен: симптомов дисфункции щитовидной железы нет.",
+              "abnormal": false
+            }
+          }
+        ],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.23.v1",
+          "title": "Шум в ушах",
+          "url": "https://www.consultant.ru/document/cons_doc_LAW_325243/"
+        }
+      ],
+      "reviewStatus": "major-revision-required"
+    },
+    {
+      "id": "case.ent.0006",
+      "title": "Сезонный аллергический ринит",
+      "patient": {
+        "name": "Елена Николаева",
+        "age": 32,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась с заложенностью носа.",
+        "chiefComplaint": "Прозрачные выделения из носа и чихание каждую весну.",
+        "vitals": {
+          "hr": 72,
+          "bp": "118/72",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.ent.0006.anamnesis.01",
+            "question": "Симптомы зависят от времени года?",
+            "answer": "Каждую весну.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0006.anamnesis.02",
+            "question": "Есть ли зуд?",
+            "answer": "Чешутся глаза и нос.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0006.anamnesis.03",
+            "question": "Есть ли выделения из носа и какие они?",
+            "answer": "Да, прозрачные и водянистые.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0006.anamnesis.04",
+            "question": "Есть ли у близких родственников астма, экзема или аллергический ринит?",
+            "answer": "Да.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0006.anamnesis.05",
+            "question": "У вас есть бронхиальная астма?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0006.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {
+        "immunotherapyEvaluationIndicated": false
+      },
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.allergic-rhinitis.seasonal",
+        "label": "Сезонный аллергический ринит",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "J30.1",
+            "display": "Аллергический ринит, вызванный пыльцой растений",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.medication.intranasal-corticosteroid",
+            "label": "Интраназальный глюкокортикостероид",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Применять интраназально ежедневно в сезон, обучив правильной технике.",
+            "indication": "Назальная обструкция и повторяемая сезонность требуют базисной противовоспалительной терапии.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.antihistamine.second-generation",
+            "label": "Неседативный H1-антигистаминный препарат второго поколения",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Неседативный препарат второго поколения в зарегистрированной дозе.",
+            "indication": "Уменьшает зуд, чихание и ринорею.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.education.allergen-avoidance",
+            "label": "Снижение контакта с причинным аллергеном",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Следить за пыльцевым мониторингом, закрывать окна в пики, менять одежду после улицы.",
+            "indication": "Известная сезонность позволяет снизить экспозицию без чрезмерных ограничений.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [
+          {
+            "id": "action.referral.allergist-immunotherapy",
+            "label": "Направление к аллергологу-иммунологу для решения вопроса об АСИТ",
+            "decision": "conditional",
+            "when": {
+              "fact": "immunotherapyEvaluationIndicated",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Направить для аллергодиагностики и совместного решения об АСИТ.",
+            "indication": "АСИТ рассматривают при подтверждённой сенсибилизации и недостаточном контроле/желании изменить течение болезни.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [],
+        "conditional": [],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Эозинофилия неспецифична и не подтверждает диагноз.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Эозинофилы 5%; показатель сам по себе не подтверждает аллергический ринит.",
+              "abnormal": true
+            }
+          }
+        ],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.261.v2",
+          "title": "Аллергический ринит",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/261_2"
+        }
+      ],
+      "reviewStatus": "major-revision-required"
+    },
+    {
+      "id": "case.ent.0007",
+      "title": "Полипозный риносинусит и непереносимость НПВП",
+      "patient": {
+        "name": "Алексей Егоров",
+        "age": 50,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился с хронической заложенностью носа и потерей обоняния.",
+        "chiefComplaint": "Заложен нос и нет обоняния более года.",
+        "vitals": {
+          "hr": 72,
+          "bp": "124/76",
+          "spo2": 98,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.ent.0007.anamnesis.01",
+            "question": "Изменилось ли обоняние?",
+            "answer": "Да, совсем перестал чувствовать запахи.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0007.anamnesis.02",
+            "question": "У вас есть бронхиальная астма?",
+            "answer": "Да.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0007.anamnesis.03",
+            "question": "Были ли реакции на аспирин или другие НПВП?",
+            "answer": "Да.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0007.anamnesis.04",
+            "question": "Есть ли заложенность носа и с какой стороны?",
+            "answer": "Да, нос заложен с обеих сторон.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0007.anamnesis.05",
+            "question": "Есть ли выделения? Если да, какого они цвета и запаха?",
+            "answer": "Выделений почти нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0007.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {
+        "severeUncontrolled": true,
+        "advancedTherapyEvaluationIndicated": true,
+        "eosinophilPhenotypingIndicated": true
+      },
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.chronic-rhinosinusitis-with-nasal-polyps.nerd",
+        "label": "Полипозный риносинусит с вероятной НПВП-обостряемой респираторной болезнью",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "J33.9",
+            "display": "Полип носа неуточнённый",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.nsaid-exacerbated-respiratory-disease",
+            "label": "Оценка респираторной реакции на НПВП",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Подробно документировать препараты, тип реакции и контроль астмы; не проводить провокацию вне специализированного центра.",
+            "indication": "Сочетание полипов, астмы и реакции на НПВП предполагает НПВП-обостряемую болезнь.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.avoid.nsaid-trigger",
+            "label": "Исключение провоцирующих НПВП",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Не принимать провоцирующие НПВП; согласовать безопасное обезболивание.",
+            "indication": "Повторный приём причинного НПВП может вызвать тяжёлую реакцию.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.intranasal-corticosteroid",
+            "label": "Интраназальный глюкокортикостероид",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Регулярно интраназально в зарегистрированном режиме.",
+            "indication": "Это базисная длительная терапия полипозного риносинусита.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.support.nasal-saline",
+            "label": "Орошение полости носа солевым раствором",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Регулярное объёмное орошение безопасным солевым раствором.",
+            "indication": "Орошение помогает контролировать симптомы и доставку местной терапии.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [
+          {
+            "id": "action.medication.oral-corticosteroid-short-course",
+            "label": "Короткий курс системного глюкокортикостероида внутрь",
+            "decision": "conditional",
+            "when": {
+              "fact": "severeUncontrolled",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Только внутрь, ограниченным курсом по решению врача; оценить противопоказания.",
+            "indication": "Короткий курс возможен при тяжёлом неконтролируемом течении после оценки рисков.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.referral.ent-sinus-surgery",
+            "label": "Направление к ЛОР-хирургу при неконтролируемом полипозном риносинусите",
+            "decision": "conditional",
+            "when": {
+              "fact": "advancedTherapyEvaluationIndicated",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Направить в профильный центр для фенотипирования и выбора этапа лечения.",
+            "indication": "Операция/биологическая терапия рассматриваются при недостаточном контроле адекватной медикаментозной терапией.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": [
+          {
+            "id": "action.avoid.iv-corticosteroid-routine",
+            "label": "Отказ от рутинного внутривенного глюкокортикостероида",
+            "decision": "unsafe-or-delaying",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Не использовать внутривенный стероид как стандартный ответ на хронические симптомы.",
+            "indication": "Рутинный внутривенный ГКС не является амбулаторной базисной терапией.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ]
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.exam.nasal-endoscopy",
+            "label": "Эндоскопическое исследование полости носа",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Подтверждает двусторонний полипоз и оценивает распространённость.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Двусторонние полипы в средних носовых ходах.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.imaging.ct.paranasal-sinuses",
+            "label": "КТ околоносовых пазух",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Необходима для стадирования и планирования хирургической тактики.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Двусторонние полипозные изменения околоносовых пазух; результат оценён по шкале Lund—Mackay.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "conditional",
+            "when": {
+              "fact": "eosinophilPhenotypingIndicated",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Абсолютные эозинофилы могут участвовать в фенотипировании, но не заменяют клиническую оценку.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Абсолютное число эозинофилов повышено.",
+              "abnormal": true
+            }
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.890.v1",
+          "title": "Полипозный риносинусит",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/890_1"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.ent.0008",
+      "title": "Стойкая дисфония с предполагаемым вкладом рефлюкса",
+      "patient": {
+        "name": "Алёна Белова",
+        "age": 44,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась из-за постоянной потребности прочищать горло.",
+        "chiefComplaint": "Охриплость голоса, першение в горле, ощущение комка в течение нескольких месяцев.",
+        "vitals": {
+          "hr": 72,
+          "bp": "120/74",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.ent.0008.anamnesis.01",
+            "question": "Бывает ли изжога и насколько она выражена?",
+            "answer": "Да, бывает небольшая изжога.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0008.anamnesis.02",
+            "question": "Есть ли осиплость и когда она выражена сильнее?",
+            "answer": "Да, особенно по утрам.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0008.anamnesis.03",
+            "question": "Есть ли ощущение кома в горле?",
+            "answer": "Да.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0008.anamnesis.04",
+            "question": "Есть ли кашель и какой он?",
+            "answer": "Да, кашель сухой.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0008.anamnesis.05",
+            "question": "Вы курите?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0008.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {},
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.dysphonia.persistent-reflux-suspected",
+        "label": "Стойкая дисфония с предполагаемым вкладом рефлюкса",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "R49.0",
+            "display": "Дисфония",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.dysphonia-red-flags",
+            "label": "Оценка тревожных признаков при стойкой дисфонии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Уточнить дисфагию, одинофагию, кровохарканье, похудание, образование на шее, интубацию и профессиональную голосовую нагрузку.",
+            "indication": "Охриплость несколько месяцев требует исключения структурной патологии.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.referral.laryngoscopy",
+            "label": "Направление на ларингоскопию",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Организовать ларингоскопию без дальнейшего необоснованного ожидания.",
+            "indication": "Стойкая дисфония требует визуализации гортани.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.education.voice-hygiene",
+            "label": "Рекомендации по гигиене голоса",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Гидратация, отказ от крика/шёпота и раздражителей; голосовая терапия после визуализации по показаниям.",
+            "indication": "Снижение голосовой нагрузки и раздражителей допустимо до окончательного диагноза.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.avoid.empiric-ppi-isolated-dysphonia",
+            "label": "Отказ от эмпирического ИПП при изолированной дисфонии до визуализации гортани",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Не назначать длительный ИПП только по охриплости без визуализации и обоснования ГЭРБ.",
+            "indication": "Неспецифические симптомы не доказывают ларингофарингеальный рефлюкс.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.exam.laryngoscopy",
+            "label": "Ларингоскопия",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Исключает новообразование, парез и доброкачественное поражение голосовых складок.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Подвижность голосовых складок сохранена; объёмного образования не выявлено, есть неспецифические признаки раздражения.",
+              "abnormal": false
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.int.aao-hns.dysphonia.2018",
+          "title": "Clinical Practice Guideline: Hoarseness (Dysphonia), Update",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/29494321/"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.ent.0009",
+      "title": "Болевая дисфункция височно-нижнечелюстного сустава",
+      "patient": {
+        "name": "Андрей Дмитриев",
+        "age": 39,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился с болью в челюсти.",
+        "chiefComplaint": "Щелкание челюстью и боль при жевании в течение нескольких месяцев.",
+        "vitals": {
+          "hr": 72,
+          "bp": "120/74",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.ent.0009.anamnesis.01",
+            "question": "Щёлкает ли челюсть при открывании рта или жевании?",
+            "answer": "Да, щёлкает с обеих сторон.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0009.anamnesis.02",
+            "question": "Скрипите ли вы зубами во сне?",
+            "answer": "Да, по ночам.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0009.anamnesis.03",
+            "question": "Испытываете ли вы стресс?",
+            "answer": "Испытываю сильный стресс.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0009.anamnesis.04",
+            "question": "Болит ли у вас челюсть?",
+            "answer": "Да, боль усиливается при жевании.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0009.anamnesis.05",
+            "question": "Какие ощущения возникают в области уха?",
+            "answer": "Есть тупая ноющая боль.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0009.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {},
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.temporomandibular-disorder.pain",
+        "label": "Болевая дисфункция височно-нижнечелюстного сустава",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "M26.6",
+            "display": "Болезни височно-нижнечелюстного сустава",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.tmj",
+            "label": "Клинико-функциональная оценка височно-нижнечелюстного сустава",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Оценить объём открывания рта, девиацию, болезненность сустава и жевательных мышц, зубной статус и блокирование.",
+            "indication": "Боль воспроизводится жеванием и сочетается с щелчками и бруксизмом.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.education.tmj-self-care",
+            "label": "Самопомощь при дисфункции ВНЧС",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Мягкая пища на короткий срок, отказ от жвачки и широкого открывания, тепло и упражнения; контролировать сжатие зубов.",
+            "indication": "Начинают с обратимых консервативных мер.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.referral.dentist-tmj",
+            "label": "Направление к стоматологу, занимающемуся дисфункцией ВНЧС",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Направить к стоматологу; каппа только после индивидуальной оценки.",
+            "indication": "Бруксизм и стойкие симптомы требуют стоматологической оценки.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [
+          {
+            "id": "action.medication.analgesia.unspecified",
+            "label": "Неспецифицированное обезболивание",
+            "decision": "optional",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Парацетамол или НПВП на минимальный необходимый срок.",
+            "indication": "Короткое обезболивание допустимо при отсутствии противопоказаний.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.exam.otoscopy",
+            "label": "Отоскопия",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Позволяет исключить отит как источник отражённой боли.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Уши без воспалительных изменений; боль воспроизводится при пальпации жевательных мышц и движении нижней челюсти.",
+              "abnormal": false
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "ОАК не подтверждает механическую дисфункцию ВНЧС.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Не назначен: клинических признаков системного воспаления нет.",
+              "abnormal": false
+            }
+          }
+        ],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.int.nidcr.tmd",
+          "title": "Temporomandibular Disorders",
+          "url": "https://www.nidcr.nih.gov/health-info/tmd"
+        }
+      ],
+      "reviewStatus": "major-revision-required"
+    },
+    {
+      "id": "case.ent.0010",
+      "title": "Острая правосторонняя сенсоневральная тугоухость",
+      "patient": {
+        "name": "Екатерина Воробьёва",
+        "age": 55,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "urgent",
+        "arrival": "Самостоятельно обратилась с внезапной потерей слуха.",
+        "chiefComplaint": "Сегодня утром внезапно пропал слух на правое ухо и появился звон.",
+        "vitals": {
+          "hr": 78,
+          "bp": "128/78",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.ent.0010.anamnesis.01",
+            "question": "Когда появились симптомы?",
+            "answer": "Внезапно, несколько часов назад.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0010.anamnesis.02",
+            "question": "Есть ли звон или шум в ушах?",
+            "answer": "Да, звон очень громкий.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0010.anamnesis.03",
+            "question": "Есть ли ощущение вращения?",
+            "answer": "Есть небольшое головокружение.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0010.anamnesis.04",
+            "question": "Подвергались ли вы длительному воздействию громкого шума?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0010.anamnesis.05",
+            "question": "Не было ли недавно простуды?",
+            "answer": "Да, на прошлой неделе была лёгкая простуда.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0010.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {
+        "intratympanicSteroidIndicated": false
+      },
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.sudden-sensorineural-hearing-loss.right",
+        "label": "Острая правосторонняя сенсоневральная тугоухость",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "H91.2",
+            "display": "Внезапная идиопатическая потеря слуха",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.sudden-hearing-loss-urgent",
+            "label": "Срочная оценка внезапной потери слуха",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Срочно исключить кондуктивную причину и неврологические признаки, организовать аудиометрию и осмотр ЛОР-врача.",
+            "indication": "Внезапная односторонняя потеря слуха является неотложным состоянием.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.glucocorticoid.sudden-hearing-loss",
+            "label": "Системный глюкокортикостероид при острой сенсоневральной тугоухости",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Системный ГКС преимущественно внутрь в рекомендованном режиме после оценки противопоказаний; решение профильного врача.",
+            "indication": "Раннее начало терапии важно и не должно ждать МРТ.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.safety-netting.sudden-hearing-loss",
+            "label": "Инструктаж при внезапной потере слуха",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Немедленно обратиться при слабости, нарушении речи, сильной головной боли или невозможности ходить.",
+            "indication": "Неврологические симптомы или нарастание головокружения требуют экстренной оценки.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.avoid.iv-corticosteroid-routine",
+            "label": "Отказ от рутинного внутривенного глюкокортикостероида",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Выбирать путь по показаниям, рискам и профильному протоколу.",
+            "indication": "Внутривенный путь не должен автоматически считаться обязательным.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [
+          {
+            "id": "action.procedure.intratympanic-steroid",
+            "label": "Интратимпанальное введение глюкокортикостероида",
+            "decision": "conditional",
+            "when": {
+              "fact": "intratympanicSteroidIndicated",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Выполняется оториноларингологом по профильному протоколу.",
+            "indication": "Используется как альтернатива при противопоказании к системной терапии или как спасительная терапия при неполном восстановлении.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.exam.otoscopy",
+            "label": "Отоскопия",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Исключает очевидную кондуктивную причину.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Наружный слуховой проход свободен, барабанная перепонка без острых изменений.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.exam.tuning-fork-hearing",
+            "label": "Камертональное исследование слуха",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Быстро различает вероятную сенсоневральную и кондуктивную потерю.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Проба Вебера латерализуется влево; Ринне положительная с обеих сторон.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.functional.audiometry.pure-tone-threshold",
+            "label": "Тональная пороговая аудиометрия",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Подтверждает тип и степень потери слуха; выполнить срочно.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Острая правосторонняя сенсоневральная потеря слуха не менее чем на 30 дБ в трёх соседних частотах.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.imaging.mri.brain-iac",
+            "label": "МРТ головного мозга и внутренних слуховых проходов",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Исключает ретрокохлеарную патологию, но не должна задерживать начало терапии.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Образование мостомозжечкового угла и внутреннего слухового прохода не выявлено.",
+              "abnormal": false
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.763.v1",
+          "title": "Сенсоневральная тугоухость у взрослых",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/763_1"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    }
+  ]
+}

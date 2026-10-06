@@ -1,0 +1,169 @@
+{
+  "_meta": {
+    "schemaVersion": "1.0.0",
+    "purpose": "Машинные факты и условия нейрохирургических сценариев",
+    "conditionDsl": {
+      "always": "{\"always\":true}",
+      "comparison": "{\"fact\":\"path\",\"op\":\"eq|ne|lt|lte|gt|gte|in|exists\",\"value\":any}",
+      "all": "{\"all\":[...]}",
+      "any": "{\"any\":[...]}",
+      "not": "{\"not\":{...}}"
+    }
+  },
+  "cases": [
+    {
+      "id": "case.neurosurgery.0001",
+      "facts": {},
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {},
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.neurosurgery.0002",
+      "facts": {
+        "enmgAddsDiagnosticValue": false
+      },
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {},
+      "studyConditions": {
+        "study.functional.electroneuromyography": {
+          "fact": "enmgAddsDiagnosticValue",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "choiceGroups": []
+    },
+    {
+      "id": "case.neurosurgery.0003",
+      "facts": {},
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {},
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.neurosurgery.0004",
+      "facts": {
+        "decompressionIndicatedAfterConservativeCare": true,
+        "instabilityAssessmentChangesPlan": false
+      },
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {
+        "action.decision.lumbar-decompression": {
+          "fact": "decompressionIndicatedAfterConservativeCare",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "studyConditions": {
+        "study.imaging.xr.spine-functional": {
+          "fact": "instabilityAssessmentChangesPlan",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "choiceGroups": []
+    },
+    {
+      "id": "case.neurosurgery.0005",
+      "facts": {},
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {},
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.neurosurgery.0006",
+      "facts": {
+        "shuntCandidateAfterEvaluation": true
+      },
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {
+        "action.decision.csf-shunt-inph": {
+          "fact": "shuntCandidateAfterEvaluation",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.neurosurgery.0007",
+      "facts": {},
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {},
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.neurosurgery.0008",
+      "facts": {
+        "surgeryIndicatedAfterConservativeCare": false,
+        "instabilityAssessmentChangesPlan": false
+      },
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {
+        "action.decision.spondylolisthesis-surgery": {
+          "fact": "surgeryIndicatedAfterConservativeCare",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "studyConditions": {
+        "study.imaging.xr.spine-functional": {
+          "fact": "instabilityAssessmentChangesPlan",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "choiceGroups": []
+    },
+    {
+      "id": "case.neurosurgery.0009",
+      "facts": {
+        "alternativeMedicationTrialAppropriate": true
+      },
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {
+        "action.medication.trigeminal-neuralgia-first-line": {
+          "fact": "alternativeMedicationTrialAppropriate",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.neurosurgery.0010",
+      "facts": {},
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {},
+      "studyConditions": {},
+      "choiceGroups": []
+    }
+  ]
+}

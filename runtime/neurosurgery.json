@@ -1,0 +1,2284 @@
+{
+  "_meta": {
+    "schemaVersion": "1.0.0",
+    "collection": "neurosurgery",
+    "generator": "scripts/generate-runtime.mjs",
+    "caseCount": 10,
+    "language": "ru",
+    "clinicalSafety": "unsafe-until-clinician-approved",
+    "scoringMode": "rules-with-structured-conditions-and-parameter-review",
+    "conditionDsl": {
+      "always": "{\"always\":true}",
+      "comparison": "{\"fact\":\"path\",\"op\":\"eq|ne|lt|lte|gt|gte|in|exists\",\"value\":any}",
+      "all": "{\"all\":[...]}",
+      "any": "{\"any\":[...]}",
+      "not": "{\"not\":{...}}"
+    },
+    "inputSha256": {
+      "actions": "4a565ef472310a5adeaf95cda3408d1b73d8b7cde4f26417976c648306901a70",
+      "studies": "5b3fc8cd11378a4164364336e83e4867219ed5058f82356394ab71b12c313fbd",
+      "references": "7e550f6c0e468e15f35f5fca8d3c711dc9db3d8a61ffb50484dc215f814442df",
+      "content": "d9758e4361a536b1c01b290375011710ac42d7d73ece5c33069c2df19b04983b",
+      "rules": "d9d6d6374c752afdcc6526ce14a337dd95f6608937122f235335ac350719e33f",
+      "config": "a344e5d21e81ae88f3f63cba4e105dc6b415a21fd3f39a53d6e2a503884aa733"
+    }
+  },
+  "cases": [
+    {
+      "id": "case.neurosurgery.0001",
+      "title": "Глиобластома IDH-дикого типа после хирургического удаления — вероятная остаточная опухоль",
+      "patient": {
+        "name": "Виктор Павлов",
+        "age": 58,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Контроль через шесть недель после правосторонней лобной краниотомии; послеоперационная рана зажила.",
+        "chiefComplaint": "Шесть недель назад удалили опухоль мозга; пришёл обсудить контрольную МРТ и дальнейшее лечение.",
+        "vitals": {
+          "hr": 76,
+          "bp": "128/80",
+          "spo2": 98,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.neurosurgery.0001.anamnesis.01",
+            "question": "Какую операцию вам провели?",
+            "answer": "6 недель назад мне выполнили правостороннюю лобную краниотомию и удалили опухоль.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0001.anamnesis.02",
+            "question": "Что показало гистологическое исследование?",
+            "answer": "Глиобластома IDH-дикого типа, то есть без мутации IDH.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0001.anamnesis.03",
+            "question": "Как вы сейчас себя чувствуете?",
+            "answer": "Головные боли уменьшились, небольшие проблемы с подбором слов сохраняются.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0001.anamnesis.04",
+            "question": "Были ли судорожные приступы?",
+            "answer": "Нет, приступов не было; леветирацетам назначили профилактически после операции.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0001.anamnesis.05",
+            "question": "Консультировались ли вы уже с онкологом?",
+            "answer": "Да, на следующей неделе начнется химиолучевая терапия.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0001.anamnesis.06",
+            "question": "Как заживает рана?",
+            "answer": "Рана зажила, отделяемого нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0001.anamnesis.07",
+            "question": "Принимали ли вы дексаметазон после выписки?",
+            "answer": "Сейчас не принимаю; выраженной головной боли или нарастающей слабости нет.",
+            "relevant": true
+          }
+        ]
+      },
+      "facts": {},
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.glioblastoma.idh-wildtype.postop-residual-suspected",
+        "label": "Глиобластома IDH-дикого типа после удаления, вероятная остаточная опухоль",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "C71.1",
+            "display": "Злокачественное новообразование лобной доли",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.postop-cranial",
+            "label": "Послеоперационная нейрохирургическая оценка",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Документировать функциональный статус, афазию, головную боль, очаговый дефицит, инфекцию и потребность в ГКС.",
+            "indication": "Нужно оценить рану, неврологический статус, отёк, тромбоз и осложнения.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          },
+          {
+            "id": "action.referral.neurooncology-mdt",
+            "label": "Мультидисциплинарный нейроонкологический консилиум",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Сопоставить объём резекции, раннюю и текущую МРТ, интегрированный диагноз и функциональный статус.",
+            "indication": "Послеоперационную тактику определяет консилиум нейрохирурга, радиотерапевта, онколога, патоморфолога и нейрорадиолога.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          },
+          {
+            "id": "action.assessment.cns-tumor-integrated-pathology",
+            "label": "Проверка интегрированного морфологического и молекулярного диагноза опухоли ЦНС",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Проверить интегрированный диагноз и статус MGMT; при необходимости пересмотреть препараты и блоки ткани.",
+            "indication": "IDH недостаточно для полного прогностического и терапевтического заключения.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          },
+          {
+            "id": "action.treatment.glioblastoma-chemoradiotherapy",
+            "label": "Послеоперационная химиолучевая терапия глиобластомы",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Провести лучевую терапию с темозоломидом и последующими циклами по плану нейроонкологического консилиума и инструкции препарата.",
+            "indication": "У функционально сохранного пациента после максимальной безопасной резекции показано комбинированное лечение.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          },
+          {
+            "id": "action.monitoring.glioblastoma-treatment",
+            "label": "Мониторинг безопасности и ответа при лечении глиобластомы",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Контролировать клетки крови, печёночную и почечную функцию, инфекции и МРТ по установленному протоколу.",
+            "indication": "Темозоломид и лучевая терапия требуют контроля токсичности и ответа.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          },
+          {
+            "id": "action.decision.antiseizure-after-craniotomy",
+            "label": "Пересмотр противосудорожной терапии после краниотомии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Уточнить, был ли приступ; не отменять резко, но обсудить план снижения с нейрохирургом/эпилептологом, если препарат назначен только профилактически.",
+            "indication": "Пациент не описывает подтверждённых приступов, поэтому длительная профилактика требует пересмотра.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          },
+          {
+            "id": "action.avoid.routine-steroid-brain-tumor",
+            "label": "Отказ от рутинного ГКС без симптомного отёка мозга",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Не возобновлять дексаметазон без клинических показаний; при использовании назначить минимальную эффективную дозу и план снижения.",
+            "indication": "ГКС показан при симптомном отёке, а не автоматически после операции.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          },
+          {
+            "id": "action.rehabilitation.neurooncology",
+            "label": "Нейрореабилитация после лечения опухоли мозга",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Организовать логопедическую и когнитивную реабилитацию.",
+            "indication": "Сохраняются трудности подбора слов.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.imaging.mri.brain-with-contrast",
+            "label": "МРТ головного мозга с внутривенным контрастированием",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Определяет послеоперационный остаток и базовую точку для последующего контроля.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Послеоперационная полость в правой лобной доле; по заднему краю сохраняется узловой участок контрастирования около 9 мм. До начала лучевой терапии находка вероятнее соответствует остаточной опухоли, но требует сопоставления с ранней послеоперационной МРТ.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.pathology.cns-tumor-integrated",
+            "label": "Интегрированное патолого-анатомическое и молекулярное исследование опухоли ЦНС",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Подтверждает современный интегрированный диагноз и маркеры.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Диффузная астроцитарная опухоль высокой степени злокачественности, IDH-wildtype; статус метилирования MGMT в представленном заключении отсутствует.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Исходный уровень и контроль миелотоксичности.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Гемоглобин 132 г/л, лейкоциты 6,4×10⁹/л, тромбоциты 224×10⁹/л.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "order-set.lab.renal-function-electrolytes",
+            "label": "Набор отдельных исследований функции почек и электролитов",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Безопасность лечения и контраста.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Электролиты и функция почек без клинически значимых отклонений.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.lab.liver-enzymes.blood",
+            "label": "Исследование активности АЛТ и АСТ в крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Контроль лекарственной токсичности.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "АЛТ и АСТ в референсных пределах.",
+              "abnormal": false
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.primary-cns-tumors.585.v2",
+          "title": "Первичные опухоли центральной нервной системы",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/585_2"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.neurosurgery.0002",
+      "title": "Правосторонняя радикулопатия C6 при грыже диска C5–C6",
+      "patient": {
+        "name": "Марина Соколова",
+        "age": 47,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Направлена на консультацию из-за сохраняющейся боли и слабости правой руки.",
+        "chiefComplaint": "Боль из шеи отдаёт в правую руку до большого пальца, появилась слабость.",
+        "vitals": {
+          "hr": 78,
+          "bp": "124/76",
+          "spo2": 99,
+          "temp": 36.6,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.neurosurgery.0002.anamnesis.01",
+            "question": "Когда начались симптомы?",
+            "answer": "Симптомы начали постепенно нарастать около 4 месяцев назад.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0002.anamnesis.02",
+            "question": "Куда отдаёт боль?",
+            "answer": "Боль идёт по наружной поверхности правой руки и отдаёт в большой и указательный пальцы.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0002.anamnesis.03",
+            "question": "Есть ли онемение или покалывание?",
+            "answer": "Да, ощущаю покалывание в большом пальце.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0002.anamnesis.04",
+            "question": "Не замечали слабости в правой руке?",
+            "answer": "Да, немного ослабла правая рука, особенно при сгибании в локте.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0002.anamnesis.05",
+            "question": "Какое лечение вы уже пробовали?",
+            "answer": "8 недель занималась лечебной физкультурой и принимала НПВП, но это почти не помогло.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0002.anamnesis.06",
+            "question": "Есть ли нарушения равновесия, слабость или онемение в ногах?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0002.anamnesis.07",
+            "question": "Появлялись ли нарушения походки, мочеиспускания или неловкость другой руки?",
+            "answer": "Нет.",
+            "relevant": true
+          }
+        ]
+      },
+      "facts": {
+        "enmgAddsDiagnosticValue": false
+      },
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.cervical-radiculopathy.c6-right.c5c6-disc",
+        "label": "Правосторонняя радикулопатия C6 при грыже C5–C6",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "M50.1",
+            "display": "Поражение межпозвонкового диска шейного отдела с радикулопатией",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.cervical-radiculopathy",
+            "label": "Оценка шейной радикулопатии и двигательного дефицита",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Документировать силу, рефлексы, чувствительность, признаки миелопатии и соответствие клиники МРТ.",
+            "indication": "Двигательный дефицит и неэффективность восьми недель лечения требуют объективной оценки.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          },
+          {
+            "id": "action.decision.cervical-radiculopathy-surgery",
+            "label": "Совместное решение о хирургическом лечении шейной радикулопатии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Совместно сравнить продолжение консервативной терапии и хирургическую декомпрессию; срочность повышается при прогрессировании слабости.",
+            "indication": "Сохраняющиеся боль и слабость при совпадающем уровне компрессии позволяют обсуждать декомпрессию.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          },
+          {
+            "id": "action.medication.radicular-pain",
+            "label": "Краткосрочное обезболивание при пояснично-крестцовой радикулопатии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Краткосрочная анальгезия с учётом рисков; избегать длительных опиоидов.",
+            "indication": "До окончательного решения требуется безопасный контроль боли.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.imaging.mri.cervical-spine",
+            "label": "МРТ шейного отдела позвоночника",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Подтверждает уровень компрессии и исключает миелопатию.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Правосторонняя грыжа C5–C6 компримирует корешок C6; компрессии спинного мозга и изменения его сигнала нет.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [
+          {
+            "id": "study.functional.electroneuromyography",
+            "label": "Стимуляционная электронейромиография",
+            "decision": "conditional",
+            "when": {
+              "fact": "enmgAddsDiagnosticValue",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Нужна при несоответствии клиники МРТ или дифференциальной диагностике с мононейропатией; не заменяет осмотр.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Денервационные изменения в миотоме C6 справа; данных за синдром запястного канала нет.",
+              "abnormal": true
+            }
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.degenerative-spine.826.v1",
+          "title": "Дегенеративные заболевания позвоночника",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/826_1"
+        }
+      ],
+      "reviewStatus": "major-revision-required"
+    },
+    {
+      "id": "case.neurosurgery.0003",
+      "title": "Левосторонняя радикулопатия L5 при экструзии диска L4–L5",
+      "patient": {
+        "name": "Максим Петров",
+        "age": 41,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Направлен для обсуждения операции после пяти месяцев симптомов и неэффективности консервативного лечения.",
+        "chiefComplaint": "Пять месяцев болит поясница с распространением боли и слабостью в левой ноге.",
+        "vitals": {
+          "hr": 80,
+          "bp": "130/82",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.neurosurgery.0003.anamnesis.01",
+            "question": "Когда началась боль?",
+            "answer": "Около 5 месяцев назад, после того как я поднял тяжесть на работе.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0003.anamnesis.02",
+            "question": "Куда распространяется боль?",
+            "answer": "По наружной поверхности левой голени к тылу стопы и большому пальцу.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0003.anamnesis.03",
+            "question": "Где именно ощущается онемение?",
+            "answer": "Немеет тыльная поверхность левой стопы.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0003.anamnesis.04",
+            "question": "Есть ли слабость?",
+            "answer": "Трудно поднять большой палец ноги.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0003.anamnesis.05",
+            "question": "Изменились ли мочеиспускание или работа кишечника?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0003.anamnesis.06",
+            "question": "Какое лечение вы уже пробовали?",
+            "answer": "Пробовал лечебную физкультуру, две эпидуральные инъекции и НПВП, но надолго легче не стало.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0003.anamnesis.07",
+            "question": "Нарастает ли слабость и появились ли онемение промежности или задержка мочи?",
+            "answer": "Слабость стабильна, таких симптомов нет.",
+            "relevant": true
+          }
+        ]
+      },
+      "facts": {},
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.l5-radiculopathy.left-disc-extrusion-persistent",
+        "label": "Левосторонняя радикулопатия L5 при экструзии L4–L5",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "M51.1",
+            "display": "Поражение межпозвонкового диска поясничного отдела с радикулопатией",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.radiculopathy-motor-red-flags",
+            "label": "Оценка двигательного дефицита и красных флагов радикулопатии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Оценить силу по MRC, динамику дефицита и симптомы конского хвоста.",
+            "indication": "Есть слабость разгибания большого пальца и длительные симптомы.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          },
+          {
+            "id": "action.referral.spine-surgeon-urgent",
+            "label": "Срочная консультация спинального хирурга",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Обсудить микродискэктомию; при нарастании слабости ускорить вмешательство.",
+            "indication": "Пять месяцев боли и слабости при неэффективности консервативного лечения требуют хирургической оценки.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          },
+          {
+            "id": "action.medication.radicular-pain",
+            "label": "Краткосрочное обезболивание при пояснично-крестцовой радикулопатии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Подобрать ограниченную по времени анальгезию и учитывать уже выполненные инъекции.",
+            "indication": "Требуется симптоматическая помощь до решения.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          },
+          {
+            "id": "action.education.radiculopathy-activity-safety-net",
+            "label": "Сохранение активности и памятка о симптомах синдрома конского хвоста",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Избегать постельного режима; срочно обращаться при задержке мочи, седловидной анестезии или нарастании слабости.",
+            "indication": "Нужно сохранить активность и не пропустить конский хвост.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.imaging.mri.lumbosacral-spine",
+            "label": "МРТ пояснично-крестцового отдела позвоночника",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Должна быть актуальной и клинически соответствовать корешку L5 перед операцией.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Левосторонняя парамедианная экструзия L4–L5 размером около 12 мм компримирует корешок L5.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.discogenic-radiculopathy.777.v1",
+          "title": "Дискогенная пояснично-крестцовая радикулопатия",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/777_1"
+        },
+        {
+          "id": "guideline.ru.minzdrav.degenerative-spine.826.v1",
+          "title": "Дегенеративные заболевания позвоночника",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/826_1"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.neurosurgery.0004",
+      "title": "Дегенеративный поясничный стеноз с нейрогенной перемежающейся хромотой",
+      "patient": {
+        "name": "Светлана Иванова",
+        "age": 73,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно пришла из-за прогрессирующего ограничения ходьбы; при наклоне вперёд становится легче.",
+        "chiefComplaint": "При ходьбе болят и тяжелеют обе ноги; после отдыха сидя становится легче.",
+        "vitals": {
+          "hr": 74,
+          "bp": "136/78",
+          "spo2": 97,
+          "temp": 36.6,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.neurosurgery.0004.anamnesis.01",
+            "question": "При какой нагрузке появляются симптомы в ногах?",
+            "answer": "Если иду дольше пяти минут, обе ноги начинают болеть и в них появляется покалывание.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0004.anamnesis.02",
+            "question": "Что помогает уменьшить симптомы?",
+            "answer": "Становится легче, если я сяду или наклонюсь вперёд, опираясь на тележку.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0004.anamnesis.03",
+            "question": "Как давно это продолжается и как меняются симптомы?",
+            "answer": "Около 2 лет, и постепенно становится хуже.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0004.anamnesis.04",
+            "question": "Есть ли боль в спине?",
+            "answer": "Немного болит, но симптомы в ногах беспокоят сильнее.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0004.anamnesis.05",
+            "question": "Что врач говорил о кровообращении и пульсе на ногах?",
+            "answer": "По словам врача, пульс на ногах нормальный.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0004.anamnesis.06",
+            "question": "Изменились ли мочеиспускание или дефекация?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0004.anamnesis.07",
+            "question": "Есть ли боль в ногах в покое или похолодание стоп?",
+            "answer": "Нет, в покое боли нет, стопы тёплые.",
+            "relevant": true
+          }
+        ]
+      },
+      "facts": {
+        "decompressionIndicatedAfterConservativeCare": true,
+        "instabilityAssessmentChangesPlan": false
+      },
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.lumbar-spinal-stenosis.l4l5-neurogenic-claudication",
+        "label": "Поясничный стеноз L4–L5 с нейрогенной перемежающейся хромотой",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "M48.0",
+            "display": "Спинальный стеноз",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.lumbar-stenosis",
+            "label": "Оценка поясничного стеноза и нейрогенной перемежающейся хромоты",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Оценить дистанцию ходьбы, пульс, силу, чувствительность, тазовые функции и влияние на повседневность.",
+            "indication": "Позиционная хромота типична, но сосудистую причину и дефицит нужно исключить.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          },
+          {
+            "id": "action.nonoperative.lumbar-stenosis",
+            "label": "Консервативное лечение поясничного стеноза",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Упражнения с учётом переносимости, контроль боли и факторов риска падений; оценить достигнутый результат.",
+            "indication": "При отсутствии прогрессирующего дефицита сначала допустим структурированный консервативный этап.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          }
+        ],
+        "conditional": [
+          {
+            "id": "action.decision.lumbar-decompression",
+            "label": "Совместное решение о декомпрессии поясничного канала",
+            "decision": "conditional",
+            "when": {
+              "fact": "decompressionIndicatedAfterConservativeCare",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Выбрать объём декомпрессии; не добавлять стабилизацию автоматически без нестабильности или деформации.",
+            "indication": "Декомпрессия обсуждается при стойком существенном ограничении после адекватного консервативного лечения.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.imaging.mri.lumbosacral-spine",
+            "label": "МРТ пояснично-крестцового отдела позвоночника",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Подтверждает анатомический стеноз и уровни.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Выраженный центральный стеноз L4–L5 вследствие гипертрофии жёлтых связок и фасеточных суставов.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [
+          {
+            "id": "study.imaging.xr.spine-functional",
+            "label": "Рентгенография позвоночника с функциональными пробами",
+            "decision": "conditional",
+            "when": {
+              "fact": "instabilityAssessmentChangesPlan",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Оценивает нестабильность только если результат изменит хирургический план.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Не выполнена; нужна только если результат изменит выбор между одной декомпрессией и стабилизацией.",
+              "abnormal": false
+            }
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.degenerative-spine.826.v1",
+          "title": "Дегенеративные заболевания позвоночника",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/826_1"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.neurosurgery.0005",
+      "title": "Хроническая двусторонняя субдуральная гематома после дренирования",
+      "patient": {
+        "name": "Илья Морозов",
+        "age": 78,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Контроль через четыре недели после дренирования хронических субдуральных гематом; пришёл с дочерью.",
+        "chiefComplaint": "Месяц назад дренировали хроническую субдуральную гематому; пришёл на контроль.",
+        "vitals": {
+          "hr": 70,
+          "bp": "142/80",
+          "spo2": 97,
+          "temp": 36.6,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.neurosurgery.0005.anamnesis.01",
+            "question": "С чего всё началось?",
+            "answer": "3 месяца назад я упал дома, после чего появилась спутанность сознания.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0005.anamnesis.02",
+            "question": "Какую операцию вам выполнили?",
+            "answer": "4 недели назад выполнили дренирование через фрезевые отверстия.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0005.anamnesis.03",
+            "question": "Как вы сейчас себя чувствуете?",
+            "answer": "Сознание стало яснее, ходить стало легче, головные боли прошли.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0005.anamnesis.04",
+            "question": "Принимаете ли вы препараты, разжижающие кровь?",
+            "answer": "Принимал апиксабан по поводу фибрилляции предсердий; после госпитализации препарат временно отменили.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0005.anamnesis.05",
+            "question": "Были ли с тех пор падения?",
+            "answer": "Нет, передвигаюсь с ходунками.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0005.anamnesis.06",
+            "question": "Как заживает рана?",
+            "answer": "Рана зажила, отделяемого нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0005.anamnesis.07",
+            "question": "Появлялись ли снова сонливость, спутанность, слабость или сильная головная боль?",
+            "answer": "Нет.",
+            "relevant": true
+          }
+        ]
+      },
+      "facts": {},
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.chronic-subdural-hematoma.bilateral.postop",
+        "label": "Двусторонняя хроническая субдуральная гематома после дренирования",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "S06.5",
+            "display": "Травматическое субдуральное кровоизлияние",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.csdh-postop",
+            "label": "Послеоперационная оценка хронической субдуральной гематомы",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Оценить сознание, походку, очаговый дефицит, головную боль, рану и бытовую функцию.",
+            "indication": "Нужно сопоставить восстановление с исходным функциональным уровнем и исключить рецидив.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          },
+          {
+            "id": "action.decision.anticoagulation-restart-csdh",
+            "label": "Индивидуальное решение о возобновлении антикоагуляции после субдуральной гематомы",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Нейрохирург и специалист по антикоагуляции совместно определяют срок возврата апиксабана по динамике КТ, гемостазу, CHA₂DS₂-VASc, риску падений и рецидива; не отменять навсегда автоматически.",
+            "indication": "Фибрилляция предсердий создаёт риск инсульта, а остаточные гематомы — риск повторного кровотечения.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          },
+          {
+            "id": "action.education.csdh-recurrence-red-flags",
+            "label": "Памятка о признаках рецидива субдуральной гематомы",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Срочно обращаться при новой сонливости, спутанности, слабости, нарушении речи, судорогах или усиливающейся головной боли.",
+            "indication": "Рецидив возможен после выписки.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          },
+          {
+            "id": "action.prevention.falls",
+            "label": "Профилактика повторных падений",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Проверить зрение, ортостаз, лекарства и безопасность дома; продолжить реабилитацию ходьбы.",
+            "indication": "Исходная травма и ходунки указывают на высокий риск повторения.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.imaging.ct.brain.noncontrast",
+            "label": "КТ головного мозга без внутривенного контрастирования",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "В этом случае КТ нужна для оценки остаточных двусторонних скоплений перед решением об антикоагуляции.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Двусторонние остаточные субдуральные скопления уменьшились; признаков свежего кровоизлияния или значимого масс-эффекта нет.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Гемоглобин и тромбоциты влияют на безопасность.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Гемоглобин и тромбоциты в референсных пределах.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.lab.coagulation.screen",
+            "label": "Коагулограмма (ориентировочное исследование системы гемостаза)",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Выявляет часть нарушений гемостаза, но нормальный результат не исключает эффект прямого ингибитора Xa.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Скрининговая коагулограмма без значимых отклонений; она не измеряет остаточный эффект апиксабана.",
+              "abnormal": false
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.int.csdh-multidisciplinary.2024",
+          "title": "Clinical practice guidelines for the care of patients with a chronic subdural haematoma",
+          "url": "https://doi.org/10.1080/02688697.2024.2413445"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.neurosurgery.0006",
+      "title": "Подозрение на идиопатическую нормотензивную гидроцефалию",
+      "patient": {
+        "name": "Ирина Соколова",
+        "age": 76,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Доставлена родственником из-за прогрессирующего нарушения походки, мочеиспускания и памяти.",
+        "chiefComplaint": "Походка ухудшается, появились неудержимые позывы к мочеиспусканию и снижение памяти.",
+        "vitals": {
+          "hr": 72,
+          "bp": "134/76",
+          "spo2": 98,
+          "temp": 36.6,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.neurosurgery.0006.anamnesis.01",
+            "question": "Как изменилась ваша походка?",
+            "answer": "Как будто стопы прилипают к полу; трудно сделать первый шаг.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0006.anamnesis.02",
+            "question": "Есть ли частые или неудержимые позывы к мочеиспусканию?",
+            "answer": "Позывы возникают часто и внезапно, иногда не успеваю до туалета.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0006.anamnesis.03",
+            "question": "Не изменились ли память и скорость мышления?",
+            "answer": "Последний год стала медленнее соображать и чаще всё забываю.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0006.anamnesis.04",
+            "question": "Есть ли дрожание рук или других частей тела?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0006.anamnesis.05",
+            "question": "Были ли падения?",
+            "answer": "Да, за последние 6 месяцев было два падения.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0006.anamnesis.06",
+            "question": "Были ли раньше кровоизлияния в мозг или инсульты?",
+            "answer": "Нет, ни кровоизлияний, ни инсультов не было.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0006.anamnesis.07",
+            "question": "Принимаете ли вы снотворные или седативные препараты?",
+            "answer": "Нет, такие препараты не принимаю.",
+            "relevant": true
+          }
+        ]
+      },
+      "facts": {
+        "shuntCandidateAfterEvaluation": true
+      },
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.idiopathic-normal-pressure-hydrocephalus.suspected",
+        "label": "Подозрение на идиопатическую нормотензивную гидроцефалию",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "G91.2",
+            "display": "Гидроцефалия нормального давления",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.inph-objective",
+            "label": "Объективная оценка синдрома нормотензивной гидроцефалии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Стандартизированно измерить скорость/число шагов, равновесие, когнитивные домены, мочевые симптомы и повседневную функцию.",
+            "indication": "Триада неспецифична и должна быть объективизирована.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          },
+          {
+            "id": "action.assessment.inph-differential",
+            "label": "Дифференциальная диагностика подозрения на нормотензивную гидроцефалию",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Провести неврологический, когнитивный и урологический дифференциальный поиск с участием родственника.",
+            "indication": "Паркинсонизм, сосудистое поражение, болезнь Альцгеймера, миелопатия и лекарства могут имитировать синдром.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          },
+          {
+            "id": "action.procedure.csf-tap-test",
+            "label": "Ликвородинамическая проба с удалением ликвора",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "После проверки противопоказаний выполнить пункцию и повторить те же стандартизированные тесты в заданные сроки.",
+            "indication": "Ответ походки после удаления ликвора повышает вероятность пользы шунта.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          },
+          {
+            "id": "action.prevention.falls",
+            "label": "Профилактика повторных падений",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Организовать средство опоры и домашнюю профилактику падений до окончательной тактики.",
+            "indication": "Уже было два падения.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          }
+        ],
+        "conditional": [
+          {
+            "id": "action.decision.csf-shunt-inph",
+            "label": "Совместное решение о ликворошунтирующей операции",
+            "decision": "conditional",
+            "when": {
+              "fact": "shuntCandidateAfterEvaluation",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Совместно оценить ответ на пробу, коморбидность, хирургические риски, вероятность улучшения походки и риск осложнений шунта.",
+            "indication": "Шунтирование обсуждают при клинико-визуальном соответствии и ожидаемой пользе.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.imaging.mri.brain",
+            "label": "МРТ головного мозга",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Оценивает вентрикуломегалию, DESH и альтернативные причины.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Вентрикуломегалия непропорциональна корковой атрофии, сужены борозды высокой конвекситальной поверхности, мозолистый угол менее 90°; признаки поддерживают DESH-паттерн, но не доказывают ответ на шунтирование.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.procedure.csf-tap-test",
+            "label": "Ликвородинамическая проба с объективной оценкой походки до и после удаления ликвора",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Объективизирует потенциальную обратимость походки.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "После удаления ликвора скорость ходьбы на 10 м улучшилась на 18%, уменьшилось число шагов; выраженного немедленного изменения когнитивного теста нет.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.assessment.neuropsychological",
+            "label": "Клинико-психологическое нейропсихологическое обследование",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Задаёт профиль и исходный уровень когнитивных функций.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Есть умеренное замедление исполнительных функций; степень бытовой самостоятельности требует уточнения по сведениям родственника.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.int.japanese-inph.2021",
+          "title": "Guidelines for Management of Idiopathic Normal Pressure Hydrocephalus, Third Edition",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7905302/"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.neurosurgery.0007",
+      "title": "Прогрессирующая дегенеративная шейная миелопатия",
+      "patient": {
+        "name": "Илья Дмитриев",
+        "age": 64,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Направлен из-за прогрессирующей неловкости кистей и нарушения походки.",
+        "chiefComplaint": "Кисти стали неловкими, походка — неустойчивой и скованной.",
+        "vitals": {
+          "hr": 76,
+          "bp": "128/78",
+          "spo2": 98,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.neurosurgery.0007.anamnesis.01",
+            "question": "Как давно это началось и как меняются симптомы?",
+            "answer": "Около 8 месяцев назад; с тех пор постепенно становится хуже.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0007.anamnesis.02",
+            "question": "Какие изменения в работе кистей вы заметили?",
+            "answer": "Стало трудно застёгивать пуговицы и писать; чётко очерченной зоны онемения нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0007.anamnesis.03",
+            "question": "Как изменилась ваша походка?",
+            "answer": "Хожу, широко расставляя ноги, походка стала скованной.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0007.anamnesis.04",
+            "question": "Бывают ли внезапные сильные позывы к мочеиспусканию?",
+            "answer": "Да, в последнее время иногда возникают неудержимые позывы.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0007.anamnesis.05",
+            "question": "Есть ли боль или скованность в шее и отдаёт ли боль в другие области?",
+            "answer": "Есть небольшая скованность, но боль никуда не отдаёт.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0007.anamnesis.06",
+            "question": "Возникает ли ощущение удара током вдоль позвоночника при сгибании шеи?",
+            "answer": "Да, иногда как будто ток проходит вниз по позвоночнику.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0007.anamnesis.07",
+            "question": "Были ли травма, инфекция, опухоль или быстрое ухудшение за несколько дней?",
+            "answer": "Нет, симптомы нарастают постепенно.",
+            "relevant": true
+          }
+        ]
+      },
+      "facts": {},
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.degenerative-cervical-myelopathy.progressive",
+        "label": "Прогрессирующая дегенеративная шейная миелопатия",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "M47.1",
+            "display": "Другие спондилёзы с миелопатией",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.degenerative-cervical-myelopathy",
+            "label": "Оценка дегенеративной шейной миелопатии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Оценить пирамидные знаки, силу, ловкость кистей, походку, mJOA и динамику.",
+            "indication": "Неловкость кистей, нарушение походки, императивные позывы и симптом Лермитта указывают на миелопатию.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          },
+          {
+            "id": "action.referral.spine-surgeon-urgent",
+            "label": "Срочная консультация спинального хирурга",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Срочно направить к спинальному нейрохирургу; объяснить цель остановить ухудшение, а не гарантировать полное восстановление.",
+            "indication": "Прогрессирование и сигнал T2 в спинном мозге требуют своевременной хирургической оценки.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          },
+          {
+            "id": "action.decision.cervical-decompression",
+            "label": "Решение о декомпрессии при шейной миелопатии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Выбрать доступ и необходимость стабилизации по уровням, деформации и общему риску.",
+            "indication": "При прогрессирующей клинически значимой миелопатии рассматривается декомпрессия.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          },
+          {
+            "id": "action.avoid.cervical-manipulation-myelopathy",
+            "label": "Отказ от силовых манипуляций на шее при миелопатии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Не выполнять высокоскоростные манипуляции и тракцию без решения профильной команды.",
+            "indication": "Силовые манипуляции могут усугубить компрессию.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          },
+          {
+            "id": "action.prevention.falls",
+            "label": "Профилактика повторных падений",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Средство опоры и меры безопасности до операции/реабилитации.",
+            "indication": "Нарушение походки увеличивает травматический риск.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.imaging.mri.cervical-spine",
+            "label": "МРТ шейного отдела позвоночника",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Показывает уровни компрессии и повреждение спинного мозга.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Стеноз C4–C5 и C5–C6 со сдавлением спинного мозга и интрамедуллярным повышением сигнала T2.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.degenerative-spine.826.v1",
+          "title": "Дегенеративные заболевания позвоночника",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/826_1"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.neurosurgery.0008",
+      "title": "Истмический спондилолистез L5–S1 II степени с фораминальным стенозом",
+      "patient": {
+        "name": "Ольга Васильева",
+        "age": 52,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Направлена по поводу многолетней боли в пояснице без стойкого неврологического дефицита.",
+        "chiefComplaint": "Много лет болит поясница, иногда боль распространяется в ноги.",
+        "vitals": {
+          "hr": 74,
+          "bp": "124/76",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.neurosurgery.0008.anamnesis.01",
+            "question": "Когда симптомы усиливаются?",
+            "answer": "После того как некоторое время постою или похожу.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0008.anamnesis.02",
+            "question": "Отдаёт ли боль в ноги?",
+            "answer": "Иногда болят обе ноги, но чёткой зоны распространения боли нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0008.anamnesis.03",
+            "question": "Есть ли онемение?",
+            "answer": "Стойкого онемения нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0008.anamnesis.04",
+            "question": "Есть ли слабость?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0008.anamnesis.05",
+            "question": "Есть ли нарушения мочеиспускания или дефекации?",
+            "answer": "Нарушений мочеиспускания и дефекации нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0008.anamnesis.06",
+            "question": "Были ли раньше травмы или значительные спортивные нагрузки на спину?",
+            "answer": "В подростковом возрасте занималась гимнастикой.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0008.anamnesis.07",
+            "question": "Были ли лихорадка, снижение массы тела, ночная боль или онкологическое заболевание?",
+            "answer": "Нет.",
+            "relevant": true
+          }
+        ]
+      },
+      "facts": {
+        "surgeryIndicatedAfterConservativeCare": false,
+        "instabilityAssessmentChangesPlan": false
+      },
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.isthmic-spondylolisthesis.l5s1.grade2",
+        "label": "Истмический спондилолистез L5–S1 II степени с фораминальным стенозом",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "M43.1",
+            "display": "Спондилолистез",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.spondylolisthesis",
+            "label": "Оценка симптомного спондилолистеза и нестабильности",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Оценить корешковые признаки, функцию, баланс позвоночника и исключить красные флаги.",
+            "indication": "Визуализация должна быть сопоставлена с характером боли и неврологическим статусом.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          },
+          {
+            "id": "action.nonoperative.spondylolisthesis",
+            "label": "Консервативное лечение симптомного спондилолистеза",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Структурированная лечебная физкультура, постепенная активность, контроль боли и факторов риска.",
+            "indication": "Стойкого дефицита и синдрома конского хвоста нет.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          }
+        ],
+        "conditional": [
+          {
+            "id": "action.decision.spondylolisthesis-surgery",
+            "label": "Совместное решение о хирургическом лечении спондилолистеза",
+            "decision": "conditional",
+            "when": {
+              "fact": "surgeryIndicatedAfterConservativeCare",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Сопоставить декомпрессию и стабилизацию с симптомами, подвижностью и рисками; находка на снимке не является самостоятельным показанием.",
+            "indication": "Операция обсуждается при стойкой инвалидизирующей боли, дефиците или нестабильности после адекватного лечения.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.imaging.mri.lumbosacral-spine",
+            "label": "МРТ пояснично-крестцового отдела позвоночника",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Оценивает фораминальный стеноз и корешки.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Антеролистез L5 на S1 II степени на фоне двустороннего спондилолиза; двусторонний фораминальный стеноз без значимого центрального стеноза.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [
+          {
+            "id": "study.imaging.xr.spine-functional",
+            "label": "Рентгенография позвоночника с функциональными пробами",
+            "decision": "conditional",
+            "when": {
+              "fact": "instabilityAssessmentChangesPlan",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Оценивает динамическую нестабильность, если это изменит план.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Функциональные снимки ещё не выполнены; исследование требуется, только если оценка подвижности повлияет на хирургический план.",
+              "abnormal": false
+            }
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.degenerative-spine.826.v1",
+          "title": "Дегенеративные заболевания позвоночника",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/826_1"
+        }
+      ],
+      "reviewStatus": "major-revision-required"
+    },
+    {
+      "id": "case.neurosurgery.0009",
+      "title": "Невралгия левого тройничного нерва с непереносимостью карбамазепина",
+      "patient": {
+        "name": "Александра Орлова",
+        "age": 62,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Обратилась из-за учащения приступов лицевой боли и непереносимости карбамазепина.",
+        "chiefComplaint": "При еде и чистке зубов возникает краткая простреливающая боль в левой щеке; карбамазепин плохо переношу.",
+        "vitals": {
+          "hr": 78,
+          "bp": "128/78",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.neurosurgery.0009.anamnesis.01",
+            "question": "Какая это боль и сколько длится приступ?",
+            "answer": "Боль острая, простреливающая, как удар током; приступ длится несколько секунд.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0009.anamnesis.02",
+            "question": "Что провоцирует симптомы?",
+            "answer": "Боль провоцируют жевание, чистка зубов и холодный ветер.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0009.anamnesis.03",
+            "question": "Где именно возникает боль?",
+            "answer": "Слева, в области верхней челюсти.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0009.anamnesis.04",
+            "question": "Какие лекарства вы уже пробовали и помогли ли они?",
+            "answer": "Карбамазепин частично помогает, но побочные эффекты слишком тяжёлые.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0009.anamnesis.05",
+            "question": "Как давно сохраняются симптомы?",
+            "answer": "Около трёх лет; в последнее время приступы участились.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0009.anamnesis.06",
+            "question": "Есть ли онемение лица?",
+            "answer": "Нет, между приступами чувствительность лица обычная.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0009.anamnesis.07",
+            "question": "Появлялись ли снижение слуха, двоение в глазах или слабость в руке или ноге?",
+            "answer": "Нет.",
+            "relevant": true
+          }
+        ]
+      },
+      "facts": {
+        "alternativeMedicationTrialAppropriate": true
+      },
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.trigeminal-neuralgia.left-v2.medication-intolerant",
+        "label": "Невралгия левого тройничного нерва, непереносимость карбамазепина",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "G50.0",
+            "display": "Невралгия тройничного нерва",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.trigeminal-neuralgia",
+            "label": "Клиническая классификация невралгии тройничного нерва",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Исключить стоматологическую и вторичную боль; проверить высокоразрешающие серии на деформацию корешка.",
+            "indication": "Клиника типична, но простой сосудистый контакт не доказывает классическую форму.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          },
+          {
+            "id": "action.assessment.trigeminal-surgical-candidacy",
+            "label": "Оценка показаний к хирургическому лечению невралгии тройничного нерва",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Оценить возраст, коморбидность, морфологию компрессии, эффективность и переносимость адекватных лекарственных проб.",
+            "indication": "Длительная частая боль и непереносимость терапии позволяют обсуждать вмешательство.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          },
+          {
+            "id": "action.decision.trigeminal-procedure",
+            "label": "Совместный выбор нейрохирургического метода при невралгии тройничного нерва",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Обсудить микроваскулярную декомпрессию, перкутанные деструктивные методы и радиохирургию с их разными шансами рецидива и онемения.",
+            "indication": "Метод выбирают по подтверждённой компрессии и приоритетам пациента.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          },
+          {
+            "id": "action.referral.neurosurgery-trigeminal",
+            "label": "Нейрохирургическая консультация при резистентной невралгии тройничного нерва",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Направить с МРТ высокого разрешения и историей доз/нежелательных явлений.",
+            "indication": "Нужна специализированная консультация по лицевой боли.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          }
+        ],
+        "conditional": [
+          {
+            "id": "action.medication.trigeminal-neuralgia-first-line",
+            "label": "Карбамазепин или окскарбазепин при невралгии тройничного нерва",
+            "decision": "conditional",
+            "when": {
+              "fact": "alternativeMedicationTrialAppropriate",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Скорректировать терапию под контролем натрия, клеток крови и взаимодействий; не продолжать непереносимый режим.",
+            "indication": "Карбамазепин частично эффективен, но непереносим; возможны окскарбазепин или другие схемы специалиста.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.imaging.mri.brain",
+            "label": "МРТ головного мозга",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Исключает вторичную причину и оценивает морфологическую нейроваскулярную компрессию.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Сосудистая петля контактирует с корешком левого тройничного нерва; опухоли и демиелинизации нет. Атрофия или смещение корешка не описаны, поэтому простой контакт не доказывает классическую нейроваскулярную компрессию.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Безопасность противосудорожных препаратов.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Клетки крови в референсных пределах.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "order-set.lab.renal-function-electrolytes",
+            "label": "Набор отдельных исследований функции почек и электролитов",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Контроль натрия и функции почек.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Натрий и функция почек в референсных пределах.",
+              "abnormal": false
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.cranial-mononeuropathies.895.v1",
+          "title": "Краниальные мононейропатии у взрослых",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/895_1"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.neurosurgery.0010",
+      "title": "Благоприятное восстановление после микродискэктомии L4–L5",
+      "patient": {
+        "name": "Дмитрий Кузнецов",
+        "age": 49,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Контроль через восемь недель после микродискэктомии L4–L5; ходит самостоятельно.",
+        "chiefComplaint": "Через восемь недель после операции боль в ноге исчезла, остаётся небольшая скованность.",
+        "vitals": {
+          "hr": 72,
+          "bp": "124/76",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.neurosurgery.0010.anamnesis.01",
+            "question": "Какую операцию вам провели?",
+            "answer": "8 недель назад мне выполнили микродискэктомию L4–L5 и частичную ламинэктомию.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0010.anamnesis.02",
+            "question": "Есть ли боль в ноге?",
+            "answer": "Боль исчезла на следующий день после операции.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0010.anamnesis.03",
+            "question": "Есть ли боль в спине?",
+            "answer": "Небольшая боль в области послеоперационного шва, с каждой неделей уменьшается.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0010.anamnesis.04",
+            "question": "Осталось ли онемение?",
+            "answer": "На тыльной стороне стопы остался небольшой участок онемения, но он постепенно уменьшается.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0010.anamnesis.05",
+            "question": "Есть ли слабость?",
+            "answer": "Сила разгибания большого пальца стопы восстановилась.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0010.anamnesis.06",
+            "question": "Есть ли нарушения мочеиспускания или дефекации?",
+            "answer": "Нарушений мочеиспускания и дефекации нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0010.anamnesis.07",
+            "question": "Вы уже начали заниматься лечебной физкультурой?",
+            "answer": "Да, начал на прошлой неделе, занятия проходят хорошо.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurosurgery.0010.anamnesis.08",
+            "question": "Есть ли покраснение, отделяемое из раны, лихорадка или новая слабость?",
+            "answer": "Нет.",
+            "relevant": true
+          }
+        ]
+      },
+      "facts": {},
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.postop-lumbar-microdiscectomy.recovering",
+        "label": "Состояние после микродискэктомии L4–L5 с благоприятным восстановлением",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "Z98.8",
+            "display": "Другие уточнённые послехирургические состояния",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.spine-postop-recovery",
+            "label": "Послеоперационная оценка восстановления после декомпрессии позвоночника",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Осмотреть рану, силу, чувствительность, походку, тазовые функции и потребность в анальгетиках.",
+            "indication": "Нужно подтвердить восстановление силы, уменьшение боли и отсутствие осложнений.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          },
+          {
+            "id": "action.rehabilitation.spine-postop",
+            "label": "Поэтапная реабилитация после операции на позвоночнике",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Продолжить индивидуальную ЛФК, ходьбу и поэтапное возвращение к нагрузкам/работе по плану хирурга.",
+            "indication": "Постепенная активность и упражнения поддерживают возвращение функции.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          },
+          {
+            "id": "action.education.spine-postop-red-flags",
+            "label": "Памятка о послеоперационных красных флагах",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Срочно обращаться при новой слабости, задержке мочи, седловидной анестезии, лихорадке, отделяемом или нарастающей боли.",
+            "indication": "Поздние осложнения редки, но требуют раннего распознавания.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          },
+          {
+            "id": "action.avoid.routine-postop-spine-mri",
+            "label": "Отказ от рутинной МРТ при благоприятном восстановлении после операции",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Не назначать рутинно; выполнить при новом дефиците, рецидиве боли, инфекции или ином клиническом показании.",
+            "indication": "При клиническом улучшении повторная МРТ не меняет тактику и может показать неспецифические послеоперационные изменения.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [],
+        "conditional": [],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "study.imaging.mri.lumbosacral-spine",
+            "label": "МРТ пояснично-крестцового отдела позвоночника",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "При благоприятном восстановлении без красных флагов контрольная МРТ не требуется.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Не выполнялась повторно: симптомы регрессируют, новая слабость и другие красные флаги отсутствуют.",
+              "abnormal": false
+            }
+          }
+        ],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.degenerative-spine.826.v1",
+          "title": "Дегенеративные заболевания позвоночника",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/826_1"
+        }
+      ],
+      "reviewStatus": "major-revision-required"
+    }
+  ]
+}

@@ -1,0 +1,784 @@
+{
+  "_meta": {
+    "schemaVersion": "1.0.0",
+    "collection": "nephrology",
+    "language": "ru",
+    "clinicalSafety": "unsafe-until-clinician-approved"
+  },
+  "cases": [
+    {
+      "id": "case.nephrology.0001",
+      "title": "Хроническая болезнь почек категории G3a — требуется уточнение альбуминурии",
+      "patient": {
+        "name": "Олег Кузнецов",
+        "age": 68,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился для наблюдения за повышенным креатинином.",
+        "chiefComplaint": "Мой врач сказал, что функция моих почек ухудшается.",
+        "vitals": {
+          "hr": 78,
+          "bp": "142/84",
+          "spo2": 98,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.nephrology.0001.anamnesis.01",
+            "question": "Какие хронические заболевания у вас есть?",
+            "answer": "Около 12 лет у меня гипертония и сахарный диабет.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0001.anamnesis.02",
+            "question": "Принимаете ли вы НПВП?",
+            "answer": "НПВП не принимаю.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0001.anamnesis.03",
+            "question": "Не замечали, что моча стала пениться?",
+            "answer": "Да, иногда она пенится.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0001.anamnesis.04",
+            "question": "Появлялись отёки?",
+            "answer": "Да, немного отекают лодыжки.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0001.anamnesis.05",
+            "question": "Есть ли заболевания почек у близких родственников?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0001.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "order-set.lab.renal-function-electrolytes": {
+          "result": "Креатинин 141 мкмоль/л, расчётная СКФ 48 мл/мин/1,73 м²; сходные значения сохраняются более трёх месяцев.",
+          "abnormal": true
+        },
+        "study.lab.uacr.urine": {
+          "result": "Отношение альбумин/креатинин мочи 42 мг/ммоль, категория A3.",
+          "abnormal": true
+        },
+        "study.imaging.ultrasound.kidneys": {
+          "result": "Почки обычного размера, эхогенность паренхимы повышена, обструкции нет.",
+          "abnormal": true
+        }
+      }
+    },
+    {
+      "id": "case.nephrology.0002",
+      "title": "Рецидивирующий уретеролитиаз: камень правого мочеточника",
+      "patient": {
+        "name": "Евгений Павлов",
+        "age": 44,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "urgent",
+        "arrival": "Самостоятельно обратился с болью в боку.",
+        "chiefComplaint": "Сильная боль в правом боку, иррадиирующая в пах, третий эпизод.",
+        "vitals": {
+          "hr": 102,
+          "bp": "138/86",
+          "spo2": 98,
+          "temp": 36.9,
+          "rr": 20
+        },
+        "anamnesis": [
+          {
+            "id": "case.nephrology.0002.anamnesis.01",
+            "question": "Раньше уже были камни в почках?",
+            "answer": "Да, такое было уже 2 раза.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0002.anamnesis.02",
+            "question": "Насколько сильная боль и куда она отдаёт?",
+            "answer": "Очень сильная, 10 из 10, схваткообразная и отдаёт в пах.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0002.anamnesis.03",
+            "question": "Есть ли тошнота или рвота?",
+            "answer": "Да, меня уже 2 раза вырвало.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0002.anamnesis.04",
+            "question": "Замечали ли вы кровь в моче?",
+            "answer": "Моча розового цвета.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0002.anamnesis.05",
+            "question": "Повышалась ли температура?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0002.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.imaging.ct.urinary-tract.noncontrast": {
+          "result": "Конкремент 5 мм в средней трети правого мочеточника; выраженной обструкции нет.",
+          "abnormal": true
+        },
+        "study.lab.urinalysis.general": {
+          "result": "Эритроциты многочисленные, нитриты и лейкоцитарная эстераза отрицательные.",
+          "abnormal": true
+        },
+        "order-set.lab.renal-function-electrolytes": {
+          "result": "Креатинин 97 мкмоль/л, электролиты без значимых отклонений.",
+          "abnormal": false
+        }
+      }
+    },
+    {
+      "id": "case.nephrology.0003",
+      "title": "Рецидивирующая синфарингитическая клубочковая гематурия — подозрение на IgA-нефропатию",
+      "patient": {
+        "name": "Вера Николаева",
+        "age": 29,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась после эпизода появления мочи цвета чая.",
+        "chiefComplaint": "Моя моча несколько раз становилась коричневой после простуды.",
+        "vitals": {
+          "hr": 74,
+          "bp": "128/82",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.nephrology.0003.anamnesis.01",
+            "question": "Когда относительно простуды появилась кровь в моче?",
+            "answer": "В течение 2 дней после начала простуды.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0003.anamnesis.02",
+            "question": "Вас беспокоит боль?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0003.anamnesis.03",
+            "question": "Есть ли отёки?",
+            "answer": "Да, но совсем небольшие.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0003.anamnesis.04",
+            "question": "Подобные эпизоды были раньше?",
+            "answer": "Да, за последние 2 года такое было 3 раза.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0003.anamnesis.05",
+            "question": "Есть ли заболевания почек у близких родственников?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0003.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.lab.urine-sediment-microscopy": {
+          "result": "Дисморфные эритроциты и эритроцитарные цилиндры.",
+          "abnormal": true
+        },
+        "study.lab.upcr.urine": {
+          "result": "Белок/креатинин мочи 45 мг/ммоль — умеренная протеинурия.",
+          "abnormal": true
+        },
+        "order-set.lab.renal-function-electrolytes": {
+          "result": "Креатинин 88 мкмоль/л, расчётная СКФ сохранена.",
+          "abnormal": false
+        },
+        "study.pathology.kidney-biopsy": {
+          "result": "Биопсия ещё не выполнена; IgA-депозиты не подтверждены.",
+          "abnormal": false
+        }
+      }
+    },
+    {
+      "id": "case.nephrology.0004",
+      "title": "Диабетическая болезнь почек с ХБП G3b",
+      "patient": {
+        "name": "Иван Алексеев",
+        "age": 62,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился с ухудшением уровня креатинина.",
+        "chiefComplaint": "Показатели моих почек ухудшаются с каждым годом.",
+        "vitals": {
+          "hr": 78,
+          "bp": "146/86",
+          "spo2": 98,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.nephrology.0004.anamnesis.01",
+            "question": "Как давно у вас сахарный диабет?",
+            "answer": "Сахарный диабет у меня уже 18 лет.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0004.anamnesis.02",
+            "question": "Насколько хорошо удаётся контролировать сахарный диабет?",
+            "answer": "Плохо: последний HbA1c был 9,2%.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0004.anamnesis.03",
+            "question": "Диагностировали ли у вас диабетическую ретинопатию?",
+            "answer": "Да, мне проводили лазерное лечение.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0004.anamnesis.04",
+            "question": "Есть ли онемение, покалывание или снижение чувствительности в стопах?",
+            "answer": "Да, есть онемение и покалывание в стопах.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0004.anamnesis.05",
+            "question": "Стала ли моча пенистой?",
+            "answer": "Да.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0004.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "order-set.lab.renal-function-electrolytes": {
+          "result": "Креатинин 168 мкмоль/л, расчётная СКФ 38 мл/мин/1,73 м².",
+          "abnormal": true
+        },
+        "study.lab.uacr.urine": {
+          "result": "Альбумин/креатинин мочи 180 мг/ммоль, категория A3.",
+          "abnormal": true
+        },
+        "study.lab.hba1c.blood": {
+          "result": "HbA1c 9,2%.",
+          "abnormal": true
+        },
+        "study.imaging.ultrasound.kidneys": {
+          "result": "Почки несколько увеличены, эхогенность повышена, обструкции нет.",
+          "abnormal": true
+        }
+      }
+    },
+    {
+      "id": "case.nephrology.0005",
+      "title": "Вероятный люпус-нефрит — класс не определён",
+      "patient": {
+        "name": "Татьяна Кузнецова",
+        "age": 27,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "urgent",
+        "arrival": "Самостоятельно обратилась с сыпью и протеинурией.",
+        "chiefComplaint": "Боль в суставах, сыпь на лице, моча пенистая.",
+        "vitals": {
+          "hr": 88,
+          "bp": "138/86",
+          "spo2": 98,
+          "temp": 37.4,
+          "rr": 16
+        },
+        "anamnesis": [
+          {
+            "id": "case.nephrology.0005.anamnesis.01",
+            "question": "Есть ли сыпь?",
+            "answer": "После пребывания на солнце на щеках и переносице появляется сыпь в форме бабочки.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0005.anamnesis.02",
+            "question": "Какие суставы вас беспокоят?",
+            "answer": "Кисти и лучезапястные суставы болят и припухают.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0005.anamnesis.03",
+            "question": "Стали сильнее уставать?",
+            "answer": "Да, устаю очень сильно.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0005.anamnesis.04",
+            "question": "Появляются ли язвочки во рту?",
+            "answer": "Да, появляются, но они не болят.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0005.anamnesis.05",
+            "question": "Как проходят менструации?",
+            "answer": "Менструации обильные.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0005.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.lab.urine-sediment-microscopy": {
+          "result": "Дисморфные эритроциты, эритроцитарные цилиндры.",
+          "abnormal": true
+        },
+        "study.lab.upcr.urine": {
+          "result": "Белок/креатинин мочи 220 мг/ммоль.",
+          "abnormal": true
+        },
+        "order-set.lab.renal-function-electrolytes": {
+          "result": "Креатинин 124 мкмоль/л, функция почек снижена.",
+          "abnormal": true
+        },
+        "study.lab.cbc-with-differential": {
+          "result": "Лейкоциты 3,2×10⁹/л, гемоглобин 102 г/л, тромбоциты 110×10⁹/л.",
+          "abnormal": true
+        },
+        "study.immunology.ana-dsdna-complement": {
+          "result": "ANA положительные, anti-dsDNA повышены, C3 и C4 снижены.",
+          "abnormal": true
+        },
+        "study.pathology.kidney-biopsy": {
+          "result": "Не выполнена; класс люпус-нефрита пока не определён.",
+          "abnormal": false
+        }
+      }
+    },
+    {
+      "id": "case.nephrology.0006",
+      "title": "Аутосомно-доминантная поликистозная болезнь почек",
+      "patient": {
+        "name": "Антон Павлов",
+        "age": 40,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился.",
+        "chiefComplaint": "У моей матери поликистоз почек, а у меня болит спина.",
+        "vitals": {
+          "hr": 76,
+          "bp": "148/92",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.nephrology.0006.anamnesis.01",
+            "question": "У кого-нибудь из родственников был поликистоз почек?",
+            "answer": "Да, у матери и дедушки поликистоз почек.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0006.anamnesis.02",
+            "question": "Есть ли боль в боках?",
+            "answer": "Да, с обеих сторон постоянная тупая боль.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0006.anamnesis.03",
+            "question": "Замечали ли вы кровь в моче?",
+            "answer": "Да, иногда замечаю.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0006.anamnesis.04",
+            "question": "Каким обычно бывает ваше артериальное давление?",
+            "answer": "Систолическое давление обычно около 150 мм рт. ст.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0006.anamnesis.05",
+            "question": "Есть ли головные боли?",
+            "answer": "Да, изредка.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0006.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.imaging.ultrasound.kidneys": {
+          "result": "Обе почки увеличены, множественные двусторонние кисты; картина соответствует АДПБП при положительном семейном анамнезе.",
+          "abnormal": true
+        },
+        "order-set.lab.renal-function-electrolytes": {
+          "result": "Креатинин 106 мкмоль/л, расчётная СКФ 74 мл/мин/1,73 м².",
+          "abnormal": false
+        },
+        "study.lab.uacr.urine": {
+          "result": "Альбуминурия умеренная.",
+          "abnormal": true
+        }
+      }
+    },
+    {
+      "id": "case.nephrology.0007",
+      "title": "Атеросклеротический стеноз правой почечной артерии с высокорисковым фенотипом",
+      "patient": {
+        "name": "Роман Козлов",
+        "age": 70,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился с резистентной гипертензией.",
+        "chiefComplaint": "У меня высокое кровяное давление, несмотря на 4 лекарства.",
+        "vitals": {
+          "hr": 78,
+          "bp": "172/98",
+          "spo2": 98,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.nephrology.0007.anamnesis.01",
+            "question": "Сколько препаратов от давления вы принимаете?",
+            "answer": "4 разных препарата.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0007.anamnesis.02",
+            "question": "Когда давление стало хуже контролироваться?",
+            "answer": "Совсем недавно давление стало хуже контролироваться.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0007.anamnesis.03",
+            "question": "Каков ваш общий стаж курения?",
+            "answer": "Общий стаж курения — 50 пачка-лет.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0007.anamnesis.04",
+            "question": "Есть ли другие сердечно-сосудистые заболевания?",
+            "answer": "Да, заболевание периферических артерий и ишемическая болезнь сердца.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0007.anamnesis.05",
+            "question": "Бывали внезапные приступы удушья из-за отёка лёгких?",
+            "answer": "Да, один раз из-за такого приступа меня госпитализировали.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0007.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "order-set.lab.renal-function-electrolytes": {
+          "result": "После начала ингибитора АПФ креатинин вырос со 88 до 141 мкмоль/л.",
+          "abnormal": true
+        },
+        "study.imaging.ultrasound.kidneys": {
+          "result": "Правая почка уменьшена; размеры почек асимметричны.",
+          "abnormal": true
+        },
+        "study.imaging.duplex.renal-arteries": {
+          "result": "Высокие скорости кровотока в правой почечной артерии, гемодинамически значимый стеноз вероятен.",
+          "abnormal": true
+        },
+        "study.imaging.ct-angiography.renal-arteries": {
+          "result": "Атеросклеротический стеноз правой почечной артерии около 70%.",
+          "abnormal": true
+        }
+      }
+    },
+    {
+      "id": "case.nephrology.0008",
+      "title": "Острое повреждение почек вследствие гиповолемии и приёма НПВП",
+      "patient": {
+        "name": "Надежда Соколова",
+        "age": 56,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "urgent",
+        "arrival": "Самостоятельно обратилась после нескольких дней рвоты.",
+        "chiefComplaint": "У меня рвота уже 3 дня, а сейчас моча скудная и темная.",
+        "vitals": {
+          "hr": 102,
+          "bp": "104/64",
+          "spo2": 98,
+          "temp": 37.3,
+          "rr": 18
+        },
+        "anamnesis": [
+          {
+            "id": "case.nephrology.0008.anamnesis.01",
+            "question": "Как давно продолжается рвота?",
+            "answer": "Она не прекращается уже 3 дня.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0008.anamnesis.02",
+            "question": "Сколько жидкости вы пьёте?",
+            "answer": "Пью очень мало жидкости.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0008.anamnesis.03",
+            "question": "Как изменилось количество мочи?",
+            "answer": "Мочи стало мало, она тёмная.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0008.anamnesis.04",
+            "question": "Принимаете ли вы НПВП?",
+            "answer": "Принимаю ежедневно.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0008.anamnesis.05",
+            "question": "Какие заболевания у вас были раньше?",
+            "answer": "Из хронических заболеваний у меня только гипертония.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0008.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "order-set.lab.renal-function-electrolytes": {
+          "result": "Креатинин 194 мкмоль/л против исходных 80 мкмоль/л, калий 5,0 ммоль/л; соответствует ОПП 2-й стадии.",
+          "abnormal": true
+        },
+        "study.lab.urine-sediment-microscopy": {
+          "result": "Концентрированная моча, активного осадка и цилиндров нет.",
+          "abnormal": true
+        },
+        "study.lab.cbc-with-differential": {
+          "result": "Признаки гемоконцентрации.",
+          "abnormal": true
+        },
+        "study.imaging.ultrasound.kidneys": {
+          "result": "Обструкции мочевых путей нет.",
+          "abnormal": false
+        }
+      }
+    },
+    {
+      "id": "case.nephrology.0009",
+      "title": "ХБП G3b при длительной артериальной гипертензии — причина требует подтверждения",
+      "patient": {
+        "name": "Антон Кузнецов",
+        "age": 72,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился, выявлена артериальная гипертензия с повышением креатинина.",
+        "chiefComplaint": "На фоне высокого артериального давления функция почек постепенно ухудшается.",
+        "vitals": {
+          "hr": 76,
+          "bp": "158/88",
+          "spo2": 98,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.nephrology.0009.anamnesis.01",
+            "question": "Как давно у вас артериальная гипертензия?",
+            "answer": "Артериальная гипертензия у меня уже 25 лет.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0009.anamnesis.02",
+            "question": "Обнаруживали ли у вас белок в моче?",
+            "answer": "Обнаруживали следовые количества белка.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0009.anamnesis.03",
+            "question": "У вас есть сахарный диабет?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0009.anamnesis.04",
+            "question": "Удаётся постоянно держать давление в норме?",
+            "answer": "Не всегда, оно часто повышается.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0009.anamnesis.05",
+            "question": "Вы курите?",
+            "answer": "Бросил курить.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0009.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "order-set.lab.renal-function-electrolytes": {
+          "result": "Креатинин 159 мкмоль/л, расчётная СКФ 40 мл/мин/1,73 м²; снижение хроническое.",
+          "abnormal": true
+        },
+        "study.lab.uacr.urine": {
+          "result": "Альбумин/креатинин мочи 12 мг/ммоль, категория A2.",
+          "abnormal": true
+        },
+        "study.lab.urine-sediment-microscopy": {
+          "result": "Активного осадка и гематурии нет.",
+          "abnormal": false
+        },
+        "study.imaging.ultrasound.kidneys": {
+          "result": "Обе почки уменьшены, паренхима истончена и эхогенна.",
+          "abnormal": true
+        }
+      }
+    },
+    {
+      "id": "case.nephrology.0010",
+      "title": "Нефротический синдром с подозрением на мембранозную нефропатию",
+      "patient": {
+        "name": "Дарья Семёнова",
+        "age": 52,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "urgent",
+        "arrival": "Самостоятельно обратилась с сильным отеком ноги.",
+        "chiefComplaint": "У меня сильно опухли ноги, моча пенистая.",
+        "vitals": {
+          "hr": 82,
+          "bp": "132/84",
+          "spo2": 98,
+          "temp": 36.7,
+          "rr": 16
+        },
+        "anamnesis": [
+          {
+            "id": "case.nephrology.0010.anamnesis.01",
+            "question": "Где именно расположен отёк?",
+            "answer": "Отекают ноги, а по утрам — область вокруг глаз.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0010.anamnesis.02",
+            "question": "Стала ли моча пенистой?",
+            "answer": "Да.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0010.anamnesis.03",
+            "question": "Изменился ли ваш вес?",
+            "answer": "Да, прибавила 6 кг.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0010.anamnesis.04",
+            "question": "Были ли у вас гепатиты B или C?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0010.anamnesis.05",
+            "question": "Регулярно ли вы проходите рекомендованный онкологический скрининг?",
+            "answer": "Да, прохожу регулярно.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0010.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.lab.upcr.urine": {
+          "result": "Белок/креатинин мочи соответствует протеинурии 6,2 г/сут.",
+          "abnormal": true
+        },
+        "study.lab.albumin.blood": {
+          "result": "Альбумин 21 г/л.",
+          "abnormal": true
+        },
+        "study.lab.lipid-profile.blood": {
+          "result": "Выраженная гиперхолестеринемия.",
+          "abnormal": true
+        },
+        "study.immunology.anti-pla2r": {
+          "result": "Антитела к PLA2R положительные в высоком титре.",
+          "abnormal": true
+        },
+        "study.pathology.kidney-biopsy": {
+          "result": "Биопсия ещё не выполнена; решение зависит от PLA2R, функции почек и наличия атипичных признаков.",
+          "abnormal": false
+        },
+        "study.imaging.ultrasound.leg-veins": {
+          "result": "Не выполнено: односторонней боли или асимметрии отёка нет.",
+          "abnormal": false
+        }
+      }
+    }
+  ]
+}

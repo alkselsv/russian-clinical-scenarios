@@ -1,0 +1,166 @@
+{
+  "_meta": {
+    "schemaVersion": "1.0.0",
+    "purpose": "Машинные факты и условия ЛОР-сценариев",
+    "conditionDsl": {
+      "always": "{\"always\":true}",
+      "comparison": "{\"fact\":\"path\",\"op\":\"eq|ne|lt|lte|gt|gte|in|exists\",\"value\":any}",
+      "all": "{\"all\":[...]}",
+      "any": "{\"any\":[...]}",
+      "not": "{\"not\":{...}}"
+    }
+  },
+  "cases": [
+    {
+      "id": "case.ent.0001",
+      "facts": {},
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {},
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.ent.0002",
+      "facts": {
+        "antibioticIndicated": true,
+        "outpatientSafe": true
+      },
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {
+        "action.medication.amoxicillin-clavulanate": {
+          "fact": "antibioticIndicated",
+          "op": "eq",
+          "value": true
+        },
+        "action.disposition.outpatient-discharge": {
+          "fact": "outpatientSafe",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.ent.0003",
+      "facts": {},
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {},
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.ent.0004",
+      "facts": {},
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {},
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.ent.0005",
+      "facts": {},
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {},
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.ent.0006",
+      "facts": {
+        "immunotherapyEvaluationIndicated": false
+      },
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {
+        "action.referral.allergist-immunotherapy": {
+          "fact": "immunotherapyEvaluationIndicated",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.ent.0007",
+      "facts": {
+        "severeUncontrolled": true,
+        "advancedTherapyEvaluationIndicated": true,
+        "eosinophilPhenotypingIndicated": true
+      },
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {
+        "action.medication.oral-corticosteroid-short-course": {
+          "fact": "severeUncontrolled",
+          "op": "eq",
+          "value": true
+        },
+        "action.referral.ent-sinus-surgery": {
+          "fact": "advancedTherapyEvaluationIndicated",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "studyConditions": {
+        "study.lab.cbc-with-differential": {
+          "fact": "eosinophilPhenotypingIndicated",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "choiceGroups": []
+    },
+    {
+      "id": "case.ent.0008",
+      "facts": {},
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {},
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.ent.0009",
+      "facts": {},
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {},
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.ent.0010",
+      "facts": {
+        "intratympanicSteroidIndicated": false
+      },
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {
+        "action.procedure.intratympanic-steroid": {
+          "fact": "intratympanicSteroidIndicated",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "studyConditions": {},
+      "choiceGroups": []
+    }
+  ]
+}

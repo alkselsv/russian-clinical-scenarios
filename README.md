@@ -2,7 +2,7 @@
 
 Автономный исследовательский набор клинических случаев. Репозиторий содержит редакторские данные, справочники, правила оценки, генератор и готовые runtime-варианты. Исходные выгрузки и идентификаторы внешнего набора в него не входят.
 
-Сейчас реализованы коллекции `emergency` из шести случаев и по десять амбулаторных случаев в коллекциях `cardiology`, `dermatology` и `gastroenterology`. Все случаи имеют статус `unsafe-until-clinician-approved`: структура пригодна для разработки исследовательского прототипа, но клиническое содержание ещё требует независимой врачебной приёмки.
+Сейчас реализованы коллекция `emergency` из шести случаев и по десять случаев в коллекциях `cardiology`, `dermatology`, `gastroenterology`, `ent`, `internal-medicine`, `nephrology`, `neurology` и `neurosurgery`. Все случаи имеют статус `unsafe-until-clinician-approved`: структура пригодна для разработки исследовательского прототипа, но клиническое содержание ещё требует независимой врачебной приёмки.
 
 ## Структура
 
@@ -18,6 +18,11 @@ data/
     cardiology/                     # те же три файла для кардиологии
     dermatology/                    # те же три файла для дерматологии
     gastroenterology/               # те же три файла для гастроэнтерологии
+    ent/                            # те же три файла для оториноларингологии
+    internal-medicine/              # те же три файла для внутренних болезней
+    nephrology/                     # те же три файла для нефрологии
+    neurology/                      # те же три файла для неврологии
+    neurosurgery/                   # те же три файла для нейрохирургии
 docs/
   audits/                           # клинические аудиты
   SCHEMA.md                         # контракт редакторского и runtime-слоёв
@@ -26,6 +31,11 @@ runtime/
   cardiology.json                   # сгенерированные амбулаторные случаи
   dermatology.json                  # сгенерированные дерматологические случаи
   gastroenterology.json             # сгенерированные гастроэнтерологические случаи
+  ent.json                          # сгенерированные ЛОР-случаи
+  internal-medicine.json            # сгенерированные терапевтические случаи
+  nephrology.json                   # сгенерированные нефрологические случаи
+  neurology.json                    # сгенерированные неврологические случаи
+  neurosurgery.json                 # сгенерированные нейрохирургические случаи
 scripts/
   generate-runtime.mjs              # конвертор редакторских данных в runtime
   validate.mjs                      # проверка автономности и связности
@@ -56,6 +66,16 @@ node scripts/generate-runtime.mjs --collection dermatology
 node scripts/generate-runtime.mjs --collection dermatology --check
 node scripts/generate-runtime.mjs --collection gastroenterology
 node scripts/generate-runtime.mjs --collection gastroenterology --check
+node scripts/generate-runtime.mjs --collection ent
+node scripts/generate-runtime.mjs --collection ent --check
+node scripts/generate-runtime.mjs --collection internal-medicine
+node scripts/generate-runtime.mjs --collection internal-medicine --check
+node scripts/generate-runtime.mjs --collection nephrology
+node scripts/generate-runtime.mjs --collection nephrology --check
+node scripts/generate-runtime.mjs --collection neurology
+node scripts/generate-runtime.mjs --collection neurology --check
+node scripts/generate-runtime.mjs --collection neurosurgery
+node scripts/generate-runtime.mjs --collection neurosurgery --check
 ```
 
 ## Добавление коллекции

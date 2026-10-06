@@ -1,0 +1,716 @@
+{
+  "_meta": {
+    "schemaVersion": "1.0.0",
+    "collection": "ent",
+    "language": "ru",
+    "clinicalSafety": "unsafe-until-clinician-approved"
+  },
+  "cases": [
+    {
+      "id": "case.ent.0001",
+      "title": "Острый бактериальный риносинусит",
+      "patient": {
+        "name": "Александр Захаров",
+        "age": 37,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "urgent",
+        "arrival": "Самостоятельно обратился с повышенной температурой.",
+        "chiefComplaint": "Давление на лицо, желтые выделения из носа, лихорадка в течение 10 дней после простуды.",
+        "vitals": {
+          "hr": 92,
+          "bp": "124/78",
+          "spo2": 98,
+          "temp": 38.6,
+          "rr": 16
+        },
+        "anamnesis": [
+          {
+            "id": "case.ent.0001.anamnesis.01",
+            "question": "Как давно это началось?",
+            "answer": "Симптомы появились около 10 дней назад и продолжают усиливаться.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0001.anamnesis.02",
+            "question": "Есть ли выделения из носа и какие они?",
+            "answer": "Да, выделения густые, жёлтые.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0001.anamnesis.03",
+            "question": "Где болит и когда боль усиливается?",
+            "answer": "Болит в области щёк и верхней челюсти; при наклоне вперёд боль усиливается.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0001.anamnesis.04",
+            "question": "До каких значений повышалась температура?",
+            "answer": "До 38,6 °C.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0001.anamnesis.05",
+            "question": "Есть ли зубная боль?",
+            "answer": "Болят верхние зубы.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0001.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.lab.cbc-with-differential": {
+          "result": "Лейкоциты 13,0×10⁹/л, нейтрофилёз.",
+          "abnormal": true
+        },
+        "study.imaging.ct.paranasal-sinuses": {
+          "result": "Исследование не выполнено: признаков орбитального или внутричерепного осложнения нет.",
+          "abnormal": false
+        }
+      }
+    },
+    {
+      "id": "case.ent.0002",
+      "title": "Острый средний отит справа",
+      "patient": {
+        "name": "Дарья Петрова",
+        "age": 29,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась с болью в ухе.",
+        "chiefComplaint": "Боль и заложенность в правом ухе в течение 3 дней после простуды.",
+        "vitals": {
+          "hr": 80,
+          "bp": "118/72",
+          "spo2": 99,
+          "temp": 37.8,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.ent.0002.anamnesis.01",
+            "question": "Была ли недавно простуда?",
+            "answer": "Да.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0002.anamnesis.02",
+            "question": "Изменился ли слух?",
+            "answer": "Да, слышу хуже, как будто ухо заложено.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0002.anamnesis.03",
+            "question": "Есть ли выделения из уха?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0002.anamnesis.04",
+            "question": "Повышалась ли температура?",
+            "answer": "Да, немного повышалась.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0002.anamnesis.05",
+            "question": "Есть ли ощущение вращения?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0002.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.exam.otoscopy": {
+          "result": "Справа барабанная перепонка гиперемирована и выбухает, опознавательные знаки сглажены; отделяемого нет.",
+          "abnormal": true
+        },
+        "study.functional.tympanometry": {
+          "result": "Справа тимпанограмма типа B; слева типа A.",
+          "abnormal": true
+        }
+      }
+    },
+    {
+      "id": "case.ent.0003",
+      "title": "Стрептококковый острый тонзиллофарингит",
+      "patient": {
+        "name": "Александр Николаев",
+        "age": 17,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился с болью в горле.",
+        "chiefComplaint": "Сильная боль в горле, температура, кашля нет.",
+        "vitals": {
+          "hr": 92,
+          "bp": "118/72",
+          "spo2": 99,
+          "temp": 38.8,
+          "rr": 16
+        },
+        "anamnesis": [
+          {
+            "id": "case.ent.0003.anamnesis.01",
+            "question": "Есть ли у вас кашель?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0003.anamnesis.02",
+            "question": "Есть ли белые пятна или налёт во рту?",
+            "answer": "Да, белый налёт на миндалинах.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0003.anamnesis.03",
+            "question": "Увеличены и болезненны ли лимфатические узлы на шее?",
+            "answer": "Да, они болезненны при прикосновении.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0003.anamnesis.04",
+            "question": "Были ли контакты с людьми с похожими симптомами?",
+            "answer": "У сестры недавно была стрептококковая ангина.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0003.anamnesis.05",
+            "question": "Есть ли у вас сыпь?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0003.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.exam.pharyngoscopy": {
+          "result": "Миндалины увеличены, гиперемированы, с двусторонним экссудатом; тризма и смещения язычка нет.",
+          "abnormal": true
+        },
+        "study.microbiology.strep-a-radt": {
+          "result": "Антиген стрептококка группы A обнаружен.",
+          "abnormal": true
+        },
+        "study.lab.cbc-with-differential": {
+          "result": "Лейкоциты 13,0×10⁹/л, нейтрофилёз.",
+          "abnormal": true
+        }
+      }
+    },
+    {
+      "id": "case.ent.0004",
+      "title": "Доброкачественное пароксизмальное позиционное головокружение",
+      "patient": {
+        "name": "Валентина Воробьёва",
+        "age": 55,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась из-за приступов вращательного головокружения при поворотах головы.",
+        "chiefComplaint": "Комната кружится несколько секунд, когда я поворачиваюсь в постели или смотрю вверх.",
+        "vitals": {
+          "hr": 74,
+          "bp": "124/76",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.ent.0004.anamnesis.01",
+            "question": "Что провоцирует симптомы?",
+            "answer": "Приступы возникают, когда я меняю положение головы.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0004.anamnesis.02",
+            "question": "Сколько длится один эпизод?",
+            "answer": "Несколько секунд.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0004.anamnesis.03",
+            "question": "Изменился ли слух?",
+            "answer": "Слух не изменился.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0004.anamnesis.04",
+            "question": "Есть ли звон или шум в ушах?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0004.anamnesis.05",
+            "question": "Есть ли слабость, онемение или другие неврологические симптомы?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0004.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.exam.dix-hallpike": {
+          "result": "При пробе справа после короткой латентности возникли привычное головокружение и кратковременный вертикально-ротаторный нистагм.",
+          "abnormal": true
+        },
+        "study.imaging.ct.brain.noncontrast": {
+          "result": "Не выполнена: центральных неврологических признаков нет.",
+          "abnormal": false
+        },
+        "study.lab.cbc-with-differential": {
+          "result": "Не назначен: клинических показаний нет.",
+          "abnormal": false
+        }
+      }
+    },
+    {
+      "id": "case.ent.0005",
+      "title": "Двусторонний субъективный шум в ушах при воздействии производственного шума",
+      "patient": {
+        "name": "Илья Алексеев",
+        "age": 48,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился.",
+        "chiefComplaint": "Постоянный звон в обоих ушах в течение 6 месяцев.",
+        "vitals": {
+          "hr": 72,
+          "bp": "124/76",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.ent.0005.anamnesis.01",
+            "question": "Подвергались ли вы длительному воздействию громкого шума?",
+            "answer": "Работаю на стройке, постоянно нахожусь в шуме.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0005.anamnesis.02",
+            "question": "Изменился ли слух?",
+            "answer": "Слух немного снизился.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0005.anamnesis.03",
+            "question": "Есть ли ощущение вращения?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0005.anamnesis.04",
+            "question": "Принимаете ли вы какие-либо лекарства?",
+            "answer": "Нет, никаких.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0005.anamnesis.05",
+            "question": "Испытываете ли вы стресс?",
+            "answer": "Испытываю умеренный стресс.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0005.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.exam.otoscopy": {
+          "result": "Наружные слуховые проходы свободны, барабанные перепонки без острых изменений.",
+          "abnormal": false
+        },
+        "study.functional.audiometry.pure-tone-threshold": {
+          "result": "Двустороннее симметричное снижение слуха по сенсоневральному типу преимущественно на высоких частотах.",
+          "abnormal": true
+        },
+        "study.lab.tsh.blood": {
+          "result": "Не назначен: симптомов дисфункции щитовидной железы нет.",
+          "abnormal": false
+        }
+      }
+    },
+    {
+      "id": "case.ent.0006",
+      "title": "Сезонный аллергический ринит",
+      "patient": {
+        "name": "Елена Николаева",
+        "age": 32,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась с заложенностью носа.",
+        "chiefComplaint": "Прозрачные выделения из носа и чихание каждую весну.",
+        "vitals": {
+          "hr": 72,
+          "bp": "118/72",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.ent.0006.anamnesis.01",
+            "question": "Симптомы зависят от времени года?",
+            "answer": "Каждую весну.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0006.anamnesis.02",
+            "question": "Есть ли зуд?",
+            "answer": "Чешутся глаза и нос.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0006.anamnesis.03",
+            "question": "Есть ли выделения из носа и какие они?",
+            "answer": "Да, прозрачные и водянистые.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0006.anamnesis.04",
+            "question": "Есть ли у близких родственников астма, экзема или аллергический ринит?",
+            "answer": "Да.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0006.anamnesis.05",
+            "question": "У вас есть бронхиальная астма?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0006.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.lab.cbc-with-differential": {
+          "result": "Эозинофилы 5%; показатель сам по себе не подтверждает аллергический ринит.",
+          "abnormal": true
+        }
+      }
+    },
+    {
+      "id": "case.ent.0007",
+      "title": "Полипозный риносинусит и непереносимость НПВП",
+      "patient": {
+        "name": "Алексей Егоров",
+        "age": 50,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился с хронической заложенностью носа и потерей обоняния.",
+        "chiefComplaint": "Заложен нос и нет обоняния более года.",
+        "vitals": {
+          "hr": 72,
+          "bp": "124/76",
+          "spo2": 98,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.ent.0007.anamnesis.01",
+            "question": "Изменилось ли обоняние?",
+            "answer": "Да, совсем перестал чувствовать запахи.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0007.anamnesis.02",
+            "question": "У вас есть бронхиальная астма?",
+            "answer": "Да.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0007.anamnesis.03",
+            "question": "Были ли реакции на аспирин или другие НПВП?",
+            "answer": "Да.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0007.anamnesis.04",
+            "question": "Есть ли заложенность носа и с какой стороны?",
+            "answer": "Да, нос заложен с обеих сторон.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0007.anamnesis.05",
+            "question": "Есть ли выделения? Если да, какого они цвета и запаха?",
+            "answer": "Выделений почти нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0007.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.exam.nasal-endoscopy": {
+          "result": "Двусторонние полипы в средних носовых ходах.",
+          "abnormal": true
+        },
+        "study.imaging.ct.paranasal-sinuses": {
+          "result": "Двусторонние полипозные изменения околоносовых пазух; результат оценён по шкале Lund—Mackay.",
+          "abnormal": true
+        },
+        "study.lab.cbc-with-differential": {
+          "result": "Абсолютное число эозинофилов повышено.",
+          "abnormal": true
+        }
+      }
+    },
+    {
+      "id": "case.ent.0008",
+      "title": "Стойкая дисфония с предполагаемым вкладом рефлюкса",
+      "patient": {
+        "name": "Алёна Белова",
+        "age": 44,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась из-за постоянной потребности прочищать горло.",
+        "chiefComplaint": "Охриплость голоса, першение в горле, ощущение комка в течение нескольких месяцев.",
+        "vitals": {
+          "hr": 72,
+          "bp": "120/74",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.ent.0008.anamnesis.01",
+            "question": "Бывает ли изжога и насколько она выражена?",
+            "answer": "Да, бывает небольшая изжога.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0008.anamnesis.02",
+            "question": "Есть ли осиплость и когда она выражена сильнее?",
+            "answer": "Да, особенно по утрам.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0008.anamnesis.03",
+            "question": "Есть ли ощущение кома в горле?",
+            "answer": "Да.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0008.anamnesis.04",
+            "question": "Есть ли кашель и какой он?",
+            "answer": "Да, кашель сухой.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0008.anamnesis.05",
+            "question": "Вы курите?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0008.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.exam.laryngoscopy": {
+          "result": "Подвижность голосовых складок сохранена; объёмного образования не выявлено, есть неспецифические признаки раздражения.",
+          "abnormal": false
+        }
+      }
+    },
+    {
+      "id": "case.ent.0009",
+      "title": "Болевая дисфункция височно-нижнечелюстного сустава",
+      "patient": {
+        "name": "Андрей Дмитриев",
+        "age": 39,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился с болью в челюсти.",
+        "chiefComplaint": "Щелкание челюстью и боль при жевании в течение нескольких месяцев.",
+        "vitals": {
+          "hr": 72,
+          "bp": "120/74",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.ent.0009.anamnesis.01",
+            "question": "Щёлкает ли челюсть при открывании рта или жевании?",
+            "answer": "Да, щёлкает с обеих сторон.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0009.anamnesis.02",
+            "question": "Скрипите ли вы зубами во сне?",
+            "answer": "Да, по ночам.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0009.anamnesis.03",
+            "question": "Испытываете ли вы стресс?",
+            "answer": "Испытываю сильный стресс.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0009.anamnesis.04",
+            "question": "Болит ли у вас челюсть?",
+            "answer": "Да, боль усиливается при жевании.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0009.anamnesis.05",
+            "question": "Какие ощущения возникают в области уха?",
+            "answer": "Есть тупая ноющая боль.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0009.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.exam.otoscopy": {
+          "result": "Уши без воспалительных изменений; боль воспроизводится при пальпации жевательных мышц и движении нижней челюсти.",
+          "abnormal": false
+        },
+        "study.lab.cbc-with-differential": {
+          "result": "Не назначен: клинических признаков системного воспаления нет.",
+          "abnormal": false
+        }
+      }
+    },
+    {
+      "id": "case.ent.0010",
+      "title": "Острая правосторонняя сенсоневральная тугоухость",
+      "patient": {
+        "name": "Екатерина Воробьёва",
+        "age": 55,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "urgent",
+        "arrival": "Самостоятельно обратилась с внезапной потерей слуха.",
+        "chiefComplaint": "Сегодня утром внезапно пропал слух на правое ухо и появился звон.",
+        "vitals": {
+          "hr": 78,
+          "bp": "128/78",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.ent.0010.anamnesis.01",
+            "question": "Когда появились симптомы?",
+            "answer": "Внезапно, несколько часов назад.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0010.anamnesis.02",
+            "question": "Есть ли звон или шум в ушах?",
+            "answer": "Да, звон очень громкий.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0010.anamnesis.03",
+            "question": "Есть ли ощущение вращения?",
+            "answer": "Есть небольшое головокружение.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0010.anamnesis.04",
+            "question": "Подвергались ли вы длительному воздействию громкого шума?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0010.anamnesis.05",
+            "question": "Не было ли недавно простуды?",
+            "answer": "Да, на прошлой неделе была лёгкая простуда.",
+            "relevant": true
+          },
+          {
+            "id": "case.ent.0010.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.exam.otoscopy": {
+          "result": "Наружный слуховой проход свободен, барабанная перепонка без острых изменений.",
+          "abnormal": false
+        },
+        "study.exam.tuning-fork-hearing": {
+          "result": "Проба Вебера латерализуется влево; Ринне положительная с обеих сторон.",
+          "abnormal": true
+        },
+        "study.functional.audiometry.pure-tone-threshold": {
+          "result": "Острая правосторонняя сенсоневральная потеря слуха не менее чем на 30 дБ в трёх соседних частотах.",
+          "abnormal": true
+        },
+        "study.imaging.mri.brain-iac": {
+          "result": "Образование мостомозжечкового угла и внутреннего слухового прохода не выявлено.",
+          "abnormal": false
+        }
+      }
+    }
+  ]
+}

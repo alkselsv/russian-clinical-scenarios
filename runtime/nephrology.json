@@ -1,0 +1,2745 @@
+{
+  "_meta": {
+    "schemaVersion": "1.0.0",
+    "collection": "nephrology",
+    "generator": "scripts/generate-runtime.mjs",
+    "caseCount": 10,
+    "language": "ru",
+    "clinicalSafety": "unsafe-until-clinician-approved",
+    "scoringMode": "rules-with-structured-conditions-and-parameter-review",
+    "conditionDsl": {
+      "always": "{\"always\":true}",
+      "comparison": "{\"fact\":\"path\",\"op\":\"eq|ne|lt|lte|gt|gte|in|exists\",\"value\":any}",
+      "all": "{\"all\":[...]}",
+      "any": "{\"any\":[...]}",
+      "not": "{\"not\":{...}}"
+    },
+    "inputSha256": {
+      "actions": "4a565ef472310a5adeaf95cda3408d1b73d8b7cde4f26417976c648306901a70",
+      "studies": "5b3fc8cd11378a4164364336e83e4867219ed5058f82356394ab71b12c313fbd",
+      "references": "7e550f6c0e468e15f35f5fca8d3c711dc9db3d8a61ffb50484dc215f814442df",
+      "content": "497a861694c58538f37fc63ae9198e8f013fabbc6830149370c4566db72e1ee0",
+      "rules": "e25cb79920cf9c696127af9988826fe5ac9198344493fb22af6fef3973d326bb",
+      "config": "62e0722fa14cbdd2bddb3372bc5dbba62da43ca0911d2d4d157a4bfe65dd5e54"
+    }
+  },
+  "cases": [
+    {
+      "id": "case.nephrology.0001",
+      "title": "Хроническая болезнь почек категории G3a — требуется уточнение альбуминурии",
+      "patient": {
+        "name": "Олег Кузнецов",
+        "age": 68,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился для наблюдения за повышенным креатинином.",
+        "chiefComplaint": "Мой врач сказал, что функция моих почек ухудшается.",
+        "vitals": {
+          "hr": 78,
+          "bp": "142/84",
+          "spo2": 98,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.nephrology.0001.anamnesis.01",
+            "question": "Какие хронические заболевания у вас есть?",
+            "answer": "Около 12 лет у меня гипертония и сахарный диабет.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0001.anamnesis.02",
+            "question": "Принимаете ли вы НПВП?",
+            "answer": "НПВП не принимаю.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0001.anamnesis.03",
+            "question": "Не замечали, что моча стала пениться?",
+            "answer": "Да, иногда она пенится.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0001.anamnesis.04",
+            "question": "Появлялись отёки?",
+            "answer": "Да, немного отекают лодыжки.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0001.anamnesis.05",
+            "question": "Есть ли заболевания почек у близких родственников?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0001.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {
+        "sglt2Appropriate": true
+      },
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.ckd.g3a.a3",
+        "label": "Хроническая болезнь почек G3aA3",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "N18.3",
+            "display": "Хроническая болезнь почек, стадия 3",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.ckd-chronicity-cause-risk",
+            "label": "Подтверждение хронической болезни почек, причины и риска прогрессирования",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Подтвердить динамику, категорию G3aA3, причину, сердечно-сосудистый риск и осложнения.",
+            "indication": "ХБП определяется стойкостью более трёх месяцев и классифицируется по СКФ и альбуминурии.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.raas-blockade-kidney",
+            "label": "Блокада ренин-ангиотензин-альдостероновой системы при ХБП",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "ИАПФ или БРА с титрацией, контролем креатинина и калия; не комбинировать классы.",
+            "indication": "Альбуминурия A3 и гипертензия поддерживают нефропротективную блокаду РААС.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.avoid.nephrotoxins",
+            "label": "Исключение нефротоксичных воздействий",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Исключить необязательные НПВП, корректировать дозы по СКФ и избегать обезвоживания.",
+            "indication": "Нефротоксины ускоряют ухудшение функции.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.monitoring.ckd",
+            "label": "Диспансерный контроль хронической болезни почек",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "План контроля АД, СКФ, калия, альбуминурии, анемии и минерального обмена.",
+            "indication": "Риск определяется сочетанием G и A.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.referral.nephrology",
+            "label": "Направление к нефрологу",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Направить с динамикой СКФ и альбуминурии.",
+            "indication": "G3aA3 и прогрессирование требуют нефролога.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [
+          {
+            "id": "action.medication.sglt2-kidney-protection",
+            "label": "Ингибитор SGLT2 для нефропротекции",
+            "decision": "conditional",
+            "when": {
+              "fact": "sglt2Appropriate",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Назначить при достаточной СКФ и отсутствии противопоказаний с правилами временной отмены при остром заболевании.",
+            "indication": "При диабете и/или альбуминурической ХБП препарат может замедлить прогрессирование.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "order-set.lab.renal-function-electrolytes",
+            "label": "Набор отдельных исследований функции почек и электролитов",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Подтверждает категорию СКФ и безопасность терапии.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Креатинин 141 мкмоль/л, расчётная СКФ 48 мл/мин/1,73 м²; сходные значения сохраняются более трёх месяцев.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.uacr.urine",
+            "label": "Расчёт отношения альбумин/креатинин в моче",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Категорирует альбуминурию и риск.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Отношение альбумин/креатинин мочи 42 мг/ммоль, категория A3.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.imaging.ultrasound.kidneys",
+            "label": "УЗИ почек",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Исключает обструкцию и оценивает структуру.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Почки обычного размера, эхогенность паренхимы повышена, обструкции нет.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.469.v2",
+          "title": "Хроническая болезнь почек",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/469_2"
+        },
+        {
+          "id": "guideline.int.kdigo.ckd.2024",
+          "title": "KDIGO 2024 Clinical Practice Guideline for the Evaluation and Management of Chronic Kidney Disease",
+          "url": "https://kdigo.org/guidelines/ckd-evaluation-and-management/"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.nephrology.0002",
+      "title": "Рецидивирующий уретеролитиаз: камень правого мочеточника",
+      "patient": {
+        "name": "Евгений Павлов",
+        "age": 44,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "urgent",
+        "arrival": "Самостоятельно обратился с болью в боку.",
+        "chiefComplaint": "Сильная боль в правом боку, иррадиирующая в пах, третий эпизод.",
+        "vitals": {
+          "hr": 102,
+          "bp": "138/86",
+          "spo2": 98,
+          "temp": 36.9,
+          "rr": 20
+        },
+        "anamnesis": [
+          {
+            "id": "case.nephrology.0002.anamnesis.01",
+            "question": "Раньше уже были камни в почках?",
+            "answer": "Да, такое было уже 2 раза.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0002.anamnesis.02",
+            "question": "Насколько сильная боль и куда она отдаёт?",
+            "answer": "Очень сильная, 10 из 10, схваткообразная и отдаёт в пах.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0002.anamnesis.03",
+            "question": "Есть ли тошнота или рвота?",
+            "answer": "Да, меня уже 2 раза вырвало.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0002.anamnesis.04",
+            "question": "Замечали ли вы кровь в моче?",
+            "answer": "Моча розового цвета.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0002.anamnesis.05",
+            "question": "Повышалась ли температура?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0002.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {},
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.ureterolithiasis.right.recurrent",
+        "label": "Рецидивирующий уретеролитиаз справа",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "N20.1",
+            "display": "Камни мочеточника",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.renal-colic-red-flags",
+            "label": "Оценка осложнённой почечной колики",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Оценить температуру, анализ мочи, функцию почек, гидронефроз, единственную почку и контроль боли.",
+            "indication": "Инфекция с обструкцией, анурия или единственная почка требуют экстренного дренирования.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.nsaid.renal-colic",
+            "label": "НПВП при почечной колике",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Парентерально или внутрь в зарегистрированной дозе после оценки функции почек и риска ЖКК.",
+            "indication": "НПВП являются первой линией обезболивания при отсутствии противопоказаний.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.avoid.forced-hydration-stone",
+            "label": "Отказ от форсированной гидратации при почечной колике",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Восполнять только реальный дефицит жидкости; не проводить форсированный диурез.",
+            "indication": "Форсированная инфузия не ускоряет отхождение и может усилить боль при обструкции.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.referral.urology-stone",
+            "label": "Маршрутизация к урологу при камне мочеточника",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Организовать урологический контроль, повторную визуализацию и экстренный возврат при лихорадке/анурии/некупируемой боли.",
+            "indication": "Камень 5 мм требует плана наблюдения и критерия вмешательства.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.assessment.recurrent-stone-metabolic",
+            "label": "Метафилактическое обследование при рецидивирующем уролитиазе",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Исследовать состав камня, суточную мочу и факторы риска после разрешения эпизода.",
+            "indication": "Третий эпизод требует метафилактики.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [
+          {
+            "id": "action.medication.ondansetron",
+            "label": "Противорвотная терапия ондансетроном",
+            "decision": "optional",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Назначить с учётом QT и взаимодействий.",
+            "indication": "Рвота позволяет использовать противорвотное.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.imaging.ct.urinary-tract.noncontrast",
+            "label": "Нативная КТ почек и мочевыводящих путей",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Определяет размер, локализацию и обструкцию.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Конкремент 5 мм в средней трети правого мочеточника; выраженной обструкции нет.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.urinalysis.general",
+            "label": "Общий (клинический) анализ мочи",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Выявляет гематурию и признаки инфекции.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Эритроциты многочисленные, нитриты и лейкоцитарная эстераза отрицательные.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "order-set.lab.renal-function-electrolytes",
+            "label": "Набор отдельных исследований функции почек и электролитов",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Определяет функцию почек и безопасность лечения.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Креатинин 97 мкмоль/л, электролиты без значимых отклонений.",
+              "abnormal": false
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.7.2024",
+          "title": "Мочекаменная болезнь",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/7"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.nephrology.0003",
+      "title": "Рецидивирующая синфарингитическая клубочковая гематурия — подозрение на IgA-нефропатию",
+      "patient": {
+        "name": "Вера Николаева",
+        "age": 29,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась после эпизода появления мочи цвета чая.",
+        "chiefComplaint": "Моя моча несколько раз становилась коричневой после простуды.",
+        "vitals": {
+          "hr": 74,
+          "bp": "128/82",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.nephrology.0003.anamnesis.01",
+            "question": "Когда относительно простуды появилась кровь в моче?",
+            "answer": "В течение 2 дней после начала простуды.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0003.anamnesis.02",
+            "question": "Вас беспокоит боль?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0003.anamnesis.03",
+            "question": "Есть ли отёки?",
+            "answer": "Да, но совсем небольшие.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0003.anamnesis.04",
+            "question": "Подобные эпизоды были раньше?",
+            "answer": "Да, за последние 2 года такое было 3 раза.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0003.anamnesis.05",
+            "question": "Есть ли заболевания почек у близких родственников?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0003.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {
+        "kidneyBiopsyIndicated": true
+      },
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.glomerular-hematuria.suspected-iga-nephropathy",
+        "label": "Клубочковая гематурия: подозрение на IgA-нефропатию",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "N02.9",
+            "display": "Рецидивирующая и стойкая гематурия неуточнённая",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.glomerular-hematuria",
+            "label": "Оценка клубочковой гематурии и протеинурии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Подтвердить клубочковый осадок, количественно оценить белок, СКФ, АД, системные признаки и инфекции.",
+            "indication": "Синфарингитическая макрогематурия предполагает IgAN, но требует исключения иных причин.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.referral.nephrology",
+            "label": "Направление к нефрологу",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Направить для решения вопроса о биопсии и ренопротекции.",
+            "indication": "Рецидивирующая клубочковая гематурия с протеинурией требует нефролога.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.avoid.unconfirmed-iga-diagnosis",
+            "label": "Отказ от неподтверждённого диагноза IgA-нефропатии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "До биопсии использовать формулировку «подозрение на IgA-нефропатию».",
+            "indication": "Клинический паттерн не доказывает мезангиальные IgA-депозиты.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [
+          {
+            "id": "action.procedure.kidney-biopsy",
+            "label": "Пункционная биопсия почки",
+            "decision": "conditional",
+            "when": {
+              "fact": "kidneyBiopsyIndicated",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Выполнить после оценки давления, гемостаза и противопоказаний; обеспечить иммуноморфологию.",
+            "indication": "IgA-нефропатия подтверждается морфологически при наличии показаний.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.lab.urine-sediment-microscopy",
+            "label": "Микроскопическое исследование осадка мочи",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Подтверждает клубочковый характер гематурии.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Дисморфные эритроциты и эритроцитарные цилиндры.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.upcr.urine",
+            "label": "Отношение белок/креатинин в разовой порции мочи",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Количественно определяет протеинурию.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Белок/креатинин мочи 45 мг/ммоль — умеренная протеинурия.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "order-set.lab.renal-function-electrolytes",
+            "label": "Набор отдельных исследований функции почек и электролитов",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Определяет функцию почек.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Креатинин 88 мкмоль/л, расчётная СКФ сохранена.",
+              "abnormal": false
+            }
+          }
+        ],
+        "conditional": [
+          {
+            "id": "study.pathology.kidney-biopsy",
+            "label": "Патолого-анатомическое исследование биоптата почки",
+            "decision": "conditional",
+            "when": {
+              "fact": "kidneyBiopsyIndicated",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Подтверждает IgA-депозиты и MEST-C при показаниях.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Биопсия ещё не выполнена; IgA-депозиты не подтверждены.",
+              "abnormal": false
+            }
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.894.v1",
+          "title": "Гломерулярные болезни: иммуноглобулин А-нефропатия",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/894_1"
+        },
+        {
+          "id": "guideline.int.kdigo.igan-igav.2025",
+          "title": "KDIGO 2025 Clinical Practice Guideline for the Management of IgA Nephropathy and IgA Vasculitis",
+          "url": "https://kdigo.org/guidelines/iga-nephropathy/"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.nephrology.0004",
+      "title": "Диабетическая болезнь почек с ХБП G3b",
+      "patient": {
+        "name": "Иван Алексеев",
+        "age": 62,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился с ухудшением уровня креатинина.",
+        "chiefComplaint": "Показатели моих почек ухудшаются с каждым годом.",
+        "vitals": {
+          "hr": 78,
+          "bp": "146/86",
+          "spo2": 98,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.nephrology.0004.anamnesis.01",
+            "question": "Как давно у вас сахарный диабет?",
+            "answer": "Сахарный диабет у меня уже 18 лет.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0004.anamnesis.02",
+            "question": "Насколько хорошо удаётся контролировать сахарный диабет?",
+            "answer": "Плохо: последний HbA1c был 9,2%.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0004.anamnesis.03",
+            "question": "Диагностировали ли у вас диабетическую ретинопатию?",
+            "answer": "Да, мне проводили лазерное лечение.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0004.anamnesis.04",
+            "question": "Есть ли онемение, покалывание или снижение чувствительности в стопах?",
+            "answer": "Да, есть онемение и покалывание в стопах.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0004.anamnesis.05",
+            "question": "Стала ли моча пенистой?",
+            "answer": "Да.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0004.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {},
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.diabetic-kidney-disease.g3b.a3",
+        "label": "Диабетическая болезнь почек, ХБП G3bA3",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "E11.2",
+            "display": "Сахарный диабет 2 типа с поражением почек",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.diabetic-kidney-disease",
+            "label": "Оценка диабетической болезни почек и альтернативных причин",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Категорировать G3bA3, оценить динамику, осадок, осложнения и сердечно-сосудистый риск.",
+            "indication": "Длительный диабет, ретинопатия и альбуминурия поддерживают диагноз, но атипичные признаки требуют альтернативного поиска.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.raas-blockade-kidney",
+            "label": "Блокада ренин-ангиотензин-альдостероновой системы при ХБП",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Титровать с контролем креатинина и калия.",
+            "indication": "Альбуминурия A3 и гипертензия — показание к ИАПФ/БРА.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.sglt2-kidney-protection",
+            "label": "Ингибитор SGLT2 для нефропротекции",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Назначить при допустимой СКФ, обучив правилам при болезни и оценив противопоказания.",
+            "indication": "При СД2 и ХБП снижает почечный и сердечно-сосудистый риск.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.plan.diabetes-individualized-therapy",
+            "label": "Индивидуальный выбор сахароснижающей терапии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Индивидуализировать цель и препараты по СКФ и рискам.",
+            "indication": "HbA1c 9,2% требует усиления лечения с учётом ХБП.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.monitoring.diabetic-kidney-disease",
+            "label": "Контроль диабетической болезни почек",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Регулярно контролировать СКФ, калий, А/К мочи, АД, HbA1c и стопы/глазное дно.",
+            "indication": "Необходим контроль прогрессирования и осложнений.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.referral.nephrology",
+            "label": "Направление к нефрологу",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Направить к нефрологу.",
+            "indication": "G3bA3 и прогрессирование требуют профильного наблюдения.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "order-set.lab.renal-function-electrolytes",
+            "label": "Набор отдельных исследований функции почек и электролитов",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Категория G и безопасность терапии.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Креатинин 168 мкмоль/л, расчётная СКФ 38 мл/мин/1,73 м².",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.uacr.urine",
+            "label": "Расчёт отношения альбумин/креатинин в моче",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Категория A и динамика.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Альбумин/креатинин мочи 180 мг/ммоль, категория A3.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.hba1c.blood",
+            "label": "Исследование уровня гликированного гемоглобина в крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Контроль диабета.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "HbA1c 9,2%.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.imaging.ultrasound.kidneys",
+            "label": "УЗИ почек",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Исключает обструкцию и атипичную структурную причину.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Почки несколько увеличены, эхогенность повышена, обструкции нет.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.469.v2",
+          "title": "Хроническая болезнь почек",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/469_2"
+        },
+        {
+          "id": "guideline.int.kdigo.ckd.2024",
+          "title": "KDIGO 2024 Clinical Practice Guideline for the Evaluation and Management of Chronic Kidney Disease",
+          "url": "https://kdigo.org/guidelines/ckd-evaluation-and-management/"
+        },
+        {
+          "id": "guideline.ru.minzdrav.290.v2",
+          "title": "Сахарный диабет 2 типа у взрослых",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/290_2"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.nephrology.0005",
+      "title": "Вероятный люпус-нефрит — класс не определён",
+      "patient": {
+        "name": "Татьяна Кузнецова",
+        "age": 27,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "urgent",
+        "arrival": "Самостоятельно обратилась с сыпью и протеинурией.",
+        "chiefComplaint": "Боль в суставах, сыпь на лице, моча пенистая.",
+        "vitals": {
+          "hr": 88,
+          "bp": "138/86",
+          "spo2": 98,
+          "temp": 37.4,
+          "rr": 16
+        },
+        "anamnesis": [
+          {
+            "id": "case.nephrology.0005.anamnesis.01",
+            "question": "Есть ли сыпь?",
+            "answer": "После пребывания на солнце на щеках и переносице появляется сыпь в форме бабочки.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0005.anamnesis.02",
+            "question": "Какие суставы вас беспокоят?",
+            "answer": "Кисти и лучезапястные суставы болят и припухают.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0005.anamnesis.03",
+            "question": "Стали сильнее уставать?",
+            "answer": "Да, устаю очень сильно.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0005.anamnesis.04",
+            "question": "Появляются ли язвочки во рту?",
+            "answer": "Да, появляются, но они не болят.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0005.anamnesis.05",
+            "question": "Как проходят менструации?",
+            "answer": "Менструации обильные.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0005.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {},
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.sle.suspected-lupus-nephritis.unclassified",
+        "label": "СКВ с вероятным люпус-нефритом, класс не определён",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "M32.1",
+            "display": "Системная красная волчанка с поражением органов или систем",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.lupus-nephritis",
+            "label": "Неотложная оценка волчаночного нефрита",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Оценить АД, отёки, диурез, инфекцию, беременность, активность СКВ и тяжесть почечного поражения.",
+            "indication": "Активный осадок, протеинурия, снижение функции и системные признаки требуют срочной оценки.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.referral.nephrology-rheumatology.urgent",
+            "label": "Срочная совместная консультация нефролога и ревматолога",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Срочно госпитализировать или обеспечить неотложный профильный маршрут.",
+            "indication": "Тактика требует совместного ведения.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.procedure.kidney-biopsy",
+            "label": "Пункционная биопсия почки",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Биопсия почки после оценки гемостаза и безопасности; не задерживать спасительную терапию при жизнеугрожающем быстро прогрессирующем процессе.",
+            "indication": "Класс и активность/хронизация определяют схему индукции.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.avoid.empiric-lupus-pulse-before-workup",
+            "label": "Отказ от необоснованной пульс-терапии до верификации класса нефрита",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Иммуносупрессию выбирать нефрологу/ревматологу по морфологии и тяжести; исключение — жизнеугрожающая ситуация.",
+            "indication": "Рутинная пульс-терапия без исключения инфекции и класса может навредить.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.disposition.nephrology-admission",
+            "label": "Госпитализация в профильный стационар",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Госпитализировать в профильный стационар.",
+            "indication": "Есть почечная дисфункция, цитопении и активный осадок.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.lab.urine-sediment-microscopy",
+            "label": "Микроскопическое исследование осадка мочи",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Выявляет активный нефритический осадок.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Дисморфные эритроциты, эритроцитарные цилиндры.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.upcr.urine",
+            "label": "Отношение белок/креатинин в разовой порции мочи",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Количественно оценивает протеинурию.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Белок/креатинин мочи 220 мг/ммоль.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "order-set.lab.renal-function-electrolytes",
+            "label": "Набор отдельных исследований функции почек и электролитов",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Определяет тяжесть дисфункции.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Креатинин 124 мкмоль/л, функция почек снижена.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Цитопении важны для активности и безопасности лечения.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Лейкоциты 3,2×10⁹/л, гемоглобин 102 г/л, тромбоциты 110×10⁹/л.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.immunology.ana-dsdna-complement",
+            "label": "Иммунологический профиль при подозрении на СКВ: ANA, anti-dsDNA, C3 и C4",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Поддерживает активность СКВ, но не заменяет морфологию.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "ANA положительные, anti-dsDNA повышены, C3 и C4 снижены.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.pathology.kidney-biopsy",
+            "label": "Патолого-анатомическое исследование биоптата почки",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Определяет класс, активность и хронизацию.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Не выполнена; класс люпус-нефрита пока не определён.",
+              "abnormal": false
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.int.kdigo.lupus-nephritis.2024",
+          "title": "KDIGO 2024 Clinical Practice Guideline for the Management of Lupus Nephritis",
+          "url": "https://kdigo.org/guidelines/lupus-nephritis/"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.nephrology.0006",
+      "title": "Аутосомно-доминантная поликистозная болезнь почек",
+      "patient": {
+        "name": "Антон Павлов",
+        "age": 40,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился.",
+        "chiefComplaint": "У моей матери поликистоз почек, а у меня болит спина.",
+        "vitals": {
+          "hr": 76,
+          "bp": "148/92",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.nephrology.0006.anamnesis.01",
+            "question": "У кого-нибудь из родственников был поликистоз почек?",
+            "answer": "Да, у матери и дедушки поликистоз почек.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0006.anamnesis.02",
+            "question": "Есть ли боль в боках?",
+            "answer": "Да, с обеих сторон постоянная тупая боль.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0006.anamnesis.03",
+            "question": "Замечали ли вы кровь в моче?",
+            "answer": "Да, иногда замечаю.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0006.anamnesis.04",
+            "question": "Каким обычно бывает ваше артериальное давление?",
+            "answer": "Систолическое давление обычно около 150 мм рт. ст.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0006.anamnesis.05",
+            "question": "Есть ли головные боли?",
+            "answer": "Да, изредка.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0006.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {
+        "intracranialAneurysmScreeningIndicated": false
+      },
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.adpkd",
+        "label": "Аутосомно-доминантная поликистозная болезнь почек",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "Q61.2",
+            "display": "Поликистоз почки, тип взрослых",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.adpkd-risk",
+            "label": "Оценка прогрессирования и внепочечных проявлений АДПБП",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Оценить СКФ, объём почек/визуализационный класс по показаниям, АД, боль, гематурию, инфекции, камни и печёночные кисты.",
+            "indication": "Семейный анамнез и двусторонние кисты подтверждают АДПБП; нужно стратифицировать прогрессирование.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.antihypertensive.initial",
+            "label": "Стартовая антигипертензивная терапия",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Предпочесть блокаду РААС при отсутствии противопоказаний; цель индивидуализировать.",
+            "indication": "АД около 150 мм рт. ст. требует лечения.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.counseling.adpkd-genetic",
+            "label": "Медико-генетическое консультирование при АДПБП",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Обсудить тестирование родственников, репродуктивные вопросы и генетическое консультирование.",
+            "indication": "Риск передачи потомству составляет 50% при типичном аутосомно-доминантном наследовании.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.referral.nephrology",
+            "label": "Направление к нефрологу",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Направить к нефрологу, знакомому с АДПБП.",
+            "indication": "Нужна оценка прогрессирования и специфической терапии.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [
+          {
+            "id": "action.assessment.adpkd-intracranial-aneurysm",
+            "label": "Оценка показаний к скринингу внутричерепной аневризмы при АДПБП",
+            "decision": "conditional",
+            "when": {
+              "fact": "intracranialAneurysmScreeningIndicated",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "При показаниях организовать МР-ангиографию; внезапная сильнейшая головная боль — экстренно.",
+            "indication": "Скрининг внутричерепной аневризмы не универсален, но нужен при семейном/личном анамнезе, симптомах или профессии высокого риска.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.imaging.ultrasound.kidneys",
+            "label": "УЗИ почек",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Подтверждает множественные двусторонние кисты в контексте возраста и семейного анамнеза.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Обе почки увеличены, множественные двусторонние кисты; картина соответствует АДПБП при положительном семейном анамнезе.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "order-set.lab.renal-function-electrolytes",
+            "label": "Набор отдельных исследований функции почек и электролитов",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Исходная функция почек.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Креатинин 106 мкмоль/л, расчётная СКФ 74 мл/мин/1,73 м².",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.lab.uacr.urine",
+            "label": "Расчёт отношения альбумин/креатинин в моче",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Оценка повреждения и риска.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Альбуминурия умеренная.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.int.kdigo.adpkd.2025",
+          "title": "KDIGO 2025 Clinical Practice Guideline for ADPKD",
+          "url": "https://kdigo.org/guidelines/autosomal-dominant-polycystic-kidney-disease-adpkd/"
+        }
+      ],
+      "reviewStatus": "major-revision-required"
+    },
+    {
+      "id": "case.nephrology.0007",
+      "title": "Атеросклеротический стеноз правой почечной артерии с высокорисковым фенотипом",
+      "patient": {
+        "name": "Роман Козлов",
+        "age": 70,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился с резистентной гипертензией.",
+        "chiefComplaint": "У меня высокое кровяное давление, несмотря на 4 лекарства.",
+        "vitals": {
+          "hr": 78,
+          "bp": "172/98",
+          "spo2": 98,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.nephrology.0007.anamnesis.01",
+            "question": "Сколько препаратов от давления вы принимаете?",
+            "answer": "4 разных препарата.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0007.anamnesis.02",
+            "question": "Когда давление стало хуже контролироваться?",
+            "answer": "Совсем недавно давление стало хуже контролироваться.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0007.anamnesis.03",
+            "question": "Каков ваш общий стаж курения?",
+            "answer": "Общий стаж курения — 50 пачка-лет.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0007.anamnesis.04",
+            "question": "Есть ли другие сердечно-сосудистые заболевания?",
+            "answer": "Да, заболевание периферических артерий и ишемическая болезнь сердца.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0007.anamnesis.05",
+            "question": "Бывали внезапные приступы удушья из-за отёка лёгких?",
+            "answer": "Да, один раз из-за такого приступа меня госпитализировали.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0007.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {},
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.atherosclerotic-renal-artery-stenosis.right.high-risk",
+        "label": "Атеросклеротический стеноз правой почечной артерии с высокорисковым клиническим фенотипом",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "I70.1",
+            "display": "Атеросклероз почечной артерии",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.resistant-hypertension",
+            "label": "Подтверждение истинной резистентной гипертензии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Проверить измерение, СМАД/ДМАД, приверженность, дозы, диуретик, соль, НПВП и другие вторичные причины.",
+            "indication": "До инвазивной тактики нужно подтвердить истинную резистентность.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.assessment.hypertensive-emergency",
+            "label": "Исключение гипертонической чрезвычайной ситуации",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Оценить неврологические, сердечные, аортальные и почечные признаки неотложности.",
+            "indication": "АД 172/98 требует исключить острое поражение органов-мишеней.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.referral.renal-revascularization-center",
+            "label": "Направление в центр для оценки реваскуляризации почечной артерии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Направить в мультидисциплинарный сосудистый/нефрологический центр для решения о реваскуляризации; не считать 70% стеноз автоматическим показанием.",
+            "indication": "Эпизод внезапного отёка лёгких и ухудшение функции на ИАПФ формируют высокорисковый фенотип.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.monitoring.bp-followup",
+            "label": "Ранний контроль артериального давления",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Оптимизировать медикаменты под профильным контролем.",
+            "indication": "Нужен контроль АД, креатинина и калия при коррекции терапии.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "order-set.lab.renal-function-electrolytes",
+            "label": "Набор отдельных исследований функции почек и электролитов",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Документирует изменение функции и калия.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "После начала ингибитора АПФ креатинин вырос со 88 до 141 мкмоль/л.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.imaging.ultrasound.kidneys",
+            "label": "УЗИ почек",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Асимметрия поддерживает гемодинамическую значимость.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Правая почка уменьшена; размеры почек асимметричны.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.imaging.duplex.renal-arteries",
+            "label": "Дуплексное сканирование почечных артерий",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Неинвазивная гемодинамическая оценка.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Высокие скорости кровотока в правой почечной артерии, гемодинамически значимый стеноз вероятен.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.imaging.ct-angiography.renal-arteries",
+            "label": "КТ-ангиография почечных артерий",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Уточняет анатомию перед решением о вмешательстве с учётом риска контраста.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Атеросклеротический стеноз правой почечной артерии около 70%.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.62.v3",
+          "title": "Артериальная гипертензия у взрослых",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/62_3"
+        },
+        {
+          "id": "guideline.int.kdigo.ckd.2024",
+          "title": "KDIGO 2024 Clinical Practice Guideline for the Evaluation and Management of Chronic Kidney Disease",
+          "url": "https://kdigo.org/guidelines/ckd-evaluation-and-management/"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.nephrology.0008",
+      "title": "Острое повреждение почек вследствие гиповолемии и приёма НПВП",
+      "patient": {
+        "name": "Надежда Соколова",
+        "age": 56,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "urgent",
+        "arrival": "Самостоятельно обратилась после нескольких дней рвоты.",
+        "chiefComplaint": "У меня рвота уже 3 дня, а сейчас моча скудная и темная.",
+        "vitals": {
+          "hr": 102,
+          "bp": "104/64",
+          "spo2": 98,
+          "temp": 37.3,
+          "rr": 18
+        },
+        "anamnesis": [
+          {
+            "id": "case.nephrology.0008.anamnesis.01",
+            "question": "Как давно продолжается рвота?",
+            "answer": "Она не прекращается уже 3 дня.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0008.anamnesis.02",
+            "question": "Сколько жидкости вы пьёте?",
+            "answer": "Пью очень мало жидкости.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0008.anamnesis.03",
+            "question": "Как изменилось количество мочи?",
+            "answer": "Мочи стало мало, она тёмная.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0008.anamnesis.04",
+            "question": "Принимаете ли вы НПВП?",
+            "answer": "Принимаю ежедневно.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0008.anamnesis.05",
+            "question": "Какие заболевания у вас были раньше?",
+            "answer": "Из хронических заболеваний у меня только гипертония.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0008.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {
+        "obstructionEvaluationIndicated": true
+      },
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.aki.stage2.hypovolemic-nsaid",
+        "label": "Острое повреждение почек 2-й стадии на фоне гиповолемии и НПВП",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "N17.9",
+            "display": "Острая почечная недостаточность неуточнённая",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.aki-stage-cause",
+            "label": "Стадирование острого повреждения почек и поиск причины",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Стадировать ОПП, оценить объём, лекарства, инфекцию, обструкцию, калий, КОС и показания к заместительной терапии.",
+            "indication": "Креатинин вырос более чем вдвое и есть олигурия.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.avoid.nephrotoxins",
+            "label": "Исключение нефротоксичных воздействий",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Немедленно отменить НПВП и временно пересмотреть другие препараты, влияющие на почки/объём.",
+            "indication": "Ежедневный НПВП усугубляет гипоперфузию.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.support.isotonic-crystalloid-aki",
+            "label": "Изотонический кристаллоид при гиповолемии и ОПП",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Осторожно вводить изотонический кристаллоид болюсами с повторной оценкой АД, лёгких и диуреза.",
+            "indication": "Есть клиническая гиповолемия после рвоты.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.monitoring.aki-electrolytes-diuresis",
+            "label": "Контроль диуреза, креатинина и электролитов при ОПП",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Строгий диурез, повторные креатинин/калий/КОС и ЭКГ при гиперкалиемии.",
+            "indication": "Возможны гиперкалиемия и дальнейшее ухудшение.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.disposition.nephrology-admission",
+            "label": "Госпитализация в профильный стационар",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Госпитализировать.",
+            "indication": "ОПП 2-й стадии с олигурией требует стационарного наблюдения.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [
+          {
+            "id": "action.medication.ondansetron",
+            "label": "Противорвотная терапия ондансетроном",
+            "decision": "optional",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Назначить с учётом QT и электролитов.",
+            "indication": "Контроль рвоты помогает восстановить питьё.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "order-set.lab.renal-function-electrolytes",
+            "label": "Набор отдельных исследований функции почек и электролитов",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Стадирование и выявление гиперкалиемии.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Креатинин 194 мкмоль/л против исходных 80 мкмоль/л, калий 5,0 ммоль/л; соответствует ОПП 2-й стадии.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.urine-sediment-microscopy",
+            "label": "Микроскопическое исследование осадка мочи",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Исключает активный осадок и поддерживает дифференциальный диагноз.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Концентрированная моча, активного осадка и цилиндров нет.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Гемоконцентрация поддерживает гиповолемию.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Признаки гемоконцентрации.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [
+          {
+            "id": "study.imaging.ultrasound.kidneys",
+            "label": "УЗИ почек",
+            "decision": "conditional",
+            "when": {
+              "fact": "obstructionEvaluationIndicated",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Нужно при риске обструкции или неясной причине, но не должно задерживать регидратацию.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Обструкции мочевых путей нет.",
+              "abnormal": false
+            }
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.int.kdigo.aki.2012",
+          "title": "KDIGO Clinical Practice Guideline for Acute Kidney Injury",
+          "url": "https://kdigo.org/guidelines/acute-kidney-injury/"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.nephrology.0009",
+      "title": "ХБП G3b при длительной артериальной гипертензии — причина требует подтверждения",
+      "patient": {
+        "name": "Антон Кузнецов",
+        "age": 72,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился, выявлена артериальная гипертензия с повышением креатинина.",
+        "chiefComplaint": "На фоне высокого артериального давления функция почек постепенно ухудшается.",
+        "vitals": {
+          "hr": 76,
+          "bp": "158/88",
+          "spo2": 98,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.nephrology.0009.anamnesis.01",
+            "question": "Как давно у вас артериальная гипертензия?",
+            "answer": "Артериальная гипертензия у меня уже 25 лет.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0009.anamnesis.02",
+            "question": "Обнаруживали ли у вас белок в моче?",
+            "answer": "Обнаруживали следовые количества белка.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0009.anamnesis.03",
+            "question": "У вас есть сахарный диабет?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0009.anamnesis.04",
+            "question": "Удаётся постоянно держать давление в норме?",
+            "answer": "Не всегда, оно часто повышается.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0009.anamnesis.05",
+            "question": "Вы курите?",
+            "answer": "Бросил курить.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0009.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {},
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.ckd.g3b.a2.hypertension-associated",
+        "label": "ХБП G3bA2 при длительной артериальной гипертензии",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "N18.3",
+            "display": "Хроническая болезнь почек, стадия 3",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.hypertensive-ckd-differential",
+            "label": "Дифференциальная оценка ХБП при длительной гипертензии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Подтвердить хроническость, количественно оценить альбуминурию, осадок, сосудистую/обструктивную и системную причины.",
+            "indication": "«Гипертонический нефросклероз» является диагнозом исключения.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.raas-blockade-kidney",
+            "label": "Блокада ренин-ангиотензин-альдостероновой системы при ХБП",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Титровать с контролем креатинина и калия.",
+            "indication": "АГ и альбуминурия A2 поддерживают ИАПФ/БРА.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.education.hypertension-lifestyle",
+            "label": "Немедикаментозная коррекция при артериальной гипертензии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Снизить соль, нормализовать массу, активность и отказ от курения.",
+            "indication": "Контроль соли и давления замедляет прогрессирование.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.avoid.nephrotoxins",
+            "label": "Исключение нефротоксичных воздействий",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Избегать НПВП и корректировать дозы по СКФ.",
+            "indication": "ХБП повышает риск лекарственного повреждения.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.monitoring.ckd",
+            "label": "Диспансерный контроль хронической болезни почек",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Контролировать СКФ, калий, А/К мочи, гемоглобин, бикарбонат и минеральный обмен.",
+            "indication": "G3b требует контроля осложнений.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.referral.nephrology",
+            "label": "Направление к нефрологу",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Направить к нефрологу.",
+            "indication": "G3b и прогрессирование требуют профильной оценки.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "order-set.lab.renal-function-electrolytes",
+            "label": "Набор отдельных исследований функции почек и электролитов",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Определяет G-категорию и осложнения.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Креатинин 159 мкмоль/л, расчётная СКФ 40 мл/мин/1,73 м²; снижение хроническое.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.uacr.urine",
+            "label": "Расчёт отношения альбумин/креатинин в моче",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Количественно определяет A-категорию.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Альбумин/креатинин мочи 12 мг/ммоль, категория A2.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.urine-sediment-microscopy",
+            "label": "Микроскопическое исследование осадка мочи",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Активный осадок заставил бы пересмотреть причину.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Активного осадка и гематурии нет.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.imaging.ultrasound.kidneys",
+            "label": "УЗИ почек",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Оценивает хронические структурные изменения и обструкцию.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Обе почки уменьшены, паренхима истончена и эхогенна.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.469.v2",
+          "title": "Хроническая болезнь почек",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/469_2"
+        },
+        {
+          "id": "guideline.int.kdigo.ckd.2024",
+          "title": "KDIGO 2024 Clinical Practice Guideline for the Evaluation and Management of Chronic Kidney Disease",
+          "url": "https://kdigo.org/guidelines/ckd-evaluation-and-management/"
+        },
+        {
+          "id": "guideline.ru.minzdrav.62.v3",
+          "title": "Артериальная гипертензия у взрослых",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/62_3"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.nephrology.0010",
+      "title": "Нефротический синдром с подозрением на мембранозную нефропатию",
+      "patient": {
+        "name": "Дарья Семёнова",
+        "age": 52,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "urgent",
+        "arrival": "Самостоятельно обратилась с сильным отеком ноги.",
+        "chiefComplaint": "У меня сильно опухли ноги, моча пенистая.",
+        "vitals": {
+          "hr": 82,
+          "bp": "132/84",
+          "spo2": 98,
+          "temp": 36.7,
+          "rr": 16
+        },
+        "anamnesis": [
+          {
+            "id": "case.nephrology.0010.anamnesis.01",
+            "question": "Где именно расположен отёк?",
+            "answer": "Отекают ноги, а по утрам — область вокруг глаз.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0010.anamnesis.02",
+            "question": "Стала ли моча пенистой?",
+            "answer": "Да.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0010.anamnesis.03",
+            "question": "Изменился ли ваш вес?",
+            "answer": "Да, прибавила 6 кг.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0010.anamnesis.04",
+            "question": "Были ли у вас гепатиты B или C?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0010.anamnesis.05",
+            "question": "Регулярно ли вы проходите рекомендованный онкологический скрининг?",
+            "answer": "Да, прохожу регулярно.",
+            "relevant": true
+          },
+          {
+            "id": "case.nephrology.0010.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {
+        "kidneyBiopsyIndicated": false,
+        "thrombosisProphylaxisIndicated": true,
+        "venousUltrasoundIndicated": false
+      },
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.nephrotic-syndrome.suspected-primary-membranous",
+        "label": "Нефротический синдром: вероятная PLA2R-ассоциированная мембранозная нефропатия",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "N04.2",
+            "display": "Нефротический синдром с диффузным мембранозным гломерулонефритом",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.nephrotic-syndrome",
+            "label": "Подтверждение нефротического синдрома и оценка осложнений",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Оценить функцию почек, объём, инфекцию, тромбоз, липиды, PLA2R и вторичные причины: лекарства, HBV/HCV/HIV, опухоли и аутоиммунные болезни.",
+            "indication": "Массивная протеинурия, гипоальбуминемия и отёки подтверждают синдром, но не причину.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.referral.nephrology-rheumatology.urgent",
+            "label": "Срочная совместная консультация нефролога и ревматолога",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Организовать срочное ведение нефрологом; ревматолог по показаниям.",
+            "indication": "Нужна срочная нефрологическая верификация и стратификация риска.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.loop-diuretic-nephrotic",
+            "label": "Петлевой диуретик при нефротических отёках",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Петлевой диуретик с контролем массы, АД, креатинина и электролитов; избегать чрезмерного снижения объёма.",
+            "indication": "Есть выраженные отёки и прибавка массы.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.education.sodium-restriction-nephrotic",
+            "label": "Ограничение натрия при нефротических отёках",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Ограничить натрий без неоправданного ограничения белка.",
+            "indication": "Натрий поддерживает отёки.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.avoid.empiric-steroid-nephrotic",
+            "label": "Отказ от эмпирического внутривенного ГКС при нефротическом синдроме",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Не начинать эмпирическую пульс-терапию только по наличию отёков и протеинурии.",
+            "indication": "Внутривенный ГКС без стратификации и схемы для мембранозной нефропатии не является корректной терапией.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [
+          {
+            "id": "action.procedure.kidney-biopsy",
+            "label": "Пункционная биопсия почки",
+            "decision": "conditional",
+            "when": {
+              "fact": "kidneyBiopsyIndicated",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Решение принимает нефролог после оценки PLA2R, СКФ и вторичных причин.",
+            "indication": "При положительном PLA2R биопсия не всегда обязательна, но нужна при атипичных признаках или диагностической неопределённости.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.decision.nephrotic-thrombosis-prophylaxis",
+            "label": "Индивидуальная оценка антитромботической профилактики при нефротическом синдроме",
+            "decision": "conditional",
+            "when": {
+              "fact": "thrombosisProphylaxisIndicated",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Индивидуально оценить антикоагуляцию; немедленно исследовать симптомы тромбоза/ТЭЛА.",
+            "indication": "Альбумин 21 г/л повышает риск тромбоза, но профилактика зависит и от риска кровотечения.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.lab.upcr.urine",
+            "label": "Отношение белок/креатинин в разовой порции мочи",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Количественно подтверждает нефротическую протеинурию.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Белок/креатинин мочи соответствует протеинурии 6,2 г/сут.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.albumin.blood",
+            "label": "Исследование уровня альбумина в крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Гипоальбуминемия определяет тяжесть и тромботический риск.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Альбумин 21 г/л.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.lipid-profile.blood",
+            "label": "Исследование липидного профиля крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Дислипидемия является компонентом синдрома и фактором риска.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Выраженная гиперхолестеринемия.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.immunology.anti-pla2r",
+            "label": "Антитела к рецептору фосфолипазы A2 M-типа",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Поддерживает первичную мембранозную нефропатию и служит маркером активности.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Антитела к PLA2R положительные в высоком титре.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [
+          {
+            "id": "study.pathology.kidney-biopsy",
+            "label": "Патолого-анатомическое исследование биоптата почки",
+            "decision": "conditional",
+            "when": {
+              "fact": "kidneyBiopsyIndicated",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Необходима при атипичных признаках или диагностической неопределённости.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Биопсия ещё не выполнена; решение зависит от PLA2R, функции почек и наличия атипичных признаков.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.imaging.ultrasound.leg-veins",
+            "label": "Дуплексное сканирование вен нижних конечностей",
+            "decision": "conditional",
+            "when": {
+              "fact": "venousUltrasoundIndicated",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Проводится при подозрении на ТГВ, а не рутинно.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Не выполнено: односторонней боли или асимметрии отёка нет.",
+              "abnormal": false
+            }
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.int.kdigo.glomerular.2021",
+          "title": "KDIGO 2021 Clinical Practice Guideline for the Management of Glomerular Diseases",
+          "url": "https://kdigo.org/guidelines/gd/"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    }
+  ]
+}

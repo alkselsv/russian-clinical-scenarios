@@ -1188,6 +1188,553 @@
       "fsliCode": null,
       "mappingStatus": "protocol-dependent",
       "notesRu": "Код соответствует одному варианту иммунохимического метода; лабораторный анализатор и порог задаются отдельно."
+    },
+    {
+      "id": "study.exam.otoscopy",
+      "preferredNameRu": "Отоскопия",
+      "kind": "clinical-examination",
+      "externalCodes": [],
+      "mappingStatus": "no-exact-nmu-match",
+      "notesRu": "Отоскопия является частью профильного осмотра; отдельное точное соответствие в проверенной редакции НМУ не установлено. Не подменять отоэндоскопией автоматически."
+    },
+    {
+      "id": "study.exam.pharyngoscopy",
+      "preferredNameRu": "Фарингоскопия",
+      "kind": "clinical-examination",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A03.08.002",
+          "display": "Фарингоскопия",
+          "relation": "equivalent"
+        }
+      ],
+      "mappingStatus": "mapped",
+      "notesRu": "Прямое соответствие НМУ."
+    },
+    {
+      "id": "study.microbiology.strep-a-radt",
+      "preferredNameRu": "Экспресс-исследование мазка из зева на стрептококк группы A",
+      "kind": "laboratory",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A26.08.070",
+          "display": "Иммунохроматографическое экспресс-исследование мазка из зева на стрептококки группы A",
+          "relation": "equivalent"
+        }
+      ],
+      "fsliCode": null,
+      "mappingStatus": "mapped",
+      "notesRu": "Код относится к иммунохроматографическому экспресс-тесту; культуральное исследование имеет другой код."
+    },
+    {
+      "id": "study.exam.dix-hallpike",
+      "preferredNameRu": "Позиционная проба Дикса—Холлпайка",
+      "kind": "functional",
+      "externalCodes": [],
+      "mappingStatus": "no-exact-nmu-match",
+      "notesRu": "Для конкретной позиционной пробы точное соответствие НМУ не найдено; более широкая вестибулометрия не считается эквивалентом."
+    },
+    {
+      "id": "study.functional.audiometry.pure-tone-threshold",
+      "preferredNameRu": "Тональная пороговая аудиометрия",
+      "kind": "functional",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A12.25.001",
+          "display": "Тональная пороговая аудиометрия",
+          "relation": "equivalent"
+        }
+      ],
+      "mappingStatus": "mapped",
+      "notesRu": "Прямое соответствие НМУ; протокол должен включать воздушную и костную проводимость по показаниям."
+    },
+    {
+      "id": "study.functional.tympanometry",
+      "preferredNameRu": "Тимпанометрия",
+      "kind": "functional",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A12.25.007",
+          "display": "Тимпанометрия",
+          "relation": "equivalent"
+        }
+      ],
+      "mappingStatus": "mapped",
+      "notesRu": "Прямое соответствие НМУ."
+    },
+    {
+      "id": "study.exam.nasal-endoscopy",
+      "preferredNameRu": "Эндоскопическое исследование полости носа",
+      "kind": "clinical-examination",
+      "externalCodes": [],
+      "mappingStatus": "no-exact-nmu-match",
+      "notesRu": "Точное самостоятельное соответствие проверенной редакции НМУ не подтверждено; кодировать по локальному профилю услуги нельзя без дополнительной сверки."
+    },
+    {
+      "id": "study.imaging.ct.paranasal-sinuses",
+      "preferredNameRu": "КТ околоносовых пазух",
+      "kind": "imaging",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A06.08.007",
+          "display": "Компьютерная томография придаточных пазух носа",
+          "relation": "equivalent"
+        }
+      ],
+      "mappingStatus": "mapped",
+      "notesRu": "Прямое соответствие НМУ; протокол и контрастирование указываются отдельно."
+    },
+    {
+      "id": "study.exam.laryngoscopy",
+      "preferredNameRu": "Ларингоскопия",
+      "kind": "clinical-examination",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A03.08.001",
+          "display": "Ларингоскопия",
+          "relation": "equivalent"
+        }
+      ],
+      "mappingStatus": "mapped",
+      "notesRu": "Базовый код; видеоэндоскопическая технология имеет более детализированную позицию."
+    },
+    {
+      "id": "study.exam.tuning-fork-hearing",
+      "preferredNameRu": "Камертональное исследование слуха",
+      "kind": "functional",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A03.25.003",
+          "display": "Исследование органа слуха с помощью камертона",
+          "relation": "equivalent"
+        }
+      ],
+      "mappingStatus": "mapped",
+      "notesRu": "Прямое соответствие НМУ."
+    },
+    {
+      "id": "study.imaging.mri.brain-iac",
+      "preferredNameRu": "МРТ головного мозга и внутренних слуховых проходов",
+      "kind": "imaging",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A05.23.009",
+          "display": "Магнитно-резонансная томография головного мозга",
+          "relation": "broader"
+        }
+      ],
+      "mappingStatus": "protocol-dependent",
+      "notesRu": "НМУ описывает МРТ головного мозга шире; прицельный протокол внутренних слуховых проходов и контрастирование фиксируются отдельно."
+    },
+    {
+      "id": "study.lab.ferritin.blood",
+      "preferredNameRu": "Исследование уровня ферритина в крови",
+      "kind": "laboratory",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A09.05.076",
+          "display": "Исследование уровня ферритина в крови",
+          "relation": "equivalent"
+        }
+      ],
+      "fsliCode": null,
+      "mappingStatus": "mapped",
+      "notesRu": "Ферритин интерпретируют с учётом воспаления."
+    },
+    {
+      "id": "order-set.lab.iron-status",
+      "preferredNameRu": "Показатели обмена железа",
+      "kind": "laboratory",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A09.05.007",
+          "display": "Исследование уровня железа сыворотки крови",
+          "relation": "equivalent"
+        },
+        {
+          "system": "ru.nmu.804n",
+          "code": "A09.05.008",
+          "display": "Исследование уровня трансферрина сыворотки крови",
+          "relation": "equivalent"
+        }
+      ],
+      "fsliCode": null,
+      "mappingStatus": "composite",
+      "notesRu": "Насыщение трансферрина рассчитывается; ферритин хранится отдельным исследованием."
+    },
+    {
+      "id": "study.functional.electroneuromyography",
+      "preferredNameRu": "Стимуляционная электронейромиография",
+      "kind": "functional",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A05.02.001.003",
+          "display": "Электронейромиография стимуляционная одного нерва",
+          "relation": "narrower"
+        }
+      ],
+      "mappingStatus": "protocol-dependent",
+      "notesRu": "Исследование нескольких нервов требует набора услуг и отдельного протокола."
+    },
+    {
+      "id": "study.lab.free-t4.blood",
+      "preferredNameRu": "Исследование уровня свободного тироксина в крови",
+      "kind": "laboratory",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A09.05.063",
+          "display": "Исследование уровня свободного тироксина (СТ4) сыворотки крови",
+          "relation": "equivalent"
+        }
+      ],
+      "fsliCode": null,
+      "mappingStatus": "mapped",
+      "notesRu": "Прямое соответствие НМУ."
+    },
+    {
+      "id": "order-set.lab.bone-mineral-profile",
+      "preferredNameRu": "Показатели кальций-фосфорного обмена",
+      "kind": "laboratory",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A09.05.032",
+          "display": "Исследование уровня общего кальция в крови",
+          "relation": "equivalent"
+        },
+        {
+          "system": "ru.nmu.804n",
+          "code": "A09.05.033",
+          "display": "Исследование уровня неорганического фосфора в крови",
+          "relation": "equivalent"
+        },
+        {
+          "system": "ru.nmu.804n",
+          "code": "A09.05.046",
+          "display": "Определение активности щелочной фосфатазы в крови",
+          "relation": "equivalent"
+        }
+      ],
+      "fsliCode": null,
+      "mappingStatus": "composite",
+      "notesRu": "Каждый показатель является отдельной услугой; для кальция необходима интерпретация с альбумином или измерение ионизированного кальция."
+    },
+    {
+      "id": "study.imaging.dxa.axial",
+      "preferredNameRu": "Двухэнергетическая рентгеновская денситометрия поясничного отдела и проксимального отдела бедра",
+      "kind": "imaging",
+      "externalCodes": [],
+      "mappingStatus": "pending-nmu-review",
+      "notesRu": "Точный код и состав зон требуют проверки по актуальной выгрузке ФР НСИ; приблизительный код не присвоен."
+    },
+    {
+      "id": "study.imaging.ultrasound.kidneys",
+      "preferredNameRu": "УЗИ почек",
+      "kind": "imaging",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A04.28.001",
+          "display": "Ультразвуковое исследование почек",
+          "relation": "equivalent"
+        }
+      ],
+      "mappingStatus": "mapped",
+      "notesRu": "Прямое соответствие НМУ; исследование мочевого пузыря кодируется отдельно."
+    },
+    {
+      "id": "study.imaging.ct.urinary-tract.noncontrast",
+      "preferredNameRu": "Нативная КТ почек и мочевыводящих путей",
+      "kind": "imaging",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A06.28.009",
+          "display": "Компьютерная томография почек",
+          "relation": "narrower"
+        }
+      ],
+      "mappingStatus": "protocol-dependent",
+      "notesRu": "Код покрывает почки; протокол оценки всего мочевого тракта и отсутствие контраста фиксируются отдельно."
+    },
+    {
+      "id": "study.lab.upcr.urine",
+      "preferredNameRu": "Отношение белок/креатинин в разовой порции мочи",
+      "kind": "laboratory",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A09.28.003",
+          "display": "Определение белка в моче",
+          "relation": "equivalent"
+        },
+        {
+          "system": "ru.nmu.804n",
+          "code": "A09.28.006",
+          "display": "Исследование уровня креатинина в моче",
+          "relation": "equivalent"
+        }
+      ],
+      "fsliCode": null,
+      "mappingStatus": "composite",
+      "notesRu": "Отношение рассчитывается из двух измерений одной порции мочи."
+    },
+    {
+      "id": "study.lab.urine-sediment-microscopy",
+      "preferredNameRu": "Микроскопическое исследование осадка мочи",
+      "kind": "laboratory",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A09.28.001",
+          "display": "Микроскопическое исследование осадка мочи",
+          "relation": "equivalent"
+        }
+      ],
+      "fsliCode": null,
+      "mappingStatus": "mapped",
+      "notesRu": "Прямое соответствие НМУ."
+    },
+    {
+      "id": "study.pathology.kidney-biopsy",
+      "preferredNameRu": "Патолого-анатомическое исследование биоптата почки",
+      "kind": "pathology",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A08.28.001",
+          "display": "Патолого-анатомическое исследование биопсийного (операционного) материала почки",
+          "relation": "equivalent"
+        }
+      ],
+      "mappingStatus": "mapped",
+      "notesRu": "Способ получения биоптата и иммуноморфологические методы кодируются отдельно."
+    },
+    {
+      "id": "study.immunology.ana-dsdna-complement",
+      "preferredNameRu": "Иммунологический профиль при подозрении на СКВ: ANA, anti-dsDNA, C3 и C4",
+      "kind": "laboratory",
+      "externalCodes": [],
+      "fsliCode": null,
+      "mappingStatus": "requires-decomposition",
+      "notesRu": "Это набор разных лабораторных исследований; точные коды и методы должны быть выбраны в локальном лабораторном справочнике."
+    },
+    {
+      "id": "study.imaging.duplex.renal-arteries",
+      "preferredNameRu": "Дуплексное сканирование почечных артерий",
+      "kind": "imaging",
+      "externalCodes": [],
+      "mappingStatus": "pending-nmu-review",
+      "notesRu": "Точный код требует сверки с актуальной выгрузкой ФР НСИ; приблизительный код не присвоен."
+    },
+    {
+      "id": "study.imaging.ct-angiography.renal-arteries",
+      "preferredNameRu": "КТ-ангиография почечных артерий",
+      "kind": "imaging",
+      "externalCodes": [],
+      "mappingStatus": "pending-nmu-review",
+      "notesRu": "Протокол и точный код требуют проверки по актуальной НМУ/ФР НСИ."
+    },
+    {
+      "id": "study.lab.albumin.blood",
+      "preferredNameRu": "Исследование уровня альбумина в крови",
+      "kind": "laboratory",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A09.05.011",
+          "display": "Исследование уровня альбумина в крови",
+          "relation": "equivalent"
+        }
+      ],
+      "fsliCode": null,
+      "mappingStatus": "mapped",
+      "notesRu": "Прямое соответствие НМУ."
+    },
+    {
+      "id": "study.immunology.anti-pla2r",
+      "preferredNameRu": "Антитела к рецептору фосфолипазы A2 M-типа",
+      "kind": "laboratory",
+      "externalCodes": [],
+      "fsliCode": null,
+      "mappingStatus": "pending-nmu-review",
+      "notesRu": "Точного кода в проверенной редакции НМУ не установлено; метод исследования фиксируется отдельно."
+    },
+    {
+      "id": "study.imaging.ultrasound.leg-veins",
+      "preferredNameRu": "Дуплексное сканирование вен нижних конечностей",
+      "kind": "imaging",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A04.12.006",
+          "display": "Дуплексное сканирование вен нижних конечностей",
+          "relation": "equivalent"
+        }
+      ],
+      "mappingStatus": "mapped",
+      "notesRu": "Назначается при клиническом подозрении на венозный тромбоз, а не рутинно каждому пациенту с отёками."
+    },
+    {
+      "id": "study.imaging.mri.brain",
+      "preferredNameRu": "МРТ головного мозга",
+      "kind": "imaging",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A05.23.009",
+          "display": "Магнитно-резонансная томография головного мозга",
+          "relation": "equivalent"
+        }
+      ],
+      "mappingStatus": "mapped",
+      "notesRu": "Код не включает внутривенное контрастирование; специальные протоколы фиксируются отдельно."
+    },
+    {
+      "id": "study.imaging.mri.lumbosacral-spine",
+      "preferredNameRu": "МРТ пояснично-крестцового отдела позвоночника",
+      "kind": "imaging",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A05.03.002",
+          "display": "Магнитно-резонансная томография позвоночника (один отдел)",
+          "relation": "broader"
+        }
+      ],
+      "mappingStatus": "protocol-dependent",
+      "notesRu": "НМУ задаёт один отдел позвоночника; в заказе необходимо явно указать пояснично-крестцовый отдел и клиническую задачу."
+    },
+    {
+      "id": "study.functional.emg-needle",
+      "preferredNameRu": "Игольчатая электромиография",
+      "kind": "functional",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A05.02.001.001",
+          "display": "Электромиография игольчатая",
+          "relation": "equivalent"
+        }
+      ],
+      "mappingStatus": "mapped",
+      "notesRu": "Количество исследуемых мышц и сочетание со стимуляционной ЭНМГ указываются в протоколе."
+    },
+    {
+      "id": "study.assessment.neuropsychological",
+      "preferredNameRu": "Клинико-психологическое нейропсихологическое обследование",
+      "kind": "clinical-examination",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A13.29.005",
+          "display": "Клинико-психологическое нейропсихологическое обследование",
+          "relation": "equivalent"
+        }
+      ],
+      "mappingStatus": "mapped",
+      "notesRu": "Краткий когнитивный скрининг и развёрнутое обследование не взаимозаменяемы; использованные шкалы документируются."
+    },
+    {
+      "id": "study.sleep.polysomnography",
+      "preferredNameRu": "Полисомнографическое исследование сна",
+      "kind": "functional",
+      "externalCodes": [],
+      "mappingStatus": "requires-decomposition",
+      "notesRu": "В действующей НМУ нет одной услуги «полисомнография»; исследование раскладывается на зарегистрированные каналы и их интерпретацию в локальном справочнике."
+    },
+    {
+      "id": "study.imaging.mri.brain-with-contrast",
+      "preferredNameRu": "МРТ головного мозга с внутривенным контрастированием",
+      "kind": "imaging",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A05.23.009.001",
+          "display": "Магнитно-резонансная томография головного мозга с контрастированием",
+          "relation": "equivalent"
+        }
+      ],
+      "mappingStatus": "mapped",
+      "notesRu": "Протокол для опухоли ЦНС должен включать стандартные последовательности и сопоставление с исходным послеоперационным исследованием."
+    },
+    {
+      "id": "study.imaging.mri.cervical-spine",
+      "preferredNameRu": "МРТ шейного отдела позвоночника",
+      "kind": "imaging",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A05.03.002",
+          "display": "Магнитно-резонансная томография позвоночника (один отдел)",
+          "relation": "broader"
+        }
+      ],
+      "mappingStatus": "protocol-dependent",
+      "notesRu": "В направлении явно указываются шейный отдел, неврологический дефицит и необходимость оценки спинного мозга."
+    },
+    {
+      "id": "study.imaging.xr.spine-functional",
+      "preferredNameRu": "Рентгенография позвоночника с функциональными пробами",
+      "kind": "imaging",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A06.03.019",
+          "display": "Рентгенография позвоночника с функциональными пробами",
+          "relation": "equivalent"
+        }
+      ],
+      "mappingStatus": "mapped",
+      "notesRu": "Отдел позвоночника и варианты сгибания/разгибания указываются в заказе."
+    },
+    {
+      "id": "study.pathology.cns-tumor-integrated",
+      "preferredNameRu": "Интегрированное патолого-анатомическое и молекулярное исследование опухоли ЦНС",
+      "kind": "pathology",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A08.23.002",
+          "display": "Патолого-анатомическое исследование биопсийного (операционного) материала тканей центральной нервной системы и головного мозга",
+          "relation": "equivalent"
+        },
+        {
+          "system": "ru.nmu.804n",
+          "code": "A08.23.002.001",
+          "display": "Патолого-анатомическое исследование материала тканей центральной нервной системы и головного мозга с применением иммуногистохимических методов",
+          "relation": "equivalent"
+        }
+      ],
+      "mappingStatus": "requires-decomposition",
+      "notesRu": "Интегрированный диагноз включает гистологию, иммуногистохимию и отдельные молекулярные тесты IDH, MGMT и других маркеров; одного кода НМУ недостаточно."
+    },
+    {
+      "id": "study.procedure.csf-tap-test",
+      "preferredNameRu": "Ликвородинамическая проба с объективной оценкой походки до и после удаления ликвора",
+      "kind": "functional",
+      "externalCodes": [
+        {
+          "system": "ru.nmu.804n",
+          "code": "A11.23.001",
+          "display": "Спинномозговая пункция",
+          "relation": "component"
+        }
+      ],
+      "mappingStatus": "composite",
+      "notesRu": "Код покрывает пункцию; стандартизированная оценка походки и когнитивных функций до и после процедуры документируется отдельно."
     }
   ]
 }

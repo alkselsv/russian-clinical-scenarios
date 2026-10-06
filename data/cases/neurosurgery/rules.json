@@ -1,0 +1,816 @@
+{
+  "_meta": {
+    "schemaVersion": "1.0.0",
+    "collection": "neurosurgery",
+    "language": "ru",
+    "clinicalSafety": "unsafe-until-clinician-approved",
+    "evaluationPolicy": {
+      "required": "Действие необходимо в данном сценарии.",
+      "conditional": "Действие засчитывается только при выполнении явно заданных условий.",
+      "optional": "Действие допустимо, но не влияет на прохождение ключевого алгоритма.",
+      "not-routine": "Рутинное выполнение не требуется и не должно приносить баллы.",
+      "unsafe-or-delaying": "Действие потенциально вредит или задерживает приоритетную помощь.",
+      "unscorable-as-specified": "Формулировка недостаточно конкретна для оценки."
+    }
+  },
+  "cases": [
+    {
+      "id": "case.neurosurgery.0001",
+      "diagnosis": {
+        "id": "condition.glioblastoma.idh-wildtype.postop-residual-suspected",
+        "preferredNameRu": "Глиобластома IDH-дикого типа после удаления, вероятная остаточная опухоль",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "C71.1",
+            "display": "Злокачественное новообразование лобной доли",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.postop-cranial",
+          "evaluation": "required",
+          "indicationRu": "Нужно оценить рану, неврологический статус, отёк, тромбоз и осложнения.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "Документировать функциональный статус, афазию, головную боль, очаговый дефицит, инфекцию и потребность в ГКС."
+        },
+        {
+          "actionId": "action.referral.neurooncology-mdt",
+          "evaluation": "required",
+          "indicationRu": "Послеоперационную тактику определяет консилиум нейрохирурга, радиотерапевта, онколога, патоморфолога и нейрорадиолога.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "Сопоставить объём резекции, раннюю и текущую МРТ, интегрированный диагноз и функциональный статус."
+        },
+        {
+          "actionId": "action.assessment.cns-tumor-integrated-pathology",
+          "evaluation": "required",
+          "indicationRu": "IDH недостаточно для полного прогностического и терапевтического заключения.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "Проверить интегрированный диагноз и статус MGMT; при необходимости пересмотреть препараты и блоки ткани."
+        },
+        {
+          "actionId": "action.treatment.glioblastoma-chemoradiotherapy",
+          "evaluation": "required",
+          "indicationRu": "У функционально сохранного пациента после максимальной безопасной резекции показано комбинированное лечение.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "doseRouteTimingRu": "Провести лучевую терапию с темозоломидом и последующими циклами по плану нейроонкологического консилиума и инструкции препарата."
+        },
+        {
+          "actionId": "action.monitoring.glioblastoma-treatment",
+          "evaluation": "required",
+          "indicationRu": "Темозоломид и лучевая терапия требуют контроля токсичности и ответа.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "Контролировать клетки крови, печёночную и почечную функцию, инфекции и МРТ по установленному протоколу."
+        },
+        {
+          "actionId": "action.decision.antiseizure-after-craniotomy",
+          "evaluation": "required",
+          "indicationRu": "Пациент не описывает подтверждённых приступов, поэтому длительная профилактика требует пересмотра.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "Уточнить, был ли приступ; не отменять резко, но обсудить план снижения с нейрохирургом/эпилептологом, если препарат назначен только профилактически."
+        },
+        {
+          "actionId": "action.avoid.routine-steroid-brain-tumor",
+          "evaluation": "required",
+          "indicationRu": "ГКС показан при симптомном отёке, а не автоматически после операции.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "Не возобновлять дексаметазон без клинических показаний; при использовании назначить минимальную эффективную дозу и план снижения."
+        },
+        {
+          "actionId": "action.rehabilitation.neurooncology",
+          "evaluation": "required",
+          "indicationRu": "Сохраняются трудности подбора слов.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "Организовать логопедическую и когнитивную реабилитацию."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.imaging.mri.brain-with-contrast",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Определяет послеоперационный остаток и базовую точку для последующего контроля.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.pathology.cns-tumor-integrated",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Подтверждает современный интегрированный диагноз и маркеры.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.cbc-with-differential",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Исходный уровень и контроль миелотоксичности.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "order-set.lab.renal-function-electrolytes",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Безопасность лечения и контраста.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.liver-enzymes.blood",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Контроль лекарственной токсичности.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.primary-cns-tumors.585.v2"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/neurosurgery.md#case-neurosurgery-0001"
+    },
+    {
+      "id": "case.neurosurgery.0002",
+      "diagnosis": {
+        "id": "condition.cervical-radiculopathy.c6-right.c5c6-disc",
+        "preferredNameRu": "Правосторонняя радикулопатия C6 при грыже C5–C6",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "M50.1",
+            "display": "Поражение межпозвонкового диска шейного отдела с радикулопатией",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.cervical-radiculopathy",
+          "evaluation": "required",
+          "indicationRu": "Двигательный дефицит и неэффективность восьми недель лечения требуют объективной оценки.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "Документировать силу, рефлексы, чувствительность, признаки миелопатии и соответствие клиники МРТ."
+        },
+        {
+          "actionId": "action.decision.cervical-radiculopathy-surgery",
+          "evaluation": "required",
+          "indicationRu": "Сохраняющиеся боль и слабость при совпадающем уровне компрессии позволяют обсуждать декомпрессию.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "Совместно сравнить продолжение консервативной терапии и хирургическую декомпрессию; срочность повышается при прогрессировании слабости."
+        },
+        {
+          "actionId": "action.medication.radicular-pain",
+          "evaluation": "required",
+          "indicationRu": "До окончательного решения требуется безопасный контроль боли.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "doseRouteTimingRu": "Краткосрочная анальгезия с учётом рисков; избегать длительных опиоидов."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.imaging.mri.cervical-spine",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Подтверждает уровень компрессии и исключает миелопатию.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.functional.electroneuromyography",
+          "evaluation": "conditional",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Нужна при несоответствии клиники МРТ или дифференциальной диагностике с мононейропатией; не заменяет осмотр.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.degenerative-spine.826.v1"
+      ],
+      "reviewStatus": "major-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/neurosurgery.md#case-neurosurgery-0002"
+    },
+    {
+      "id": "case.neurosurgery.0003",
+      "diagnosis": {
+        "id": "condition.l5-radiculopathy.left-disc-extrusion-persistent",
+        "preferredNameRu": "Левосторонняя радикулопатия L5 при экструзии L4–L5",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "M51.1",
+            "display": "Поражение межпозвонкового диска поясничного отдела с радикулопатией",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.radiculopathy-motor-red-flags",
+          "evaluation": "required",
+          "indicationRu": "Есть слабость разгибания большого пальца и длительные симптомы.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "Оценить силу по MRC, динамику дефицита и симптомы конского хвоста."
+        },
+        {
+          "actionId": "action.referral.spine-surgeon-urgent",
+          "evaluation": "required",
+          "indicationRu": "Пять месяцев боли и слабости при неэффективности консервативного лечения требуют хирургической оценки.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "Обсудить микродискэктомию; при нарастании слабости ускорить вмешательство."
+        },
+        {
+          "actionId": "action.medication.radicular-pain",
+          "evaluation": "required",
+          "indicationRu": "Требуется симптоматическая помощь до решения.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "doseRouteTimingRu": "Подобрать ограниченную по времени анальгезию и учитывать уже выполненные инъекции."
+        },
+        {
+          "actionId": "action.education.radiculopathy-activity-safety-net",
+          "evaluation": "required",
+          "indicationRu": "Нужно сохранить активность и не пропустить конский хвост.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "Избегать постельного режима; срочно обращаться при задержке мочи, седловидной анестезии или нарастании слабости."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.imaging.mri.lumbosacral-spine",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Должна быть актуальной и клинически соответствовать корешку L5 перед операцией.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.discogenic-radiculopathy.777.v1",
+        "guideline.ru.minzdrav.degenerative-spine.826.v1"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/neurosurgery.md#case-neurosurgery-0003"
+    },
+    {
+      "id": "case.neurosurgery.0004",
+      "diagnosis": {
+        "id": "condition.lumbar-spinal-stenosis.l4l5-neurogenic-claudication",
+        "preferredNameRu": "Поясничный стеноз L4–L5 с нейрогенной перемежающейся хромотой",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "M48.0",
+            "display": "Спинальный стеноз",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.lumbar-stenosis",
+          "evaluation": "required",
+          "indicationRu": "Позиционная хромота типична, но сосудистую причину и дефицит нужно исключить.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "Оценить дистанцию ходьбы, пульс, силу, чувствительность, тазовые функции и влияние на повседневность."
+        },
+        {
+          "actionId": "action.nonoperative.lumbar-stenosis",
+          "evaluation": "required",
+          "indicationRu": "При отсутствии прогрессирующего дефицита сначала допустим структурированный консервативный этап.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "Упражнения с учётом переносимости, контроль боли и факторов риска падений; оценить достигнутый результат."
+        },
+        {
+          "actionId": "action.decision.lumbar-decompression",
+          "evaluation": "conditional",
+          "indicationRu": "Декомпрессия обсуждается при стойком существенном ограничении после адекватного консервативного лечения.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "Выбрать объём декомпрессии; не добавлять стабилизацию автоматически без нестабильности или деформации."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.imaging.mri.lumbosacral-spine",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Подтверждает анатомический стеноз и уровни.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.imaging.xr.spine-functional",
+          "evaluation": "conditional",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Оценивает нестабильность только если результат изменит хирургический план.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.degenerative-spine.826.v1"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/neurosurgery.md#case-neurosurgery-0004"
+    },
+    {
+      "id": "case.neurosurgery.0005",
+      "diagnosis": {
+        "id": "condition.chronic-subdural-hematoma.bilateral.postop",
+        "preferredNameRu": "Двусторонняя хроническая субдуральная гематома после дренирования",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "S06.5",
+            "display": "Травматическое субдуральное кровоизлияние",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.csdh-postop",
+          "evaluation": "required",
+          "indicationRu": "Нужно сопоставить восстановление с исходным функциональным уровнем и исключить рецидив.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "Оценить сознание, походку, очаговый дефицит, головную боль, рану и бытовую функцию."
+        },
+        {
+          "actionId": "action.decision.anticoagulation-restart-csdh",
+          "evaluation": "required",
+          "indicationRu": "Фибрилляция предсердий создаёт риск инсульта, а остаточные гематомы — риск повторного кровотечения.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "Нейрохирург и специалист по антикоагуляции совместно определяют срок возврата апиксабана по динамике КТ, гемостазу, CHA₂DS₂-VASc, риску падений и рецидива; не отменять навсегда автоматически."
+        },
+        {
+          "actionId": "action.education.csdh-recurrence-red-flags",
+          "evaluation": "required",
+          "indicationRu": "Рецидив возможен после выписки.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "Срочно обращаться при новой сонливости, спутанности, слабости, нарушении речи, судорогах или усиливающейся головной боли."
+        },
+        {
+          "actionId": "action.prevention.falls",
+          "evaluation": "required",
+          "indicationRu": "Исходная травма и ходунки указывают на высокий риск повторения.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "Проверить зрение, ортостаз, лекарства и безопасность дома; продолжить реабилитацию ходьбы."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.imaging.ct.brain.noncontrast",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "В этом случае КТ нужна для оценки остаточных двусторонних скоплений перед решением об антикоагуляции.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.cbc-with-differential",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Гемоглобин и тромбоциты влияют на безопасность.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.coagulation.screen",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Выявляет часть нарушений гемостаза, но нормальный результат не исключает эффект прямого ингибитора Xa.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.int.csdh-multidisciplinary.2024"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/neurosurgery.md#case-neurosurgery-0005"
+    },
+    {
+      "id": "case.neurosurgery.0006",
+      "diagnosis": {
+        "id": "condition.idiopathic-normal-pressure-hydrocephalus.suspected",
+        "preferredNameRu": "Подозрение на идиопатическую нормотензивную гидроцефалию",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "G91.2",
+            "display": "Гидроцефалия нормального давления",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.inph-objective",
+          "evaluation": "required",
+          "indicationRu": "Триада неспецифична и должна быть объективизирована.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "Стандартизированно измерить скорость/число шагов, равновесие, когнитивные домены, мочевые симптомы и повседневную функцию."
+        },
+        {
+          "actionId": "action.assessment.inph-differential",
+          "evaluation": "required",
+          "indicationRu": "Паркинсонизм, сосудистое поражение, болезнь Альцгеймера, миелопатия и лекарства могут имитировать синдром.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "Провести неврологический, когнитивный и урологический дифференциальный поиск с участием родственника."
+        },
+        {
+          "actionId": "action.procedure.csf-tap-test",
+          "evaluation": "required",
+          "indicationRu": "Ответ походки после удаления ликвора повышает вероятность пользы шунта.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "После проверки противопоказаний выполнить пункцию и повторить те же стандартизированные тесты в заданные сроки."
+        },
+        {
+          "actionId": "action.decision.csf-shunt-inph",
+          "evaluation": "conditional",
+          "indicationRu": "Шунтирование обсуждают при клинико-визуальном соответствии и ожидаемой пользе.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "Совместно оценить ответ на пробу, коморбидность, хирургические риски, вероятность улучшения походки и риск осложнений шунта."
+        },
+        {
+          "actionId": "action.prevention.falls",
+          "evaluation": "required",
+          "indicationRu": "Уже было два падения.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "Организовать средство опоры и домашнюю профилактику падений до окончательной тактики."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.imaging.mri.brain",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Оценивает вентрикуломегалию, DESH и альтернативные причины.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.procedure.csf-tap-test",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Объективизирует потенциальную обратимость походки.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.assessment.neuropsychological",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Задаёт профиль и исходный уровень когнитивных функций.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.int.japanese-inph.2021"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/neurosurgery.md#case-neurosurgery-0006"
+    },
+    {
+      "id": "case.neurosurgery.0007",
+      "diagnosis": {
+        "id": "condition.degenerative-cervical-myelopathy.progressive",
+        "preferredNameRu": "Прогрессирующая дегенеративная шейная миелопатия",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "M47.1",
+            "display": "Другие спондилёзы с миелопатией",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.degenerative-cervical-myelopathy",
+          "evaluation": "required",
+          "indicationRu": "Неловкость кистей, нарушение походки, императивные позывы и симптом Лермитта указывают на миелопатию.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "Оценить пирамидные знаки, силу, ловкость кистей, походку, mJOA и динамику."
+        },
+        {
+          "actionId": "action.referral.spine-surgeon-urgent",
+          "evaluation": "required",
+          "indicationRu": "Прогрессирование и сигнал T2 в спинном мозге требуют своевременной хирургической оценки.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "Срочно направить к спинальному нейрохирургу; объяснить цель остановить ухудшение, а не гарантировать полное восстановление."
+        },
+        {
+          "actionId": "action.decision.cervical-decompression",
+          "evaluation": "required",
+          "indicationRu": "При прогрессирующей клинически значимой миелопатии рассматривается декомпрессия.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "Выбрать доступ и необходимость стабилизации по уровням, деформации и общему риску."
+        },
+        {
+          "actionId": "action.avoid.cervical-manipulation-myelopathy",
+          "evaluation": "required",
+          "indicationRu": "Силовые манипуляции могут усугубить компрессию.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "Не выполнять высокоскоростные манипуляции и тракцию без решения профильной команды."
+        },
+        {
+          "actionId": "action.prevention.falls",
+          "evaluation": "required",
+          "indicationRu": "Нарушение походки увеличивает травматический риск.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "Средство опоры и меры безопасности до операции/реабилитации."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.imaging.mri.cervical-spine",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Показывает уровни компрессии и повреждение спинного мозга.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.degenerative-spine.826.v1"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/neurosurgery.md#case-neurosurgery-0007"
+    },
+    {
+      "id": "case.neurosurgery.0008",
+      "diagnosis": {
+        "id": "condition.isthmic-spondylolisthesis.l5s1.grade2",
+        "preferredNameRu": "Истмический спондилолистез L5–S1 II степени с фораминальным стенозом",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "M43.1",
+            "display": "Спондилолистез",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.spondylolisthesis",
+          "evaluation": "required",
+          "indicationRu": "Визуализация должна быть сопоставлена с характером боли и неврологическим статусом.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "Оценить корешковые признаки, функцию, баланс позвоночника и исключить красные флаги."
+        },
+        {
+          "actionId": "action.nonoperative.spondylolisthesis",
+          "evaluation": "required",
+          "indicationRu": "Стойкого дефицита и синдрома конского хвоста нет.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "Структурированная лечебная физкультура, постепенная активность, контроль боли и факторов риска."
+        },
+        {
+          "actionId": "action.decision.spondylolisthesis-surgery",
+          "evaluation": "conditional",
+          "indicationRu": "Операция обсуждается при стойкой инвалидизирующей боли, дефиците или нестабильности после адекватного лечения.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "Сопоставить декомпрессию и стабилизацию с симптомами, подвижностью и рисками; находка на снимке не является самостоятельным показанием."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.imaging.mri.lumbosacral-spine",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Оценивает фораминальный стеноз и корешки.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.imaging.xr.spine-functional",
+          "evaluation": "conditional",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Оценивает динамическую нестабильность, если это изменит план.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.degenerative-spine.826.v1"
+      ],
+      "reviewStatus": "major-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/neurosurgery.md#case-neurosurgery-0008"
+    },
+    {
+      "id": "case.neurosurgery.0009",
+      "diagnosis": {
+        "id": "condition.trigeminal-neuralgia.left-v2.medication-intolerant",
+        "preferredNameRu": "Невралгия левого тройничного нерва, непереносимость карбамазепина",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "G50.0",
+            "display": "Невралгия тройничного нерва",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.trigeminal-neuralgia",
+          "evaluation": "required",
+          "indicationRu": "Клиника типична, но простой сосудистый контакт не доказывает классическую форму.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "Исключить стоматологическую и вторичную боль; проверить высокоразрешающие серии на деформацию корешка."
+        },
+        {
+          "actionId": "action.medication.trigeminal-neuralgia-first-line",
+          "evaluation": "conditional",
+          "indicationRu": "Карбамазепин частично эффективен, но непереносим; возможны окскарбазепин или другие схемы специалиста.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "doseRouteTimingRu": "Скорректировать терапию под контролем натрия, клеток крови и взаимодействий; не продолжать непереносимый режим."
+        },
+        {
+          "actionId": "action.assessment.trigeminal-surgical-candidacy",
+          "evaluation": "required",
+          "indicationRu": "Длительная частая боль и непереносимость терапии позволяют обсуждать вмешательство.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "Оценить возраст, коморбидность, морфологию компрессии, эффективность и переносимость адекватных лекарственных проб."
+        },
+        {
+          "actionId": "action.decision.trigeminal-procedure",
+          "evaluation": "required",
+          "indicationRu": "Метод выбирают по подтверждённой компрессии и приоритетам пациента.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "Обсудить микроваскулярную декомпрессию, перкутанные деструктивные методы и радиохирургию с их разными шансами рецидива и онемения."
+        },
+        {
+          "actionId": "action.referral.neurosurgery-trigeminal",
+          "evaluation": "required",
+          "indicationRu": "Нужна специализированная консультация по лицевой боли.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "Направить с МРТ высокого разрешения и историей доз/нежелательных явлений."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.imaging.mri.brain",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Исключает вторичную причину и оценивает морфологическую нейроваскулярную компрессию.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.cbc-with-differential",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Безопасность противосудорожных препаратов.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "order-set.lab.renal-function-electrolytes",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Контроль натрия и функции почек.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.cranial-mononeuropathies.895.v1"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/neurosurgery.md#case-neurosurgery-0009"
+    },
+    {
+      "id": "case.neurosurgery.0010",
+      "diagnosis": {
+        "id": "condition.postop-lumbar-microdiscectomy.recovering",
+        "preferredNameRu": "Состояние после микродискэктомии L4–L5 с благоприятным восстановлением",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "Z98.8",
+            "display": "Другие уточнённые послехирургические состояния",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.spine-postop-recovery",
+          "evaluation": "required",
+          "indicationRu": "Нужно подтвердить восстановление силы, уменьшение боли и отсутствие осложнений.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "Осмотреть рану, силу, чувствительность, походку, тазовые функции и потребность в анальгетиках."
+        },
+        {
+          "actionId": "action.rehabilitation.spine-postop",
+          "evaluation": "required",
+          "indicationRu": "Постепенная активность и упражнения поддерживают возвращение функции.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "Продолжить индивидуальную ЛФК, ходьбу и поэтапное возвращение к нагрузкам/работе по плану хирурга."
+        },
+        {
+          "actionId": "action.education.spine-postop-red-flags",
+          "evaluation": "required",
+          "indicationRu": "Поздние осложнения редки, но требуют раннего распознавания.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "Срочно обращаться при новой слабости, задержке мочи, седловидной анестезии, лихорадке, отделяемом или нарастающей боли."
+        },
+        {
+          "actionId": "action.avoid.routine-postop-spine-mri",
+          "evaluation": "required",
+          "indicationRu": "При клиническом улучшении повторная МРТ не меняет тактику и может показать неспецифические послеоперационные изменения.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, безопасность, функциональный результат и дальнейший план документированы.",
+          "executionRu": "Не назначать рутинно; выполнить при новом дефиците, рецидиве боли, инфекции или ином клиническом показании."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.imaging.mri.lumbosacral-spine",
+          "evaluation": "not-routine",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "При благоприятном восстановлении без красных флагов контрольная МРТ не требуется.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.degenerative-spine.826.v1"
+      ],
+      "reviewStatus": "major-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/neurosurgery.md#case-neurosurgery-0010"
+    }
+  ]
+}

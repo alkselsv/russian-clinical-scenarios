@@ -1,0 +1,780 @@
+{
+  "_meta": {
+    "schemaVersion": "1.0.0",
+    "collection": "internal-medicine",
+    "language": "ru",
+    "clinicalSafety": "unsafe-until-clinician-approved"
+  },
+  "cases": [
+    {
+      "id": "case.internal-medicine.0001",
+      "title": "Железодефицитная анемия на фоне обильных менструаций",
+      "patient": {
+        "name": "Екатерина Григорьева",
+        "age": 34,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Обратилась самостоятельно, выглядит бледной и утомлённой.",
+        "chiefComplaint": "Я уже несколько месяцев утомляюсь и задыхаюсь, поднимаясь по лестнице.",
+        "vitals": {
+          "hr": 92,
+          "bp": "112/70",
+          "spo2": 98,
+          "temp": 36.7,
+          "rr": 16
+        },
+        "anamnesis": [
+          {
+            "id": "case.internal-medicine.0001.anamnesis.01",
+            "question": "Как давно вы себя так чувствуете?",
+            "answer": "Около 4 месяцев, постепенно становится хуже.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0001.anamnesis.02",
+            "question": "Как проходят менструации?",
+            "answer": "Обильные, длятся 7–8 дней каждый месяц.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0001.anamnesis.03",
+            "question": "Как вы обычно питаетесь?",
+            "answer": "Питаюсь преимущественно вегетарианской пищей, красное мясо ем редко.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0001.anamnesis.04",
+            "question": "Появились ли у вас необычные пищевые пристрастия?",
+            "answer": "Да, почему-то постоянно хочется грызть лёд.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0001.anamnesis.05",
+            "question": "Замечали ли вы кровь в стуле?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0001.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.lab.cbc-with-differential": {
+          "result": "Гемоглобин 92 г/л, MCV 72 фл, RDW 17%.",
+          "abnormal": true
+        },
+        "order-set.lab.iron-status": {
+          "result": "Железо 5,0 мкмоль/л, трансферрин повышен, насыщение трансферрина 6%.",
+          "abnormal": true
+        },
+        "study.lab.ferritin.blood": {
+          "result": "Ферритин 6 нг/мл.",
+          "abnormal": true
+        }
+      }
+    },
+    {
+      "id": "case.internal-medicine.0002",
+      "title": "Витамин-B12-дефицитная анемия с неврологическими проявлениями",
+      "patient": {
+        "name": "Дмитрий Алексеев",
+        "age": 68,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился, жалуется на онемение ног и утомляемость.",
+        "chiefComplaint": "Мои ноги немеют и покалывают, и я все время утомлен.",
+        "vitals": {
+          "hr": 78,
+          "bp": "128/78",
+          "spo2": 97,
+          "temp": 36.6,
+          "rr": 16
+        },
+        "anamnesis": [
+          {
+            "id": "case.internal-medicine.0002.anamnesis.01",
+            "question": "Когда появилось онемение?",
+            "answer": "Онемение появилось около 6 месяцев назад и постепенно усиливалось.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0002.anamnesis.02",
+            "question": "Вы едите мясо или другие продукты животного происхождения?",
+            "answer": "Нет, я уже 10 лет придерживаюсь веганского питания.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0002.anamnesis.03",
+            "question": "Замечаете ли вы ухудшение памяти?",
+            "answer": "В последнее время стал чаще всё забывать.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0002.anamnesis.04",
+            "question": "Какие лекарства вы принимаете?",
+            "answer": "Принимаю метформин для лечения сахарного диабета.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0002.anamnesis.05",
+            "question": "Употребляете ли вы алкоголь?",
+            "answer": "Нет.",
+            "relevant": false
+          },
+          {
+            "id": "case.internal-medicine.0002.anamnesis.06",
+            "question": "Беспокоят ли болезненность или изменения поверхности языка?",
+            "answer": "Язык стал болезненным и гладким.",
+            "relevant": true
+          }
+        ]
+      },
+      "studyResults": {
+        "study.lab.cbc-with-differential": {
+          "result": "Гемоглобин 108 г/л, MCV 108 фл; гиперсегментация нейтрофилов.",
+          "abnormal": true
+        },
+        "study.lab.vitamin-b12.blood": {
+          "result": "Витамин B12 — 142 пг/мл, снижен.",
+          "abnormal": true
+        },
+        "study.functional.electroneuromyography": {
+          "result": "Лёгкая дистальная сенсорная полинейропатия нижних конечностей.",
+          "abnormal": true
+        }
+      }
+    },
+    {
+      "id": "case.internal-medicine.0003",
+      "title": "Артериальная гипертензия с поражением органов-мишеней",
+      "patient": {
+        "name": "Павел Алексеев",
+        "age": 52,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился по поводу повышенного АД.",
+        "chiefComplaint": "Мой фармацевт сказал, что у меня слишком высокое кровяное давление. Я чувствую себя хорошо.",
+        "vitals": {
+          "hr": 84,
+          "bp": "156/96",
+          "spo2": 98,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.internal-medicine.0003.anamnesis.01",
+            "question": "Какие значения артериального давления вы измеряли?",
+            "answer": "Трижды измерял давление: около 150/95 мм рт. ст.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0003.anamnesis.02",
+            "question": "Есть ли головная боль или нарушения зрения?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0003.anamnesis.03",
+            "question": "У кого-нибудь из близких родственников повышено давление?",
+            "answer": "Да, у обоих родителей.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0003.anamnesis.04",
+            "question": "Много ли соли вы употребляете?",
+            "answer": "Досаливаю почти всю пищу.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0003.anamnesis.05",
+            "question": "Вы регулярно занимаетесь физической активностью?",
+            "answer": "Нет, физическая нагрузка бывает редко.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0003.anamnesis.06",
+            "question": "Есть ли кашель?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.functional.bp-ambulatory": {
+          "result": "Среднее дневное АД 148/92 мм рт. ст.; ночное снижение сохранено.",
+          "abnormal": true
+        },
+        "study.functional.ecg.resting-12-lead": {
+          "result": "Синусовый ритм 84/мин, вольтажные признаки гипертрофии левого желудочка.",
+          "abnormal": true
+        },
+        "study.lab.uacr.urine": {
+          "result": "Альбумин/креатинин мочи 1,8 мг/ммоль.",
+          "abnormal": false
+        },
+        "study.lab.lipid-profile.blood": {
+          "result": "ХС ЛПНП 3,7 ммоль/л, триглицериды 1,9 ммоль/л.",
+          "abnormal": true
+        },
+        "study.lab.hba1c.blood": {
+          "result": "HbA1c 5,7%.",
+          "abnormal": true
+        },
+        "study.exam.fundus": {
+          "result": "Гипертоническая ретинопатия I степени.",
+          "abnormal": true
+        }
+      }
+    },
+    {
+      "id": "case.internal-medicine.0004",
+      "title": "Впервые выявленный сахарный диабет 2 типа",
+      "patient": {
+        "name": "Наталья Белова",
+        "age": 58,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась по поводу полиурии и снижения массы тела.",
+        "chiefComplaint": "Я все время хочу пить и постоянно мочусь.",
+        "vitals": {
+          "hr": 88,
+          "bp": "134/82",
+          "spo2": 98,
+          "temp": 36.8,
+          "rr": 16
+        },
+        "anamnesis": [
+          {
+            "id": "case.internal-medicine.0004.anamnesis.01",
+            "question": "Когда начались симптомы?",
+            "answer": "Около 2 месяцев назад.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0004.anamnesis.02",
+            "question": "Изменился ли ваш вес?",
+            "answer": "Похудела на 5 кг, хотя не старалась худеть.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0004.anamnesis.03",
+            "question": "У кого-нибудь из близких родственников есть сахарный диабет?",
+            "answer": "У матери и брата сахарный диабет 2-го типа.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0004.anamnesis.04",
+            "question": "Изменилось ли зрение?",
+            "answer": "Иногда зрение становится нечётким.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0004.anamnesis.05",
+            "question": "Были ли в последнее время инфекции?",
+            "answer": "Да, у меня часто повторяется молочница.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0004.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.lab.glucose.blood": {
+          "result": "Случайная глюкоза плазмы 15,9 ммоль/л на фоне полиурии и полидипсии.",
+          "abnormal": true
+        },
+        "study.lab.hba1c.blood": {
+          "result": "HbA1c 9,4%.",
+          "abnormal": true
+        },
+        "order-set.lab.renal-function-electrolytes": {
+          "result": "Креатинин и электролиты без отклонений; бикарбонат 24 ммоль/л.",
+          "abnormal": false
+        },
+        "study.lab.urinalysis.general": {
+          "result": "Глюкозурия 3+, следы кетонов, протеинурии нет.",
+          "abnormal": true
+        },
+        "study.lab.uacr.urine": {
+          "result": "Отношение альбумин/креатинин мочи в пределах нормы.",
+          "abnormal": false
+        },
+        "study.lab.lipid-profile.blood": {
+          "result": "ХС ЛПНП 3,5 ммоль/л, триглицериды 2,5 ммоль/л.",
+          "abnormal": true
+        },
+        "study.exam.fundus": {
+          "result": "Диабетической ретинопатии не выявлено.",
+          "abnormal": false
+        }
+      }
+    },
+    {
+      "id": "case.internal-medicine.0005",
+      "title": "Нетяжёлая внебольничная пневмония",
+      "patient": {
+        "name": "Роман Иванов",
+        "age": 47,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился с продуктивным кашлем и лихорадкой.",
+        "chiefComplaint": "У меня уже 5 дней кашель с желтой мокротой и температура.",
+        "vitals": {
+          "hr": 96,
+          "bp": "122/76",
+          "spo2": 95,
+          "temp": 38.4,
+          "rr": 20
+        },
+        "anamnesis": [
+          {
+            "id": "case.internal-medicine.0005.anamnesis.01",
+            "question": "Когда начались симптомы?",
+            "answer": "Около 5 дней назад, сначала появился озноб.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0005.anamnesis.02",
+            "question": "Какого цвета и характера мокрота?",
+            "answer": "Мокрота жёлто-зелёная.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0005.anamnesis.03",
+            "question": "Есть ли боль в груди?",
+            "answer": "Да, справа возникает резкая боль, особенно при глубоком вдохе.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0005.anamnesis.04",
+            "question": "Были ли недавние поездки или контакты с заболевшими?",
+            "answer": "У коллеги было похожее заболевание.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0005.anamnesis.05",
+            "question": "Вы курите?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0005.anamnesis.06",
+            "question": "Как изменился ваш аппетит?",
+            "answer": "Аппетит снизился.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.imaging.xray.chest": {
+          "result": "Инфильтрация в нижней доле правого лёгкого, плеврального выпота нет.",
+          "abnormal": true
+        },
+        "study.lab.cbc-with-differential": {
+          "result": "Лейкоциты 14,2×10⁹/л, нейтрофилы 82%.",
+          "abnormal": true
+        },
+        "study.lab.crp.serum.quantitative": {
+          "result": "C-реактивный белок 142 мг/л.",
+          "abnormal": true
+        }
+      }
+    },
+    {
+      "id": "case.internal-medicine.0006",
+      "title": "Гастроэзофагеальная рефлюксная болезнь без тревожных признаков",
+      "patient": {
+        "name": "Вера Николаева",
+        "age": 42,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась с изжогой.",
+        "chiefComplaint": "У меня жжение в груди после еды, особенно ночью.",
+        "vitals": {
+          "hr": 76,
+          "bp": "118/74",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.internal-medicine.0006.anamnesis.01",
+            "question": "Как давно сохраняются симптомы?",
+            "answer": "Около 6 месяцев, и со временем становится хуже.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0006.anamnesis.02",
+            "question": "Изжога усиливается, когда вы ложитесь?",
+            "answer": "Да, из-за неё я просыпаюсь по ночам.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0006.anamnesis.03",
+            "question": "Появляется ли кислый привкус во рту?",
+            "answer": "Да, часто.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0006.anamnesis.04",
+            "question": "Снижался ли вес и не стало ли трудно глотать?",
+            "answer": "Нет, вес не снижался и глотать не стало труднее.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0006.anamnesis.05",
+            "question": "Принимаете обезболивающие из группы НПВП, например ибупрофен?",
+            "answer": "Да, иногда принимаю.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0006.anamnesis.06",
+            "question": "Бывает ли у вас длительный кашель?",
+            "answer": "Иногда кашляю по утрам.",
+            "relevant": true
+          }
+        ]
+      },
+      "studyResults": {
+        "study.functional.ecg.resting-12-lead": {
+          "result": "Синусовый ритм 76/мин, ишемических изменений нет.",
+          "abnormal": false
+        },
+        "study.lab.cbc-with-differential": {
+          "result": "Гемоглобин 136 г/л, без отклонений.",
+          "abnormal": false
+        },
+        "study.endoscopy.egds": {
+          "result": "Не выполнена: тревожных признаков нет; показания пересматриваются при неэффективности лечения.",
+          "abnormal": false
+        }
+      }
+    },
+    {
+      "id": "case.internal-medicine.0007",
+      "title": "Острый неосложнённый цистит",
+      "patient": {
+        "name": "Дарья Соколова",
+        "age": 29,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась с жжением при мочеиспускании.",
+        "chiefComplaint": "При мочеиспускании ощущаю жжение и хожу в туалет каждые 20 минут.",
+        "vitals": {
+          "hr": 82,
+          "bp": "118/72",
+          "spo2": 99,
+          "temp": 37.1,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.internal-medicine.0007.anamnesis.01",
+            "question": "Когда начались симптомы?",
+            "answer": "2 дня назад.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0007.anamnesis.02",
+            "question": "Есть ли боль в спине или боку?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0007.anamnesis.03",
+            "question": "Были ли повышение температуры или озноб?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0007.anamnesis.04",
+            "question": "Замечали ли вы кровь в моче?",
+            "answer": "Вчера моча была слегка розоватой.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0007.anamnesis.05",
+            "question": "Были ли в последнее время половые контакты?",
+            "answer": "Да, на прошлой неделе.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0007.anamnesis.06",
+            "question": "Беременность возможна?",
+            "answer": "Нет, я пользуюсь контрацепцией.",
+            "relevant": true
+          }
+        ]
+      },
+      "studyResults": {
+        "study.lab.urinalysis.general": {
+          "result": "Лейкоцитарная эстераза +, нитриты +, лейкоциты 50 в поле зрения, эритроциты 8 в поле зрения.",
+          "abnormal": true
+        },
+        "study.lab.hcg.urine.qualitative": {
+          "result": "ХГЧ в моче не обнаружен.",
+          "abnormal": false
+        },
+        "study.microbiology.urine-culture.aerobic": {
+          "result": "Посев не назначен при первом типичном неосложнённом эпизоде; выполнить при рецидиве или неэффективности терапии.",
+          "abnormal": false
+        }
+      }
+    },
+    {
+      "id": "case.internal-medicine.0008",
+      "title": "Острый гастроэнтерит с дегидратацией",
+      "patient": {
+        "name": "Виктор Иванов",
+        "age": 31,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился с диареей и рвотой.",
+        "chiefComplaint": "После пикника уже 2 дня водянистая диарея и тошнота.",
+        "vitals": {
+          "hr": 94,
+          "bp": "112/70",
+          "spo2": 98,
+          "temp": 37.5,
+          "rr": 16
+        },
+        "anamnesis": [
+          {
+            "id": "case.internal-medicine.0008.anamnesis.01",
+            "question": "Ели ли вы перед началом симптомов что-нибудь необычное или испорченное?",
+            "answer": "Съел картофельный салат, оставленный на солнце.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0008.anamnesis.02",
+            "question": "Замечали ли вы кровь в стуле?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0008.anamnesis.03",
+            "question": "Сколько раз в сутки бывает жидкий стул?",
+            "answer": "Примерно 8 раз в день.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0008.anamnesis.04",
+            "question": "Удаётся ли вам пить и удерживать жидкость?",
+            "answer": "Пытаюсь пить, но жидкость не удерживается из-за рвоты.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0008.anamnesis.05",
+            "question": "Есть ли похожие симптомы у кого-нибудь ещё?",
+            "answer": "Да, у жены такие же симптомы.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0008.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "order-set.lab.renal-function-electrolytes": {
+          "result": "Калий 3,4 ммоль/л, креатинин 97 мкмоль/л; остальные электролиты без значимых отклонений.",
+          "abnormal": true
+        },
+        "study.lab.cbc-with-differential": {
+          "result": "Незначительная гемоконцентрация, лейкоциты 9,8×10⁹/л.",
+          "abnormal": false
+        },
+        "study.lab.crp.serum.quantitative": {
+          "result": "C-реактивный белок 18 мг/л.",
+          "abnormal": true
+        }
+      }
+    },
+    {
+      "id": "case.internal-medicine.0009",
+      "title": "Дефицит витамина D с признаками нарушения минерализации",
+      "patient": {
+        "name": "Кирилл Орлов",
+        "age": 55,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился с болями в костях и усталостью.",
+        "chiefComplaint": "У меня все болит, чувствую усталость, особенно зимой.",
+        "vitals": {
+          "hr": 72,
+          "bp": "124/76",
+          "spo2": 98,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.internal-medicine.0009.anamnesis.01",
+            "question": "Сколько времени вы обычно проводите на солнце?",
+            "answer": "Я работаю в помещении, редко на улице.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0009.anamnesis.02",
+            "question": "Употребляете ли вы молоко и молочные продукты?",
+            "answer": "Почти не употребляю молочные продукты.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0009.anamnesis.03",
+            "question": "Где именно вы чувствуете боль или ломоту?",
+            "answer": "В области тазобедренных суставов, поясницы и бёдер.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0009.anamnesis.04",
+            "question": "Есть ли мышечная слабость?",
+            "answer": "Да, мне трудно вставать со стула.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0009.anamnesis.05",
+            "question": "Принимаете какие-нибудь лекарства?",
+            "answer": "Нет, никаких лекарств не принимаю.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0009.anamnesis.06",
+            "question": "Есть ли кашель?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.lab.vitamin-d-25oh.blood": {
+          "result": "25(OH)D — 11 нг/мл, выраженный дефицит.",
+          "abnormal": true
+        },
+        "order-set.lab.bone-mineral-profile": {
+          "result": "Общий кальций 2,15 ммоль/л, фосфор снижен, щелочная фосфатаза 168 Ед/л.",
+          "abnormal": true
+        },
+        "study.imaging.dxa.axial": {
+          "result": "T-критерий поясничного отдела −1,6, шейки бедра −1,4.",
+          "abnormal": true
+        }
+      }
+    },
+    {
+      "id": "case.internal-medicine.0010",
+      "title": "Стойкая утомляемость неустановленной причины",
+      "patient": {
+        "name": "Марина Козлова",
+        "age": 38,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась.",
+        "chiefComplaint": "Я в изнеможении уже 8 месяцев. Никакой сон не помогает.",
+        "vitals": {
+          "hr": 74,
+          "bp": "116/72",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.internal-medicine.0010.anamnesis.01",
+            "question": "Как вы спите?",
+            "answer": "Сплю около 8 часов, но после сна не чувствую себя отдохнувшей.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0010.anamnesis.02",
+            "question": "Бывают ли у вас подавленное настроение или утрата интереса к привычным занятиям?",
+            "answer": "Настроение немного снижено, но выраженной подавленности нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0010.anamnesis.03",
+            "question": "Изменился ли ваш вес?",
+            "answer": "Нет, вес не изменился.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0010.anamnesis.04",
+            "question": "Стали хуже переносить холод? Не усилилось выпадение волос?",
+            "answer": "Нет, ничего такого не замечала.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0010.anamnesis.05",
+            "question": "Какую физическую нагрузку вы можете переносить сейчас?",
+            "answer": "Утомляюсь даже при выполнении обычных повседневных дел.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0010.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.lab.cbc-with-differential": {
+          "result": "Гемоглобин 130 г/л, лейкоциты 6,4×10⁹/л, тромбоциты 232×10⁹/л.",
+          "abnormal": false
+        },
+        "order-set.lab.renal-function-electrolytes": {
+          "result": "Функция почек и электролиты без отклонений.",
+          "abnormal": false
+        },
+        "study.lab.tsh.blood": {
+          "result": "ТТГ 1,9 мМЕ/л.",
+          "abnormal": false
+        },
+        "study.lab.free-t4.blood": {
+          "result": "Свободный T4 — 14 пмоль/л.",
+          "abnormal": false
+        },
+        "study.lab.ferritin.blood": {
+          "result": "Ферритин 64 нг/мл.",
+          "abnormal": false
+        },
+        "study.lab.vitamin-b12.blood": {
+          "result": "Витамин B12 — 412 пг/мл.",
+          "abnormal": false
+        }
+      }
+    }
+  ]
+}

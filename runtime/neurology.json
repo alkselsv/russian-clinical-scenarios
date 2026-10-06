@@ -1,0 +1,2318 @@
+{
+  "_meta": {
+    "schemaVersion": "1.0.0",
+    "collection": "neurology",
+    "generator": "scripts/generate-runtime.mjs",
+    "caseCount": 10,
+    "language": "ru",
+    "clinicalSafety": "unsafe-until-clinician-approved",
+    "scoringMode": "rules-with-structured-conditions-and-parameter-review",
+    "conditionDsl": {
+      "always": "{\"always\":true}",
+      "comparison": "{\"fact\":\"path\",\"op\":\"eq|ne|lt|lte|gt|gte|in|exists\",\"value\":any}",
+      "all": "{\"all\":[...]}",
+      "any": "{\"any\":[...]}",
+      "not": "{\"not\":{...}}"
+    },
+    "inputSha256": {
+      "actions": "4a565ef472310a5adeaf95cda3408d1b73d8b7cde4f26417976c648306901a70",
+      "studies": "5b3fc8cd11378a4164364336e83e4867219ed5058f82356394ab71b12c313fbd",
+      "references": "7e550f6c0e468e15f35f5fca8d3c711dc9db3d8a61ffb50484dc215f814442df",
+      "content": "146d605840eacec577287a87a623e0ca88ddeaa474f1ae3cffb47d8550ef7867",
+      "rules": "fa05b1f56cfe160ac905066dd67d174ec96f5c1b3cfadd8a8b7af5f6bb4ac325",
+      "config": "2b430bb04b5c0c92d6486b48b078145c5def4775a84aa77ef096559c42b6287c"
+    }
+  },
+  "cases": [
+    {
+      "id": "case.neurology.0001",
+      "title": "Эпизодическая мигрень без ауры",
+      "patient": {
+        "name": "Ксения Козлова",
+        "age": 31,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась с головной болью и светобоязнью; находится в солнцезащитных очках.",
+        "chiefComplaint": "Головная боль с одной стороны, тошнота и непереносимость яркого света.",
+        "vitals": {
+          "hr": 82,
+          "bp": "118/74",
+          "spo2": 99,
+          "temp": 36.8,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.neurology.0001.anamnesis.01",
+            "question": "Как часто это происходит?",
+            "answer": "2-3 раза в месяц на протяжении многих лет.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0001.anamnesis.02",
+            "question": "С какой стороны обычно болит голова?",
+            "answer": "Обычно болит слева, боль пульсирующая.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0001.anamnesis.03",
+            "question": "Что провоцирует симптомы?",
+            "answer": "Приступы провоцируют менструации и недосыпание.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0001.anamnesis.04",
+            "question": "Возникают ли перед приступом вспышки, зигзаги или другие изменения зрения?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0001.anamnesis.05",
+            "question": "Сопровождаются ли приступы тошнотой?",
+            "answer": "Да, тошнота бывает при каждом приступе.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0001.anamnesis.06",
+            "question": "Была ли травма головы?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {
+        "nauseaTreatmentNeeded": true,
+        "migrainePreventionIndicated": true
+      },
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.migraine-without-aura.episodic",
+        "label": "Эпизодическая мигрень без ауры",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "G43.0",
+            "display": "Мигрень без ауры",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.headache-red-flags",
+            "label": "Оценка красных флагов вторичной головной боли",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Проверить внезапное начало, новый или изменившийся паттерн, неврологический дефицит, беременность, инфекцию, онкологический анамнез и другие красные флаги.",
+            "indication": "До подтверждения первичной головной боли необходимо исключить вторичные причины.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          },
+          {
+            "id": "action.monitoring.headache-diary",
+            "label": "Дневник головной боли и приёма препаратов",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Вести дневник дней с болью, симптомов, триггеров и препаратов.",
+            "indication": "Частота, инвалидизация и употребление препаратов определяют тактику.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.migraine-acute",
+            "label": "Купирование приступа мигрени",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Ранний приём НПВП или триптана с учётом противопоказаний; оценить эффективность через 2 часа.",
+            "indication": "Приступы типичны для мигрени.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          },
+          {
+            "id": "action.education.headache-medication-overuse",
+            "label": "Профилактика лекарственно-индуцированной головной боли",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Объяснить допустимую частоту и признаки лекарственно-индуцированной головной боли.",
+            "indication": "Частое применение средств для купирования способно хронизировать боль.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          }
+        ],
+        "conditional": [
+          {
+            "id": "action.medication.migraine-antiemetic",
+            "label": "Противорвотная терапия при мигрени",
+            "decision": "conditional",
+            "when": {
+              "fact": "nauseaTreatmentNeeded",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Добавить зарегистрированное противорвотное с учётом противопоказаний.",
+            "indication": "Тошнота сопровождает каждый приступ.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          },
+          {
+            "id": "action.decision.migraine-prevention",
+            "label": "Совместное решение о профилактической терапии мигрени",
+            "decision": "conditional",
+            "when": {
+              "fact": "migrainePreventionIndicated",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Совместно выбрать профилактику с учётом планов беременности, коморбидности и предпочтений; оценивать эффект по дневнику.",
+            "indication": "Два–три приступа в месяц могут требовать профилактики при существенной инвалидизации или неэффективности купирования.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [],
+        "conditional": [],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "study.imaging.mri.brain",
+            "label": "МРТ головного мозга",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "При типичном стабильном паттерне и нормальном неврологическом статусе рутинная МРТ не требуется.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Не выполнялась: типичный многолетний стереотип приступов и красных флагов нет.",
+              "abnormal": false
+            }
+          }
+        ],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.migraine.295.v2",
+          "title": "Мигрень",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/295_2"
+        }
+      ],
+      "reviewStatus": "major-revision-required"
+    },
+    {
+      "id": "case.neurology.0002",
+      "title": "Частая головная боль напряжения — хроническое течение пока не подтверждено",
+      "patient": {
+        "name": "Дмитрий Морозов",
+        "age": 44,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился, растирает шею и виски.",
+        "chiefComplaint": "Почти ежедневно в течение нескольких недель голову стягивает как обручем.",
+        "vitals": {
+          "hr": 76,
+          "bp": "122/76",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.neurology.0002.anamnesis.01",
+            "question": "Опишите боль подробнее.",
+            "answer": "Боль умеренная, как будто голову стягивает тугой повязкой.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0002.anamnesis.02",
+            "question": "Где именно болит голова?",
+            "answer": "Болит с обеих сторон, преимущественно в области лба и шеи.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0002.anamnesis.03",
+            "question": "Есть ли тошнота или рвота?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0002.anamnesis.04",
+            "question": "Есть ли светобоязнь?",
+            "answer": "Есть небольшая светобоязнь.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0002.anamnesis.05",
+            "question": "Испытываете ли вы стресс?",
+            "answer": "На работе испытываю сильный стресс.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0002.anamnesis.06",
+            "question": "Были ли лихорадка, слабость или онемение конечностей?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {
+        "preventionIndicatedAfterDiary": false
+      },
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.tension-type-headache.frequent-probable",
+        "label": "Частая головная боль напряжения; хроническое течение пока не подтверждено",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "G44.2",
+            "display": "Головная боль напряжённого типа",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.headache-red-flags",
+            "label": "Оценка красных флагов вторичной головной боли",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Уточнить начало, длительность, неврологические симптомы, лекарства и системные признаки.",
+            "indication": "Новый почти ежедневный паттерн требует проверки опасных причин и лекарственного абузуса.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          },
+          {
+            "id": "action.monitoring.headache-diary",
+            "label": "Дневник головной боли и приёма препаратов",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Документировать частоту и приём анальгетиков не менее месяца.",
+            "indication": "Для хронической формы требуется не менее 15 дней в месяц более трёх месяцев.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.tension-headache-acute",
+            "label": "Купирование головной боли напряжения",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Использовать простой анальгетик или НПВП при отсутствии противопоказаний, не допуская частого приёма.",
+            "indication": "Нужна ограниченная симптоматическая помощь.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          },
+          {
+            "id": "action.nonpharmacologic.tension-headache",
+            "label": "Немедикаментозная коррекция головной боли напряжения",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Нормализовать сон, перерывы и рабочее место, аэробную активность; при необходимости психологические методы.",
+            "indication": "Стресс и позное напряжение поддерживают боль.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          },
+          {
+            "id": "action.education.headache-medication-overuse",
+            "label": "Профилактика лекарственно-индуцированной головной боли",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Объяснить пороги избыточного употребления и вести учёт препаратов.",
+            "indication": "Почти ежедневная боль создаёт риск абузуса.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          }
+        ],
+        "conditional": [
+          {
+            "id": "action.decision.tension-headache-prevention",
+            "label": "Оценка показаний к профилактике головной боли напряжения",
+            "decision": "conditional",
+            "when": {
+              "fact": "preventionIndicatedAfterDiary",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "После подтверждения частоты рассмотреть профилактическую терапию и лечить коморбидную тревогу/депрессию.",
+            "indication": "Профилактика обсуждается при стойкой частой или хронической инвалидизирующей боли.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [],
+        "conditional": [],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "study.imaging.mri.brain",
+            "label": "МРТ головного мозга",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Без красных флагов и очагового дефицита нейровизуализация не подтверждает ГБН.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Не выполнялась: при типичной первичной головной боли без красных флагов нейровизуализация рутинно не показана.",
+              "abnormal": false
+            }
+          }
+        ],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.tension-headache.162.v3",
+          "title": "Головная боль напряжения",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/162_3"
+        }
+      ],
+      "reviewStatus": "major-revision-required"
+    },
+    {
+      "id": "case.neurology.0003",
+      "title": "Острая периферическая нейропатия правого лицевого нерва",
+      "patient": {
+        "name": "Елена Кузнецова",
+        "age": 38,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "urgent",
+        "arrival": "Самостоятельно обратилась с асимметрией лица.",
+        "chiefComplaint": "Сегодня утром появилась слабость правой половины лица.",
+        "vitals": {
+          "hr": 80,
+          "bp": "126/78",
+          "spo2": 99,
+          "temp": 36.8,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.neurology.0003.anamnesis.01",
+            "question": "Когда начались симптомы?",
+            "answer": "Заметила сегодня, когда проснулась.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0003.anamnesis.02",
+            "question": "Можете ли вы наморщить лоб?",
+            "answer": "Нет, на этой стороне лоб не наморщивается.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0003.anamnesis.03",
+            "question": "Не было ли боли в ухе или за ухом?",
+            "answer": "Вчера была лёгкая боль за ухом.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0003.anamnesis.04",
+            "question": "Есть ли слабость в руке или ноге?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0003.anamnesis.05",
+            "question": "Изменилось ли восприятие вкуса?",
+            "answer": "На этой стороне языка появился металлический привкус.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0003.anamnesis.06",
+            "question": "Были ли пузырьковые высыпания в ухе или недавний укус клеща?",
+            "answer": "Нет.",
+            "relevant": true
+          }
+        ]
+      },
+      "facts": {
+        "severeOrHerpeticFacialPalsy": false,
+        "atypicalFacialPalsy": false
+      },
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.facial-nerve-palsy.right.probable-idiopathic",
+        "label": "Острая периферическая нейропатия правого лицевого нерва, вероятно идиопатическая",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "G51.0",
+            "display": "Паралич Белла",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.acute-facial-weakness",
+            "label": "Неотложная дифференциальная оценка острой слабости мимических мышц",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Проверить лоб, конечности, речь, чувствительность, ухо и высыпания, инфекционные и опухолевые красные флаги; оценить тяжесть по House–Brackmann.",
+            "indication": "Острая асимметрия лица требует сначала исключить инсульт и вторичные нейропатии.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          },
+          {
+            "id": "action.support.cornea-protection-facial-palsy",
+            "label": "Защита роговицы при лагофтальме",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Искусственные слёзы днём, мазь и закрытие глаза на ночь; срочно к офтальмологу при боли или ухудшении зрения.",
+            "indication": "Неполное смыкание века угрожает кератопатией.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.glucocorticoid-bell-palsy",
+            "label": "Системный глюкокортикостероид при идиопатической нейропатии лицевого нерва",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Начать пероральный системный ГКС по зарегистрированной схеме после оценки противопоказаний.",
+            "indication": "Максимальная польза ожидается при начале в первые 72 часа.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          },
+          {
+            "id": "action.referral.neurology",
+            "label": "Направление к неврологу",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Организовать наблюдение; повторно оценить при прогрессировании или отсутствии восстановления.",
+            "indication": "Нужно подтвердить периферический уровень и контролировать восстановление.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          }
+        ],
+        "conditional": [
+          {
+            "id": "action.medication.antiviral-bell-palsy",
+            "label": "Противовирусная терапия как дополнение при тяжёлой нейропатии лицевого нерва",
+            "decision": "conditional",
+            "when": {
+              "fact": "severeOrHerpeticFacialPalsy",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Назначать только совместно с ГКС и после оценки почечной функции.",
+            "indication": "Добавление возможно при тяжёлом полном парезе или подозрении на герпетическую этиологию, но не заменяет ГКС.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [],
+        "conditional": [
+          {
+            "id": "study.imaging.mri.brain",
+            "label": "МРТ головного мозга",
+            "decision": "conditional",
+            "when": {
+              "fact": "atypicalFacialPalsy",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "МРТ нужна при атипичном течении, других неврологических симптомах, рецидиве или отсутствии восстановления, а не всем типичным случаям.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Не выполнялась: клиника периферического поражения лицевого нерва типична, центральных или иных красных флагов нет.",
+              "abnormal": false
+            }
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.cranial-mononeuropathies.895.v1",
+          "title": "Краниальные мононейропатии у взрослых",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/895_1"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.neurology.0004",
+      "title": "Синдром правого запястного канала с двигательными проявлениями",
+      "patient": {
+        "name": "Алексей Васильев",
+        "age": 46,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился с онемением рук.",
+        "chiefComplaint": "По ночам немеет правая кисть, стало трудно удерживать предметы.",
+        "vitals": {
+          "hr": 74,
+          "bp": "120/76",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.neurology.0004.anamnesis.01",
+            "question": "В каких пальцах возникают симптомы?",
+            "answer": "Большой, указательный и средний пальцы.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0004.anamnesis.02",
+            "question": "Когда симптомы выражены сильнее всего?",
+            "answer": "Сильнее всего ночью; из-за симптомов я просыпаюсь.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0004.anamnesis.03",
+            "question": "Кем вы работаете и много ли печатаете?",
+            "answer": "Я работаю за компьютером и почти весь день печатаю.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0004.anamnesis.04",
+            "question": "Не замечали слабости кисти или большого пальца?",
+            "answer": "Да, большой палец кажется слабее.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0004.anamnesis.05",
+            "question": "Возникает ли покалывание в пальцах при постукивании по запястью?",
+            "answer": "Да, покалывание переходит в пальцы.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0004.anamnesis.06",
+            "question": "Есть ли боль в шее с распространением в руку?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {
+        "injectionAppropriate": false
+      },
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.carpal-tunnel.right.moderate-motor",
+        "label": "Синдром правого запястного канала с двигательными проявлениями",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "G56.0",
+            "display": "Синдром запястного канала",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.carpal-tunnel-severity",
+            "label": "Оценка тяжести синдрома запястного канала",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Осмотреть тенар, силу отведения большого пальца, чувствительность и исключить радикулопатию/полинейропатию; оценить диабет и гипотиреоз по показаниям.",
+            "indication": "Слабость большого пальца и выпадение предметов требуют оценки моторного дефицита.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          },
+          {
+            "id": "action.support.wrist-splint-night",
+            "label": "Ночная фиксация запястья в нейтральном положении",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Нейтральная ночная шина и коррекция повторной нагрузки.",
+            "indication": "Ночные симптомы типичны для компрессии срединного нерва.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          },
+          {
+            "id": "action.referral.hand-surgeon-carpal-tunnel",
+            "label": "Направление к кистевому хирургу при синдроме запястного канала",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Направить к кистевому хирургу без длительного откладывания консервативными курсами.",
+            "indication": "Двигательные проявления и умеренные изменения ЭНМГ требуют обсуждения декомпрессии.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          }
+        ],
+        "conditional": [
+          {
+            "id": "action.procedure.carpal-tunnel-steroid-injection",
+            "label": "Локальная инъекция глюкокортикостероида в запястный канал",
+            "decision": "conditional",
+            "when": {
+              "fact": "injectionAppropriate",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Выполнять обученным специалистом, предпочтительно под ультразвуковым контролем.",
+            "indication": "Инъекция может дать временное облегчение при отсутствии срочного показания к декомпрессии.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.functional.electroneuromyography",
+            "label": "Стимуляционная электронейромиография",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Подтверждает уровень, тяжесть и аксональное повреждение.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Замедление проведения по правому срединному нерву через запястный канал и снижение сенсорной амплитуды; умеренная компрессионная нейропатия.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.mononeuropathies.166.v2",
+          "title": "Мононевропатии",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/166_2"
+        }
+      ],
+      "reviewStatus": "major-revision-required"
+    },
+    {
+      "id": "case.neurology.0005",
+      "title": "Паркинсонизм с вероятной болезнью Паркинсона",
+      "patient": {
+        "name": "Алексей Козлов",
+        "age": 67,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился, жена беспокоится о треморе.",
+        "chiefComplaint": "Правая рука дрожит в покое, движения стали медленнее.",
+        "vitals": {
+          "hr": 72,
+          "bp": "128/80",
+          "spo2": 98,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.neurology.0005.anamnesis.01",
+            "question": "Когда тремор выражен сильнее всего?",
+            "answer": "Тремор сильнее в покое и уменьшается при движении.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0005.anamnesis.02",
+            "question": "Как изменилась ваша походка?",
+            "answer": "Походка стала шаркающей, руки при ходьбе двигаются меньше.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0005.anamnesis.03",
+            "question": "Есть ли скованность?",
+            "answer": "Да, особенно трудно вставать со стула.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0005.anamnesis.04",
+            "question": "Изменилось ли обоняние?",
+            "answer": "Обоняние снижено около года.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0005.anamnesis.05",
+            "question": "Как вы спите?",
+            "answer": "Во сне двигаюсь и как будто разыгрываю сновидения.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0005.anamnesis.06",
+            "question": "Принимали ли вы нейролептики или противорвотные препараты длительно?",
+            "answer": "Нет.",
+            "relevant": true
+          }
+        ]
+      },
+      "facts": {},
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.parkinsonism.probable-parkinson-disease",
+        "label": "Паркинсонизм с вероятной болезнью Паркинсона",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "G20",
+            "display": "Болезнь Паркинсона",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.parkinsonism-clinical",
+            "label": "Клиническая диагностика паркинсонизма и атипичных признаков",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Подтвердить брадикинезию, ригидность/тремор, постуральные рефлексы; искать лекарственные, сосудистые и атипичные признаки.",
+            "indication": "Брадикинезия с асимметричным тремором покоя и ригидностью формирует синдром паркинсонизма.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          },
+          {
+            "id": "action.referral.movement-disorder-specialist",
+            "label": "Направление к специалисту по двигательным расстройствам",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Быстро направить к неврологу по двигательным расстройствам.",
+            "indication": "Диагноз клинический и требует специалиста до начала терапии, если состояние позволяет.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          },
+          {
+            "id": "action.decision.parkinson-initial-therapy",
+            "label": "Индивидуальный выбор начальной терапии болезни Паркинсона",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "При функционально значимых симптомах обычно обсуждать леводопу; альтернативы выбирать после информирования о сонливости, психозе и импульс-контрольных расстройствах.",
+            "indication": "Лечение зависит от влияния симптомов на качество жизни, возраста и рисков.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          },
+          {
+            "id": "action.rehabilitation.parkinson-exercise",
+            "label": "Физическая активность и ранняя реабилитация при болезни Паркинсона",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Назначить индивидуальные аэробные и силовые упражнения; физиотерапия при нарушении походки и равновесия.",
+            "indication": "Регулярная активность поддерживает мобильность и функцию.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          },
+          {
+            "id": "action.assessment.parkinson-nonmotor",
+            "label": "Оценка немоторных проявлений паркинсонизма",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Оценить сон, запоры, ортостаз, настроение, когнитивные функции, глотание и безопасность вождения.",
+            "indication": "Гипосмия и поведение во сне указывают на немоторный спектр.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [],
+        "conditional": [],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "study.imaging.mri.brain",
+            "label": "МРТ головного мозга",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Структурная МРТ не подтверждает болезнь Паркинсона; используется при атипичном паркинсонизме.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Не выполнялась как тест на болезнь Паркинсона: структурная МРТ не подтверждает этот клинический диагноз.",
+              "abnormal": false
+            }
+          }
+        ],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.parkinsonism.716.v1",
+          "title": "Болезнь Паркинсона, вторичный паркинсонизм и другие заболевания, проявляющиеся синдромом паркинсонизма",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/716_1"
+        },
+        {
+          "id": "guideline.int.nice.parkinson.71",
+          "title": "Parkinson’s disease in adults",
+          "url": "https://www.nice.org.uk/guidance/ng71"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.neurology.0006",
+      "title": "Невралгия правого тройничного нерва",
+      "patient": {
+        "name": "Александра Григорьева",
+        "age": 58,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась, держась за правую щеку.",
+        "chiefComplaint": "При чистке зубов в правой щеке возникает краткая боль как удар током.",
+        "vitals": {
+          "hr": 78,
+          "bp": "124/76",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.neurology.0006.anamnesis.01",
+            "question": "Опишите боль подробнее.",
+            "answer": "Боль пронзающая, похожа на удар электрическим током.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0006.anamnesis.02",
+            "question": "Что провоцирует симптомы?",
+            "answer": "Боль провоцируют прикосновение, жевание и холодный ветер.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0006.anamnesis.03",
+            "question": "Сколько длится каждый приступ?",
+            "answer": "Всего несколько секунд.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0006.anamnesis.04",
+            "question": "С какой стороны и в какой части лица возникает боль?",
+            "answer": "Справа, в области верхней челюсти.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0006.anamnesis.05",
+            "question": "Появляется ли сыпь на лице?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0006.anamnesis.06",
+            "question": "Есть ли зубная боль, высыпания или постоянное онемение лица?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {
+        "medicallyRefractoryTrigeminalNeuralgia": false
+      },
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.trigeminal-neuralgia.right-v2",
+        "label": "Невралгия правого тройничного нерва, ветвь V2",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "G50.0",
+            "display": "Невралгия тройничного нерва",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.trigeminal-neuralgia",
+            "label": "Клиническая классификация невралгии тройничного нерва",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Провести неврологический и стоматологический осмотр; классифицировать как классическую только при морфологических изменениях корешка, а не простом сосудистом контакте.",
+            "indication": "Короткие триггерные электрические боли соответствуют невралгии, но нужно исключить стоматологическую и вторичную причину.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.trigeminal-neuralgia-first-line",
+            "label": "Карбамазепин или окскарбазепин при невралгии тройничного нерва",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Титровать от малой дозы по эффекту и переносимости; контролировать натрий, клетки крови, печёночные взаимодействия и кожные реакции.",
+            "indication": "Карбамазепин или окскарбазепин являются базовой терапией.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          }
+        ],
+        "conditional": [
+          {
+            "id": "action.referral.neurosurgery-trigeminal",
+            "label": "Нейрохирургическая консультация при резистентной невралгии тройничного нерва",
+            "decision": "conditional",
+            "when": {
+              "fact": "medicallyRefractoryTrigeminalNeuralgia",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Направить в центр лечения лицевой боли/нейрохирургии; объяснить, что простой сосудистый контакт не гарантирует показание к декомпрессии.",
+            "indication": "При неэффективности или непереносимости адекватной терапии рассматривают хирургические методы.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.imaging.mri.brain",
+            "label": "МРТ головного мозга",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Высокоразрешающая МРТ по ходу тройничного нерва исключает опухоль и демиелинизацию и оценивает нейроваскулярную компрессию.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Высокоразрешающая МРТ исключила опухоль и демиелинизацию. Есть контакт сосудистой петли с правым тройничным нервом без описанной атрофии или смещения корешка.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Исходный контроль безопасности противосудорожной терапии.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Клетки крови в референсных пределах перед началом терапии.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "order-set.lab.renal-function-electrolytes",
+            "label": "Набор отдельных исследований функции почек и электролитов",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Натрий и функция почек важны для выбора и мониторинга терапии.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Натрий и функция почек в референсных пределах.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.lab.liver-enzymes.blood",
+            "label": "Исследование активности АЛТ и АСТ в крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Исходный контроль и лекарственные взаимодействия.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "АЛТ и АСТ в референсных пределах.",
+              "abnormal": false
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.cranial-mononeuropathies.895.v1",
+          "title": "Краниальные мононейропатии у взрослых",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/895_1"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.neurology.0007",
+      "title": "Правосторонняя радикулопатия L5 с парезом разгибателей стопы",
+      "patient": {
+        "name": "Иван Лебедев",
+        "age": 40,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился, хромает, держась за поясницу.",
+        "chiefComplaint": "Боль идёт от поясницы по правой ноге до стопы; при ходьбе стопа свисает.",
+        "vitals": {
+          "hr": 80,
+          "bp": "128/78",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.neurology.0007.anamnesis.01",
+            "question": "Когда началась боль?",
+            "answer": "2 недели назад, после того как я поднял тяжесть.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0007.anamnesis.02",
+            "question": "Куда отдаёт боль?",
+            "answer": "Боль идёт вниз по ноге и отдаёт в большой палец стопы.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0007.anamnesis.03",
+            "question": "Где именно возникает онемение?",
+            "answer": "На тыльной поверхности стопы.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0007.anamnesis.04",
+            "question": "Есть ли слабость?",
+            "answer": "Стопа немного свисает при ходьбе.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0007.anamnesis.05",
+            "question": "Есть ли нарушения мочеиспускания или дефекации?",
+            "answer": "Нарушений мочеиспускания и дефекации нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0007.anamnesis.06",
+            "question": "Были ли лихорадка, травма, онкологическое заболевание или употребление инъекционных наркотиков?",
+            "answer": "Нет.",
+            "relevant": true
+          }
+        ]
+      },
+      "facts": {
+        "emgAddsDiagnosticValue": false
+      },
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.l5-radiculopathy.right-disc-herniation-motor-deficit",
+        "label": "Правосторонняя радикулопатия L5 вследствие грыжи L4–L5 с двигательным дефицитом",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "M51.1",
+            "display": "Поражения межпозвонковых дисков поясничного и других отделов с радикулопатией",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.radiculopathy-motor-red-flags",
+            "label": "Оценка двигательного дефицита и красных флагов радикулопатии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Документировать силу по MRC, рефлексы, чувствительность, походку и симптомы конского хвоста; повторять оценку в динамике.",
+            "indication": "Свисающая стопа является объективным двигательным дефицитом.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          },
+          {
+            "id": "action.referral.spine-surgeon-urgent",
+            "label": "Срочная консультация спинального хирурга",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Организовать срочную консультацию нейрохирурга/спинального хирурга, не откладывая её длительной физиотерапией.",
+            "indication": "Прогрессирующий или клинически значимый парез требует срочной оценки декомпрессии.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.radicular-pain",
+            "label": "Краткосрочное обезболивание при пояснично-крестцовой радикулопатии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Подобрать краткий курс обезболивания с учётом рисков; избегать неоправданных комбинаций и длительных опиоидов.",
+            "indication": "Нужно краткосрочно контролировать боль до окончательной тактики.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          },
+          {
+            "id": "action.education.radiculopathy-activity-safety-net",
+            "label": "Сохранение активности и памятка о симптомах синдрома конского хвоста",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Поддерживать переносимую активность; немедленно обращаться при задержке мочи, седловидной анестезии или нарастании слабости.",
+            "indication": "Постельный режим ухудшает восстановление, но новый дефицит требует защиты.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.imaging.mri.lumbosacral-spine",
+            "label": "МРТ пояснично-крестцового отдела позвоночника",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "При двигательном дефиците МРТ срочно подтверждает уровень компрессии.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Правосторонняя парамедианная грыжа диска L4–L5 компримирует корешок L5; признаков компрессии конского хвоста нет.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [
+          {
+            "id": "study.functional.emg-needle",
+            "label": "Игольчатая электромиография",
+            "decision": "conditional",
+            "when": {
+              "fact": "emgAddsDiagnosticValue",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "ЭМГ полезна при неясном уровне, расхождении клиники и МРТ или для оценки хронизации, но не должна задерживать консультацию.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Признаки денервации в мышцах миотома L5 справа.",
+              "abnormal": true
+            }
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.discogenic-radiculopathy.777.v1",
+          "title": "Дискогенная пояснично-крестцовая радикулопатия",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/777_1"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.neurology.0008",
+      "title": "Эпизодическая кластерная головная боль, активный кластерный период",
+      "patient": {
+        "name": "Евгений Егоров",
+        "age": 42,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "urgent",
+        "arrival": "Самостоятельно обратился, возбужден, держит левый глаз.",
+        "chiefComplaint": "Очень сильная боль за левым глазом со слезотечением и выделениями из носа.",
+        "vitals": {
+          "hr": 92,
+          "bp": "138/84",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 16
+        },
+        "anamnesis": [
+          {
+            "id": "case.neurology.0008.anamnesis.01",
+            "question": "Как часто возникают приступы и сколько они длятся?",
+            "answer": "Уже 2 недели приступы бывают каждую ночь и длятся около 45 минут.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0008.anamnesis.02",
+            "question": "Какие изменения со стороны глаза вы заметили?",
+            "answer": "Глаз краснеет и слезится, веко опускается.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0008.anamnesis.03",
+            "question": "Есть ли заложенность или выделения из носа?",
+            "answer": "Во время приступа с этой стороны течёт из носа.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0008.anamnesis.04",
+            "question": "Можете ли вы спокойно сидеть или лежать во время приступа?",
+            "answer": "Мечусь, не могу усидеть на месте.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0008.anamnesis.05",
+            "question": "Замечали ли вы связь приступов с употреблением алкоголя?",
+            "answer": "Да, алкоголь провоцирует приступы.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0008.anamnesis.06",
+            "question": "Появлялись ли стойкое двоение, слабость, онемение или нарушение речи?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {
+        "transitionalPreventionIndicated": true
+      },
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.cluster-headache.episodic-active-bout",
+        "label": "Эпизодическая кластерная головная боль, активный период",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "G44.0",
+            "display": "Синдром кластерной головной боли",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.headache-red-flags",
+            "label": "Оценка красных флагов вторичной головной боли",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Проверить стойкий Горнер, очаговые симптомы, диссекцию, патологию гипофиза и инфекцию.",
+            "indication": "Первый кластерный паттерн и синдром Горнера требуют исключения вторичной ТАЦ.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.cluster-oxygen",
+            "label": "Нормобарическая кислородотерапия для купирования кластерной головной боли",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "100% кислород через маску без ребризера с высоким потоком в начале приступа; строго исключить огонь и курение рядом.",
+            "indication": "Кислород быстро купирует часть атак.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.cluster-triptan",
+            "label": "Подкожный или интраназальный триптан при кластерной головной боли",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Подкожный или интраназальный триптан при отсутствии сосудистых противопоказаний; пероральная форма слишком медленная.",
+            "indication": "Короткая атака требует быстродействующей формы.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.cluster-verapamil-prevention",
+            "label": "Профилактика кластерной головной боли верапамилом",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Титровать верапамил под серийным контролем ЭКГ и противопоказаний.",
+            "indication": "Ежедневные атаки в активном периоде требуют профилактики.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          },
+          {
+            "id": "action.avoid.cluster-oral-analgesics",
+            "label": "Отказ от пероральных анальгетиков для купирования кластерной атаки",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Не использовать как основное купирование кластерной атаки.",
+            "indication": "Обычные пероральные анальгетики действуют слишком медленно и создают риск абузуса.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          }
+        ],
+        "conditional": [
+          {
+            "id": "action.decision.cluster-transitional-prevention",
+            "label": "Переходная профилактика кластерной головной боли",
+            "decision": "conditional",
+            "when": {
+              "fact": "transitionalPreventionIndicated",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Короткий курс системного ГКС или блокада большого затылочного нерва — только по плану невролога.",
+            "indication": "До эффекта базовой профилактики может потребоваться переходная схема.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.imaging.mri.brain",
+            "label": "МРТ головного мозга",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "При первом эпизоде ТАЦ МРТ с прицельной оценкой гипофиза и кавернозного синуса исключает вторичную причину.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Объёмного процесса, поражения гипофиза или кавернозного синуса не выявлено.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.functional.ecg.resting-12-lead",
+            "label": "Электрокардиография в 12 отведениях в покое с интерпретацией",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Исходная и серийная ЭКГ необходимы при титрации верапамила.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Синусовый ритм, нарушений проводимости и клинически значимого удлинения интервалов нет.",
+              "abnormal": false
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.cranial-mononeuropathies.895.v1",
+          "title": "Краниальные мононейропатии у взрослых",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/895_1"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.neurology.0009",
+      "title": "Вероятный эссенциальный тремор",
+      "patient": {
+        "name": "Надежда Белова",
+        "age": 66,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась по поводу тремора рук.",
+        "chiefComplaint": "Руки дрожат при письме и удержании чашки; похожее было у родственников.",
+        "vitals": {
+          "hr": 72,
+          "bp": "124/76",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.neurology.0009.anamnesis.01",
+            "question": "В каких ситуациях возникает тремор?",
+            "answer": "Когда тянусь за предметом или держу его в руке.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0009.anamnesis.02",
+            "question": "Сохраняются ли симптомы в покое?",
+            "answer": "В покое тремор почти отсутствует.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0009.anamnesis.03",
+            "question": "Как алкоголь влияет на дрожь?",
+            "answer": "После алкоголя дрожь на некоторое время уменьшается.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0009.anamnesis.04",
+            "question": "Есть ли подобные заболевания у близких родственников?",
+            "answer": "Такое было у отца и брата.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0009.anamnesis.05",
+            "question": "Есть ли скованность?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0009.anamnesis.06",
+            "question": "Какие лекарства, кофеин и стимуляторы вы принимаете?",
+            "answer": "Стимуляторы не принимаю, кофе пью умеренно.",
+            "relevant": true
+          }
+        ]
+      },
+      "facts": {
+        "tremorFunctionallyLimiting": true,
+        "atypicalOrRefractoryTremor": false
+      },
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.essential-tremor.probable",
+        "label": "Вероятный эссенциальный тремор",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "G25.0",
+            "display": "Эссенциальный тремор",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.essential-tremor-differential",
+            "label": "Клиническая оценка эссенциального тремора и вторичных причин",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Оценить лекарства, кофеин, алкогольную отмену, щитовидную железу, дистонию, мозжечковые и паркинсонические признаки.",
+            "indication": "Двусторонний постурально-кинетический семейный тремор без паркинсонизма типичен, но вторичные причины нужно исключить.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          },
+          {
+            "id": "action.education.alcohol-not-tremor-treatment",
+            "label": "Отказ от использования алкоголя как лечения тремора",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Объяснить риск зависимости, толерантности и усиления тремора при отмене.",
+            "indication": "Краткое уменьшение тремора после алкоголя не делает его терапией.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          }
+        ],
+        "conditional": [
+          {
+            "id": "action.decision.essential-tremor-treatment",
+            "label": "Лечение эссенциального тремора при функциональных ограничениях",
+            "decision": "conditional",
+            "when": {
+              "fact": "tremorFunctionallyLimiting",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Обсудить пропранолол либо примидон с учётом противопоказаний и зарегистрированности; при резистентности направить в центр двигательных расстройств.",
+            "indication": "Лечить следует при функциональном или социальном ограничении.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          },
+          {
+            "id": "action.referral.movement-disorder-specialist",
+            "label": "Направление к специалисту по двигательным расстройствам",
+            "decision": "conditional",
+            "when": {
+              "fact": "atypicalOrRefractoryTremor",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Направить для пересмотра диагноза и вариантов терапии.",
+            "indication": "Атипия, прогрессирование или неэффективность первой линии требуют специалиста.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.lab.tsh.blood",
+            "label": "Исследование уровня тиреотропного гормона в крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Исключает тиреотоксикоз как причину усиленного тремора.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "ТТГ 2,0 мМЕ/л, в референсном диапазоне.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.lab.free-t4.blood",
+            "label": "Исследование уровня свободного тироксина в крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Уточняет функцию щитовидной железы.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Свободный Т4 12 пмоль/л, в референсном диапазоне.",
+              "abnormal": false
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "study.imaging.mri.brain",
+            "label": "МРТ головного мозга",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "При типичном изолированном треморе без очаговых признаков МРТ не подтверждает диагноз.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Не выполнялась: изолированный двусторонний постурально-кинетический тремор без очаговой симптоматики не требует рутинной МРТ.",
+              "abnormal": false
+            }
+          }
+        ],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.parkinsonism.716.v1",
+          "title": "Болезнь Паркинсона, вторичный паркинсонизм и другие заболевания, проявляющиеся синдромом паркинсонизма",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/716_1"
+        }
+      ],
+      "reviewStatus": "major-revision-required"
+    },
+    {
+      "id": "case.neurology.0010",
+      "title": "Лёгкое когнитивное расстройство неустановленной этиологии",
+      "patient": {
+        "name": "Максим Морозов",
+        "age": 74,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился из-за ухудшения памяти.",
+        "chiefComplaint": "Стал чаще забывать встречи и терять вещи.",
+        "vitals": {
+          "hr": 74,
+          "bp": "132/78",
+          "spo2": 98,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.neurology.0010.anamnesis.01",
+            "question": "Когда близкие впервые заметили изменения?",
+            "answer": "Около года назад.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0010.anamnesis.02",
+            "question": "Как симптомы влияют на повседневные дела?",
+            "answer": "Справляюсь самостоятельно, но всё делаю медленнее.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0010.anamnesis.03",
+            "question": "Какие лекарства вы принимаете?",
+            "answer": "Только лизиноприл.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0010.anamnesis.04",
+            "question": "Какое у вас настроение?",
+            "answer": "Настроение обычное.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0010.anamnesis.05",
+            "question": "Как вы спите?",
+            "answer": "Сплю плохо, сильно храплю.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0010.anamnesis.06",
+            "question": "Бывали ли спутанность сознания или резкое ухудшение за несколько дней?",
+            "answer": "Нет, изменения нарастают постепенно около года.",
+            "relevant": true
+          }
+        ]
+      },
+      "facts": {
+        "sleepApneaEvaluationIndicated": true
+      },
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.mild-cognitive-impairment.etiology-undetermined",
+        "label": "Лёгкое когнитивное расстройство неустановленной этиологии",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "F06.7",
+            "display": "Легкое когнитивное расстройство",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.cognitive-function-informant",
+            "label": "Объективная оценка когнитивных функций и повседневной самостоятельности",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Получить сведения близкого, оценить IADL/ADL, провести валидированный скрининг и при необходимости развёрнутое обследование.",
+            "indication": "Для разграничения субъективного снижения, лёгкого расстройства и деменции нужны объективный тест и функция.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          },
+          {
+            "id": "action.assessment.cognitive-reversible-causes",
+            "label": "Поиск потенциально обратимых причин когнитивного снижения",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Оценить депрессию, делирий, лекарства, слух/зрение, апноэ сна, ТТГ, B12, общий анализ крови и метаболические нарушения.",
+            "indication": "Плохой сон и храп могут ухудшать когнитивные функции.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          },
+          {
+            "id": "action.referral.memory-clinic",
+            "label": "Направление в кабинет памяти или к неврологу-гериатру",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Направить в кабинет памяти/к неврологу или гериатру с информантом и перечнем лекарств.",
+            "indication": "Требуется этиологическая диагностика и динамическое наблюдение.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          },
+          {
+            "id": "action.management.cognitive-vascular-lifestyle",
+            "label": "Коррекция сосудистых факторов риска и образа жизни при когнитивном снижении",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Контролировать АД, диабет и липиды, поддерживать физическую, когнитивную и социальную активность, сон и безопасность.",
+            "indication": "Сосудистые изменения и факторы риска модифицируемы.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          },
+          {
+            "id": "action.avoid.premature-alzheimer-diagnosis-treatment",
+            "label": "Отказ от преждевременного диагноза и лечения болезни Альцгеймера",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Не начинать противодементные препараты до установления нозологии и показаний.",
+            "indication": "MoCA и умеренная атрофия не устанавливают болезнь Альцгеймера; бытовая самостоятельность сохранена.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость, безопасность и клинический ответ документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.assessment.neuropsychological",
+            "label": "Клинико-психологическое нейропсихологическое обследование",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Объективизирует домены и тяжесть с учётом образования и функции.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "MoCA 23/30 с преимущественным снижением отсроченного воспроизведения; основные бытовые действия выполняет самостоятельно. Требуются сведения близкого и развёрнутая оценка.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.imaging.mri.brain",
+            "label": "МРТ головного мозга",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Исключает потенциально обратимые структурные причины и оценивает сосудистый/атрофический паттерн, но не является самостоятельным диагнозом.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Умеренные сосудистые изменения и медиальная височная атрофия 1–2; находка неспецифична и сама по себе не устанавливает болезнь Альцгеймера.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.tsh.blood",
+            "label": "Исследование уровня тиреотропного гормона в крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Исключает дисфункцию щитовидной железы.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "ТТГ 2,2 мМЕ/л, в референсном диапазоне.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.lab.vitamin-b12.blood",
+            "label": "Определение уровня витамина B12 (цианокобаламина) в крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Исключает дефицит B12.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Витамин B12 380 пг/мл, в референсном диапазоне.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Исключает анемию и системные отклонения.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Клинически значимой анемии или воспалительных изменений нет.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "order-set.lab.renal-function-electrolytes",
+            "label": "Набор отдельных исследований функции почек и электролитов",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Исключает метаболические причины и определяет безопасность терапии.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Электролиты, глюкоза и функция почек без клинически значимых отклонений.",
+              "abnormal": false
+            }
+          }
+        ],
+        "conditional": [
+          {
+            "id": "study.sleep.polysomnography",
+            "label": "Полисомнографическое исследование сна",
+            "decision": "conditional",
+            "when": {
+              "fact": "sleepApneaEvaluationIndicated",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Показана при высокой вероятности обструктивного апноэ сна; технически требует разложения на каналы НМУ.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Не выполнена; выраженный храп и плохой сон требуют оценки риска обструктивного апноэ сна.",
+              "abnormal": false
+            }
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.cognitive-older-adults.617.v5",
+          "title": "Когнитивные расстройства у лиц пожилого и старческого возраста",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/617_5"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    }
+  ]
+}

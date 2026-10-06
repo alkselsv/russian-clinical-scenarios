@@ -1,0 +1,925 @@
+{
+  "_meta": {
+    "schemaVersion": "1.0.0",
+    "collection": "internal-medicine",
+    "language": "ru",
+    "clinicalSafety": "unsafe-until-clinician-approved",
+    "evaluationPolicy": {
+      "required": "Действие необходимо в данном сценарии.",
+      "conditional": "Действие засчитывается только при выполнении явно заданных условий.",
+      "optional": "Действие допустимо, но не влияет на прохождение ключевого алгоритма.",
+      "not-routine": "Рутинное выполнение не требуется и не должно приносить баллы.",
+      "unsafe-or-delaying": "Действие потенциально вредит или задерживает приоритетную помощь.",
+      "unscorable-as-specified": "Формулировка недостаточно конкретна для оценки."
+    }
+  },
+  "cases": [
+    {
+      "id": "case.internal-medicine.0001",
+      "diagnosis": {
+        "id": "condition.iron-deficiency-anemia.heavy-menstrual-bleeding",
+        "preferredNameRu": "Железодефицитная анемия вследствие хронической кровопотери",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "D50.0",
+            "display": "Железодефицитная анемия вторичная вследствие потери крови",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.anemia-cause",
+          "evaluation": "required",
+          "indicationRu": "Ферритин подтверждает дефицит; необходимо установить источник.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Оценить тяжесть менструальной кровопотери, беременность, питание, ЖКТ-симптомы и иные кровопотери."
+        },
+        {
+          "actionId": "action.medication.iron.oral",
+          "evaluation": "required",
+          "indicationRu": "Стабильная пациентка с подтверждённым дефицитом подходит для пероральной терапии.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Назначить препарат железа внутрь в пересчёте на элементарное железо; режим выбрать по переносимости и инструкции."
+        },
+        {
+          "actionId": "action.referral.gynecology-heavy-menses",
+          "evaluation": "required",
+          "indicationRu": "Без коррекции обильных менструаций дефицит будет рецидивировать.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Организовать гинекологическое обследование причины аномального маточного кровотечения."
+        },
+        {
+          "actionId": "action.monitoring.iron-response",
+          "evaluation": "required",
+          "indicationRu": "Нужно подтвердить ответ и восполнение депо.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Контроль ОАК примерно через 4 недели; продолжить лечение после нормализации Hb до восполнения запасов и повторно оценить ферритин."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.lab.cbc-with-differential",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Определяет тип и тяжесть анемии.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.ferritin.blood",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Низкий ферритин подтверждает абсолютный дефицит железа.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "order-set.lab.iron-status",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Низкое насыщение трансферрина поддерживает диагноз.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.669.v2"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/internal-medicine.md#case-internal-medicine-0001"
+    },
+    {
+      "id": "case.internal-medicine.0002",
+      "diagnosis": {
+        "id": "condition.vitamin-b12-deficiency-anemia.neurologic",
+        "preferredNameRu": "Витамин-B12-дефицитная анемия с неврологическими проявлениями",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "D51.3",
+            "display": "Другие витамин-B12-дефицитные анемии, связанные с питанием",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.b12-cause-neurology",
+          "evaluation": "required",
+          "indicationRu": "Веганское питание и метформин являются факторами риска, но нужно оценить мальабсорбцию и неврологический дефицит.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Взять подтверждающие анализы до первой дозы, провести неврологический осмотр и оценить аутоиммунный гастрит/лекарства."
+        },
+        {
+          "actionId": "action.medication.cyanocobalamin",
+          "evaluation": "required",
+          "indicationRu": "Неврологические проявления требуют безотлагательного восполнения B12 после забора крови.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Цианокобаламин по схеме КР; путь и частоту выбрать с учётом неврологических симптомов и причины дефицита."
+        },
+        {
+          "actionId": "action.monitoring.b12-response",
+          "evaluation": "required",
+          "indicationRu": "Нужен контроль кроветворного и неврологического ответа.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Контролировать ретикулоцитарный ответ, ОАК и динамику чувствительности; обеспечить поддерживающую терапию, если причина сохраняется."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.lab.cbc-with-differential",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Выявляет макроцитарную анемию и морфологические признаки.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.vitamin-b12.blood",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Подтверждает низкую концентрацию до лечения.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.functional.electroneuromyography",
+          "evaluation": "optional",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Может документировать полинейропатию, но не должна задерживать лечение.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.536.v3"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/internal-medicine.md#case-internal-medicine-0002"
+    },
+    {
+      "id": "case.internal-medicine.0003",
+      "diagnosis": {
+        "id": "condition.hypertension.primary.target-organ-damage",
+        "preferredNameRu": "Гипертоническая болезнь с поражением органов-мишеней",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "I11.9",
+            "display": "Гипертензивная болезнь сердца без сердечной недостаточности",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.hypertension-confirmation",
+          "evaluation": "required",
+          "indicationRu": "Повторные офисные значения требуют подтверждения и оценки риска.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Корректно повторить измерения и выполнить СМАД или валидированный ДМАД; исключить криз и вторичные причины по показаниям."
+        },
+        {
+          "actionId": "action.education.hypertension-lifestyle",
+          "evaluation": "required",
+          "indicationRu": "Высокое потребление соли и гиподинамия модифицируемы.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Сократить соль, увеличить аэробную активность, нормализовать массу, питание, алкоголь и курение."
+        },
+        {
+          "actionId": "action.medication.antihypertensive.initial",
+          "evaluation": "required",
+          "indicationRu": "Подтверждённая АГ и признаки поражения органов-мишеней требуют лекарственной терапии.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Выбрать зарегистрированную стартовую схему, обычно комбинацию, с учётом функции почек, калия и противопоказаний."
+        },
+        {
+          "actionId": "action.monitoring.bp-followup",
+          "evaluation": "required",
+          "indicationRu": "Необходимы титрация и контроль безопасности.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Контроль АД, креатинина и калия после старта/изменения терапии; индивидуальная цель по КР."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.functional.bp-ambulatory",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Подтверждает устойчивое повышение вне кабинета.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.functional.ecg.resting-12-lead",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Выявляет ГЛЖ и другие изменения.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.uacr.urine",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Оценивает поражение почек.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.lipid-profile.blood",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Нужен для сердечно-сосудистого риска.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.hba1c.blood",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Выявляет нарушение углеводного обмена.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.exam.fundus",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Оценивает гипертоническую ретинопатию.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.62.v3"
+      ],
+      "reviewStatus": "major-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/internal-medicine.md#case-internal-medicine-0003"
+    },
+    {
+      "id": "case.internal-medicine.0004",
+      "diagnosis": {
+        "id": "condition.type-2-diabetes.newly-diagnosed",
+        "preferredNameRu": "Впервые выявленный сахарный диабет 2 типа",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "E11.9",
+            "display": "Сахарный диабет 2 типа без осложнений",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.diabetes-acute-decompensation",
+          "evaluation": "required",
+          "indicationRu": "Похудание, выраженная гипергликемия и кетонурия требуют исключить ДКА/гиперосмолярное состояние и иной тип диабета.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Оценить рвоту, боль, дыхание, сознание, кетонемию и КОС по показаниям; определить срочность."
+        },
+        {
+          "actionId": "action.education.diabetes-structured",
+          "evaluation": "required",
+          "indicationRu": "Новый диагноз требует обучения самоконтролю и правилам при болезни.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Обсудить питание, активность, стопы, гипо-/гипергликемию и письменный план наблюдения."
+        },
+        {
+          "actionId": "action.medication.metformin",
+          "evaluation": "conditional",
+          "indicationRu": "Метформин возможен при подтверждённом СД2, стабильности и достаточной функции почек.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Начать с переносимой дозы внутрь и титровать; проверить СКФ и противопоказания."
+        },
+        {
+          "actionId": "action.plan.diabetes-individualized-therapy",
+          "evaluation": "required",
+          "indicationRu": "HbA1c 9,4%, симптомы и похудание требуют индивидуального выбора, иногда раннего инсулина.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Выбрать терапию после исключения острой декомпенсации и оценки сердечно-сосудистого/почечного риска."
+        },
+        {
+          "actionId": "action.monitoring.diabetes-complications",
+          "evaluation": "required",
+          "indicationRu": "Нужна исходная оценка осложнений и риска.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Контроль HbA1c, АД, липидов, СКФ, А/К мочи, стоп и глазного дна по графику."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.lab.glucose.blood",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Симптомная случайная гипергликемия диагностически значима.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.hba1c.blood",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Оценивает хроническую гипергликемию.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "order-set.lab.renal-function-electrolytes",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Нужен для безопасности терапии и исключения декомпенсации.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.urinalysis.general",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Кетоны требуют клинической интерпретации.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.uacr.urine",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Исходный скрининг нефропатии.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.lipid-profile.blood",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Сердечно-сосудистый риск.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.exam.fundus",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Исходный осмотр при СД2.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.290.v2"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/internal-medicine.md#case-internal-medicine-0004"
+    },
+    {
+      "id": "case.internal-medicine.0005",
+      "diagnosis": {
+        "id": "condition.community-acquired-pneumonia.right-lower-lobe",
+        "preferredNameRu": "Внебольничная пневмония нижней доли правого лёгкого, нетяжёлое течение",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "J18.9",
+            "display": "Пневмония без уточнения возбудителя",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.pneumonia-severity",
+          "evaluation": "required",
+          "indicationRu": "Место лечения определяет тяжесть, а не только снимок.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Рассчитать CRB-65, оценить SpO₂, дыхательную недостаточность, коморбидность и социальные факторы."
+        },
+        {
+          "actionId": "action.medication.amoxicillin.pneumonia",
+          "evaluation": "required",
+          "indicationRu": "При нетяжёлой ВП без факторов риска нужен конкретный пероральный препарат первой линии.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Амоксициллин внутрь в режиме действующей КР с учётом аллергии; альтернативу выбрать по КР."
+        },
+        {
+          "actionId": "action.medication.analgesia.unspecified",
+          "evaluation": "optional",
+          "indicationRu": "Лихорадка и плевритная боль требуют симптоматической помощи.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Парацетамол или НПВП при отсутствии противопоказаний."
+        },
+        {
+          "actionId": "action.safety-netting.pneumonia",
+          "evaluation": "required",
+          "indicationRu": "Возможно быстрое ухудшение.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Срочно обратиться при нарастании одышки, спутанности, цианозе, гипотонии или невозможности пить; контроль, если нет улучшения за 48–72 часа."
+        },
+        {
+          "actionId": "action.medication.antibacterial.broad-spectrum.unspecified",
+          "evaluation": "unsafe-or-delaying",
+          "indicationRu": "Неопределённый антибиотик широкого спектра не задаёт безопасной схемы.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Назначить конкретный препарат, дозу, путь и длительность."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.imaging.xray.chest",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Подтверждает инфильтрацию и оценивает осложнения.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.cbc-with-differential",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Входит в диагностический минимум КР.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.crp.serum.quantitative",
+          "evaluation": "optional",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Может поддержать воспаление и динамику, но не определяет антибиотик самостоятельно.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.654.v2"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/internal-medicine.md#case-internal-medicine-0005"
+    },
+    {
+      "id": "case.internal-medicine.0006",
+      "diagnosis": {
+        "id": "condition.gerd.typical-no-alarm-features",
+        "preferredNameRu": "Гастроэзофагеальная рефлюксная болезнь без тревожных признаков",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "K21.9",
+            "display": "Гастроэзофагеальный рефлюкс без эзофагита",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.gerd-red-flags",
+          "evaluation": "required",
+          "indicationRu": "Загрудинное жжение требует оценки дисфагии, кровотечения, похудания и сердечного риска.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Уточнить связь с нагрузкой, дисфагию, одинофагию, анемию, кровотечение, похудание и семейный риск."
+        },
+        {
+          "actionId": "action.medication.ppi",
+          "evaluation": "required",
+          "indicationRu": "Типичная частая изжога без тревожных признаков допускает пробный курс ИПП.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "ИПП внутрь в стандартной дозе до еды курсом с оценкой ответа."
+        },
+        {
+          "actionId": "action.education.gerd-lifestyle",
+          "evaluation": "required",
+          "indicationRu": "Ночные симптомы связаны с положением и временем еды.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Не есть за 2–3 часа до сна, поднять изголовье, снижать массу при избытке и избегать только воспроизводимых триггеров."
+        },
+        {
+          "actionId": "action.assessment.acs-exclusion",
+          "evaluation": "conditional",
+          "indicationRu": "Кардиологическая оценка нужна при нагрузочной/атипичной боли или риске ИБС.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Не считать нормальную ЭКГ достаточной для исключения ОКС при соответствующей клинике."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.functional.ecg.resting-12-lead",
+          "evaluation": "conditional",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Проводится при сердечно-сосудистом риске или нетипичной боли.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.cbc-with-differential",
+          "evaluation": "not-routine",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Без кровотечения и тревожных признаков ОАК не подтверждает ГЭРБ.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.endoscopy.egds",
+          "evaluation": "conditional",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Нужна при тревожных признаках, рефрактерности или диагностической неопределённости.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.rga.gerd.2024"
+      ],
+      "reviewStatus": "major-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/internal-medicine.md#case-internal-medicine-0006"
+    },
+    {
+      "id": "case.internal-medicine.0007",
+      "diagnosis": {
+        "id": "condition.acute-uncomplicated-cystitis",
+        "preferredNameRu": "Острый неосложнённый цистит",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "N30.0",
+            "display": "Острый цистит",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.cystitis.complicating-factors",
+          "evaluation": "required",
+          "indicationRu": "Нужно подтвердить отсутствие пиелонефрита, беременности и осложняющих факторов.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Оценить лихорадку, боль в боку, беременность, аномалии мочевых путей и рецидивы."
+        },
+        {
+          "actionId": "action.medication.fosfomycin.oral",
+          "evaluation": "required",
+          "indicationRu": "Подходит как вариант первой линии при подтверждённом неосложнённом цистите.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Фосфомицин внутрь по зарегистрированной схеме с учётом противопоказаний и локальной чувствительности."
+        },
+        {
+          "actionId": "action.safety-netting.cystitis",
+          "evaluation": "required",
+          "indicationRu": "Лихорадка и боль в боку требуют пересмотра диагноза.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Повторно обратиться при ухудшении или отсутствии эффекта в ожидаемый срок."
+        },
+        {
+          "actionId": "action.medication.antibacterial.broad-spectrum.unspecified",
+          "evaluation": "unsafe-or-delaying",
+          "indicationRu": "Неопределённый антибиотик широкого спектра не является корректным назначением.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Использовать конкретную рекомендованную схему."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.lab.urinalysis.general",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Поддерживает диагноз и выявляет гематурию.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.hcg.urine.qualitative",
+          "evaluation": "conditional",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Нужен при реальной возможности беременности, влияющей на выбор терапии.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.microbiology.urine-culture.aerobic",
+          "evaluation": "conditional",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Показан при рецидиве, атипичном течении или неэффективности лечения.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.14.v3"
+      ],
+      "reviewStatus": "major-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/internal-medicine.md#case-internal-medicine-0007"
+    },
+    {
+      "id": "case.internal-medicine.0008",
+      "diagnosis": {
+        "id": "condition.acute-gastroenteritis.with-dehydration",
+        "preferredNameRu": "Острый гастроэнтерит с умеренной дегидратацией",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "A09",
+            "display": "Другой и неуточнённый гастроэнтерит и колит инфекционного происхождения",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.gastrointestinal-red-flags",
+          "evaluation": "required",
+          "indicationRu": "Частый стул и рвота требуют оценки дегидратации и инвазивной инфекции.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Оценить гемодинамику, диурез, кровь, сильную боль, лихорадку, иммунодефицит и вспышку."
+        },
+        {
+          "actionId": "action.support.oral-rehydration",
+          "evaluation": "required",
+          "indicationRu": "Пероральный регидратационный раствор является основой при возможности пить.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Частые небольшие объёмы раствора для пероральной регидратации, восполняя текущие потери."
+        },
+        {
+          "actionId": "action.support.iv-rehydration",
+          "evaluation": "conditional",
+          "indicationRu": "Жидкость не удерживается из-за рвоты.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Изотонический кристаллоид внутривенно с повторной оценкой гемодинамики, диуреза и электролитов."
+        },
+        {
+          "actionId": "action.medication.ondansetron",
+          "evaluation": "optional",
+          "indicationRu": "Кратковременно может облегчить регидратацию.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Ондансетрон в зарегистрированной дозе с учётом QT и электролитов."
+        },
+        {
+          "actionId": "action.avoid.antibiotic-acute-watery-diarrhea",
+          "evaluation": "required",
+          "indicationRu": "При водянистой диарее без крови и системной токсичности антибиотик рутинно не нужен.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Не назначать эмпирический антибиотик без специальных показаний."
+        },
+        {
+          "actionId": "action.safety-netting.gastroenteritis",
+          "evaluation": "required",
+          "indicationRu": "Нарастающая дегидратация требует повторной оценки.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Срочно обратиться при крови, сильной боли, высокой лихорадке, редком мочеиспускании, обмороке или невозможности пить."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "order-set.lab.renal-function-electrolytes",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Оценивает гипокалиемию, функцию почек и последствия дегидратации.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.cbc-with-differential",
+          "evaluation": "optional",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Может оценить гемоконцентрацию, но не определяет возбудителя.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.crp.serum.quantitative",
+          "evaluation": "not-routine",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Неспецифичен при типичной короткой водянистой диарее.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.int.who.diarrhoea.2005"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/internal-medicine.md#case-internal-medicine-0008"
+    },
+    {
+      "id": "case.internal-medicine.0009",
+      "diagnosis": {
+        "id": "condition.vitamin-d-deficiency.possible-osteomalacia",
+        "preferredNameRu": "Дефицит витамина D с подозрением на остеомаляцию",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "E55.9",
+            "display": "Недостаточность витамина D неуточнённая",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.vitamin-d-secondary-causes",
+          "evaluation": "required",
+          "indicationRu": "Боль, проксимальная слабость, гипофосфатемия и высокая ЩФ требуют оценки остеомаляции и вторичных причин.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Оценить кальций с альбумином, фосфор, ЩФ, ПТГ, функцию почек, мальабсорбцию, лекарства и риск перелома."
+        },
+        {
+          "actionId": "action.medication.cholecalciferol",
+          "evaluation": "required",
+          "indicationRu": "25(OH)D 11 нг/мл подтверждает выраженный дефицит.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Колекальциферол по лечебной схеме с учётом массы тела, мальабсорбции, функции почек и риска гиперкальциемии."
+        },
+        {
+          "actionId": "action.monitoring.vitamin-d-calcium",
+          "evaluation": "required",
+          "indicationRu": "Нужно подтвердить безопасность и восстановление обмена.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Повторно оценить 25(OH)D и показатели кальций-фосфорного обмена в установленный срок."
+        },
+        {
+          "actionId": "action.disposition.outpatient-discharge",
+          "evaluation": "unscorable-as-specified",
+          "indicationRu": "Одна выписка не лечит дефицит и не оценивает остеомаляцию.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Оформить конкретный лечебный и контрольный план."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.lab.vitamin-d-25oh.blood",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Основной показатель статуса витамина D.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "order-set.lab.bone-mineral-profile",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Отклонения поддерживают нарушение минерализации и влияют на безопасность лечения.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.imaging.dxa.axial",
+          "evaluation": "conditional",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Оценивает минеральную плотность при наличии показаний, но не диагностирует остеомаляцию самостоятельно.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.rae.vitamin-d.2021"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/internal-medicine.md#case-internal-medicine-0009"
+    },
+    {
+      "id": "case.internal-medicine.0010",
+      "diagnosis": {
+        "id": "condition.persistent-fatigue.undifferentiated",
+        "preferredNameRu": "Стойкая утомляемость неустановленной причины",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "R53",
+            "display": "Недомогание и утомляемость",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.persistent-fatigue",
+          "evaluation": "required",
+          "indicationRu": "Нормальные отдельные анализы не устанавливают ME/CFS.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Оценить постнагрузочное ухудшение, сон, когнитивные/ортостатические симптомы, депрессию и тревогу, апноэ сна, лекарства, инфекции и красные флаги."
+        },
+        {
+          "actionId": "action.avoid.premature-mecfs-label",
+          "evaluation": "required",
+          "indicationRu": "В сценарии не описано обязательное постнагрузочное ухудшение и не завершена дифференциальная диагностика.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Не кодировать синдром хронической усталости только по длительности жалобы."
+        },
+        {
+          "actionId": "action.followup.persistent-fatigue",
+          "evaluation": "required",
+          "indicationRu": "Диагноз уточняется по динамике и функциональному влиянию.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Согласовать щадящий план активности без форсированного наращивания, дневник симптомов и повторную оценку; срочно при новых красных флагах."
+        },
+        {
+          "actionId": "action.disposition.outpatient-discharge",
+          "evaluation": "unscorable-as-specified",
+          "indicationRu": "Выписка без плана обследования и наблюдения недостаточна.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Оформить конкретный маршрут и сроки контроля."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.lab.cbc-with-differential",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Исключает анемию и цитопении.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "order-set.lab.renal-function-electrolytes",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Исключает почечные и электролитные причины.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.tsh.blood",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Скрининг дисфункции щитовидной железы.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.free-t4.blood",
+          "evaluation": "conditional",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Нужен при отклонении ТТГ или подозрении на центральную патологию, но не рутинно при нормальном ТТГ.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.ferritin.blood",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Дефицит железа возможен и без анемии.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.vitamin-b12.blood",
+          "evaluation": "conditional",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Назначается при факторах риска или макроцитозе/неврологических симптомах.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.int.nice.mecfs.2021"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/internal-medicine.md#case-internal-medicine-0010"
+    }
+  ]
+}

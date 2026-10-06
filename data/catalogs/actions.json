@@ -780,6 +780,851 @@
       "id": "action.followup.crc-screening",
       "preferredNameRu": "Организация завершения и повторения скрининга колоректального рака",
       "kind": "monitoring"
+    },
+    {
+      "id": "action.assessment.ent-red-flags",
+      "preferredNameRu": "Оценка неотложных ЛОР-симптомов и осложнений",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.medication.amoxicillin-clavulanate",
+      "preferredNameRu": "Амоксициллин с клавулановой кислотой",
+      "kind": "medication"
+    },
+    {
+      "id": "action.medication.penicillin-or-amoxicillin",
+      "preferredNameRu": "Пенициллин или амоксициллин",
+      "kind": "medication"
+    },
+    {
+      "id": "action.medication.intranasal-corticosteroid",
+      "preferredNameRu": "Интраназальный глюкокортикостероид",
+      "kind": "medication"
+    },
+    {
+      "id": "action.support.nasal-saline",
+      "preferredNameRu": "Орошение полости носа солевым раствором",
+      "kind": "procedure"
+    },
+    {
+      "id": "action.followup.ent",
+      "preferredNameRu": "Контроль у врача-оториноларинголога",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.procedure.canalith-repositioning",
+      "preferredNameRu": "Репозиционный манёвр при ДППГ",
+      "kind": "procedure"
+    },
+    {
+      "id": "action.safety-netting.vertigo",
+      "preferredNameRu": "Инструктаж при головокружении",
+      "kind": "communication"
+    },
+    {
+      "id": "action.education.hearing-protection",
+      "preferredNameRu": "Защита слуха от производственного шума",
+      "kind": "communication"
+    },
+    {
+      "id": "action.counseling.tinnitus",
+      "preferredNameRu": "Обучение стратегиям контроля шума в ушах",
+      "kind": "communication"
+    },
+    {
+      "id": "action.referral.audiology",
+      "preferredNameRu": "Направление на аудиологическую оценку",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.education.allergen-avoidance",
+      "preferredNameRu": "Снижение контакта с причинным аллергеном",
+      "kind": "communication"
+    },
+    {
+      "id": "action.medication.intranasal-antihistamine",
+      "preferredNameRu": "Интраназальный антигистаминный препарат",
+      "kind": "medication"
+    },
+    {
+      "id": "action.referral.allergist-immunotherapy",
+      "preferredNameRu": "Направление к аллергологу-иммунологу для решения вопроса об АСИТ",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.assessment.nsaid-exacerbated-respiratory-disease",
+      "preferredNameRu": "Оценка респираторной реакции на НПВП",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.avoid.nsaid-trigger",
+      "preferredNameRu": "Исключение провоцирующих НПВП",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.referral.ent-sinus-surgery",
+      "preferredNameRu": "Направление к ЛОР-хирургу при неконтролируемом полипозном риносинусите",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.medication.oral-corticosteroid-short-course",
+      "preferredNameRu": "Короткий курс системного глюкокортикостероида внутрь",
+      "kind": "medication"
+    },
+    {
+      "id": "action.avoid.iv-corticosteroid-routine",
+      "preferredNameRu": "Отказ от рутинного внутривенного глюкокортикостероида",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.assessment.dysphonia-red-flags",
+      "preferredNameRu": "Оценка тревожных признаков при стойкой дисфонии",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.referral.laryngoscopy",
+      "preferredNameRu": "Направление на ларингоскопию",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.education.voice-hygiene",
+      "preferredNameRu": "Рекомендации по гигиене голоса",
+      "kind": "communication"
+    },
+    {
+      "id": "action.avoid.empiric-ppi-isolated-dysphonia",
+      "preferredNameRu": "Отказ от эмпирического ИПП при изолированной дисфонии до визуализации гортани",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.assessment.tmj",
+      "preferredNameRu": "Клинико-функциональная оценка височно-нижнечелюстного сустава",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.education.tmj-self-care",
+      "preferredNameRu": "Самопомощь при дисфункции ВНЧС",
+      "kind": "communication"
+    },
+    {
+      "id": "action.referral.dentist-tmj",
+      "preferredNameRu": "Направление к стоматологу, занимающемуся дисфункцией ВНЧС",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.assessment.sudden-hearing-loss-urgent",
+      "preferredNameRu": "Срочная оценка внезапной потери слуха",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.medication.glucocorticoid.sudden-hearing-loss",
+      "preferredNameRu": "Системный глюкокортикостероид при острой сенсоневральной тугоухости",
+      "kind": "medication"
+    },
+    {
+      "id": "action.procedure.intratympanic-steroid",
+      "preferredNameRu": "Интратимпанальное введение глюкокортикостероида",
+      "kind": "procedure"
+    },
+    {
+      "id": "action.safety-netting.sudden-hearing-loss",
+      "preferredNameRu": "Инструктаж при внезапной потере слуха",
+      "kind": "communication"
+    },
+    {
+      "id": "action.assessment.anemia-cause",
+      "preferredNameRu": "Поиск причины анемии и источника кровопотери",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.medication.iron.oral",
+      "preferredNameRu": "Пероральный препарат железа",
+      "kind": "medication"
+    },
+    {
+      "id": "action.monitoring.iron-response",
+      "preferredNameRu": "Контроль ответа и восполнения запасов железа",
+      "kind": "monitoring"
+    },
+    {
+      "id": "action.referral.gynecology-heavy-menses",
+      "preferredNameRu": "Направление к гинекологу при обильных менструациях",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.assessment.b12-cause-neurology",
+      "preferredNameRu": "Оценка причины дефицита B12 и неврологических нарушений",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.medication.cyanocobalamin",
+      "preferredNameRu": "Цианокобаламин",
+      "kind": "medication"
+    },
+    {
+      "id": "action.monitoring.b12-response",
+      "preferredNameRu": "Контроль ответа на терапию витамином B12",
+      "kind": "monitoring"
+    },
+    {
+      "id": "action.assessment.hypertension-confirmation",
+      "preferredNameRu": "Подтверждение артериальной гипертензии внеофисным измерением",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.education.hypertension-lifestyle",
+      "preferredNameRu": "Немедикаментозная коррекция при артериальной гипертензии",
+      "kind": "communication"
+    },
+    {
+      "id": "action.medication.antihypertensive.initial",
+      "preferredNameRu": "Стартовая антигипертензивная терапия",
+      "kind": "medication"
+    },
+    {
+      "id": "action.assessment.diabetes-acute-decompensation",
+      "preferredNameRu": "Исключение острой декомпенсации сахарного диабета",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.education.diabetes-structured",
+      "preferredNameRu": "Структурированное обучение при сахарном диабете",
+      "kind": "communication"
+    },
+    {
+      "id": "action.medication.metformin",
+      "preferredNameRu": "Метформин",
+      "kind": "medication"
+    },
+    {
+      "id": "action.plan.diabetes-individualized-therapy",
+      "preferredNameRu": "Индивидуальный выбор сахароснижающей терапии",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.monitoring.diabetes-complications",
+      "preferredNameRu": "Скрининг осложнений сахарного диабета",
+      "kind": "monitoring"
+    },
+    {
+      "id": "action.assessment.pneumonia-severity",
+      "preferredNameRu": "Оценка тяжести внебольничной пневмонии",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.medication.amoxicillin.pneumonia",
+      "preferredNameRu": "Амоксициллин при нетяжёлой внебольничной пневмонии",
+      "kind": "medication"
+    },
+    {
+      "id": "action.safety-netting.pneumonia",
+      "preferredNameRu": "Инструктаж при внебольничной пневмонии",
+      "kind": "communication"
+    },
+    {
+      "id": "action.assessment.gerd-red-flags",
+      "preferredNameRu": "Оценка тревожных признаков и сердечного риска при изжоге",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.support.oral-rehydration",
+      "preferredNameRu": "Пероральная регидратация",
+      "kind": "procedure"
+    },
+    {
+      "id": "action.support.iv-rehydration",
+      "preferredNameRu": "Внутривенная регидратация",
+      "kind": "procedure"
+    },
+    {
+      "id": "action.avoid.antibiotic-acute-watery-diarrhea",
+      "preferredNameRu": "Отказ от рутинного антибиотика при острой водянистой диарее",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.safety-netting.gastroenteritis",
+      "preferredNameRu": "Инструктаж при остром гастроэнтерите",
+      "kind": "communication"
+    },
+    {
+      "id": "action.assessment.vitamin-d-secondary-causes",
+      "preferredNameRu": "Оценка причин дефицита витамина D и нарушения минерализации",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.medication.cholecalciferol",
+      "preferredNameRu": "Колекальциферол",
+      "kind": "medication"
+    },
+    {
+      "id": "action.monitoring.vitamin-d-calcium",
+      "preferredNameRu": "Контроль витамина D и кальций-фосфорного обмена",
+      "kind": "monitoring"
+    },
+    {
+      "id": "action.assessment.persistent-fatigue",
+      "preferredNameRu": "Структурированная оценка стойкой утомляемости",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.avoid.premature-mecfs-label",
+      "preferredNameRu": "Отказ от преждевременного диагноза ME/CFS",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.followup.persistent-fatigue",
+      "preferredNameRu": "Динамическое наблюдение при стойкой утомляемости",
+      "kind": "monitoring"
+    },
+    {
+      "id": "action.assessment.ckd-chronicity-cause-risk",
+      "preferredNameRu": "Подтверждение хронической болезни почек, причины и риска прогрессирования",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.medication.raas-blockade-kidney",
+      "preferredNameRu": "Блокада ренин-ангиотензин-альдостероновой системы при ХБП",
+      "kind": "medication"
+    },
+    {
+      "id": "action.medication.sglt2-kidney-protection",
+      "preferredNameRu": "Ингибитор SGLT2 для нефропротекции",
+      "kind": "medication"
+    },
+    {
+      "id": "action.avoid.nephrotoxins",
+      "preferredNameRu": "Исключение нефротоксичных воздействий",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.monitoring.ckd",
+      "preferredNameRu": "Диспансерный контроль хронической болезни почек",
+      "kind": "monitoring"
+    },
+    {
+      "id": "action.referral.nephrology",
+      "preferredNameRu": "Направление к нефрологу",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.assessment.renal-colic-red-flags",
+      "preferredNameRu": "Оценка осложнённой почечной колики",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.medication.nsaid.renal-colic",
+      "preferredNameRu": "НПВП при почечной колике",
+      "kind": "medication"
+    },
+    {
+      "id": "action.avoid.forced-hydration-stone",
+      "preferredNameRu": "Отказ от форсированной гидратации при почечной колике",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.referral.urology-stone",
+      "preferredNameRu": "Маршрутизация к урологу при камне мочеточника",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.assessment.recurrent-stone-metabolic",
+      "preferredNameRu": "Метафилактическое обследование при рецидивирующем уролитиазе",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.assessment.glomerular-hematuria",
+      "preferredNameRu": "Оценка клубочковой гематурии и протеинурии",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.procedure.kidney-biopsy",
+      "preferredNameRu": "Пункционная биопсия почки",
+      "kind": "procedure"
+    },
+    {
+      "id": "action.avoid.unconfirmed-iga-diagnosis",
+      "preferredNameRu": "Отказ от неподтверждённого диагноза IgA-нефропатии",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.assessment.diabetic-kidney-disease",
+      "preferredNameRu": "Оценка диабетической болезни почек и альтернативных причин",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.monitoring.diabetic-kidney-disease",
+      "preferredNameRu": "Контроль диабетической болезни почек",
+      "kind": "monitoring"
+    },
+    {
+      "id": "action.assessment.lupus-nephritis",
+      "preferredNameRu": "Неотложная оценка волчаночного нефрита",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.referral.nephrology-rheumatology.urgent",
+      "preferredNameRu": "Срочная совместная консультация нефролога и ревматолога",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.avoid.empiric-lupus-pulse-before-workup",
+      "preferredNameRu": "Отказ от необоснованной пульс-терапии до верификации класса нефрита",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.assessment.adpkd-risk",
+      "preferredNameRu": "Оценка прогрессирования и внепочечных проявлений АДПБП",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.assessment.adpkd-intracranial-aneurysm",
+      "preferredNameRu": "Оценка показаний к скринингу внутричерепной аневризмы при АДПБП",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.counseling.adpkd-genetic",
+      "preferredNameRu": "Медико-генетическое консультирование при АДПБП",
+      "kind": "communication"
+    },
+    {
+      "id": "action.assessment.resistant-hypertension",
+      "preferredNameRu": "Подтверждение истинной резистентной гипертензии",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.referral.renal-revascularization-center",
+      "preferredNameRu": "Направление в центр для оценки реваскуляризации почечной артерии",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.assessment.aki-stage-cause",
+      "preferredNameRu": "Стадирование острого повреждения почек и поиск причины",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.support.isotonic-crystalloid-aki",
+      "preferredNameRu": "Изотонический кристаллоид при гиповолемии и ОПП",
+      "kind": "procedure"
+    },
+    {
+      "id": "action.monitoring.aki-electrolytes-diuresis",
+      "preferredNameRu": "Контроль диуреза, креатинина и электролитов при ОПП",
+      "kind": "monitoring"
+    },
+    {
+      "id": "action.disposition.nephrology-admission",
+      "preferredNameRu": "Госпитализация в профильный стационар",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.assessment.hypertensive-ckd-differential",
+      "preferredNameRu": "Дифференциальная оценка ХБП при длительной гипертензии",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.assessment.nephrotic-syndrome",
+      "preferredNameRu": "Подтверждение нефротического синдрома и оценка осложнений",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.medication.loop-diuretic-nephrotic",
+      "preferredNameRu": "Петлевой диуретик при нефротических отёках",
+      "kind": "medication"
+    },
+    {
+      "id": "action.education.sodium-restriction-nephrotic",
+      "preferredNameRu": "Ограничение натрия при нефротических отёках",
+      "kind": "communication"
+    },
+    {
+      "id": "action.decision.nephrotic-thrombosis-prophylaxis",
+      "preferredNameRu": "Индивидуальная оценка антитромботической профилактики при нефротическом синдроме",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.avoid.empiric-steroid-nephrotic",
+      "preferredNameRu": "Отказ от эмпирического внутривенного ГКС при нефротическом синдроме",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.assessment.headache-red-flags",
+      "preferredNameRu": "Оценка красных флагов вторичной головной боли",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.monitoring.headache-diary",
+      "preferredNameRu": "Дневник головной боли и приёма препаратов",
+      "kind": "monitoring"
+    },
+    {
+      "id": "action.medication.migraine-acute",
+      "preferredNameRu": "Купирование приступа мигрени",
+      "kind": "medication"
+    },
+    {
+      "id": "action.medication.migraine-antiemetic",
+      "preferredNameRu": "Противорвотная терапия при мигрени",
+      "kind": "medication"
+    },
+    {
+      "id": "action.decision.migraine-prevention",
+      "preferredNameRu": "Совместное решение о профилактической терапии мигрени",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.education.headache-medication-overuse",
+      "preferredNameRu": "Профилактика лекарственно-индуцированной головной боли",
+      "kind": "communication"
+    },
+    {
+      "id": "action.medication.tension-headache-acute",
+      "preferredNameRu": "Купирование головной боли напряжения",
+      "kind": "medication"
+    },
+    {
+      "id": "action.nonpharmacologic.tension-headache",
+      "preferredNameRu": "Немедикаментозная коррекция головной боли напряжения",
+      "kind": "support"
+    },
+    {
+      "id": "action.decision.tension-headache-prevention",
+      "preferredNameRu": "Оценка показаний к профилактике головной боли напряжения",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.assessment.acute-facial-weakness",
+      "preferredNameRu": "Неотложная дифференциальная оценка острой слабости мимических мышц",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.support.cornea-protection-facial-palsy",
+      "preferredNameRu": "Защита роговицы при лагофтальме",
+      "kind": "support"
+    },
+    {
+      "id": "action.medication.glucocorticoid-bell-palsy",
+      "preferredNameRu": "Системный глюкокортикостероид при идиопатической нейропатии лицевого нерва",
+      "kind": "medication"
+    },
+    {
+      "id": "action.medication.antiviral-bell-palsy",
+      "preferredNameRu": "Противовирусная терапия как дополнение при тяжёлой нейропатии лицевого нерва",
+      "kind": "medication"
+    },
+    {
+      "id": "action.assessment.carpal-tunnel-severity",
+      "preferredNameRu": "Оценка тяжести синдрома запястного канала",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.support.wrist-splint-night",
+      "preferredNameRu": "Ночная фиксация запястья в нейтральном положении",
+      "kind": "support"
+    },
+    {
+      "id": "action.procedure.carpal-tunnel-steroid-injection",
+      "preferredNameRu": "Локальная инъекция глюкокортикостероида в запястный канал",
+      "kind": "procedure"
+    },
+    {
+      "id": "action.referral.hand-surgeon-carpal-tunnel",
+      "preferredNameRu": "Направление к кистевому хирургу при синдроме запястного канала",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.assessment.parkinsonism-clinical",
+      "preferredNameRu": "Клиническая диагностика паркинсонизма и атипичных признаков",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.referral.movement-disorder-specialist",
+      "preferredNameRu": "Направление к специалисту по двигательным расстройствам",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.decision.parkinson-initial-therapy",
+      "preferredNameRu": "Индивидуальный выбор начальной терапии болезни Паркинсона",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.rehabilitation.parkinson-exercise",
+      "preferredNameRu": "Физическая активность и ранняя реабилитация при болезни Паркинсона",
+      "kind": "support"
+    },
+    {
+      "id": "action.assessment.parkinson-nonmotor",
+      "preferredNameRu": "Оценка немоторных проявлений паркинсонизма",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.assessment.trigeminal-neuralgia",
+      "preferredNameRu": "Клиническая классификация невралгии тройничного нерва",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.medication.trigeminal-neuralgia-first-line",
+      "preferredNameRu": "Карбамазепин или окскарбазепин при невралгии тройничного нерва",
+      "kind": "medication"
+    },
+    {
+      "id": "action.referral.neurosurgery-trigeminal",
+      "preferredNameRu": "Нейрохирургическая консультация при резистентной невралгии тройничного нерва",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.assessment.radiculopathy-motor-red-flags",
+      "preferredNameRu": "Оценка двигательного дефицита и красных флагов радикулопатии",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.referral.spine-surgeon-urgent",
+      "preferredNameRu": "Срочная консультация спинального хирурга",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.medication.radicular-pain",
+      "preferredNameRu": "Краткосрочное обезболивание при пояснично-крестцовой радикулопатии",
+      "kind": "medication"
+    },
+    {
+      "id": "action.education.radiculopathy-activity-safety-net",
+      "preferredNameRu": "Сохранение активности и памятка о симптомах синдрома конского хвоста",
+      "kind": "communication"
+    },
+    {
+      "id": "action.medication.cluster-oxygen",
+      "preferredNameRu": "Нормобарическая кислородотерапия для купирования кластерной головной боли",
+      "kind": "procedure"
+    },
+    {
+      "id": "action.medication.cluster-triptan",
+      "preferredNameRu": "Подкожный или интраназальный триптан при кластерной головной боли",
+      "kind": "medication"
+    },
+    {
+      "id": "action.decision.cluster-transitional-prevention",
+      "preferredNameRu": "Переходная профилактика кластерной головной боли",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.medication.cluster-verapamil-prevention",
+      "preferredNameRu": "Профилактика кластерной головной боли верапамилом",
+      "kind": "medication"
+    },
+    {
+      "id": "action.avoid.cluster-oral-analgesics",
+      "preferredNameRu": "Отказ от пероральных анальгетиков для купирования кластерной атаки",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.assessment.essential-tremor-differential",
+      "preferredNameRu": "Клиническая оценка эссенциального тремора и вторичных причин",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.decision.essential-tremor-treatment",
+      "preferredNameRu": "Лечение эссенциального тремора при функциональных ограничениях",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.education.alcohol-not-tremor-treatment",
+      "preferredNameRu": "Отказ от использования алкоголя как лечения тремора",
+      "kind": "communication"
+    },
+    {
+      "id": "action.assessment.cognitive-function-informant",
+      "preferredNameRu": "Объективная оценка когнитивных функций и повседневной самостоятельности",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.assessment.cognitive-reversible-causes",
+      "preferredNameRu": "Поиск потенциально обратимых причин когнитивного снижения",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.referral.memory-clinic",
+      "preferredNameRu": "Направление в кабинет памяти или к неврологу-гериатру",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.management.cognitive-vascular-lifestyle",
+      "preferredNameRu": "Коррекция сосудистых факторов риска и образа жизни при когнитивном снижении",
+      "kind": "support"
+    },
+    {
+      "id": "action.avoid.premature-alzheimer-diagnosis-treatment",
+      "preferredNameRu": "Отказ от преждевременного диагноза и лечения болезни Альцгеймера",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.referral.neurology",
+      "preferredNameRu": "Направление к неврологу",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.assessment.postop-cranial",
+      "preferredNameRu": "Послеоперационная нейрохирургическая оценка",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.referral.neurooncology-mdt",
+      "preferredNameRu": "Мультидисциплинарный нейроонкологический консилиум",
+      "kind": "disposition"
+    },
+    {
+      "id": "action.assessment.cns-tumor-integrated-pathology",
+      "preferredNameRu": "Проверка интегрированного морфологического и молекулярного диагноза опухоли ЦНС",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.treatment.glioblastoma-chemoradiotherapy",
+      "preferredNameRu": "Послеоперационная химиолучевая терапия глиобластомы",
+      "kind": "medication"
+    },
+    {
+      "id": "action.monitoring.glioblastoma-treatment",
+      "preferredNameRu": "Мониторинг безопасности и ответа при лечении глиобластомы",
+      "kind": "monitoring"
+    },
+    {
+      "id": "action.decision.antiseizure-after-craniotomy",
+      "preferredNameRu": "Пересмотр противосудорожной терапии после краниотомии",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.avoid.routine-steroid-brain-tumor",
+      "preferredNameRu": "Отказ от рутинного ГКС без симптомного отёка мозга",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.rehabilitation.neurooncology",
+      "preferredNameRu": "Нейрореабилитация после лечения опухоли мозга",
+      "kind": "support"
+    },
+    {
+      "id": "action.assessment.cervical-radiculopathy",
+      "preferredNameRu": "Оценка шейной радикулопатии и двигательного дефицита",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.decision.cervical-radiculopathy-surgery",
+      "preferredNameRu": "Совместное решение о хирургическом лечении шейной радикулопатии",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.assessment.lumbar-stenosis",
+      "preferredNameRu": "Оценка поясничного стеноза и нейрогенной перемежающейся хромоты",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.nonoperative.lumbar-stenosis",
+      "preferredNameRu": "Консервативное лечение поясничного стеноза",
+      "kind": "support"
+    },
+    {
+      "id": "action.decision.lumbar-decompression",
+      "preferredNameRu": "Совместное решение о декомпрессии поясничного канала",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.assessment.csdh-postop",
+      "preferredNameRu": "Послеоперационная оценка хронической субдуральной гематомы",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.decision.anticoagulation-restart-csdh",
+      "preferredNameRu": "Индивидуальное решение о возобновлении антикоагуляции после субдуральной гематомы",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.education.csdh-recurrence-red-flags",
+      "preferredNameRu": "Памятка о признаках рецидива субдуральной гематомы",
+      "kind": "communication"
+    },
+    {
+      "id": "action.prevention.falls",
+      "preferredNameRu": "Профилактика повторных падений",
+      "kind": "support"
+    },
+    {
+      "id": "action.assessment.inph-objective",
+      "preferredNameRu": "Объективная оценка синдрома нормотензивной гидроцефалии",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.assessment.inph-differential",
+      "preferredNameRu": "Дифференциальная диагностика подозрения на нормотензивную гидроцефалию",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.procedure.csf-tap-test",
+      "preferredNameRu": "Ликвородинамическая проба с удалением ликвора",
+      "kind": "procedure"
+    },
+    {
+      "id": "action.decision.csf-shunt-inph",
+      "preferredNameRu": "Совместное решение о ликворошунтирующей операции",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.assessment.degenerative-cervical-myelopathy",
+      "preferredNameRu": "Оценка дегенеративной шейной миелопатии",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.decision.cervical-decompression",
+      "preferredNameRu": "Решение о декомпрессии при шейной миелопатии",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.avoid.cervical-manipulation-myelopathy",
+      "preferredNameRu": "Отказ от силовых манипуляций на шее при миелопатии",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.assessment.spondylolisthesis",
+      "preferredNameRu": "Оценка симптомного спондилолистеза и нестабильности",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.nonoperative.spondylolisthesis",
+      "preferredNameRu": "Консервативное лечение симптомного спондилолистеза",
+      "kind": "support"
+    },
+    {
+      "id": "action.decision.spondylolisthesis-surgery",
+      "preferredNameRu": "Совместное решение о хирургическом лечении спондилолистеза",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.assessment.trigeminal-surgical-candidacy",
+      "preferredNameRu": "Оценка показаний к хирургическому лечению невралгии тройничного нерва",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.decision.trigeminal-procedure",
+      "preferredNameRu": "Совместный выбор нейрохирургического метода при невралгии тройничного нерва",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.assessment.spine-postop-recovery",
+      "preferredNameRu": "Послеоперационная оценка восстановления после декомпрессии позвоночника",
+      "kind": "clinical-decision"
+    },
+    {
+      "id": "action.rehabilitation.spine-postop",
+      "preferredNameRu": "Поэтапная реабилитация после операции на позвоночнике",
+      "kind": "support"
+    },
+    {
+      "id": "action.education.spine-postop-red-flags",
+      "preferredNameRu": "Памятка о послеоперационных красных флагах",
+      "kind": "communication"
+    },
+    {
+      "id": "action.avoid.routine-postop-spine-mri",
+      "preferredNameRu": "Отказ от рутинной МРТ при благоприятном восстановлении после операции",
+      "kind": "clinical-decision"
     }
   ]
 }

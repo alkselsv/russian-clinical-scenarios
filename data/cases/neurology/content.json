@@ -1,0 +1,712 @@
+{
+  "_meta": {
+    "schemaVersion": "1.0.0",
+    "collection": "neurology",
+    "language": "ru",
+    "clinicalSafety": "unsafe-until-clinician-approved"
+  },
+  "cases": [
+    {
+      "id": "case.neurology.0001",
+      "title": "Эпизодическая мигрень без ауры",
+      "patient": {
+        "name": "Ксения Козлова",
+        "age": 31,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась с головной болью и светобоязнью; находится в солнцезащитных очках.",
+        "chiefComplaint": "Головная боль с одной стороны, тошнота и непереносимость яркого света.",
+        "vitals": {
+          "hr": 82,
+          "bp": "118/74",
+          "spo2": 99,
+          "temp": 36.8,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.neurology.0001.anamnesis.01",
+            "question": "Как часто это происходит?",
+            "answer": "2-3 раза в месяц на протяжении многих лет.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0001.anamnesis.02",
+            "question": "С какой стороны обычно болит голова?",
+            "answer": "Обычно болит слева, боль пульсирующая.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0001.anamnesis.03",
+            "question": "Что провоцирует симптомы?",
+            "answer": "Приступы провоцируют менструации и недосыпание.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0001.anamnesis.04",
+            "question": "Возникают ли перед приступом вспышки, зигзаги или другие изменения зрения?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0001.anamnesis.05",
+            "question": "Сопровождаются ли приступы тошнотой?",
+            "answer": "Да, тошнота бывает при каждом приступе.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0001.anamnesis.06",
+            "question": "Была ли травма головы?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.imaging.mri.brain": {
+          "result": "Не выполнялась: типичный многолетний стереотип приступов и красных флагов нет.",
+          "abnormal": false
+        }
+      }
+    },
+    {
+      "id": "case.neurology.0002",
+      "title": "Частая головная боль напряжения — хроническое течение пока не подтверждено",
+      "patient": {
+        "name": "Дмитрий Морозов",
+        "age": 44,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился, растирает шею и виски.",
+        "chiefComplaint": "Почти ежедневно в течение нескольких недель голову стягивает как обручем.",
+        "vitals": {
+          "hr": 76,
+          "bp": "122/76",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.neurology.0002.anamnesis.01",
+            "question": "Опишите боль подробнее.",
+            "answer": "Боль умеренная, как будто голову стягивает тугой повязкой.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0002.anamnesis.02",
+            "question": "Где именно болит голова?",
+            "answer": "Болит с обеих сторон, преимущественно в области лба и шеи.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0002.anamnesis.03",
+            "question": "Есть ли тошнота или рвота?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0002.anamnesis.04",
+            "question": "Есть ли светобоязнь?",
+            "answer": "Есть небольшая светобоязнь.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0002.anamnesis.05",
+            "question": "Испытываете ли вы стресс?",
+            "answer": "На работе испытываю сильный стресс.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0002.anamnesis.06",
+            "question": "Были ли лихорадка, слабость или онемение конечностей?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.imaging.mri.brain": {
+          "result": "Не выполнялась: при типичной первичной головной боли без красных флагов нейровизуализация рутинно не показана.",
+          "abnormal": false
+        }
+      }
+    },
+    {
+      "id": "case.neurology.0003",
+      "title": "Острая периферическая нейропатия правого лицевого нерва",
+      "patient": {
+        "name": "Елена Кузнецова",
+        "age": 38,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "urgent",
+        "arrival": "Самостоятельно обратилась с асимметрией лица.",
+        "chiefComplaint": "Сегодня утром появилась слабость правой половины лица.",
+        "vitals": {
+          "hr": 80,
+          "bp": "126/78",
+          "spo2": 99,
+          "temp": 36.8,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.neurology.0003.anamnesis.01",
+            "question": "Когда начались симптомы?",
+            "answer": "Заметила сегодня, когда проснулась.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0003.anamnesis.02",
+            "question": "Можете ли вы наморщить лоб?",
+            "answer": "Нет, на этой стороне лоб не наморщивается.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0003.anamnesis.03",
+            "question": "Не было ли боли в ухе или за ухом?",
+            "answer": "Вчера была лёгкая боль за ухом.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0003.anamnesis.04",
+            "question": "Есть ли слабость в руке или ноге?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0003.anamnesis.05",
+            "question": "Изменилось ли восприятие вкуса?",
+            "answer": "На этой стороне языка появился металлический привкус.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0003.anamnesis.06",
+            "question": "Были ли пузырьковые высыпания в ухе или недавний укус клеща?",
+            "answer": "Нет.",
+            "relevant": true
+          }
+        ]
+      },
+      "studyResults": {
+        "study.imaging.mri.brain": {
+          "result": "Не выполнялась: клиника периферического поражения лицевого нерва типична, центральных или иных красных флагов нет.",
+          "abnormal": false
+        }
+      }
+    },
+    {
+      "id": "case.neurology.0004",
+      "title": "Синдром правого запястного канала с двигательными проявлениями",
+      "patient": {
+        "name": "Алексей Васильев",
+        "age": 46,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился с онемением рук.",
+        "chiefComplaint": "По ночам немеет правая кисть, стало трудно удерживать предметы.",
+        "vitals": {
+          "hr": 74,
+          "bp": "120/76",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.neurology.0004.anamnesis.01",
+            "question": "В каких пальцах возникают симптомы?",
+            "answer": "Большой, указательный и средний пальцы.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0004.anamnesis.02",
+            "question": "Когда симптомы выражены сильнее всего?",
+            "answer": "Сильнее всего ночью; из-за симптомов я просыпаюсь.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0004.anamnesis.03",
+            "question": "Кем вы работаете и много ли печатаете?",
+            "answer": "Я работаю за компьютером и почти весь день печатаю.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0004.anamnesis.04",
+            "question": "Не замечали слабости кисти или большого пальца?",
+            "answer": "Да, большой палец кажется слабее.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0004.anamnesis.05",
+            "question": "Возникает ли покалывание в пальцах при постукивании по запястью?",
+            "answer": "Да, покалывание переходит в пальцы.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0004.anamnesis.06",
+            "question": "Есть ли боль в шее с распространением в руку?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.functional.electroneuromyography": {
+          "result": "Замедление проведения по правому срединному нерву через запястный канал и снижение сенсорной амплитуды; умеренная компрессионная нейропатия.",
+          "abnormal": true
+        }
+      }
+    },
+    {
+      "id": "case.neurology.0005",
+      "title": "Паркинсонизм с вероятной болезнью Паркинсона",
+      "patient": {
+        "name": "Алексей Козлов",
+        "age": 67,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился, жена беспокоится о треморе.",
+        "chiefComplaint": "Правая рука дрожит в покое, движения стали медленнее.",
+        "vitals": {
+          "hr": 72,
+          "bp": "128/80",
+          "spo2": 98,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.neurology.0005.anamnesis.01",
+            "question": "Когда тремор выражен сильнее всего?",
+            "answer": "Тремор сильнее в покое и уменьшается при движении.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0005.anamnesis.02",
+            "question": "Как изменилась ваша походка?",
+            "answer": "Походка стала шаркающей, руки при ходьбе двигаются меньше.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0005.anamnesis.03",
+            "question": "Есть ли скованность?",
+            "answer": "Да, особенно трудно вставать со стула.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0005.anamnesis.04",
+            "question": "Изменилось ли обоняние?",
+            "answer": "Обоняние снижено около года.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0005.anamnesis.05",
+            "question": "Как вы спите?",
+            "answer": "Во сне двигаюсь и как будто разыгрываю сновидения.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0005.anamnesis.06",
+            "question": "Принимали ли вы нейролептики или противорвотные препараты длительно?",
+            "answer": "Нет.",
+            "relevant": true
+          }
+        ]
+      },
+      "studyResults": {
+        "study.imaging.mri.brain": {
+          "result": "Не выполнялась как тест на болезнь Паркинсона: структурная МРТ не подтверждает этот клинический диагноз.",
+          "abnormal": false
+        }
+      }
+    },
+    {
+      "id": "case.neurology.0006",
+      "title": "Невралгия правого тройничного нерва",
+      "patient": {
+        "name": "Александра Григорьева",
+        "age": 58,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась, держась за правую щеку.",
+        "chiefComplaint": "При чистке зубов в правой щеке возникает краткая боль как удар током.",
+        "vitals": {
+          "hr": 78,
+          "bp": "124/76",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.neurology.0006.anamnesis.01",
+            "question": "Опишите боль подробнее.",
+            "answer": "Боль пронзающая, похожа на удар электрическим током.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0006.anamnesis.02",
+            "question": "Что провоцирует симптомы?",
+            "answer": "Боль провоцируют прикосновение, жевание и холодный ветер.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0006.anamnesis.03",
+            "question": "Сколько длится каждый приступ?",
+            "answer": "Всего несколько секунд.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0006.anamnesis.04",
+            "question": "С какой стороны и в какой части лица возникает боль?",
+            "answer": "Справа, в области верхней челюсти.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0006.anamnesis.05",
+            "question": "Появляется ли сыпь на лице?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0006.anamnesis.06",
+            "question": "Есть ли зубная боль, высыпания или постоянное онемение лица?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.imaging.mri.brain": {
+          "result": "Высокоразрешающая МРТ исключила опухоль и демиелинизацию. Есть контакт сосудистой петли с правым тройничным нервом без описанной атрофии или смещения корешка.",
+          "abnormal": true
+        },
+        "study.lab.cbc-with-differential": {
+          "result": "Клетки крови в референсных пределах перед началом терапии.",
+          "abnormal": false
+        },
+        "order-set.lab.renal-function-electrolytes": {
+          "result": "Натрий и функция почек в референсных пределах.",
+          "abnormal": false
+        },
+        "study.lab.liver-enzymes.blood": {
+          "result": "АЛТ и АСТ в референсных пределах.",
+          "abnormal": false
+        }
+      }
+    },
+    {
+      "id": "case.neurology.0007",
+      "title": "Правосторонняя радикулопатия L5 с парезом разгибателей стопы",
+      "patient": {
+        "name": "Иван Лебедев",
+        "age": 40,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился, хромает, держась за поясницу.",
+        "chiefComplaint": "Боль идёт от поясницы по правой ноге до стопы; при ходьбе стопа свисает.",
+        "vitals": {
+          "hr": 80,
+          "bp": "128/78",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.neurology.0007.anamnesis.01",
+            "question": "Когда началась боль?",
+            "answer": "2 недели назад, после того как я поднял тяжесть.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0007.anamnesis.02",
+            "question": "Куда отдаёт боль?",
+            "answer": "Боль идёт вниз по ноге и отдаёт в большой палец стопы.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0007.anamnesis.03",
+            "question": "Где именно возникает онемение?",
+            "answer": "На тыльной поверхности стопы.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0007.anamnesis.04",
+            "question": "Есть ли слабость?",
+            "answer": "Стопа немного свисает при ходьбе.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0007.anamnesis.05",
+            "question": "Есть ли нарушения мочеиспускания или дефекации?",
+            "answer": "Нарушений мочеиспускания и дефекации нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0007.anamnesis.06",
+            "question": "Были ли лихорадка, травма, онкологическое заболевание или употребление инъекционных наркотиков?",
+            "answer": "Нет.",
+            "relevant": true
+          }
+        ]
+      },
+      "studyResults": {
+        "study.imaging.mri.lumbosacral-spine": {
+          "result": "Правосторонняя парамедианная грыжа диска L4–L5 компримирует корешок L5; признаков компрессии конского хвоста нет.",
+          "abnormal": true
+        },
+        "study.functional.emg-needle": {
+          "result": "Признаки денервации в мышцах миотома L5 справа.",
+          "abnormal": true
+        }
+      }
+    },
+    {
+      "id": "case.neurology.0008",
+      "title": "Эпизодическая кластерная головная боль, активный кластерный период",
+      "patient": {
+        "name": "Евгений Егоров",
+        "age": 42,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "urgent",
+        "arrival": "Самостоятельно обратился, возбужден, держит левый глаз.",
+        "chiefComplaint": "Очень сильная боль за левым глазом со слезотечением и выделениями из носа.",
+        "vitals": {
+          "hr": 92,
+          "bp": "138/84",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 16
+        },
+        "anamnesis": [
+          {
+            "id": "case.neurology.0008.anamnesis.01",
+            "question": "Как часто возникают приступы и сколько они длятся?",
+            "answer": "Уже 2 недели приступы бывают каждую ночь и длятся около 45 минут.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0008.anamnesis.02",
+            "question": "Какие изменения со стороны глаза вы заметили?",
+            "answer": "Глаз краснеет и слезится, веко опускается.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0008.anamnesis.03",
+            "question": "Есть ли заложенность или выделения из носа?",
+            "answer": "Во время приступа с этой стороны течёт из носа.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0008.anamnesis.04",
+            "question": "Можете ли вы спокойно сидеть или лежать во время приступа?",
+            "answer": "Мечусь, не могу усидеть на месте.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0008.anamnesis.05",
+            "question": "Замечали ли вы связь приступов с употреблением алкоголя?",
+            "answer": "Да, алкоголь провоцирует приступы.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0008.anamnesis.06",
+            "question": "Появлялись ли стойкое двоение, слабость, онемение или нарушение речи?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "studyResults": {
+        "study.imaging.mri.brain": {
+          "result": "Объёмного процесса, поражения гипофиза или кавернозного синуса не выявлено.",
+          "abnormal": false
+        },
+        "study.functional.ecg.resting-12-lead": {
+          "result": "Синусовый ритм, нарушений проводимости и клинически значимого удлинения интервалов нет.",
+          "abnormal": false
+        }
+      }
+    },
+    {
+      "id": "case.neurology.0009",
+      "title": "Вероятный эссенциальный тремор",
+      "patient": {
+        "name": "Надежда Белова",
+        "age": 66,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась по поводу тремора рук.",
+        "chiefComplaint": "Руки дрожат при письме и удержании чашки; похожее было у родственников.",
+        "vitals": {
+          "hr": 72,
+          "bp": "124/76",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.neurology.0009.anamnesis.01",
+            "question": "В каких ситуациях возникает тремор?",
+            "answer": "Когда тянусь за предметом или держу его в руке.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0009.anamnesis.02",
+            "question": "Сохраняются ли симптомы в покое?",
+            "answer": "В покое тремор почти отсутствует.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0009.anamnesis.03",
+            "question": "Как алкоголь влияет на дрожь?",
+            "answer": "После алкоголя дрожь на некоторое время уменьшается.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0009.anamnesis.04",
+            "question": "Есть ли подобные заболевания у близких родственников?",
+            "answer": "Такое было у отца и брата.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0009.anamnesis.05",
+            "question": "Есть ли скованность?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0009.anamnesis.06",
+            "question": "Какие лекарства, кофеин и стимуляторы вы принимаете?",
+            "answer": "Стимуляторы не принимаю, кофе пью умеренно.",
+            "relevant": true
+          }
+        ]
+      },
+      "studyResults": {
+        "study.lab.tsh.blood": {
+          "result": "ТТГ 2,0 мМЕ/л, в референсном диапазоне.",
+          "abnormal": false
+        },
+        "study.lab.free-t4.blood": {
+          "result": "Свободный Т4 12 пмоль/л, в референсном диапазоне.",
+          "abnormal": false
+        },
+        "study.imaging.mri.brain": {
+          "result": "Не выполнялась: изолированный двусторонний постурально-кинетический тремор без очаговой симптоматики не требует рутинной МРТ.",
+          "abnormal": false
+        }
+      }
+    },
+    {
+      "id": "case.neurology.0010",
+      "title": "Лёгкое когнитивное расстройство неустановленной этиологии",
+      "patient": {
+        "name": "Максим Морозов",
+        "age": 74,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился из-за ухудшения памяти.",
+        "chiefComplaint": "Стал чаще забывать встречи и терять вещи.",
+        "vitals": {
+          "hr": 74,
+          "bp": "132/78",
+          "spo2": 98,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.neurology.0010.anamnesis.01",
+            "question": "Когда близкие впервые заметили изменения?",
+            "answer": "Около года назад.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0010.anamnesis.02",
+            "question": "Как симптомы влияют на повседневные дела?",
+            "answer": "Справляюсь самостоятельно, но всё делаю медленнее.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0010.anamnesis.03",
+            "question": "Какие лекарства вы принимаете?",
+            "answer": "Только лизиноприл.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0010.anamnesis.04",
+            "question": "Какое у вас настроение?",
+            "answer": "Настроение обычное.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0010.anamnesis.05",
+            "question": "Как вы спите?",
+            "answer": "Сплю плохо, сильно храплю.",
+            "relevant": true
+          },
+          {
+            "id": "case.neurology.0010.anamnesis.06",
+            "question": "Бывали ли спутанность сознания или резкое ухудшение за несколько дней?",
+            "answer": "Нет, изменения нарастают постепенно около года.",
+            "relevant": true
+          }
+        ]
+      },
+      "studyResults": {
+        "study.assessment.neuropsychological": {
+          "result": "MoCA 23/30 с преимущественным снижением отсроченного воспроизведения; основные бытовые действия выполняет самостоятельно. Требуются сведения близкого и развёрнутая оценка.",
+          "abnormal": true
+        },
+        "study.imaging.mri.brain": {
+          "result": "Умеренные сосудистые изменения и медиальная височная атрофия 1–2; находка неспецифична и сама по себе не устанавливает болезнь Альцгеймера.",
+          "abnormal": true
+        },
+        "study.lab.tsh.blood": {
+          "result": "ТТГ 2,2 мМЕ/л, в референсном диапазоне.",
+          "abnormal": false
+        },
+        "study.lab.vitamin-b12.blood": {
+          "result": "Витамин B12 380 пг/мл, в референсном диапазоне.",
+          "abnormal": false
+        },
+        "study.lab.cbc-with-differential": {
+          "result": "Клинически значимой анемии или воспалительных изменений нет.",
+          "abnormal": false
+        },
+        "order-set.lab.renal-function-electrolytes": {
+          "result": "Электролиты, глюкоза и функция почек без клинически значимых отклонений.",
+          "abnormal": false
+        },
+        "study.sleep.polysomnography": {
+          "result": "Не выполнена; выраженный храп и плохой сон требуют оценки риска обструктивного апноэ сна.",
+          "abnormal": false
+        }
+      }
+    }
+  ]
+}

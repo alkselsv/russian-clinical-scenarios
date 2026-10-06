@@ -1,0 +1,179 @@
+{
+  "_meta": {
+    "schemaVersion": "1.0.0",
+    "purpose": "Машинные факты и условия нефрологических сценариев",
+    "conditionDsl": {
+      "always": "{\"always\":true}",
+      "comparison": "{\"fact\":\"path\",\"op\":\"eq|ne|lt|lte|gt|gte|in|exists\",\"value\":any}",
+      "all": "{\"all\":[...]}",
+      "any": "{\"any\":[...]}",
+      "not": "{\"not\":{...}}"
+    }
+  },
+  "cases": [
+    {
+      "id": "case.nephrology.0001",
+      "facts": {
+        "sglt2Appropriate": true
+      },
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {
+        "action.medication.sglt2-kidney-protection": {
+          "fact": "sglt2Appropriate",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.nephrology.0002",
+      "facts": {},
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {},
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.nephrology.0003",
+      "facts": {
+        "kidneyBiopsyIndicated": true
+      },
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {
+        "action.procedure.kidney-biopsy": {
+          "fact": "kidneyBiopsyIndicated",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "studyConditions": {
+        "study.pathology.kidney-biopsy": {
+          "fact": "kidneyBiopsyIndicated",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "choiceGroups": []
+    },
+    {
+      "id": "case.nephrology.0004",
+      "facts": {},
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {},
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.nephrology.0005",
+      "facts": {},
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {},
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.nephrology.0006",
+      "facts": {
+        "intracranialAneurysmScreeningIndicated": false
+      },
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {
+        "action.assessment.adpkd-intracranial-aneurysm": {
+          "fact": "intracranialAneurysmScreeningIndicated",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.nephrology.0007",
+      "facts": {},
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {},
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.nephrology.0008",
+      "facts": {
+        "obstructionEvaluationIndicated": true
+      },
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {},
+      "studyConditions": {
+        "study.imaging.ultrasound.kidneys": {
+          "fact": "obstructionEvaluationIndicated",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "choiceGroups": []
+    },
+    {
+      "id": "case.nephrology.0009",
+      "facts": {},
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {},
+      "studyConditions": {},
+      "choiceGroups": []
+    },
+    {
+      "id": "case.nephrology.0010",
+      "facts": {
+        "kidneyBiopsyIndicated": false,
+        "thrombosisProphylaxisIndicated": true,
+        "venousUltrasoundIndicated": false
+      },
+      "factNotesRu": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "actionConditions": {
+        "action.procedure.kidney-biopsy": {
+          "fact": "kidneyBiopsyIndicated",
+          "op": "eq",
+          "value": true
+        },
+        "action.decision.nephrotic-thrombosis-prophylaxis": {
+          "fact": "thrombosisProphylaxisIndicated",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "studyConditions": {
+        "study.pathology.kidney-biopsy": {
+          "fact": "kidneyBiopsyIndicated",
+          "op": "eq",
+          "value": true
+        },
+        "study.imaging.ultrasound.leg-veins": {
+          "fact": "venousUltrasoundIndicated",
+          "op": "eq",
+          "value": true
+        }
+      },
+      "choiceGroups": []
+    }
+  ]
+}

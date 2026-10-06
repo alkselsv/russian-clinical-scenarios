@@ -1,0 +1,1047 @@
+{
+  "_meta": {
+    "schemaVersion": "1.0.0",
+    "collection": "nephrology",
+    "language": "ru",
+    "clinicalSafety": "unsafe-until-clinician-approved",
+    "evaluationPolicy": {
+      "required": "Действие необходимо в данном сценарии.",
+      "conditional": "Действие засчитывается только при выполнении явно заданных условий.",
+      "optional": "Действие допустимо, но не влияет на прохождение ключевого алгоритма.",
+      "not-routine": "Рутинное выполнение не требуется и не должно приносить баллы.",
+      "unsafe-or-delaying": "Действие потенциально вредит или задерживает приоритетную помощь.",
+      "unscorable-as-specified": "Формулировка недостаточно конкретна для оценки."
+    }
+  },
+  "cases": [
+    {
+      "id": "case.nephrology.0001",
+      "diagnosis": {
+        "id": "condition.ckd.g3a.a3",
+        "preferredNameRu": "Хроническая болезнь почек G3aA3",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "N18.3",
+            "display": "Хроническая болезнь почек, стадия 3",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.ckd-chronicity-cause-risk",
+          "evaluation": "required",
+          "indicationRu": "ХБП определяется стойкостью более трёх месяцев и классифицируется по СКФ и альбуминурии.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Подтвердить динамику, категорию G3aA3, причину, сердечно-сосудистый риск и осложнения."
+        },
+        {
+          "actionId": "action.medication.raas-blockade-kidney",
+          "evaluation": "required",
+          "indicationRu": "Альбуминурия A3 и гипертензия поддерживают нефропротективную блокаду РААС.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "ИАПФ или БРА с титрацией, контролем креатинина и калия; не комбинировать классы."
+        },
+        {
+          "actionId": "action.medication.sglt2-kidney-protection",
+          "evaluation": "conditional",
+          "indicationRu": "При диабете и/или альбуминурической ХБП препарат может замедлить прогрессирование.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Назначить при достаточной СКФ и отсутствии противопоказаний с правилами временной отмены при остром заболевании."
+        },
+        {
+          "actionId": "action.avoid.nephrotoxins",
+          "evaluation": "required",
+          "indicationRu": "Нефротоксины ускоряют ухудшение функции.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Исключить необязательные НПВП, корректировать дозы по СКФ и избегать обезвоживания."
+        },
+        {
+          "actionId": "action.monitoring.ckd",
+          "evaluation": "required",
+          "indicationRu": "Риск определяется сочетанием G и A.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "План контроля АД, СКФ, калия, альбуминурии, анемии и минерального обмена."
+        },
+        {
+          "actionId": "action.referral.nephrology",
+          "evaluation": "required",
+          "indicationRu": "G3aA3 и прогрессирование требуют нефролога.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Направить с динамикой СКФ и альбуминурии."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "order-set.lab.renal-function-electrolytes",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Подтверждает категорию СКФ и безопасность терапии.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.uacr.urine",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Категорирует альбуминурию и риск.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.imaging.ultrasound.kidneys",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Исключает обструкцию и оценивает структуру.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.469.v2",
+        "guideline.int.kdigo.ckd.2024"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/nephrology.md#case-nephrology-0001"
+    },
+    {
+      "id": "case.nephrology.0002",
+      "diagnosis": {
+        "id": "condition.ureterolithiasis.right.recurrent",
+        "preferredNameRu": "Рецидивирующий уретеролитиаз справа",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "N20.1",
+            "display": "Камни мочеточника",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.renal-colic-red-flags",
+          "evaluation": "required",
+          "indicationRu": "Инфекция с обструкцией, анурия или единственная почка требуют экстренного дренирования.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Оценить температуру, анализ мочи, функцию почек, гидронефроз, единственную почку и контроль боли."
+        },
+        {
+          "actionId": "action.medication.nsaid.renal-colic",
+          "evaluation": "required",
+          "indicationRu": "НПВП являются первой линией обезболивания при отсутствии противопоказаний.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Парентерально или внутрь в зарегистрированной дозе после оценки функции почек и риска ЖКК."
+        },
+        {
+          "actionId": "action.medication.ondansetron",
+          "evaluation": "optional",
+          "indicationRu": "Рвота позволяет использовать противорвотное.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Назначить с учётом QT и взаимодействий."
+        },
+        {
+          "actionId": "action.avoid.forced-hydration-stone",
+          "evaluation": "required",
+          "indicationRu": "Форсированная инфузия не ускоряет отхождение и может усилить боль при обструкции.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Восполнять только реальный дефицит жидкости; не проводить форсированный диурез."
+        },
+        {
+          "actionId": "action.referral.urology-stone",
+          "evaluation": "required",
+          "indicationRu": "Камень 5 мм требует плана наблюдения и критерия вмешательства.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Организовать урологический контроль, повторную визуализацию и экстренный возврат при лихорадке/анурии/некупируемой боли."
+        },
+        {
+          "actionId": "action.assessment.recurrent-stone-metabolic",
+          "evaluation": "required",
+          "indicationRu": "Третий эпизод требует метафилактики.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Исследовать состав камня, суточную мочу и факторы риска после разрешения эпизода."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.imaging.ct.urinary-tract.noncontrast",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Определяет размер, локализацию и обструкцию.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.urinalysis.general",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Выявляет гематурию и признаки инфекции.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "order-set.lab.renal-function-electrolytes",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Определяет функцию почек и безопасность лечения.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.7.2024"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/nephrology.md#case-nephrology-0002"
+    },
+    {
+      "id": "case.nephrology.0003",
+      "diagnosis": {
+        "id": "condition.glomerular-hematuria.suspected-iga-nephropathy",
+        "preferredNameRu": "Клубочковая гематурия: подозрение на IgA-нефропатию",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "N02.9",
+            "display": "Рецидивирующая и стойкая гематурия неуточнённая",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.glomerular-hematuria",
+          "evaluation": "required",
+          "indicationRu": "Синфарингитическая макрогематурия предполагает IgAN, но требует исключения иных причин.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Подтвердить клубочковый осадок, количественно оценить белок, СКФ, АД, системные признаки и инфекции."
+        },
+        {
+          "actionId": "action.referral.nephrology",
+          "evaluation": "required",
+          "indicationRu": "Рецидивирующая клубочковая гематурия с протеинурией требует нефролога.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Направить для решения вопроса о биопсии и ренопротекции."
+        },
+        {
+          "actionId": "action.procedure.kidney-biopsy",
+          "evaluation": "conditional",
+          "indicationRu": "IgA-нефропатия подтверждается морфологически при наличии показаний.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Выполнить после оценки давления, гемостаза и противопоказаний; обеспечить иммуноморфологию."
+        },
+        {
+          "actionId": "action.avoid.unconfirmed-iga-diagnosis",
+          "evaluation": "required",
+          "indicationRu": "Клинический паттерн не доказывает мезангиальные IgA-депозиты.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "До биопсии использовать формулировку «подозрение на IgA-нефропатию»."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.lab.urine-sediment-microscopy",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Подтверждает клубочковый характер гематурии.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.upcr.urine",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Количественно определяет протеинурию.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "order-set.lab.renal-function-electrolytes",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Определяет функцию почек.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.pathology.kidney-biopsy",
+          "evaluation": "conditional",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Подтверждает IgA-депозиты и MEST-C при показаниях.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.894.v1",
+        "guideline.int.kdigo.igan-igav.2025"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/nephrology.md#case-nephrology-0003"
+    },
+    {
+      "id": "case.nephrology.0004",
+      "diagnosis": {
+        "id": "condition.diabetic-kidney-disease.g3b.a3",
+        "preferredNameRu": "Диабетическая болезнь почек, ХБП G3bA3",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "E11.2",
+            "display": "Сахарный диабет 2 типа с поражением почек",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.diabetic-kidney-disease",
+          "evaluation": "required",
+          "indicationRu": "Длительный диабет, ретинопатия и альбуминурия поддерживают диагноз, но атипичные признаки требуют альтернативного поиска.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Категорировать G3bA3, оценить динамику, осадок, осложнения и сердечно-сосудистый риск."
+        },
+        {
+          "actionId": "action.medication.raas-blockade-kidney",
+          "evaluation": "required",
+          "indicationRu": "Альбуминурия A3 и гипертензия — показание к ИАПФ/БРА.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Титровать с контролем креатинина и калия."
+        },
+        {
+          "actionId": "action.medication.sglt2-kidney-protection",
+          "evaluation": "required",
+          "indicationRu": "При СД2 и ХБП снижает почечный и сердечно-сосудистый риск.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Назначить при допустимой СКФ, обучив правилам при болезни и оценив противопоказания."
+        },
+        {
+          "actionId": "action.plan.diabetes-individualized-therapy",
+          "evaluation": "required",
+          "indicationRu": "HbA1c 9,2% требует усиления лечения с учётом ХБП.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Индивидуализировать цель и препараты по СКФ и рискам."
+        },
+        {
+          "actionId": "action.monitoring.diabetic-kidney-disease",
+          "evaluation": "required",
+          "indicationRu": "Необходим контроль прогрессирования и осложнений.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Регулярно контролировать СКФ, калий, А/К мочи, АД, HbA1c и стопы/глазное дно."
+        },
+        {
+          "actionId": "action.referral.nephrology",
+          "evaluation": "required",
+          "indicationRu": "G3bA3 и прогрессирование требуют профильного наблюдения.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Направить к нефрологу."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "order-set.lab.renal-function-electrolytes",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Категория G и безопасность терапии.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.uacr.urine",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Категория A и динамика.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.hba1c.blood",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Контроль диабета.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.imaging.ultrasound.kidneys",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Исключает обструкцию и атипичную структурную причину.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.469.v2",
+        "guideline.int.kdigo.ckd.2024",
+        "guideline.ru.minzdrav.290.v2"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/nephrology.md#case-nephrology-0004"
+    },
+    {
+      "id": "case.nephrology.0005",
+      "diagnosis": {
+        "id": "condition.sle.suspected-lupus-nephritis.unclassified",
+        "preferredNameRu": "СКВ с вероятным люпус-нефритом, класс не определён",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "M32.1",
+            "display": "Системная красная волчанка с поражением органов или систем",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.lupus-nephritis",
+          "evaluation": "required",
+          "indicationRu": "Активный осадок, протеинурия, снижение функции и системные признаки требуют срочной оценки.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Оценить АД, отёки, диурез, инфекцию, беременность, активность СКВ и тяжесть почечного поражения."
+        },
+        {
+          "actionId": "action.referral.nephrology-rheumatology.urgent",
+          "evaluation": "required",
+          "indicationRu": "Тактика требует совместного ведения.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Срочно госпитализировать или обеспечить неотложный профильный маршрут."
+        },
+        {
+          "actionId": "action.procedure.kidney-biopsy",
+          "evaluation": "required",
+          "indicationRu": "Класс и активность/хронизация определяют схему индукции.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Биопсия почки после оценки гемостаза и безопасности; не задерживать спасительную терапию при жизнеугрожающем быстро прогрессирующем процессе."
+        },
+        {
+          "actionId": "action.avoid.empiric-lupus-pulse-before-workup",
+          "evaluation": "required",
+          "indicationRu": "Рутинная пульс-терапия без исключения инфекции и класса может навредить.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Иммуносупрессию выбирать нефрологу/ревматологу по морфологии и тяжести; исключение — жизнеугрожающая ситуация."
+        },
+        {
+          "actionId": "action.disposition.nephrology-admission",
+          "evaluation": "required",
+          "indicationRu": "Есть почечная дисфункция, цитопении и активный осадок.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Госпитализировать в профильный стационар."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.lab.urine-sediment-microscopy",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Выявляет активный нефритический осадок.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.upcr.urine",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Количественно оценивает протеинурию.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "order-set.lab.renal-function-electrolytes",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Определяет тяжесть дисфункции.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.cbc-with-differential",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Цитопении важны для активности и безопасности лечения.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.immunology.ana-dsdna-complement",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Поддерживает активность СКВ, но не заменяет морфологию.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.pathology.kidney-biopsy",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Определяет класс, активность и хронизацию.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.int.kdigo.lupus-nephritis.2024"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/nephrology.md#case-nephrology-0005"
+    },
+    {
+      "id": "case.nephrology.0006",
+      "diagnosis": {
+        "id": "condition.adpkd",
+        "preferredNameRu": "Аутосомно-доминантная поликистозная болезнь почек",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "Q61.2",
+            "display": "Поликистоз почки, тип взрослых",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.adpkd-risk",
+          "evaluation": "required",
+          "indicationRu": "Семейный анамнез и двусторонние кисты подтверждают АДПБП; нужно стратифицировать прогрессирование.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Оценить СКФ, объём почек/визуализационный класс по показаниям, АД, боль, гематурию, инфекции, камни и печёночные кисты."
+        },
+        {
+          "actionId": "action.medication.antihypertensive.initial",
+          "evaluation": "required",
+          "indicationRu": "АД около 150 мм рт. ст. требует лечения.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Предпочесть блокаду РААС при отсутствии противопоказаний; цель индивидуализировать."
+        },
+        {
+          "actionId": "action.counseling.adpkd-genetic",
+          "evaluation": "required",
+          "indicationRu": "Риск передачи потомству составляет 50% при типичном аутосомно-доминантном наследовании.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Обсудить тестирование родственников, репродуктивные вопросы и генетическое консультирование."
+        },
+        {
+          "actionId": "action.referral.nephrology",
+          "evaluation": "required",
+          "indicationRu": "Нужна оценка прогрессирования и специфической терапии.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Направить к нефрологу, знакомому с АДПБП."
+        },
+        {
+          "actionId": "action.assessment.adpkd-intracranial-aneurysm",
+          "evaluation": "conditional",
+          "indicationRu": "Скрининг внутричерепной аневризмы не универсален, но нужен при семейном/личном анамнезе, симптомах или профессии высокого риска.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "При показаниях организовать МР-ангиографию; внезапная сильнейшая головная боль — экстренно."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.imaging.ultrasound.kidneys",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Подтверждает множественные двусторонние кисты в контексте возраста и семейного анамнеза.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "order-set.lab.renal-function-electrolytes",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Исходная функция почек.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.uacr.urine",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Оценка повреждения и риска.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.int.kdigo.adpkd.2025"
+      ],
+      "reviewStatus": "major-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/nephrology.md#case-nephrology-0006"
+    },
+    {
+      "id": "case.nephrology.0007",
+      "diagnosis": {
+        "id": "condition.atherosclerotic-renal-artery-stenosis.right.high-risk",
+        "preferredNameRu": "Атеросклеротический стеноз правой почечной артерии с высокорисковым клиническим фенотипом",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "I70.1",
+            "display": "Атеросклероз почечной артерии",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.resistant-hypertension",
+          "evaluation": "required",
+          "indicationRu": "До инвазивной тактики нужно подтвердить истинную резистентность.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Проверить измерение, СМАД/ДМАД, приверженность, дозы, диуретик, соль, НПВП и другие вторичные причины."
+        },
+        {
+          "actionId": "action.assessment.hypertensive-emergency",
+          "evaluation": "required",
+          "indicationRu": "АД 172/98 требует исключить острое поражение органов-мишеней.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Оценить неврологические, сердечные, аортальные и почечные признаки неотложности."
+        },
+        {
+          "actionId": "action.referral.renal-revascularization-center",
+          "evaluation": "required",
+          "indicationRu": "Эпизод внезапного отёка лёгких и ухудшение функции на ИАПФ формируют высокорисковый фенотип.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Направить в мультидисциплинарный сосудистый/нефрологический центр для решения о реваскуляризации; не считать 70% стеноз автоматическим показанием."
+        },
+        {
+          "actionId": "action.monitoring.bp-followup",
+          "evaluation": "required",
+          "indicationRu": "Нужен контроль АД, креатинина и калия при коррекции терапии.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Оптимизировать медикаменты под профильным контролем."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "order-set.lab.renal-function-electrolytes",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Документирует изменение функции и калия.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.imaging.ultrasound.kidneys",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Асимметрия поддерживает гемодинамическую значимость.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.imaging.duplex.renal-arteries",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Неинвазивная гемодинамическая оценка.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.imaging.ct-angiography.renal-arteries",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Уточняет анатомию перед решением о вмешательстве с учётом риска контраста.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.62.v3",
+        "guideline.int.kdigo.ckd.2024"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/nephrology.md#case-nephrology-0007"
+    },
+    {
+      "id": "case.nephrology.0008",
+      "diagnosis": {
+        "id": "condition.aki.stage2.hypovolemic-nsaid",
+        "preferredNameRu": "Острое повреждение почек 2-й стадии на фоне гиповолемии и НПВП",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "N17.9",
+            "display": "Острая почечная недостаточность неуточнённая",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.aki-stage-cause",
+          "evaluation": "required",
+          "indicationRu": "Креатинин вырос более чем вдвое и есть олигурия.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Стадировать ОПП, оценить объём, лекарства, инфекцию, обструкцию, калий, КОС и показания к заместительной терапии."
+        },
+        {
+          "actionId": "action.avoid.nephrotoxins",
+          "evaluation": "required",
+          "indicationRu": "Ежедневный НПВП усугубляет гипоперфузию.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Немедленно отменить НПВП и временно пересмотреть другие препараты, влияющие на почки/объём."
+        },
+        {
+          "actionId": "action.support.isotonic-crystalloid-aki",
+          "evaluation": "required",
+          "indicationRu": "Есть клиническая гиповолемия после рвоты.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Осторожно вводить изотонический кристаллоид болюсами с повторной оценкой АД, лёгких и диуреза."
+        },
+        {
+          "actionId": "action.medication.ondansetron",
+          "evaluation": "optional",
+          "indicationRu": "Контроль рвоты помогает восстановить питьё.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Назначить с учётом QT и электролитов."
+        },
+        {
+          "actionId": "action.monitoring.aki-electrolytes-diuresis",
+          "evaluation": "required",
+          "indicationRu": "Возможны гиперкалиемия и дальнейшее ухудшение.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Строгий диурез, повторные креатинин/калий/КОС и ЭКГ при гиперкалиемии."
+        },
+        {
+          "actionId": "action.disposition.nephrology-admission",
+          "evaluation": "required",
+          "indicationRu": "ОПП 2-й стадии с олигурией требует стационарного наблюдения.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Госпитализировать."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "order-set.lab.renal-function-electrolytes",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Стадирование и выявление гиперкалиемии.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.urine-sediment-microscopy",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Исключает активный осадок и поддерживает дифференциальный диагноз.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.cbc-with-differential",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Гемоконцентрация поддерживает гиповолемию.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.imaging.ultrasound.kidneys",
+          "evaluation": "conditional",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Нужно при риске обструкции или неясной причине, но не должно задерживать регидратацию.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.int.kdigo.aki.2012"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/nephrology.md#case-nephrology-0008"
+    },
+    {
+      "id": "case.nephrology.0009",
+      "diagnosis": {
+        "id": "condition.ckd.g3b.a2.hypertension-associated",
+        "preferredNameRu": "ХБП G3bA2 при длительной артериальной гипертензии",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "N18.3",
+            "display": "Хроническая болезнь почек, стадия 3",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.hypertensive-ckd-differential",
+          "evaluation": "required",
+          "indicationRu": "«Гипертонический нефросклероз» является диагнозом исключения.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Подтвердить хроническость, количественно оценить альбуминурию, осадок, сосудистую/обструктивную и системную причины."
+        },
+        {
+          "actionId": "action.medication.raas-blockade-kidney",
+          "evaluation": "required",
+          "indicationRu": "АГ и альбуминурия A2 поддерживают ИАПФ/БРА.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Титровать с контролем креатинина и калия."
+        },
+        {
+          "actionId": "action.education.hypertension-lifestyle",
+          "evaluation": "required",
+          "indicationRu": "Контроль соли и давления замедляет прогрессирование.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Снизить соль, нормализовать массу, активность и отказ от курения."
+        },
+        {
+          "actionId": "action.avoid.nephrotoxins",
+          "evaluation": "required",
+          "indicationRu": "ХБП повышает риск лекарственного повреждения.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Избегать НПВП и корректировать дозы по СКФ."
+        },
+        {
+          "actionId": "action.monitoring.ckd",
+          "evaluation": "required",
+          "indicationRu": "G3b требует контроля осложнений.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Контролировать СКФ, калий, А/К мочи, гемоглобин, бикарбонат и минеральный обмен."
+        },
+        {
+          "actionId": "action.referral.nephrology",
+          "evaluation": "required",
+          "indicationRu": "G3b и прогрессирование требуют профильной оценки.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Направить к нефрологу."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "order-set.lab.renal-function-electrolytes",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Определяет G-категорию и осложнения.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.uacr.urine",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Количественно определяет A-категорию.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.urine-sediment-microscopy",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Активный осадок заставил бы пересмотреть причину.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.imaging.ultrasound.kidneys",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Оценивает хронические структурные изменения и обструкцию.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.ru.minzdrav.469.v2",
+        "guideline.int.kdigo.ckd.2024",
+        "guideline.ru.minzdrav.62.v3"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/nephrology.md#case-nephrology-0009"
+    },
+    {
+      "id": "case.nephrology.0010",
+      "diagnosis": {
+        "id": "condition.nephrotic-syndrome.suspected-primary-membranous",
+        "preferredNameRu": "Нефротический синдром: вероятная PLA2R-ассоциированная мембранозная нефропатия",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "N04.2",
+            "display": "Нефротический синдром с диффузным мембранозным гломерулонефритом",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actionRules": [
+        {
+          "actionId": "action.assessment.nephrotic-syndrome",
+          "evaluation": "required",
+          "indicationRu": "Массивная протеинурия, гипоальбуминемия и отёки подтверждают синдром, но не причину.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Оценить функцию почек, объём, инфекцию, тромбоз, липиды, PLA2R и вторичные причины: лекарства, HBV/HCV/HIV, опухоли и аутоиммунные болезни."
+        },
+        {
+          "actionId": "action.referral.nephrology-rheumatology.urgent",
+          "evaluation": "required",
+          "indicationRu": "Нужна срочная нефрологическая верификация и стратификация риска.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Организовать срочное ведение нефрологом; ревматолог по показаниям."
+        },
+        {
+          "actionId": "action.procedure.kidney-biopsy",
+          "evaluation": "conditional",
+          "indicationRu": "При положительном PLA2R биопсия не всегда обязательна, но нужна при атипичных признаках или диагностической неопределённости.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Решение принимает нефролог после оценки PLA2R, СКФ и вторичных причин."
+        },
+        {
+          "actionId": "action.medication.loop-diuretic-nephrotic",
+          "evaluation": "required",
+          "indicationRu": "Есть выраженные отёки и прибавка массы.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "doseRouteTimingRu": "Петлевой диуретик с контролем массы, АД, креатинина и электролитов; избегать чрезмерного снижения объёма."
+        },
+        {
+          "actionId": "action.education.sodium-restriction-nephrotic",
+          "evaluation": "required",
+          "indicationRu": "Натрий поддерживает отёки.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Ограничить натрий без неоправданного ограничения белка."
+        },
+        {
+          "actionId": "action.decision.nephrotic-thrombosis-prophylaxis",
+          "evaluation": "conditional",
+          "indicationRu": "Альбумин 21 г/л повышает риск тромбоза, но профилактика зависит и от риска кровотечения.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Индивидуально оценить антикоагуляцию; немедленно исследовать симптомы тромбоза/ТЭЛА."
+        },
+        {
+          "actionId": "action.avoid.empiric-steroid-nephrotic",
+          "evaluation": "required",
+          "indicationRu": "Внутривенный ГКС без стратификации и схемы для мембранозной нефропатии не является корректной терапией.",
+          "conditionsRu": [],
+          "contraindicationsRu": [],
+          "responseCriteriaRu": "Тактика выполнена, переносимость и клинический ответ документированы.",
+          "executionRu": "Не начинать эмпирическую пульс-терапию только по наличию отёков и протеинурии."
+        }
+      ],
+      "studyRules": [
+        {
+          "studyId": "study.lab.upcr.urine",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Количественно подтверждает нефротическую протеинурию.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.albumin.blood",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Гипоальбуминемия определяет тяжесть и тромботический риск.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.lab.lipid-profile.blood",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Дислипидемия является компонентом синдрома и фактором риска.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.immunology.anti-pla2r",
+          "evaluation": "required",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Поддерживает первичную мембранозную нефропатию и служит маркером активности.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.pathology.kidney-biopsy",
+          "evaluation": "conditional",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Необходима при атипичных признаках или диагностической неопределённости.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        },
+        {
+          "studyId": "study.imaging.ultrasound.leg-veins",
+          "evaluation": "conditional",
+          "timingRu": "В ходе текущего обследования.",
+          "rationaleRu": "Проводится при подозрении на ТГВ, а не рутинно.",
+          "mustNotDelayRu": "Не задерживать необходимое лечение и маршрутизацию."
+        }
+      ],
+      "guidelineIds": [
+        "guideline.int.kdigo.glomerular.2021"
+      ],
+      "reviewStatus": "critical-revision-required",
+      "clinicalAuditRef": "../../../docs/audits/nephrology.md#case-nephrology-0010"
+    }
+  ]
+}

@@ -1,0 +1,2501 @@
+{
+  "_meta": {
+    "schemaVersion": "1.0.0",
+    "collection": "internal-medicine",
+    "generator": "scripts/generate-runtime.mjs",
+    "caseCount": 10,
+    "language": "ru",
+    "clinicalSafety": "unsafe-until-clinician-approved",
+    "scoringMode": "rules-with-structured-conditions-and-parameter-review",
+    "conditionDsl": {
+      "always": "{\"always\":true}",
+      "comparison": "{\"fact\":\"path\",\"op\":\"eq|ne|lt|lte|gt|gte|in|exists\",\"value\":any}",
+      "all": "{\"all\":[...]}",
+      "any": "{\"any\":[...]}",
+      "not": "{\"not\":{...}}"
+    },
+    "inputSha256": {
+      "actions": "4a565ef472310a5adeaf95cda3408d1b73d8b7cde4f26417976c648306901a70",
+      "studies": "5b3fc8cd11378a4164364336e83e4867219ed5058f82356394ab71b12c313fbd",
+      "references": "7e550f6c0e468e15f35f5fca8d3c711dc9db3d8a61ffb50484dc215f814442df",
+      "content": "47cb54e3982c8b3522141221d4d75759edaceb9ac6113098b0679c59e2340c3a",
+      "rules": "5ba5cc0405b56a07adf7e624cbc4a84086851f0b857f8a86dbb0f1638f85cf82",
+      "config": "e5f8bc9dd9f072263a75111a49866dd246643d9e8555d122c4211c3d03d6f49f"
+    }
+  },
+  "cases": [
+    {
+      "id": "case.internal-medicine.0001",
+      "title": "Железодефицитная анемия на фоне обильных менструаций",
+      "patient": {
+        "name": "Екатерина Григорьева",
+        "age": 34,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Обратилась самостоятельно, выглядит бледной и утомлённой.",
+        "chiefComplaint": "Я уже несколько месяцев утомляюсь и задыхаюсь, поднимаясь по лестнице.",
+        "vitals": {
+          "hr": 92,
+          "bp": "112/70",
+          "spo2": 98,
+          "temp": 36.7,
+          "rr": 16
+        },
+        "anamnesis": [
+          {
+            "id": "case.internal-medicine.0001.anamnesis.01",
+            "question": "Как давно вы себя так чувствуете?",
+            "answer": "Около 4 месяцев, постепенно становится хуже.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0001.anamnesis.02",
+            "question": "Как проходят менструации?",
+            "answer": "Обильные, длятся 7–8 дней каждый месяц.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0001.anamnesis.03",
+            "question": "Как вы обычно питаетесь?",
+            "answer": "Питаюсь преимущественно вегетарианской пищей, красное мясо ем редко.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0001.anamnesis.04",
+            "question": "Появились ли у вас необычные пищевые пристрастия?",
+            "answer": "Да, почему-то постоянно хочется грызть лёд.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0001.anamnesis.05",
+            "question": "Замечали ли вы кровь в стуле?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0001.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {},
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.iron-deficiency-anemia.heavy-menstrual-bleeding",
+        "label": "Железодефицитная анемия вследствие хронической кровопотери",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "D50.0",
+            "display": "Железодефицитная анемия вторичная вследствие потери крови",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.anemia-cause",
+            "label": "Поиск причины анемии и источника кровопотери",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Оценить тяжесть менструальной кровопотери, беременность, питание, ЖКТ-симптомы и иные кровопотери.",
+            "indication": "Ферритин подтверждает дефицит; необходимо установить источник.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.iron.oral",
+            "label": "Пероральный препарат железа",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Назначить препарат железа внутрь в пересчёте на элементарное железо; режим выбрать по переносимости и инструкции.",
+            "indication": "Стабильная пациентка с подтверждённым дефицитом подходит для пероральной терапии.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.referral.gynecology-heavy-menses",
+            "label": "Направление к гинекологу при обильных менструациях",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Организовать гинекологическое обследование причины аномального маточного кровотечения.",
+            "indication": "Без коррекции обильных менструаций дефицит будет рецидивировать.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.monitoring.iron-response",
+            "label": "Контроль ответа и восполнения запасов железа",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Контроль ОАК примерно через 4 недели; продолжить лечение после нормализации Hb до восполнения запасов и повторно оценить ферритин.",
+            "indication": "Нужно подтвердить ответ и восполнение депо.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Определяет тип и тяжесть анемии.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Гемоглобин 92 г/л, MCV 72 фл, RDW 17%.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.ferritin.blood",
+            "label": "Исследование уровня ферритина в крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Низкий ферритин подтверждает абсолютный дефицит железа.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Ферритин 6 нг/мл.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "order-set.lab.iron-status",
+            "label": "Показатели обмена железа",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Низкое насыщение трансферрина поддерживает диагноз.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Железо 5,0 мкмоль/л, трансферрин повышен, насыщение трансферрина 6%.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.669.v2",
+          "title": "Железодефицитная анемия",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/669_2"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.internal-medicine.0002",
+      "title": "Витамин-B12-дефицитная анемия с неврологическими проявлениями",
+      "patient": {
+        "name": "Дмитрий Алексеев",
+        "age": 68,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился, жалуется на онемение ног и утомляемость.",
+        "chiefComplaint": "Мои ноги немеют и покалывают, и я все время утомлен.",
+        "vitals": {
+          "hr": 78,
+          "bp": "128/78",
+          "spo2": 97,
+          "temp": 36.6,
+          "rr": 16
+        },
+        "anamnesis": [
+          {
+            "id": "case.internal-medicine.0002.anamnesis.01",
+            "question": "Когда появилось онемение?",
+            "answer": "Онемение появилось около 6 месяцев назад и постепенно усиливалось.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0002.anamnesis.02",
+            "question": "Вы едите мясо или другие продукты животного происхождения?",
+            "answer": "Нет, я уже 10 лет придерживаюсь веганского питания.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0002.anamnesis.03",
+            "question": "Замечаете ли вы ухудшение памяти?",
+            "answer": "В последнее время стал чаще всё забывать.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0002.anamnesis.04",
+            "question": "Какие лекарства вы принимаете?",
+            "answer": "Принимаю метформин для лечения сахарного диабета.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0002.anamnesis.05",
+            "question": "Употребляете ли вы алкоголь?",
+            "answer": "Нет.",
+            "relevant": false
+          },
+          {
+            "id": "case.internal-medicine.0002.anamnesis.06",
+            "question": "Беспокоят ли болезненность или изменения поверхности языка?",
+            "answer": "Язык стал болезненным и гладким.",
+            "relevant": true
+          }
+        ]
+      },
+      "facts": {},
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.vitamin-b12-deficiency-anemia.neurologic",
+        "label": "Витамин-B12-дефицитная анемия с неврологическими проявлениями",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "D51.3",
+            "display": "Другие витамин-B12-дефицитные анемии, связанные с питанием",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.b12-cause-neurology",
+            "label": "Оценка причины дефицита B12 и неврологических нарушений",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Взять подтверждающие анализы до первой дозы, провести неврологический осмотр и оценить аутоиммунный гастрит/лекарства.",
+            "indication": "Веганское питание и метформин являются факторами риска, но нужно оценить мальабсорбцию и неврологический дефицит.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.cyanocobalamin",
+            "label": "Цианокобаламин",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Цианокобаламин по схеме КР; путь и частоту выбрать с учётом неврологических симптомов и причины дефицита.",
+            "indication": "Неврологические проявления требуют безотлагательного восполнения B12 после забора крови.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.monitoring.b12-response",
+            "label": "Контроль ответа на терапию витамином B12",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Контролировать ретикулоцитарный ответ, ОАК и динамику чувствительности; обеспечить поддерживающую терапию, если причина сохраняется.",
+            "indication": "Нужен контроль кроветворного и неврологического ответа.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Выявляет макроцитарную анемию и морфологические признаки.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Гемоглобин 108 г/л, MCV 108 фл; гиперсегментация нейтрофилов.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.vitamin-b12.blood",
+            "label": "Определение уровня витамина B12 (цианокобаламина) в крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Подтверждает низкую концентрацию до лечения.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Витамин B12 — 142 пг/мл, снижен.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [
+          {
+            "id": "study.functional.electroneuromyography",
+            "label": "Стимуляционная электронейромиография",
+            "decision": "optional",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Может документировать полинейропатию, но не должна задерживать лечение.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Лёгкая дистальная сенсорная полинейропатия нижних конечностей.",
+              "abnormal": true
+            }
+          }
+        ],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.536.v3",
+          "title": "Витамин-B12-дефицитная анемия",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/536_3"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.internal-medicine.0003",
+      "title": "Артериальная гипертензия с поражением органов-мишеней",
+      "patient": {
+        "name": "Павел Алексеев",
+        "age": 52,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился по поводу повышенного АД.",
+        "chiefComplaint": "Мой фармацевт сказал, что у меня слишком высокое кровяное давление. Я чувствую себя хорошо.",
+        "vitals": {
+          "hr": 84,
+          "bp": "156/96",
+          "spo2": 98,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.internal-medicine.0003.anamnesis.01",
+            "question": "Какие значения артериального давления вы измеряли?",
+            "answer": "Трижды измерял давление: около 150/95 мм рт. ст.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0003.anamnesis.02",
+            "question": "Есть ли головная боль или нарушения зрения?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0003.anamnesis.03",
+            "question": "У кого-нибудь из близких родственников повышено давление?",
+            "answer": "Да, у обоих родителей.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0003.anamnesis.04",
+            "question": "Много ли соли вы употребляете?",
+            "answer": "Досаливаю почти всю пищу.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0003.anamnesis.05",
+            "question": "Вы регулярно занимаетесь физической активностью?",
+            "answer": "Нет, физическая нагрузка бывает редко.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0003.anamnesis.06",
+            "question": "Есть ли кашель?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {},
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.hypertension.primary.target-organ-damage",
+        "label": "Гипертоническая болезнь с поражением органов-мишеней",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "I11.9",
+            "display": "Гипертензивная болезнь сердца без сердечной недостаточности",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.hypertension-confirmation",
+            "label": "Подтверждение артериальной гипертензии внеофисным измерением",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Корректно повторить измерения и выполнить СМАД или валидированный ДМАД; исключить криз и вторичные причины по показаниям.",
+            "indication": "Повторные офисные значения требуют подтверждения и оценки риска.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.education.hypertension-lifestyle",
+            "label": "Немедикаментозная коррекция при артериальной гипертензии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Сократить соль, увеличить аэробную активность, нормализовать массу, питание, алкоголь и курение.",
+            "indication": "Высокое потребление соли и гиподинамия модифицируемы.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.antihypertensive.initial",
+            "label": "Стартовая антигипертензивная терапия",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Выбрать зарегистрированную стартовую схему, обычно комбинацию, с учётом функции почек, калия и противопоказаний.",
+            "indication": "Подтверждённая АГ и признаки поражения органов-мишеней требуют лекарственной терапии.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.monitoring.bp-followup",
+            "label": "Ранний контроль артериального давления",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Контроль АД, креатинина и калия после старта/изменения терапии; индивидуальная цель по КР.",
+            "indication": "Необходимы титрация и контроль безопасности.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.functional.bp-ambulatory",
+            "label": "Суточное мониторирование артериального давления",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Подтверждает устойчивое повышение вне кабинета.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Среднее дневное АД 148/92 мм рт. ст.; ночное снижение сохранено.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.functional.ecg.resting-12-lead",
+            "label": "Электрокардиография в 12 отведениях в покое с интерпретацией",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Выявляет ГЛЖ и другие изменения.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Синусовый ритм 84/мин, вольтажные признаки гипертрофии левого желудочка.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.uacr.urine",
+            "label": "Расчёт отношения альбумин/креатинин в моче",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Оценивает поражение почек.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Альбумин/креатинин мочи 1,8 мг/ммоль.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.lab.lipid-profile.blood",
+            "label": "Исследование липидного профиля крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Нужен для сердечно-сосудистого риска.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "ХС ЛПНП 3,7 ммоль/л, триглицериды 1,9 ммоль/л.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.hba1c.blood",
+            "label": "Исследование уровня гликированного гемоглобина в крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Выявляет нарушение углеводного обмена.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "HbA1c 5,7%.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.exam.fundus",
+            "label": "Офтальмоскопия (осмотр глазного дна)",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Оценивает гипертоническую ретинопатию.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Гипертоническая ретинопатия I степени.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.62.v3",
+          "title": "Артериальная гипертензия у взрослых",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/62_3"
+        }
+      ],
+      "reviewStatus": "major-revision-required"
+    },
+    {
+      "id": "case.internal-medicine.0004",
+      "title": "Впервые выявленный сахарный диабет 2 типа",
+      "patient": {
+        "name": "Наталья Белова",
+        "age": 58,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась по поводу полиурии и снижения массы тела.",
+        "chiefComplaint": "Я все время хочу пить и постоянно мочусь.",
+        "vitals": {
+          "hr": 88,
+          "bp": "134/82",
+          "spo2": 98,
+          "temp": 36.8,
+          "rr": 16
+        },
+        "anamnesis": [
+          {
+            "id": "case.internal-medicine.0004.anamnesis.01",
+            "question": "Когда начались симптомы?",
+            "answer": "Около 2 месяцев назад.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0004.anamnesis.02",
+            "question": "Изменился ли ваш вес?",
+            "answer": "Похудела на 5 кг, хотя не старалась худеть.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0004.anamnesis.03",
+            "question": "У кого-нибудь из близких родственников есть сахарный диабет?",
+            "answer": "У матери и брата сахарный диабет 2-го типа.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0004.anamnesis.04",
+            "question": "Изменилось ли зрение?",
+            "answer": "Иногда зрение становится нечётким.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0004.anamnesis.05",
+            "question": "Были ли в последнее время инфекции?",
+            "answer": "Да, у меня часто повторяется молочница.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0004.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {
+        "metforminAppropriateAfterAssessment": true
+      },
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.type-2-diabetes.newly-diagnosed",
+        "label": "Впервые выявленный сахарный диабет 2 типа",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "E11.9",
+            "display": "Сахарный диабет 2 типа без осложнений",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.diabetes-acute-decompensation",
+            "label": "Исключение острой декомпенсации сахарного диабета",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Оценить рвоту, боль, дыхание, сознание, кетонемию и КОС по показаниям; определить срочность.",
+            "indication": "Похудание, выраженная гипергликемия и кетонурия требуют исключить ДКА/гиперосмолярное состояние и иной тип диабета.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.education.diabetes-structured",
+            "label": "Структурированное обучение при сахарном диабете",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Обсудить питание, активность, стопы, гипо-/гипергликемию и письменный план наблюдения.",
+            "indication": "Новый диагноз требует обучения самоконтролю и правилам при болезни.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.plan.diabetes-individualized-therapy",
+            "label": "Индивидуальный выбор сахароснижающей терапии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Выбрать терапию после исключения острой декомпенсации и оценки сердечно-сосудистого/почечного риска.",
+            "indication": "HbA1c 9,4%, симптомы и похудание требуют индивидуального выбора, иногда раннего инсулина.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.monitoring.diabetes-complications",
+            "label": "Скрининг осложнений сахарного диабета",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Контроль HbA1c, АД, липидов, СКФ, А/К мочи, стоп и глазного дна по графику.",
+            "indication": "Нужна исходная оценка осложнений и риска.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [
+          {
+            "id": "action.medication.metformin",
+            "label": "Метформин",
+            "decision": "conditional",
+            "when": {
+              "fact": "metforminAppropriateAfterAssessment",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Начать с переносимой дозы внутрь и титровать; проверить СКФ и противопоказания.",
+            "indication": "Метформин возможен при подтверждённом СД2, стабильности и достаточной функции почек.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.lab.glucose.blood",
+            "label": "Исследование уровня глюкозы в крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Симптомная случайная гипергликемия диагностически значима.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Случайная глюкоза плазмы 15,9 ммоль/л на фоне полиурии и полидипсии.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.hba1c.blood",
+            "label": "Исследование уровня гликированного гемоглобина в крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Оценивает хроническую гипергликемию.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "HbA1c 9,4%.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "order-set.lab.renal-function-electrolytes",
+            "label": "Набор отдельных исследований функции почек и электролитов",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Нужен для безопасности терапии и исключения декомпенсации.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Креатинин и электролиты без отклонений; бикарбонат 24 ммоль/л.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.lab.urinalysis.general",
+            "label": "Общий (клинический) анализ мочи",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Кетоны требуют клинической интерпретации.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Глюкозурия 3+, следы кетонов, протеинурии нет.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.uacr.urine",
+            "label": "Расчёт отношения альбумин/креатинин в моче",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Исходный скрининг нефропатии.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Отношение альбумин/креатинин мочи в пределах нормы.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.lab.lipid-profile.blood",
+            "label": "Исследование липидного профиля крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Сердечно-сосудистый риск.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "ХС ЛПНП 3,5 ммоль/л, триглицериды 2,5 ммоль/л.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.exam.fundus",
+            "label": "Офтальмоскопия (осмотр глазного дна)",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Исходный осмотр при СД2.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Диабетической ретинопатии не выявлено.",
+              "abnormal": false
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.290.v2",
+          "title": "Сахарный диабет 2 типа у взрослых",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/290_2"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.internal-medicine.0005",
+      "title": "Нетяжёлая внебольничная пневмония",
+      "patient": {
+        "name": "Роман Иванов",
+        "age": 47,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился с продуктивным кашлем и лихорадкой.",
+        "chiefComplaint": "У меня уже 5 дней кашель с желтой мокротой и температура.",
+        "vitals": {
+          "hr": 96,
+          "bp": "122/76",
+          "spo2": 95,
+          "temp": 38.4,
+          "rr": 20
+        },
+        "anamnesis": [
+          {
+            "id": "case.internal-medicine.0005.anamnesis.01",
+            "question": "Когда начались симптомы?",
+            "answer": "Около 5 дней назад, сначала появился озноб.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0005.anamnesis.02",
+            "question": "Какого цвета и характера мокрота?",
+            "answer": "Мокрота жёлто-зелёная.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0005.anamnesis.03",
+            "question": "Есть ли боль в груди?",
+            "answer": "Да, справа возникает резкая боль, особенно при глубоком вдохе.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0005.anamnesis.04",
+            "question": "Были ли недавние поездки или контакты с заболевшими?",
+            "answer": "У коллеги было похожее заболевание.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0005.anamnesis.05",
+            "question": "Вы курите?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0005.anamnesis.06",
+            "question": "Как изменился ваш аппетит?",
+            "answer": "Аппетит снизился.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {},
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.community-acquired-pneumonia.right-lower-lobe",
+        "label": "Внебольничная пневмония нижней доли правого лёгкого, нетяжёлое течение",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "J18.9",
+            "display": "Пневмония без уточнения возбудителя",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.pneumonia-severity",
+            "label": "Оценка тяжести внебольничной пневмонии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Рассчитать CRB-65, оценить SpO₂, дыхательную недостаточность, коморбидность и социальные факторы.",
+            "indication": "Место лечения определяет тяжесть, а не только снимок.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.amoxicillin.pneumonia",
+            "label": "Амоксициллин при нетяжёлой внебольничной пневмонии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Амоксициллин внутрь в режиме действующей КР с учётом аллергии; альтернативу выбрать по КР.",
+            "indication": "При нетяжёлой ВП без факторов риска нужен конкретный пероральный препарат первой линии.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.safety-netting.pneumonia",
+            "label": "Инструктаж при внебольничной пневмонии",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Срочно обратиться при нарастании одышки, спутанности, цианозе, гипотонии или невозможности пить; контроль, если нет улучшения за 48–72 часа.",
+            "indication": "Возможно быстрое ухудшение.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [
+          {
+            "id": "action.medication.analgesia.unspecified",
+            "label": "Неспецифицированное обезболивание",
+            "decision": "optional",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Парацетамол или НПВП при отсутствии противопоказаний.",
+            "indication": "Лихорадка и плевритная боль требуют симптоматической помощи.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "avoid": [],
+        "unsafe": [
+          {
+            "id": "action.medication.antibacterial.broad-spectrum.unspecified",
+            "label": "Неспецифицированный антибиотик широкого спектра",
+            "decision": "unsafe-or-delaying",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Назначить конкретный препарат, дозу, путь и длительность.",
+            "indication": "Неопределённый антибиотик широкого спектра не задаёт безопасной схемы.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ]
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.imaging.xray.chest",
+            "label": "Обзорная рентгенография органов грудной клетки",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Подтверждает инфильтрацию и оценивает осложнения.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Инфильтрация в нижней доле правого лёгкого, плеврального выпота нет.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Входит в диагностический минимум КР.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Лейкоциты 14,2×10⁹/л, нейтрофилы 82%.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [
+          {
+            "id": "study.lab.crp.serum.quantitative",
+            "label": "Исследование уровня C-реактивного белка в сыворотке крови",
+            "decision": "optional",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Может поддержать воспаление и динамику, но не определяет антибиотик самостоятельно.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "C-реактивный белок 142 мг/л.",
+              "abnormal": true
+            }
+          }
+        ],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.654.v2",
+          "title": "Внебольничная пневмония у взрослых",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/654_2"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.internal-medicine.0006",
+      "title": "Гастроэзофагеальная рефлюксная болезнь без тревожных признаков",
+      "patient": {
+        "name": "Вера Николаева",
+        "age": 42,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась с изжогой.",
+        "chiefComplaint": "У меня жжение в груди после еды, особенно ночью.",
+        "vitals": {
+          "hr": 76,
+          "bp": "118/74",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.internal-medicine.0006.anamnesis.01",
+            "question": "Как давно сохраняются симптомы?",
+            "answer": "Около 6 месяцев, и со временем становится хуже.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0006.anamnesis.02",
+            "question": "Изжога усиливается, когда вы ложитесь?",
+            "answer": "Да, из-за неё я просыпаюсь по ночам.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0006.anamnesis.03",
+            "question": "Появляется ли кислый привкус во рту?",
+            "answer": "Да, часто.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0006.anamnesis.04",
+            "question": "Снижался ли вес и не стало ли трудно глотать?",
+            "answer": "Нет, вес не снижался и глотать не стало труднее.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0006.anamnesis.05",
+            "question": "Принимаете обезболивающие из группы НПВП, например ибупрофен?",
+            "answer": "Да, иногда принимаю.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0006.anamnesis.06",
+            "question": "Бывает ли у вас длительный кашель?",
+            "answer": "Иногда кашляю по утрам.",
+            "relevant": true
+          }
+        ]
+      },
+      "facts": {
+        "cardiacEvaluationIndicated": false,
+        "endoscopyIndicated": false
+      },
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.gerd.typical-no-alarm-features",
+        "label": "Гастроэзофагеальная рефлюксная болезнь без тревожных признаков",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "K21.9",
+            "display": "Гастроэзофагеальный рефлюкс без эзофагита",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.gerd-red-flags",
+            "label": "Оценка тревожных признаков и сердечного риска при изжоге",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Уточнить связь с нагрузкой, дисфагию, одинофагию, анемию, кровотечение, похудание и семейный риск.",
+            "indication": "Загрудинное жжение требует оценки дисфагии, кровотечения, похудания и сердечного риска.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.ppi",
+            "label": "Терапия ингибитором протонной помпы",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "ИПП внутрь в стандартной дозе до еды курсом с оценкой ответа.",
+            "indication": "Типичная частая изжога без тревожных признаков допускает пробный курс ИПП.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.education.gerd-lifestyle",
+            "label": "Коррекция образа жизни при гастроэзофагеальной рефлюксной болезни",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Не есть за 2–3 часа до сна, поднять изголовье, снижать массу при избытке и избегать только воспроизводимых триггеров.",
+            "indication": "Ночные симптомы связаны с положением и временем еды.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [
+          {
+            "id": "action.assessment.acs-exclusion",
+            "label": "Исключение острого коронарного синдрома и опасных причин боли",
+            "decision": "conditional",
+            "when": {
+              "fact": "cardiacEvaluationIndicated",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Не считать нормальную ЭКГ достаточной для исключения ОКС при соответствующей клинике.",
+            "indication": "Кардиологическая оценка нужна при нагрузочной/атипичной боли или риске ИБС.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [],
+        "conditional": [
+          {
+            "id": "study.functional.ecg.resting-12-lead",
+            "label": "Электрокардиография в 12 отведениях в покое с интерпретацией",
+            "decision": "conditional",
+            "when": {
+              "fact": "cardiacEvaluationIndicated",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Проводится при сердечно-сосудистом риске или нетипичной боли.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Синусовый ритм 76/мин, ишемических изменений нет.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.endoscopy.egds",
+            "label": "Эзофагогастродуоденоскопия",
+            "decision": "conditional",
+            "when": {
+              "fact": "endoscopyIndicated",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Нужна при тревожных признаках, рефрактерности или диагностической неопределённости.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Не выполнена: тревожных признаков нет; показания пересматриваются при неэффективности лечения.",
+              "abnormal": false
+            }
+          }
+        ],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Без кровотечения и тревожных признаков ОАК не подтверждает ГЭРБ.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Гемоглобин 136 г/л, без отклонений.",
+              "abnormal": false
+            }
+          }
+        ],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.rga.gerd.2024",
+          "title": "Диагностика и лечение гастроэзофагеальной рефлюксной болезни",
+          "url": "https://doi.org/10.22416/1382-4376-2024-34-5-111-135"
+        }
+      ],
+      "reviewStatus": "major-revision-required"
+    },
+    {
+      "id": "case.internal-medicine.0007",
+      "title": "Острый неосложнённый цистит",
+      "patient": {
+        "name": "Дарья Соколова",
+        "age": 29,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась с жжением при мочеиспускании.",
+        "chiefComplaint": "При мочеиспускании ощущаю жжение и хожу в туалет каждые 20 минут.",
+        "vitals": {
+          "hr": 82,
+          "bp": "118/72",
+          "spo2": 99,
+          "temp": 37.1,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.internal-medicine.0007.anamnesis.01",
+            "question": "Когда начались симптомы?",
+            "answer": "2 дня назад.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0007.anamnesis.02",
+            "question": "Есть ли боль в спине или боку?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0007.anamnesis.03",
+            "question": "Были ли повышение температуры или озноб?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0007.anamnesis.04",
+            "question": "Замечали ли вы кровь в моче?",
+            "answer": "Вчера моча была слегка розоватой.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0007.anamnesis.05",
+            "question": "Были ли в последнее время половые контакты?",
+            "answer": "Да, на прошлой неделе.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0007.anamnesis.06",
+            "question": "Беременность возможна?",
+            "answer": "Нет, я пользуюсь контрацепцией.",
+            "relevant": true
+          }
+        ]
+      },
+      "facts": {
+        "pregnancyPossible": false,
+        "cultureIndicated": false
+      },
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.acute-uncomplicated-cystitis",
+        "label": "Острый неосложнённый цистит",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "N30.0",
+            "display": "Острый цистит",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.cystitis.complicating-factors",
+            "label": "Исключение беременности, пиелонефрита и осложняющих факторов",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Оценить лихорадку, боль в боку, беременность, аномалии мочевых путей и рецидивы.",
+            "indication": "Нужно подтвердить отсутствие пиелонефрита, беременности и осложняющих факторов.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.fosfomycin.oral",
+            "label": "Пероральный фосфомицин при неосложнённом цистите",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Фосфомицин внутрь по зарегистрированной схеме с учётом противопоказаний и локальной чувствительности.",
+            "indication": "Подходит как вариант первой линии при подтверждённом неосложнённом цистите.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.safety-netting.cystitis",
+            "label": "Инструктаж о признаках осложнения и повторном обращении",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Повторно обратиться при ухудшении или отсутствии эффекта в ожидаемый срок.",
+            "indication": "Лихорадка и боль в боку требуют пересмотра диагноза.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [],
+        "unsafe": [
+          {
+            "id": "action.medication.antibacterial.broad-spectrum.unspecified",
+            "label": "Неспецифицированный антибиотик широкого спектра",
+            "decision": "unsafe-or-delaying",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Использовать конкретную рекомендованную схему.",
+            "indication": "Неопределённый антибиотик широкого спектра не является корректным назначением.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ]
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.lab.urinalysis.general",
+            "label": "Общий (клинический) анализ мочи",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Поддерживает диагноз и выявляет гематурию.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Лейкоцитарная эстераза +, нитриты +, лейкоциты 50 в поле зрения, эритроциты 8 в поле зрения.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [
+          {
+            "id": "study.lab.hcg.urine.qualitative",
+            "label": "Качественное исследование мочи на хорионический гонадотропин",
+            "decision": "conditional",
+            "when": {
+              "fact": "pregnancyPossible",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Нужен при реальной возможности беременности, влияющей на выбор терапии.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "ХГЧ в моче не обнаружен.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.microbiology.urine-culture.aerobic",
+            "label": "Посев мочи на аэробные и факультативно-анаэробные условно-патогенные микроорганизмы",
+            "decision": "conditional",
+            "when": {
+              "fact": "cultureIndicated",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Показан при рецидиве, атипичном течении или неэффективности лечения.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Посев не назначен при первом типичном неосложнённом эпизоде; выполнить при рецидиве или неэффективности терапии.",
+              "abnormal": false
+            }
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.minzdrav.14.v3",
+          "title": "Цистит у женщин",
+          "url": "https://cr.minzdrav.gov.ru/view-cr/14_3"
+        }
+      ],
+      "reviewStatus": "major-revision-required"
+    },
+    {
+      "id": "case.internal-medicine.0008",
+      "title": "Острый гастроэнтерит с дегидратацией",
+      "patient": {
+        "name": "Виктор Иванов",
+        "age": 31,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился с диареей и рвотой.",
+        "chiefComplaint": "После пикника уже 2 дня водянистая диарея и тошнота.",
+        "vitals": {
+          "hr": 94,
+          "bp": "112/70",
+          "spo2": 98,
+          "temp": 37.5,
+          "rr": 16
+        },
+        "anamnesis": [
+          {
+            "id": "case.internal-medicine.0008.anamnesis.01",
+            "question": "Ели ли вы перед началом симптомов что-нибудь необычное или испорченное?",
+            "answer": "Съел картофельный салат, оставленный на солнце.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0008.anamnesis.02",
+            "question": "Замечали ли вы кровь в стуле?",
+            "answer": "Нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0008.anamnesis.03",
+            "question": "Сколько раз в сутки бывает жидкий стул?",
+            "answer": "Примерно 8 раз в день.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0008.anamnesis.04",
+            "question": "Удаётся ли вам пить и удерживать жидкость?",
+            "answer": "Пытаюсь пить, но жидкость не удерживается из-за рвоты.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0008.anamnesis.05",
+            "question": "Есть ли похожие симптомы у кого-нибудь ещё?",
+            "answer": "Да, у жены такие же симптомы.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0008.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {
+        "unableToMaintainOralHydration": true
+      },
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.acute-gastroenteritis.with-dehydration",
+        "label": "Острый гастроэнтерит с умеренной дегидратацией",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "A09",
+            "display": "Другой и неуточнённый гастроэнтерит и колит инфекционного происхождения",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.gastrointestinal-red-flags",
+            "label": "Оценка гастроэнтерологических тревожных признаков",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Оценить гемодинамику, диурез, кровь, сильную боль, лихорадку, иммунодефицит и вспышку.",
+            "indication": "Частый стул и рвота требуют оценки дегидратации и инвазивной инфекции.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.support.oral-rehydration",
+            "label": "Пероральная регидратация",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Частые небольшие объёмы раствора для пероральной регидратации, восполняя текущие потери.",
+            "indication": "Пероральный регидратационный раствор является основой при возможности пить.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.avoid.antibiotic-acute-watery-diarrhea",
+            "label": "Отказ от рутинного антибиотика при острой водянистой диарее",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Не назначать эмпирический антибиотик без специальных показаний.",
+            "indication": "При водянистой диарее без крови и системной токсичности антибиотик рутинно не нужен.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.safety-netting.gastroenteritis",
+            "label": "Инструктаж при остром гастроэнтерите",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "content"
+            ],
+            "instruction": "Срочно обратиться при крови, сильной боли, высокой лихорадке, редком мочеиспускании, обмороке или невозможности пить.",
+            "indication": "Нарастающая дегидратация требует повторной оценки.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [
+          {
+            "id": "action.support.iv-rehydration",
+            "label": "Внутривенная регидратация",
+            "decision": "conditional",
+            "when": {
+              "fact": "unableToMaintainOralHydration",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Изотонический кристаллоид внутривенно с повторной оценкой гемодинамики, диуреза и электролитов.",
+            "indication": "Жидкость не удерживается из-за рвоты.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "optional": [
+          {
+            "id": "action.medication.ondansetron",
+            "label": "Противорвотная терапия ондансетроном",
+            "decision": "optional",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Ондансетрон в зарегистрированной дозе с учётом QT и электролитов.",
+            "indication": "Кратковременно может облегчить регидратацию.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "avoid": [],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "order-set.lab.renal-function-electrolytes",
+            "label": "Набор отдельных исследований функции почек и электролитов",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Оценивает гипокалиемию, функцию почек и последствия дегидратации.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Калий 3,4 ммоль/л, креатинин 97 мкмоль/л; остальные электролиты без значимых отклонений.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [],
+        "optional": [
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "optional",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Может оценить гемоконцентрацию, но не определяет возбудителя.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Незначительная гемоконцентрация, лейкоциты 9,8×10⁹/л.",
+              "abnormal": false
+            }
+          }
+        ],
+        "avoid": [
+          {
+            "id": "study.lab.crp.serum.quantitative",
+            "label": "Исследование уровня C-реактивного белка в сыворотке крови",
+            "decision": "not-routine",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Неспецифичен при типичной короткой водянистой диарее.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "C-реактивный белок 18 мг/л.",
+              "abnormal": true
+            }
+          }
+        ],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.int.who.diarrhoea.2005",
+          "title": "The treatment of diarrhoea: a manual for physicians and other senior health workers",
+          "url": "https://www.who.int/publications/i/item/9241593180"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.internal-medicine.0009",
+      "title": "Дефицит витамина D с признаками нарушения минерализации",
+      "patient": {
+        "name": "Кирилл Орлов",
+        "age": 55,
+        "gender": "M"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратился с болями в костях и усталостью.",
+        "chiefComplaint": "У меня все болит, чувствую усталость, особенно зимой.",
+        "vitals": {
+          "hr": 72,
+          "bp": "124/76",
+          "spo2": 98,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.internal-medicine.0009.anamnesis.01",
+            "question": "Сколько времени вы обычно проводите на солнце?",
+            "answer": "Я работаю в помещении, редко на улице.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0009.anamnesis.02",
+            "question": "Употребляете ли вы молоко и молочные продукты?",
+            "answer": "Почти не употребляю молочные продукты.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0009.anamnesis.03",
+            "question": "Где именно вы чувствуете боль или ломоту?",
+            "answer": "В области тазобедренных суставов, поясницы и бёдер.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0009.anamnesis.04",
+            "question": "Есть ли мышечная слабость?",
+            "answer": "Да, мне трудно вставать со стула.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0009.anamnesis.05",
+            "question": "Принимаете какие-нибудь лекарства?",
+            "answer": "Нет, никаких лекарств не принимаю.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0009.anamnesis.06",
+            "question": "Есть ли кашель?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {
+        "dxaIndicated": true
+      },
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.vitamin-d-deficiency.possible-osteomalacia",
+        "label": "Дефицит витамина D с подозрением на остеомаляцию",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "E55.9",
+            "display": "Недостаточность витамина D неуточнённая",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.vitamin-d-secondary-causes",
+            "label": "Оценка причин дефицита витамина D и нарушения минерализации",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Оценить кальций с альбумином, фосфор, ЩФ, ПТГ, функцию почек, мальабсорбцию, лекарства и риск перелома.",
+            "indication": "Боль, проксимальная слабость, гипофосфатемия и высокая ЩФ требуют оценки остеомаляции и вторичных причин.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.medication.cholecalciferol",
+            "label": "Колекальциферол",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "drug",
+              "dose",
+              "route",
+              "timing"
+            ],
+            "instruction": "Колекальциферол по лечебной схеме с учётом массы тела, мальабсорбции, функции почек и риска гиперкальциемии.",
+            "indication": "25(OH)D 11 нг/мл подтверждает выраженный дефицит.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.monitoring.vitamin-d-calcium",
+            "label": "Контроль витамина D и кальций-фосфорного обмена",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Повторно оценить 25(OH)D и показатели кальций-фосфорного обмена в установленный срок.",
+            "indication": "Нужно подтвердить безопасность и восстановление обмена.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "action.disposition.outpatient-discharge",
+            "label": "Амбулаторное ведение и выписка",
+            "decision": "unscorable-as-specified",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Оформить конкретный лечебный и контрольный план.",
+            "indication": "Одна выписка не лечит дефицит и не оценивает остеомаляцию.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.lab.vitamin-d-25oh.blood",
+            "label": "Исследование уровня 25-OH витамина D в крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Основной показатель статуса витамина D.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "25(OH)D — 11 нг/мл, выраженный дефицит.",
+              "abnormal": true
+            }
+          },
+          {
+            "id": "order-set.lab.bone-mineral-profile",
+            "label": "Показатели кальций-фосфорного обмена",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Отклонения поддерживают нарушение минерализации и влияют на безопасность лечения.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Общий кальций 2,15 ммоль/л, фосфор снижен, щелочная фосфатаза 168 Ед/л.",
+              "abnormal": true
+            }
+          }
+        ],
+        "conditional": [
+          {
+            "id": "study.imaging.dxa.axial",
+            "label": "Двухэнергетическая рентгеновская денситометрия поясничного отдела и проксимального отдела бедра",
+            "decision": "conditional",
+            "when": {
+              "fact": "dxaIndicated",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Оценивает минеральную плотность при наличии показаний, но не диагностирует остеомаляцию самостоятельно.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "T-критерий поясничного отдела −1,6, шейки бедра −1,4.",
+              "abnormal": true
+            }
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.ru.rae.vitamin-d.2021",
+          "title": "Дефицит витамина D у взрослых: диагностика, лечение и профилактика",
+          "url": "https://www.rae-org.ru/system/files/documents/pdf/kr342_deficit_vitamina_d_u_vzroslyh.pdf"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    },
+    {
+      "id": "case.internal-medicine.0010",
+      "title": "Стойкая утомляемость неустановленной причины",
+      "patient": {
+        "name": "Марина Козлова",
+        "age": 38,
+        "gender": "F"
+      },
+      "presentation": {
+        "severity": "stable",
+        "arrival": "Самостоятельно обратилась.",
+        "chiefComplaint": "Я в изнеможении уже 8 месяцев. Никакой сон не помогает.",
+        "vitals": {
+          "hr": 74,
+          "bp": "116/72",
+          "spo2": 99,
+          "temp": 36.7,
+          "rr": 14
+        },
+        "anamnesis": [
+          {
+            "id": "case.internal-medicine.0010.anamnesis.01",
+            "question": "Как вы спите?",
+            "answer": "Сплю около 8 часов, но после сна не чувствую себя отдохнувшей.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0010.anamnesis.02",
+            "question": "Бывают ли у вас подавленное настроение или утрата интереса к привычным занятиям?",
+            "answer": "Настроение немного снижено, но выраженной подавленности нет.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0010.anamnesis.03",
+            "question": "Изменился ли ваш вес?",
+            "answer": "Нет, вес не изменился.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0010.anamnesis.04",
+            "question": "Стали хуже переносить холод? Не усилилось выпадение волос?",
+            "answer": "Нет, ничего такого не замечала.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0010.anamnesis.05",
+            "question": "Какую физическую нагрузку вы можете переносить сейчас?",
+            "answer": "Утомляюсь даже при выполнении обычных повседневных дел.",
+            "relevant": true
+          },
+          {
+            "id": "case.internal-medicine.0010.anamnesis.06",
+            "question": "Вы недавно куда-нибудь ездили?",
+            "answer": "Нет.",
+            "relevant": false
+          }
+        ]
+      },
+      "facts": {
+        "freeT4Indicated": false,
+        "b12TestingIndicated": false
+      },
+      "factNotes": [
+        "Начальные факты заданы для воспроизводимого исследовательского сценария; при изменении состояния условия должны пересчитываться."
+      ],
+      "diagnosis": {
+        "id": "condition.persistent-fatigue.undifferentiated",
+        "label": "Стойкая утомляемость неустановленной причины",
+        "externalCodes": [
+          {
+            "system": "icd-10",
+            "code": "R53",
+            "display": "Недомогание и утомляемость",
+            "relation": "likely"
+          }
+        ]
+      },
+      "actions": {
+        "required": [
+          {
+            "id": "action.assessment.persistent-fatigue",
+            "label": "Структурированная оценка стойкой утомляемости",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Оценить постнагрузочное ухудшение, сон, когнитивные/ортостатические симптомы, депрессию и тревогу, апноэ сна, лекарства, инфекции и красные флаги.",
+            "indication": "Нормальные отдельные анализы не устанавливают ME/CFS.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.avoid.premature-mecfs-label",
+            "label": "Отказ от преждевременного диагноза ME/CFS",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "decision",
+              "rationale"
+            ],
+            "instruction": "Не кодировать синдром хронической усталости только по длительности жалобы.",
+            "indication": "В сценарии не описано обязательное постнагрузочное ухудшение и не завершена дифференциальная диагностика.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          },
+          {
+            "id": "action.followup.persistent-fatigue",
+            "label": "Динамическое наблюдение при стойкой утомляемости",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Согласовать щадящий план активности без форсированного наращивания, дневник симптомов и повторную оценку; срочно при новых красных флагах.",
+            "indication": "Диагноз уточняется по динамике и функциональному влиянию.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "conditional": [],
+        "optional": [],
+        "avoid": [
+          {
+            "id": "action.disposition.outpatient-discharge",
+            "label": "Амбулаторное ведение и выписка",
+            "decision": "unscorable-as-specified",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "requiredInputs": [
+              "execution"
+            ],
+            "instruction": "Оформить конкретный маршрут и сроки контроля.",
+            "indication": "Выписка без плана обследования и наблюдения недостаточна.",
+            "checks": [],
+            "contraindications": [],
+            "success": "Тактика выполнена, переносимость и клинический ответ документированы."
+          }
+        ],
+        "unsafe": []
+      },
+      "studies": {
+        "required": [
+          {
+            "id": "study.lab.cbc-with-differential",
+            "label": "Общий (клинический) анализ крови развернутый",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Исключает анемию и цитопении.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Гемоглобин 130 г/л, лейкоциты 6,4×10⁹/л, тромбоциты 232×10⁹/л.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "order-set.lab.renal-function-electrolytes",
+            "label": "Набор отдельных исследований функции почек и электролитов",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Исключает почечные и электролитные причины.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Функция почек и электролиты без отклонений.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.lab.tsh.blood",
+            "label": "Исследование уровня тиреотропного гормона в крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Скрининг дисфункции щитовидной железы.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "ТТГ 1,9 мМЕ/л.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.lab.ferritin.blood",
+            "label": "Исследование уровня ферритина в крови",
+            "decision": "required",
+            "when": {
+              "always": true
+            },
+            "applicableNow": true,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Дефицит железа возможен и без анемии.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Ферритин 64 нг/мл.",
+              "abnormal": false
+            }
+          }
+        ],
+        "conditional": [
+          {
+            "id": "study.lab.free-t4.blood",
+            "label": "Исследование уровня свободного тироксина в крови",
+            "decision": "conditional",
+            "when": {
+              "fact": "freeT4Indicated",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Нужен при отклонении ТТГ или подозрении на центральную патологию, но не рутинно при нормальном ТТГ.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Свободный T4 — 14 пмоль/л.",
+              "abnormal": false
+            }
+          },
+          {
+            "id": "study.lab.vitamin-b12.blood",
+            "label": "Определение уровня витамина B12 (цианокобаламина) в крови",
+            "decision": "conditional",
+            "when": {
+              "fact": "b12TestingIndicated",
+              "op": "eq",
+              "value": true
+            },
+            "applicableNow": false,
+            "timing": "В ходе текущего обследования.",
+            "rationale": "Назначается при факторах риска или макроцитозе/неврологических симптомах.",
+            "mustNotDelay": "Не задерживать необходимое лечение и маршрутизацию.",
+            "result": {
+              "result": "Витамин B12 — 412 пг/мл.",
+              "abnormal": false
+            }
+          }
+        ],
+        "optional": [],
+        "avoid": [],
+        "unsafe": []
+      },
+      "choiceGroups": [],
+      "references": [
+        {
+          "id": "guideline.int.nice.mecfs.2021",
+          "title": "ME/CFS: diagnosis and management",
+          "url": "https://www.nice.org.uk/guidance/ng206"
+        }
+      ],
+      "reviewStatus": "critical-revision-required"
+    }
+  ]
+}

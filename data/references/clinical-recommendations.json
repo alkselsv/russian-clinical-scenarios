@@ -299,6 +299,310 @@
       "year": 2021,
       "statusAtReview": "Действует с изменениями; редакцию проверять на дату применения",
       "officialUrl": "https://www.consultant.ru/document/cons_doc_LAW_388771/"
+    },
+    {
+      "id": "guideline.ru.minzdrav.313.v3",
+      "externalId": "313_3",
+      "titleRu": "Острый синусит",
+      "year": 2024,
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/313_3"
+    },
+    {
+      "id": "guideline.ru.minzdrav.314.v2",
+      "externalId": "314_2",
+      "titleRu": "Острый средний отит",
+      "year": 2021,
+      "statusAtReview": "В рубрикаторе; срок планового пересмотра истёк",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/314_2"
+    },
+    {
+      "id": "guideline.ru.minzdrav.306.v3",
+      "externalId": "306_3",
+      "titleRu": "Острый тонзиллит и фарингит (острый тонзиллофарингит)",
+      "year": 2024,
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/306_3"
+    },
+    {
+      "id": "guideline.ru.professional.bppv.2024",
+      "externalId": "BPPV-RU-2024",
+      "titleRu": "Доброкачественное пароксизмальное позиционное головокружение: профессиональный обзор",
+      "year": 2024,
+      "statusAtReview": "Профессиональный источник; актуальная КР Минздрава в рубрикаторе не найдена",
+      "officialUrl": "https://journal.neurology.ru/rnd/article/view/1495"
+    },
+    {
+      "id": "guideline.ru.minzdrav.23.v1",
+      "externalId": "23_1",
+      "titleRu": "Шум в ушах",
+      "year": 2016,
+      "statusAtReview": "Архивная КР; использовать с актуальной врачебной сверкой",
+      "officialUrl": "https://www.consultant.ru/document/cons_doc_LAW_325243/"
+    },
+    {
+      "id": "guideline.ru.minzdrav.261.v2",
+      "externalId": "261_2",
+      "titleRu": "Аллергический ринит",
+      "year": 2024,
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/261_2"
+    },
+    {
+      "id": "guideline.ru.minzdrav.890.v1",
+      "externalId": "890_1",
+      "titleRu": "Полипозный риносинусит",
+      "year": 2024,
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/890_1"
+    },
+    {
+      "id": "guideline.int.aao-hns.dysphonia.2018",
+      "externalId": "AAO-HNS-DYSPHONIA-2018",
+      "titleRu": "Clinical Practice Guideline: Hoarseness (Dysphonia), Update",
+      "year": 2018,
+      "statusAtReview": "Международная КР; российская актуальная КР не найдена",
+      "officialUrl": "https://pubmed.ncbi.nlm.nih.gov/29494321/"
+    },
+    {
+      "id": "guideline.int.nidcr.tmd",
+      "externalId": "NIDCR-TMD",
+      "titleRu": "Temporomandibular Disorders",
+      "year": 2024,
+      "statusAtReview": "Международный государственный источник; российская КР не найдена",
+      "officialUrl": "https://www.nidcr.nih.gov/health-info/tmd"
+    },
+    {
+      "id": "guideline.ru.minzdrav.763.v1",
+      "externalId": "763_1",
+      "titleRu": "Сенсоневральная тугоухость у взрослых",
+      "year": 2023,
+      "statusAtReview": "Применяется на дату проверки; требуется контроль редакции",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/763_1"
+    },
+    {
+      "id": "guideline.ru.minzdrav.669.v2",
+      "externalId": "669_2",
+      "titleRu": "Железодефицитная анемия",
+      "year": 2024,
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/669_2"
+    },
+    {
+      "id": "guideline.ru.minzdrav.536.v3",
+      "externalId": "536_3",
+      "titleRu": "Витамин-B12-дефицитная анемия",
+      "year": 2024,
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/536_3"
+    },
+    {
+      "id": "guideline.ru.minzdrav.290.v2",
+      "externalId": "290_2",
+      "titleRu": "Сахарный диабет 2 типа у взрослых",
+      "year": 2022,
+      "statusAtReview": "В рубрикаторе; срок планового пересмотра истёк",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/290_2"
+    },
+    {
+      "id": "guideline.ru.minzdrav.654.v2",
+      "externalId": "654_2",
+      "titleRu": "Внебольничная пневмония у взрослых",
+      "year": 2024,
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/654_2"
+    },
+    {
+      "id": "guideline.int.who.diarrhoea.2005",
+      "externalId": "WHO-DIARRHOEA-2005",
+      "titleRu": "The treatment of diarrhoea: a manual for physicians and other senior health workers",
+      "year": 2005,
+      "statusAtReview": "Международное руководство; актуальная российская КР для данного синдромного случая не найдена",
+      "officialUrl": "https://www.who.int/publications/i/item/9241593180"
+    },
+    {
+      "id": "guideline.ru.rae.vitamin-d.2021",
+      "externalId": "RAE-VITD-2021",
+      "titleRu": "Дефицит витамина D у взрослых: диагностика, лечение и профилактика",
+      "year": 2021,
+      "statusAtReview": "Профессиональные рекомендации; актуальная КР Минздрава не найдена",
+      "officialUrl": "https://www.rae-org.ru/system/files/documents/pdf/kr342_deficit_vitamina_d_u_vzroslyh.pdf"
+    },
+    {
+      "id": "guideline.int.nice.mecfs.2021",
+      "externalId": "NICE-NG206",
+      "titleRu": "ME/CFS: diagnosis and management",
+      "year": 2021,
+      "statusAtReview": "Международная КР; актуальная российская КР не найдена",
+      "officialUrl": "https://www.nice.org.uk/guidance/ng206"
+    },
+    {
+      "id": "guideline.ru.minzdrav.469.v2",
+      "externalId": "469_2",
+      "titleRu": "Хроническая болезнь почек",
+      "year": 2021,
+      "statusAtReview": "В рубрикаторе; срок планового пересмотра истёк",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/469_2"
+    },
+    {
+      "id": "guideline.int.kdigo.ckd.2024",
+      "externalId": "KDIGO-CKD-2024",
+      "titleRu": "KDIGO 2024 Clinical Practice Guideline for the Evaluation and Management of Chronic Kidney Disease",
+      "year": 2024,
+      "statusAtReview": "Международная действующая КР",
+      "officialUrl": "https://kdigo.org/guidelines/ckd-evaluation-and-management/"
+    },
+    {
+      "id": "guideline.ru.minzdrav.7.2024",
+      "externalId": "7",
+      "titleRu": "Мочекаменная болезнь",
+      "year": 2024,
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/7"
+    },
+    {
+      "id": "guideline.ru.minzdrav.894.v1",
+      "externalId": "894_1",
+      "titleRu": "Гломерулярные болезни: иммуноглобулин А-нефропатия",
+      "year": 2024,
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/894_1"
+    },
+    {
+      "id": "guideline.int.kdigo.lupus-nephritis.2024",
+      "externalId": "KDIGO-LN-2024",
+      "titleRu": "KDIGO 2024 Clinical Practice Guideline for the Management of Lupus Nephritis",
+      "year": 2024,
+      "statusAtReview": "Международная действующая КР",
+      "officialUrl": "https://kdigo.org/guidelines/lupus-nephritis/"
+    },
+    {
+      "id": "guideline.int.kdigo.adpkd.2025",
+      "externalId": "KDIGO-ADPKD-2025",
+      "titleRu": "KDIGO 2025 Clinical Practice Guideline for ADPKD",
+      "year": 2025,
+      "statusAtReview": "Международная действующая КР; доступен русский перевод ключевых положений",
+      "officialUrl": "https://kdigo.org/guidelines/autosomal-dominant-polycystic-kidney-disease-adpkd/"
+    },
+    {
+      "id": "guideline.int.kdigo.aki.2012",
+      "externalId": "KDIGO-AKI-2012",
+      "titleRu": "KDIGO Clinical Practice Guideline for Acute Kidney Injury",
+      "year": 2012,
+      "statusAtReview": "Международная КР; требует учёта последующих обновлений доказательств",
+      "officialUrl": "https://kdigo.org/guidelines/acute-kidney-injury/"
+    },
+    {
+      "id": "guideline.int.kdigo.glomerular.2021",
+      "externalId": "KDIGO-GD-2021",
+      "titleRu": "KDIGO 2021 Clinical Practice Guideline for the Management of Glomerular Diseases",
+      "year": 2021,
+      "statusAtReview": "Международная КР; для мембранозной нефропатии учитывать последующие обновления",
+      "officialUrl": "https://kdigo.org/guidelines/gd/"
+    },
+    {
+      "id": "guideline.int.kdigo.igan-igav.2025",
+      "externalId": "KDIGO-IgAN-IgAV-2025",
+      "titleRu": "KDIGO 2025 Clinical Practice Guideline for the Management of IgA Nephropathy and IgA Vasculitis",
+      "year": 2025,
+      "statusAtReview": "Международная действующая КР; доступен русский перевод",
+      "officialUrl": "https://kdigo.org/guidelines/iga-nephropathy/"
+    },
+    {
+      "id": "guideline.ru.minzdrav.migraine.295.v2",
+      "externalId": "295_2",
+      "titleRu": "Мигрень",
+      "year": 2024,
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/295_2"
+    },
+    {
+      "id": "guideline.ru.minzdrav.tension-headache.162.v3",
+      "externalId": "162_3",
+      "titleRu": "Головная боль напряжения",
+      "year": 2024,
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/162_3"
+    },
+    {
+      "id": "guideline.ru.minzdrav.cranial-mononeuropathies.895.v1",
+      "externalId": "895_1",
+      "titleRu": "Краниальные мононейропатии у взрослых",
+      "year": 2024,
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/895_1"
+    },
+    {
+      "id": "guideline.ru.minzdrav.mononeuropathies.166.v2",
+      "externalId": "166_2",
+      "titleRu": "Мононевропатии",
+      "year": 2022,
+      "statusAtReview": "В рубрикаторе; срок планового пересмотра истёк",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/166_2"
+    },
+    {
+      "id": "guideline.ru.minzdrav.parkinsonism.716.v1",
+      "externalId": "716_1",
+      "titleRu": "Болезнь Паркинсона, вторичный паркинсонизм и другие заболевания, проявляющиеся синдромом паркинсонизма",
+      "year": 2021,
+      "statusAtReview": "В рубрикаторе; срок планового пересмотра истёк",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/716_1"
+    },
+    {
+      "id": "guideline.int.nice.parkinson.71",
+      "externalId": "NICE-NG71",
+      "titleRu": "Parkinson’s disease in adults",
+      "year": 2017,
+      "statusAtReview": "Пересмотрено NICE в 2024 году",
+      "officialUrl": "https://www.nice.org.uk/guidance/ng71"
+    },
+    {
+      "id": "guideline.ru.minzdrav.discogenic-radiculopathy.777.v1",
+      "externalId": "777_1",
+      "titleRu": "Дискогенная пояснично-крестцовая радикулопатия",
+      "year": 2023,
+      "statusAtReview": "Применяется; срок планового пересмотра истёк",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/777_1"
+    },
+    {
+      "id": "guideline.ru.minzdrav.cognitive-older-adults.617.v5",
+      "externalId": "617_5",
+      "titleRu": "Когнитивные расстройства у лиц пожилого и старческого возраста",
+      "year": 2024,
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/617_5"
+    },
+    {
+      "id": "guideline.ru.minzdrav.primary-cns-tumors.585.v2",
+      "externalId": "585_2",
+      "titleRu": "Первичные опухоли центральной нервной системы",
+      "year": 2025,
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/585_2"
+    },
+    {
+      "id": "guideline.ru.minzdrav.degenerative-spine.826.v1",
+      "externalId": "826_1",
+      "titleRu": "Дегенеративные заболевания позвоночника",
+      "year": 2024,
+      "statusAtReview": "Применяется",
+      "officialUrl": "https://cr.minzdrav.gov.ru/view-cr/826_1"
+    },
+    {
+      "id": "guideline.int.csdh-multidisciplinary.2024",
+      "externalId": "DOI-10.1080-02688697.2024.2413445",
+      "titleRu": "Clinical practice guidelines for the care of patients with a chronic subdural haematoma",
+      "year": 2024,
+      "statusAtReview": "Международные мультидисциплинарные рекомендации",
+      "officialUrl": "https://doi.org/10.1080/02688697.2024.2413445"
+    },
+    {
+      "id": "guideline.int.japanese-inph.2021",
+      "externalId": "JSH-NPH-2021",
+      "titleRu": "Guidelines for Management of Idiopathic Normal Pressure Hydrocephalus, Third Edition",
+      "year": 2021,
+      "statusAtReview": "Международные рекомендации; учитывать более новые исследования",
+      "officialUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7905302/"
     }
   ]
 }

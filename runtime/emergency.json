@@ -15,9 +15,9 @@
       "not": "Отрицание: {\"not\": {...}}"
     },
     "inputSha256": {
-      "actions": "98e309bbe53759105d1f0bfc7d4589c3a5eeac9b7d195494e94ed56762257ba9",
-      "studies": "2102ed0da6a8a118145c5dfc007f01badd1c28d91a31d5228122171da6ebb16f",
-      "references": "2087d857cdd11a271c3a823ff5ac87712c20a518b3c8c28edd818449200f8fbb",
+      "actions": "4a565ef472310a5adeaf95cda3408d1b73d8b7cde4f26417976c648306901a70",
+      "studies": "5b3fc8cd11378a4164364336e83e4867219ed5058f82356394ab71b12c313fbd",
+      "references": "7e550f6c0e468e15f35f5fca8d3c711dc9db3d8a61ffb50484dc215f814442df",
       "content": "7fe22b0f3d00fb07fb7ef1c2b4d5916ab242a6d26cda1fc5a43c5b6abbdb2ec0",
       "rules": "53945be13b292543ad8d0fa2b59a98c64477f9f207e91a20d6c719087a80ff14",
       "config": "0df21d26e89edd4070769e565ab7ee79081983921594266d8e790899561fea57"
